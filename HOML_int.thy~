@@ -9,9 +9,9 @@ section \<open>Embedding of Higher-Order Modal Logic with Intensional Types\<clo
 
 subsection \<open>Declarations\<close>
 
-  typedecl i                    (** Type for possible worlds*)
-  type_synonym io = "(i\<Rightarrow>bool)" (** Type for formulas whose truth-value is world-dependent*)
-  typedecl e  ("O")             (** Type for individuals*)               
+  typedecl i                          (** Type for possible worlds*)
+  type_synonym io = "(i\<Rightarrow>bool)"       (** Type for formulas whose truth-value is world-dependent*)
+  typedecl e  ("O")                   (** Type for individuals*)               
   
   (** Aliases for common unary predicate types: *)
   type_synonym ie =     "(i\<Rightarrow>O)"             ("\<up>O")
@@ -111,11 +111,11 @@ abbreviation extPredArg1   :: "(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow
     
 subsection {* Definition of Equality *}
   
-  abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) (**normal equality (for all types)*)
+  abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) (** normal equality (for all types)*)
     where "x\<^bold>\<approx>y \<equiv> \<lambda>w. x = y"
-  abbreviation meqC   :: "\<up>\<langle>\<up>O,\<up>O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>C"52) (**equality for individual concepts*)
+  abbreviation meqC   :: "\<up>\<langle>\<up>O,\<up>O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>C"52) (** equality for (intensional) individual concepts"*)
     where "x\<^bold>\<approx>\<^sup>Cy \<equiv> \<lambda>w. \<forall>v. (x v) = (y v)"
-  abbreviation meqL   :: "\<up>\<langle>O,O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) (**Leibniz Equ. for individuals*)
+  abbreviation meqL   :: "\<up>\<langle>O,O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) (** Leibniz Equality for individuals"*)
     where "x\<^bold>\<approx>\<^sup>Ly \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
       
 subsection {* Miscelaneous *}
@@ -132,16 +132,16 @@ subsection {* Meta-logical predicates*}
 
  abbreviation valid :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>" [8]) where "\<lfloor>\<psi>\<rfloor> \<equiv>  \<forall>w.(\<psi> w)"
  abbreviation satisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>s\<^sup>a\<^sup>t \<equiv> \<exists>w.(\<psi> w)"
- abbreviation cntrsatisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t \<equiv>  \<exists>w.\<not>(\<psi> w)"
+ abbreviation countersatisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t \<equiv>  \<exists>w.\<not>(\<psi> w)"
  abbreviation invalid :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>i\<^sup>n\<^sup>v" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>i\<^sup>n\<^sup>v \<equiv> \<forall>w.\<not>(\<psi> w)"
 
-subsection {* Verifying the Embedding *}
+section {* Verifying the Embedding *}
 
  (** Verifying K Principle and Necessitation: *)
  lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp    --{* K Schema *}
  lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp    --{* Necessitation *}
 
- (** Instances of the Barcan and converse Barcan Formulas are satisintensionalfied for standard (possibilist) quantifiers: *)
+ (** Instances of the Barcan and converse Barcan Formulas are satisfied for standard (possibilist) quantifiers: *)
  lemma "\<lfloor>(\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x))\<rfloor>" by simp
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x))\<rfloor>" by simp
     
@@ -160,7 +160,7 @@ subsection {* Verifying the Embedding *}
  (** Modal Collapse is countersatisfiable: *)
  lemma "\<lfloor>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<phi>\<rfloor>" nitpick oops                  (** countersatisfiable*)
 
-subsection {* Useful Definitions for Axiomatization of Further Logics *}
+section {* Useful Definitions for Axiomatization of Further Logics *}
 
  (** The best known logics \emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...} are obtained through
  axiomatization of combinations of the following: *)
@@ -190,7 +190,5 @@ subsection {* Useful Definitions for Axiomatization of Further Logics *}
   (** Using these definitions, we can derive axioms for the most common modal logics. Thereby we 
   are free to use either the semantic constraints or the related Sahlqvist axioms. Here we provide 
   both versions. We recommend to use the semantic constraints for improved performance. *)
- 
-(*<*)      
+    
 end
-(*>*)      

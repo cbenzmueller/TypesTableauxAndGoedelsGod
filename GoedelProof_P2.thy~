@@ -6,19 +6,15 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e 
 sledgehammer_params[verbose=true]
 (*>*)
   
-section \<open>Argument Part II - God's existence is necessary if possible\<close>
+section \<open>Second Part -  God's existence is necessary if possible\<close>
 
 subsection \<open>General definitions\<close>
   
-abbreviation existencePredicate::"\<up>\<langle>O\<rangle>" ("E!") where
-  "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)" 
+abbreviation existencePredicate::"\<up>\<langle>O\<rangle>" ("E!") where "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)" 
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" ("\<P>")
-  
 abbreviation God::"\<up>\<langle>O\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
-abbreviation God_star::"\<up>\<langle>O\<rangle>" ("G*") where
-  "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
-abbreviation Entailment::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where 
-  "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
+abbreviation God_star::"\<up>\<langle>O\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
+abbreviation Entailment::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>" (infix "\<succeq>" 60) where "X \<succeq> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
 
 subsection \<open>Axioms from Part I\<close>  
   
@@ -26,7 +22,7 @@ subsection \<open>Axioms from Part I\<close>
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and          (** Axiom 11.3A *)
   A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and           (** Axiom 11.3B *)
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and    (** Axiom 11.5 *)
+  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<succeq> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and    (** Axiom 11.5 *)
   T2: "\<lfloor>\<P> G\<rfloor>"                                  (** Proposition 11.16 *)
         
 lemma True nitpick[satisfy] oops (** Axioms are consistent*)
@@ -50,32 +46,27 @@ lemma True nitpick[satisfy] oops (** So far all axioms consistent*)
     
 subsection \<open>Theorems\<close>
 
-abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>O\<rangle>,O\<rangle>" ("\<E>") where
-  "\<E> Y x \<equiv> (Y x) \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y \<Rrightarrow> Z)"
-abbreviation beingIdenticalTo::"O\<Rightarrow>\<up>\<langle>O\<rangle>" ("id") where
-  "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"                (** id is a rigid predicate*)  
-
-(** Theorem 11.20 - Informal Proposition 5 *)
-theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)\<rfloor>" using A1b A4a by metis
-    
-(** Theorem 11.21 *)
-theorem "\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<rightarrow> (\<E> G* x)\<rfloor>" using A4a by meson             
+abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>O\<rangle>,O\<rangle>" ("\<E>") where "\<E> Y x \<equiv> (Y x) \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y \<succeq> Z)"
+abbreviation beingIdenticalTo::"O\<Rightarrow>\<up>\<langle>O\<rangle>" ("id") where "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)" (** id is a rigid predicate*)  
+      
+theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)\<rfloor>" using A1b A4a by metis    (** Theorem 11.20 - Informal Proposition 5 *)
+theorem "\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<rightarrow> (\<E> G* x)\<rfloor>" using A4a by meson                      (** Theorem 11.21 *)
     
 (** Theorem 11.22 - Something can have only one essence: *)
-theorem "\<lfloor>\<^bold>\<forall>X Y z. (\<E> X z \<^bold>\<and> \<E> Y z) \<^bold>\<rightarrow> (X \<Rrightarrow> Y)\<rfloor>" by meson  
+theorem "\<lfloor>\<^bold>\<forall>X Y z. (\<E> X z \<^bold>\<and> \<E> Y z) \<^bold>\<rightarrow> (X \<succeq> Y)\<rfloor>" by meson  
   
 (** Theorem 11.23 - An essence is a complete characterization of an individual: *)
-theorem EssencesCharacterizeCompletely: "\<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<Rrightarrow> (id y))\<rfloor>"
+theorem EssencesCharacterizeCompletely: "\<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<succeq> (id y))\<rfloor>"
 proof (rule ccontr)
-  assume "\<not> \<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<Rrightarrow> (id y))\<rfloor>"
-  hence "\<exists>w. \<not>(( \<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> X \<Rrightarrow> id y) w)" by simp
-  then obtain w where "\<not>(( \<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> X \<Rrightarrow> id y) w)" ..
-  hence "(\<^bold>\<exists>X y. \<E> X y \<^bold>\<and> \<^bold>\<not>(X \<Rrightarrow> id y)) w" by simp
-  hence "\<exists>X y. \<E> X y w \<and> (\<^bold>\<not>(X \<Rrightarrow> id y)) w" by simp
-  then obtain P where "\<exists>y. \<E> P y w \<and> (\<^bold>\<not>(P \<Rrightarrow> id y)) w" ..
-  then obtain a where 1: "\<E> P a w \<and> (\<^bold>\<not>(P \<Rrightarrow> id a)) w" ..
+  assume "\<not> \<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<succeq> (id y))\<rfloor>"
+  hence "\<exists>w. \<not>(( \<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> X \<succeq> id y) w)" by simp
+  then obtain w where "\<not>(( \<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> X \<succeq> id y) w)" ..
+  hence "(\<^bold>\<exists>X y. \<E> X y \<^bold>\<and> \<^bold>\<not>(X \<succeq> id y)) w" by simp
+  hence "\<exists>X y. \<E> X y w \<and> (\<^bold>\<not>(X \<succeq> id y)) w" by simp
+  then obtain P where "\<exists>y. \<E> P y w \<and> (\<^bold>\<not>(P \<succeq> id y)) w" ..
+  then obtain a where 1: "\<E> P a w \<and> (\<^bold>\<not>(P \<succeq> id a)) w" ..
   hence 2: "\<E> P a w" by (rule conjunct1)
-  from 1 have "(\<^bold>\<not>(P \<Rrightarrow> id a)) w" by (rule conjunct2)
+  from 1 have "(\<^bold>\<not>(P \<succeq> id a)) w" by (rule conjunct2)
   hence "\<exists>x. \<exists>z. w r x \<and>  existsAt z x \<and> P z x \<and> \<not>(a = z)" by blast
   then obtain w1 where "\<exists>z. w r w1 \<and>  existsAt z w1 \<and> P z w1 \<and> \<not>(a = z)" ..
   then obtain b where 3: "w r w1 \<and>  existsAt b w1 \<and> P b w1 \<and> \<not>(a = b)" ..
@@ -84,15 +75,15 @@ proof (rule ccontr)
   from 3 have "P b w1" by simp
   from 3 have 4: " \<not>(a = b)" by simp
   from 2 have "P a w" by simp
-  from 2 have "\<forall>Y. Y a w \<longrightarrow> ((P \<Rrightarrow> Y) w)" by auto
-  hence "(\<^bold>\<rightharpoondown>(id b)) a w \<longrightarrow> (P \<Rrightarrow> (\<^bold>\<rightharpoondown>(id b))) w" by (rule allE)
-  hence "\<not>(\<^bold>\<rightharpoondown>(id b)) a w \<or> ((P \<Rrightarrow> (\<^bold>\<rightharpoondown>(id b))) w)" by blast 
+  from 2 have "\<forall>Y. Y a w \<longrightarrow> ((P \<succeq> Y) w)" by auto
+  hence "(\<^bold>\<rightharpoondown>(id b)) a w \<longrightarrow> (P \<succeq> (\<^bold>\<rightharpoondown>(id b))) w" by (rule allE)
+  hence "\<not>(\<^bold>\<rightharpoondown>(id b)) a w \<or> ((P \<succeq> (\<^bold>\<rightharpoondown>(id b))) w)" by blast 
   then show False proof
     assume "\<not>(\<^bold>\<rightharpoondown>(id b)) a w"
     hence "a = b" by simp
     thus False using 4 by auto
     next  
-    assume "((P \<Rrightarrow> (\<^bold>\<rightharpoondown>(id b))) w)"
+    assume "((P \<succeq> (\<^bold>\<rightharpoondown>(id b))) w)"
     hence "\<forall>x. \<forall>z. (w r x \<and> existsAt z x \<and> P z x) \<longrightarrow> (\<^bold>\<rightharpoondown>(id b)) z x" by blast
     hence "\<forall>z. (w r w1 \<and> existsAt z w1 \<and> P z w1) \<longrightarrow> (\<^bold>\<rightharpoondown>(id b)) z w1" by (rule allE)
     hence "(w r w1 \<and> existsAt b w1 \<and> P b w1) \<longrightarrow> (\<^bold>\<rightharpoondown>(id b)) b w1" by (rule allE)
@@ -120,10 +111,10 @@ proof -
   {
     assume "\<exists>x. G x w"
     then obtain g where 1: "G g w" ..
-    hence "NE g w" using A5 by auto                                (** Axiom 11.25*)
+    hence "NE g w" using A5 by auto                                      (** Axiom 11.25*)
     hence "\<forall>Y. (\<E> Y g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w" by simp
     hence 2: "(\<E> G g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E G) w" by (rule allE)
-    have  "(\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)) w" using GodIsEssential by (rule allE) (**GodIsEssential follows from Axioms 11.11 and 11.3B *)
+    have  "(\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)) w" using GodIsEssential by (rule allE)   (** GodIsEssential follows from Axioms 11.11 and 11.3B *)
     hence  "(G g \<^bold>\<rightarrow> (\<E> G g)) w" by (rule allE)
     hence  "G g w \<longrightarrow> \<E> G g w" by simp
     from this 1 have 3: "\<E> G g w" by (rule mp)
@@ -152,9 +143,9 @@ lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
 (** Theorem 11.27 - Informal Proposition 8 *) 
-theorem possExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" (**local consequence*)
+theorem possibleExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" (** Local consequence*)
 proof -
-  have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecExistence by simp (**which follows from Axioms 11.11, 11.25 and 11.3B*)
+  have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecExistence by simp (** Which follows from Axioms 11.11, 11.25 and 11.3B*)
   hence "\<lfloor>\<^bold>\<box>(\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G)\<rfloor>" using NEC by simp
   hence 1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" by (rule modal_distr)
   have 2: "\<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using symm tran by metis  (** Using S5 semantic frame conditions*)
@@ -162,7 +153,7 @@ proof -
   thus ?thesis by (rule modal_trans)
 qed
 
-lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using possExistenceImpliesNecEx by simp (** global consequence*)
+lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using possibleExistenceImpliesNecEx by simp (** global consequence*)
   
 (** Corollary 11.28 - Necessary (actualist) existence of God (for both definitions): *)    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T3 T4 by metis    
@@ -174,7 +165,7 @@ subsection \<open>Going Further\<close>
 (** After introducing the S5 axioms Nitpick cannot find a countermodel for Modal Collapse: *)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" (* nitpick *) oops
  
-(** Monotheism for non-normal models (with Leibniz equality) follows directly from God having all and only positive properties: *)
+(** Monotheism for non-normal models (with Leibniz equality): Monotheism follows straightforward from God having all and only positive properties: *)
 theorem Monotheism_LeibnizEq: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<^bold>\<forall>y. G y \<^bold>\<rightarrow> (x  \<^bold>\<approx>\<^sup>L y))\<rfloor>" using GodDefsAreEquivalent by simp
     
 (** Monotheism for normal models is trickier. We need to consider some previous results (Page 162):*)
@@ -195,9 +186,9 @@ proof -
     have "G y w \<longleftrightarrow> (g \<^bold>\<approx> y) w" proof 
       assume "G y w"
       hence 3: "\<E> G y w" using GodIsEssential by blast      
-      have "(\<E> G y \<^bold>\<rightarrow> (G \<Rrightarrow> id y)) w" using EssencesCharacterizeCompletely by simp (** Theorem 11.23 *)
-      hence "\<E> G y w \<longrightarrow> ((G \<Rrightarrow> id y) w)" by simp
-      from this 3 have "(G \<Rrightarrow> id y) w" by (rule mp) 
+      have "(\<E> G y \<^bold>\<rightarrow> (G \<succeq> id y)) w" using EssencesCharacterizeCompletely by simp (** Theorem 11.23 *)
+      hence "\<E> G y w \<longrightarrow> ((G \<succeq> id y) w)" by simp
+      from this 3 have "(G \<succeq> id y) w" by (rule mp) 
       hence "(\<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. G z \<^bold>\<rightarrow> z \<^bold>\<approx> y)) w" by simp
       hence "\<forall>x. w r x \<longrightarrow> ((\<forall>z. (existsAt z x \<and> G z x) \<longrightarrow> z = y))" by auto
       hence "w r w \<longrightarrow> ((\<forall>z. (existsAt z w \<and> G z w) \<longrightarrow> z = y))" by (rule allE)
@@ -254,7 +245,5 @@ proof -
   }
   thus ?thesis by (rule allI)
 qed
-
-(*<*)
+    
 end
-(*>*)

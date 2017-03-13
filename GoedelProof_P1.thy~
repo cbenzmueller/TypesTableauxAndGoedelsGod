@@ -6,13 +6,12 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e 
 sledgehammer_params[verbose=true]
 (*>*)  
 
-section \<open>Argument Part I - God's existence is possible\<close>
+section \<open>First Part -  God's existence is possible\<close>
   
 subsection \<open>General definitions\<close>
                 
 abbreviation existencePredicate::"\<up>\<langle>O\<rangle>" ("E!") where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" 
-(** Safety check. Existence predicate correctly matches its meta-logical counterpart:*)
-lemma "E! x w \<longleftrightarrow> existsAt x w" by simp
+lemma "E! x w \<longleftrightarrow> existsAt x w" by simp (** Safety check: existence predicate correctly matches its meta-logical counterpart*)
 
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" ("\<P>") (** Positiveness/Perfection *)
   
@@ -23,17 +22,17 @@ abbreviation God_star::"\<up>\<langle>O\<rangle>" ("G*") where "G* \<equiv> (\<l
 (** Definitions needed to formalize A3: *)
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>" ("pos") where "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>" ("intersec") where "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" (* note possibilist quantifier*)
-abbreviation Entailment::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
+abbreviation Entailment::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>" (infix "\<succeq>" 60) where "X \<succeq> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
 
-subsection \<open>Axioms\<close>
+subsection \<open>Axioms for Part I\<close>
     
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      (** Axiom 11.3A *)
   A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and       (** Axiom 11.3B *)
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** Axiom 11.5 *)
+  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<succeq> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** Axiom 11.5 *)
   A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" (** Axiom 11.10 *)
 
-lemma True nitpick[satisfy] oops             (** Axioms are consistent*)
+lemma True nitpick[satisfy] oops (** Axioms are consistent*)
     
 lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast       (** Note that axioms imply D *)
 lemma "\<lfloor>D\<rfloor>" using A1a A3 by metis
@@ -44,7 +43,7 @@ lemma "\<lfloor>\<^bold>\<exists>X. \<P> X\<rfloor>" using A1b by auto
 lemma "\<lfloor>\<^bold>\<exists>X. \<P> X \<^bold>\<and>  \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A1b A2 by metis
     
 (** Being self-identical is a positive property: *)
-lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X \<^bold>\<and>  \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow> \<P> (\<lambda>x w. x = x)\<rfloor>" using A2 by fastforce
+lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X \<^bold>\<and>  \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow> \<P> (\<lambda>x w. x = x)\<rfloor>"  using A2 by fastforce
     
 (** Proposition 11.6 *)
 lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow> \<P> (\<lambda>x w. x = x)\<rfloor>" using A2 by fastforce
@@ -53,10 +52,10 @@ lemma "\<lfloor>\<P> (\<lambda>x w. x = x)\<rfloor>" using A1b A2  by blast
 lemma "\<lfloor>\<P> (\<lambda>x w. x = x)\<rfloor>" using A3 by metis
                                 
 (** Being non-self-identical is a negative property:*)
-lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X  \<^bold>\<and> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A2 by fastforce
+lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X  \<^bold>\<and> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>"  using A2 by fastforce
     
 lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A2 by fastforce
-lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A3 by metis 
+lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>"  using A3 by metis 
 
 (** Proposition 11.7 *)
 lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow> \<^bold>\<not>\<P> ((\<lambda>x w. \<not>x = x))\<rfloor>"  using A1a A2 by blast
@@ -100,6 +99,4 @@ theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
 (** Theorem 11.17 (Informal Proposition 3) - Possibly God exists: *)
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>"  using T1 T2 by simp
 
-(*<*)
 end
-(*>*)

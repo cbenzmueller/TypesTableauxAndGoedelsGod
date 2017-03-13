@@ -2,9 +2,9 @@
 
 require 'fileutils'
 
-@pattern = /\(\*\*([\s\S]*)\*\)/
-@comment = '--\\<open>\1\\<close>'
-@text = 'text\\<open>\1\\<close>'
+@pattern = /\(\*\*([\s\S]*?)\*\)/
+@comment = '--\\<open> \1 \\<close>'
+@text = 'text\\<open> \1 \\<close>'
 @gen = 'generated/'
 @doc = 'document'
 
@@ -30,12 +30,18 @@ end
 FileUtils.rm_rf @gen
 FileUtils.mkdir_p @gen + @doc
 
+puts 'Processing Isabelle Theory files ...'
+
 Dir.entries('.').select{ |e| File.file?(e) and e.end_with?('.thy') }.each { |f| 
 	write_file(@gen + f, replace_comments(f))
 }
 
+puts 'Copying files for LaTeX generation ...'
+
 FileUtils.cp('ROOT', @gen)
 FileUtils.cp_r(@doc, @gen)
 
-IO.popen('isabelle build -D ' + @gen)
+puts 'Generating LaTeX/PDF documents using "isabelle build -D" ...'
+
+puts IO.popen('isabelle build -D ' + @gen).readlines
 

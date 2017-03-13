@@ -17,7 +17,7 @@ lemma EXT_int_pred: "\<lfloor>(\<lambda>x. ((\<lambda>y. x\<^bold>\<approx>y) \<
   
 subsection \<open>General Definitions\<close>
 
-(** Following enables using extensional objects as if they were rigid intensional objects (needed only for type correctness):*)  
+text\<open>  Following enables using extensional objects as if they were rigid intensional objects (needed only for type correctness): \<close>  
 abbreviation trivialExpansion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") where "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"
   
 abbreviation existencePredicate::"\<up>\<langle>O\<rangle>" ("E!") where
@@ -32,72 +32,72 @@ abbreviation Entailment::"\<up>\<langle>\<langle>O\<rangle>,\<langle>O\<rangle>\
   
 subsection \<open>Part I - God's existence is possible\<close>  
   
-(** Following Scott's proposal we take T2 directly as an axiom. *)
+text\<open>  Following Scott's proposal we take T2 directly as an axiom.  \<close>
 axiomatization where
-  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and        (** Axiom 11.3A *)
-  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<rightharpoondown>X)\<rfloor>" and         (** Axiom 11.3B *)
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and  (** Axiom 11.5 *)
-  T2: "\<lfloor>\<P> \<down>G\<rfloor>"                               (** Proposition 11.16 (modified)*)
+  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and        --\<open>  Axiom 11.3A  \<close>
+  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<rightharpoondown>X)\<rfloor>" and         --\<open>  Axiom 11.3B  \<close>
+  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and  --\<open>  Axiom 11.5  \<close>
+  T2: "\<lfloor>\<P> \<down>G\<rfloor>"                               --\<open>  Proposition 11.16 (modified) \<close>
         
-lemma True nitpick[satisfy] oops (** Axioms are consistent*)
+lemma True nitpick[satisfy] oops --\<open>  Axioms are consistent \<close>
 
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
     
-(** T1 (Positive properties are possibly instantiated) can be formalized in two different ways:*)    
-theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>O\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" using A1a A2 by blast (** The one used in the book*)
-theorem T1b: "\<lfloor>\<^bold>\<forall>X::\<up>\<langle>O\<rangle>. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" nitpick oops (** Since this one is not valid, we won't use it *)
+text\<open>  T1 (Positive properties are possibly instantiated) can be formalized in two different ways: \<close>    
+theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>O\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" using A1a A2 by blast --\<open>  The one used in the book \<close>
+theorem T1b: "\<lfloor>\<^bold>\<forall>X::\<up>\<langle>O\<rangle>. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" nitpick oops --\<open>  Since this one is not valid, we won't use it  \<close>
     
-(** Interesting (non-) equivalences:*)
+text\<open>  Interesting (non-) equivalences: \<close>
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>O\<rangle>) \<^bold>\<leftrightarrow> \<^bold>\<box>(\<^bold>\<exists>\<^sup>E \<^bold>\<down>Q)\<rfloor>" by simp
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>O\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) Q)\<rfloor>"  by simp
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>O\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>X) Q)\<rfloor>" by simp
-lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>O\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>Q)\<rfloor>" nitpick oops (** not equivalent! *)
+lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>O\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>Q)\<rfloor>" nitpick oops --\<open>  not equivalent!  \<close>
 
     
-(** T3 (God exists possibly) can be formalized in two different ways, using a de-re or a de-dicto reading.*)
+text\<open>  T3 (God exists possibly) can be formalized in two different ways, using a de-re or a de-dicto reading. \<close>
 theorem T3_deRe: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T1a T2 by simp 
-theorem T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" nitpick oops    (** countersatisfiable*)      
+theorem T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" nitpick oops    --\<open>  countersatisfiable \<close>      
 
-(** T3_deRe should be the version implied in the book, because T3_deDicto is not valid unless T1b (from above) were valid*)
+text\<open>  T3_deRe should be the version implied in the book, because T3_deDicto is not valid unless T1b (from above) were valid \<close>
 lemma assumes T1b: "\<lfloor>\<^bold>\<forall>X. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" 
    shows T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" using assms T2 by simp
     
 subsection \<open>Part II - God's existence is necessary if possible\<close>
 
-(** P satisfies so-called stability conditions (Page 124). This means P designates rigidly (an essentialist assumption!). *)
+text\<open>  P satisfies so-called stability conditions (Page 124). This means P designates rigidly (an essentialist assumption!).  \<close>
 axiomatization where
-      A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** Axiom 11.11 *)
+      A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  Axiom 11.11  \<close>
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
     
-lemma True nitpick[satisfy] oops (** So far all axioms consistent*)
+lemma True nitpick[satisfy] oops --\<open>  So far all axioms consistent \<close>
 
 abbreviation essenceOf::"\<up>\<langle>\<langle>O\<rangle>,O\<rangle>" ("\<E>") where
-  "\<E> Y x \<equiv> \<lparr>Y x\<rparr> \<^bold>\<and> (\<^bold>\<forall>Z::\<langle>O\<rangle>. \<lparr>Z x\<rparr> \<^bold>\<rightarrow> Y \<Rrightarrow> Z)" (** The one used in the book*)
+  "\<E> Y x \<equiv> \<lparr>Y x\<rparr> \<^bold>\<and> (\<^bold>\<forall>Z::\<langle>O\<rangle>. \<lparr>Z x\<rparr> \<^bold>\<rightarrow> Y \<Rrightarrow> Z)" --\<open>  The one used in the book \<close>
   
-(** Theorem 11.20 - Informal Proposition 5 *)
+text\<open>  Theorem 11.20 - Informal Proposition 5  \<close>
 theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> ((\<E> \<down>\<^sub>1G) x)\<rfloor>" using A1b by metis
-(** Theorem 11.21 *)
+text\<open>  Theorem 11.21  \<close>
 theorem God_starIsEssential: "\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<rightarrow> ((\<E> \<down>\<^sub>1G*) x)\<rfloor>" by meson
     
 abbreviation necExistencePred:: "\<up>\<langle>O\<rangle>" ("NE") where
-  "NE x  \<equiv> \<lambda>w. (\<^bold>\<forall>Y.  \<E> Y x \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<exists>\<^sup>Ez. \<lparr>Y z\<rparr>)) w" (** the one used in the book *)
+  "NE x  \<equiv> \<lambda>w. (\<^bold>\<forall>Y.  \<E> Y x \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<exists>\<^sup>Ez. \<lparr>Y z\<rparr>)) w" --\<open>  the one used in the book  \<close>
 
-(** Informal Axiom 5*)
+text\<open>  Informal Axiom 5 \<close>
 axiomatization where
  A5: "\<lfloor>\<P> \<down>NE\<rfloor>"
  
-lemma True nitpick[satisfy] oops (** So far all axioms consistent*)
+lemma True nitpick[satisfy] oops --\<open>  So far all axioms consistent \<close>
 
-(** Reminder: We use the down-arrow notation because it is more explicit - see (non-) equivalences above.*)
+text\<open>  Reminder: We use the down-arrow notation because it is more explicit - see (non-) equivalences above. \<close>
 lemma "\<lfloor>\<^bold>\<exists> G \<^bold>\<leftrightarrow> \<^bold>\<exists> \<^bold>\<down>G\<rfloor>" by simp       
 lemma "\<lfloor>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow> \<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" by simp    
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" by simp    
     
-(** Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies necessary (actualist) existence. *)
-(** There are two different ways of formalizing this theorem. Both of them are proved valid:*)
+text\<open>  Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies necessary (actualist) existence.  \<close>
+text\<open>  There are two different ways of formalizing this theorem. Both of them are proved valid: \<close>
 
-(** First version:*)
+text\<open>  First version: \<close>
 theorem GodExImpliesNecEx_v1: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" 
 proof -
 {
@@ -121,36 +121,36 @@ proof -
  thus ?thesis by (rule allI) 
 qed
   
-(** Second version (which can be proven directly by automated tools using last version):*)
+text\<open>  Second version (which can be proven directly by automated tools using last version): \<close>
 theorem GodExImpliesNecEx_v2: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G)\<rfloor>"
   using A4a GodExImpliesNecEx_v1 by metis
     
     
-(** Compared to Goedel's argument, the following theorems can be proven in K (S5 no longer needed!): *)
+text\<open>  Compared to Goedel's argument, the following theorems can be proven in K (S5 no longer needed!):  \<close>
 
-(** Theorem 11.27 - Informal Proposition 8 *) 
+text\<open>  Theorem 11.27 - Informal Proposition 8  \<close> 
 theorem possExImpliesNecEx_v1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" using GodExImpliesNecEx_v1 T3_deRe  by metis
 theorem possExImpliesNecEx_v2: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G \<^bold>\<rightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G)\<rfloor>" using GodExImpliesNecEx_v2 by blast
 
-(** Corollaries: *)    
+text\<open>  Corollaries:  \<close>    
 lemma T4_v1:  "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> \<^bold>\<down>G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" using possExImpliesNecEx_v1 by simp
 lemma T4_v2:  "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor> \<longrightarrow> \<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using possExImpliesNecEx_v2 by simp
     
     
 subsection \<open>Conclusion - Necessary (actualist) existence of God (Corollary 11.28)\<close>        
     
-(** Version I - De dicto reading: *)    
+text\<open>  Version I - De dicto reading:  \<close>    
 lemma GodNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" using GodExImpliesNecEx_v1 T3_deRe by fastforce
 lemma God_starNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G*\<rfloor>" using GodNecExists_v1 GodDefsAreEquivalent by simp
-lemma "\<lfloor>\<^bold>\<box>(\<lambda>X. \<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>" using God_starNecExists_v1 by simp (** De dicto reading shown explicitly*)
+lemma "\<lfloor>\<^bold>\<box>(\<lambda>X. \<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>" using God_starNecExists_v1 by simp --\<open>  De dicto reading shown explicitly \<close>
     
-(** Version II - De re reading: *)    
+text\<open>  Version II - De re reading:  \<close>    
 lemma GodNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T3_deRe T4_v2 by blast
 lemma God_starNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>" using GodNecExists_v2 GodDefsAreEquivalent by simp
 
 subsection \<open>Modal Collapse\<close>
-(** Modal Collapse is countersatisfiable even in S5. Counterexamples with cardinality one for the domain
-of ground-level objects are found by Nitpick: *)
+text\<open>  Modal Collapse is countersatisfiable even in S5. Counterexamples with cardinality one for the domain
+of ground-level objects are found by Nitpick:  \<close>
     
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick[card 't=1, card i=2] oops
     
