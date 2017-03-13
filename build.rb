@@ -1,5 +1,8 @@
 !#/usr/bin/ruby
 
+# Build script to automatically generate LaTeX documentation given some configuration files (ROOT & document/*.tex)
+# The script also transforms Isabelle/HOL comments of the form '(** ...*)' into the appropriate documentation construct.
+
 require 'fileutils'
 
 @pattern = /\(\*\*([\s\S]*?)\*\)/
