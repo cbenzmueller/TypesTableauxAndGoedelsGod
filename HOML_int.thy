@@ -7,15 +7,15 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e =
 
 section \<open>Embedding of an Intensional Higher-Order Modal Logic\<close>
   
-(** The following embedding of HOML in Isabelle/HOL is inspired by the work of @{cite "J23"}.
-We expand this approach to allow for intensional types and actualist quantifiers as exposed in the
-book (@{cite "fitting_book"}). *)
+text \<open>The following embedding of HOML in Isabelle/HOL is inspired by the work of @{cite "J23"}.
+We expand this approach to allow for intensional types and actualist quantifiers as employed in Fitting's 
+textbook (@{cite "Fitting"}).\<close>
 
 subsection \<open>Declarations\<close>
 
-  typedecl i                    (** Type for possible worlds*)
-  type_synonym io = "(i\<Rightarrow>bool)" (** Type for formulas whose truth-value is world-dependent*)
-  typedecl e  ("\<zero>")             (** Type for individuals*)               
+  typedecl i                    -- \<open>Type for possible worlds\<close>
+  type_synonym io = "(i\<Rightarrow>bool)" -- \<open>Type for formulas whose truth-value is world-dependent\<close>
+  typedecl e  ("\<zero>")             -- \<open>Type for individuals\<close>              
   
   (** Aliases for common unary predicate types: *)
   type_synonym ie =     "(i\<Rightarrow>\<zero>)"             ("\<up>\<zero>")
@@ -127,7 +127,7 @@ subsection \<open>Definition of Equality\<close>
   abbreviation meqL   :: "\<up>\<langle>\<zero>,\<zero>\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) (**Leibniz eq. for individuals*)
     where "x \<^bold>\<approx>\<^sup>L y \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
       
-subsection \<open>Miscelaneous\<close>
+subsection \<open>Miscellaneous\<close>
   
   abbreviation negpred :: "\<langle>\<zero>\<rangle>\<Rightarrow>\<langle>\<zero>\<rangle>" ("\<rightharpoondown>_"[52]53) 
     where "\<rightharpoondown>\<Phi> \<equiv> \<lambda>x. \<not>(\<Phi> x)" 
