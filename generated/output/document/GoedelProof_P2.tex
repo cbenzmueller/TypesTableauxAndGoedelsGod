@@ -15,33 +15,40 @@
 %
 \endisadelimtheory
 %
-\isamarkupsection{Argument Part II - God's existence is necessary if possible%
-}
-\isamarkuptrue%
-%
-\isamarkupsubsection{General definitions%
-}
-\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
-\isacommand{consts}\isamarkupfalse%
-\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
-\ \ \isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ \isanewline
-\ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupsubsection{Axioms from Part I%
+\isamarkupsubsection{Part II - God's Existence is Necessary if Possible%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Following Scott's proposal we take T2 directly as an axiom.%
+We show here that God's necessary existence follows from its possible existence by adding some
+ additional (potentially controversial) assumptions including, among others, an essentialist premise and the S5 axioms.
+ A more detailed analysis of these rather philosophical issues is foreseen as follow-up work.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsubsection{General Definitions%
+}
+\isamarkuptrue%
+\isacommand{abbreviation}\isamarkupfalse%
+\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\isacommand{consts}\isamarkupfalse%
+\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ \ \isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ \isanewline
+\ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
+\isamarkupsubsubsection{Axioms from Part I%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+Note that the only use Gödel makes of axiom A3 is to show that being Godlike is a positive property (\isa{T{\isadigit{2}}}). 
+ We follow therefore Scott's proposal and take (\isa{T{\isadigit{2}}}) directly as an axiom (\cite{fitting_book} p. 152):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -72,7 +79,7 @@ Following Scott's proposal we take T2 directly as an axiom.%
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{Axioms are consistent%
+\isamarkupcmt{Model found: axioms are consistent%
 }
 %
 \endisatagproof
@@ -82,7 +89,7 @@ Following Scott's proposal we take T2 directly as an axiom.%
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Useful results from Part I%
+\isamarkupsubsubsection{Useful Results from Part I%
 }
 \isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
@@ -102,10 +109,12 @@ Following Scott's proposal we take T2 directly as an axiom.%
 %
 \endisadelimproof
 \ \isanewline
+\ \ \ \ \isanewline
 \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -119,19 +128,19 @@ Following Scott's proposal we take T2 directly as an axiom.%
 {\isafoldproof}%
 %
 \isadelimproof
+\ \ \isanewline
 %
 \endisadelimproof
-\ \ \isanewline
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
-\ \ %
+\ %
 \endisadelimproof
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
 \ T{\isadigit{1}}\ T{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
-\ simp\ %
+\ simp\ \ %
 \isamarkupcmt{God exists possibly%
 }
 %
@@ -142,12 +151,12 @@ Following Scott's proposal we take T2 directly as an axiom.%
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Axioms for Part II%
+\isamarkupsubsubsection{Axioms for Part II%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-P satisfies so-called stability conditions (Page 124). This means P designates rigidly (an essentialist assumption!).%
+\isa{{\isasymP}} satisfies so-called stability conditions (p. 124). This means it designates rigidly (an essentialist assumption).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -183,7 +192,7 @@ P satisfies so-called stability conditions (Page 124). This means P designates r
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{So far all axioms consistent%
+\isamarkupcmt{Model found: so far all axioms consistent%
 }
 %
 \endisatagproof
@@ -193,16 +202,16 @@ P satisfies so-called stability conditions (Page 124). This means P designates r
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Theorems%
+\isamarkupsubsubsection{Theorems%
 }
 \isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharcomma}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}Y\ x{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ Z\ x\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ beingIdenticalTo{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}O{\isasymRightarrow}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}id{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}id\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}y{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}{\isachardoublequoteclose}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
-\isamarkupcmt{id is a rigid predicate%
+\ beingIdenticalTo{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymzero}{\isasymRightarrow}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}id{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}id\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}y{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}{\isachardoublequoteclose}\ \ %
+\isamarkupcmt{note that \isa{id} is a rigid predicate%
 }
 %
 \begin{isamarkuptext}%
@@ -368,7 +377,8 @@ Theorem 11.23 - An essence is a complete characterization of an individual:%
 \ {\isachardoublequoteopen}{\isasymforall}x{\isachardot}\ {\isasymforall}z{\isachardot}\ {\isacharparenleft}w\ r\ x\ {\isasymand}\ existsAt\ z\ x\ {\isasymand}\ P\ z\ x{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}{\isacharparenleft}id\ b{\isacharparenright}{\isacharparenright}\ z\ x{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
 \ blast\isanewline
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymforall}z{\isachardot}\ {\isacharparenleft}w\ r\ w{\isadigit{1}}\ {\isasymand}\ existsAt\ z\ w{\isadigit{1}}\ {\isasymand}\ P\ z\ w{\isadigit{1}}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}{\isacharparenleft}id\ b{\isacharparenright}{\isacharparenright}\ z\ w{\isadigit{1}}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymforall}z{\isachardot}\ {\isacharparenleft}w\ r\ w{\isadigit{1}}\ {\isasymand}\ existsAt\ z\ w{\isadigit{1}}\ {\isasymand}\ P\ z\ w{\isadigit{1}}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}{\isacharparenleft}id\ b{\isacharparenright}{\isacharparenright}\ z\ w{\isadigit{1}}{\isachardoublequoteclose}\ \isanewline
+\ \ \ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
 \ {\isacharparenleft}rule\ allE{\isacharparenright}\isanewline
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isacharparenleft}w\ r\ w{\isadigit{1}}\ {\isasymand}\ existsAt\ b\ w{\isadigit{1}}\ {\isasymand}\ P\ b\ w{\isadigit{1}}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}{\isacharparenleft}id\ b{\isacharparenright}{\isacharparenright}\ b\ w{\isadigit{1}}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
@@ -401,7 +411,8 @@ Theorem 11.23 - An essence is a complete characterization of an individual:%
 Definition 11.24 - Necessary Existence (Informal Definition 6):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ necessaryExistencePred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}NE\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ Y{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}%
+\ necessaryExistencePred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}NE\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ Y{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 Axiom 11.25 (Informal Axiom 5)%
 \end{isamarkuptext}\isamarkuptrue%
@@ -419,7 +430,7 @@ Axiom 11.25 (Informal Axiom 5)%
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{So far all axioms consistent%
+\isamarkupcmt{Model found: so far all axioms consistent%
 }
 %
 \endisatagproof
@@ -430,7 +441,7 @@ Axiom 11.25 (Informal Axiom 5)%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies necessary (actualist) existence:%
+Theorem 11.26 (Informal Proposition 7) - Possibilist existence of God implies necessary actualist existence:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ GodExistenceImpliesNecExistence{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
@@ -457,7 +468,7 @@ Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies 
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
 \ {\isachardoublequoteopen}NE\ g\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
 \ A{\isadigit{5}}\ \isacommand{by}\isamarkupfalse%
-\ auto\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
+\ auto\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
 \isamarkupcmt{Axiom 11.25%
 }
 \isanewline
@@ -469,8 +480,9 @@ Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies 
 \ {\isacharparenleft}rule\ allE{\isacharparenright}\isanewline
 \ \ \ \ \isacommand{have}\isamarkupfalse%
 \ \ {\isachardoublequoteopen}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymE}\ G\ x{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ GodIsEssential\ \isacommand{by}\isamarkupfalse%
-\ {\isacharparenleft}rule\ allE{\isacharparenright}\ %
+\ GodIsEssential\isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ allE{\isacharparenright}\ \ \ \ \ %
 \isamarkupcmt{GodIsEssential follows from Axioms 11.11 and 11.3B%
 }
 \isanewline
@@ -531,7 +543,7 @@ Modal Collapse is countersatisfiable until we introduce S5 axioms:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Axiomatizing semantic frame conditions for different modal logics:%
+Axiomatizing semantic frame conditions for different modal logics. All axioms together imply an S5 logic:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -549,7 +561,7 @@ Axiomatizing semantic frame conditions for different modal logics:%
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{Axioms still consistent%
+\isamarkupcmt{Model found: axioms still consistent%
 }
 %
 \endisatagproof
@@ -558,25 +570,10 @@ Axiomatizing semantic frame conditions for different modal logics:%
 \isadelimproof
 %
 \endisadelimproof
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ MC{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ %
-\isadelimproof
-\ %
-\endisadelimproof
 %
-\isatagproof
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{With S5 modal collapse is actually valid (see proof below)%
-}
-%
-\endisatagproof
-{\isafoldproof}%
-%
-\isadelimproof
-%
-\endisadelimproof
+\begin{isamarkuptext}%
+Using an S5 logic modal collapse (\isa{{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}}) is actually valid (see proof below)%
+\end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
 Some useful rules:%
@@ -631,9 +628,10 @@ Theorem 11.27 - Informal Proposition 8%
 \ {\isacharminus}\isanewline
 \ \ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ GodExistenceImpliesNecExistence\ \isacommand{by}\isamarkupfalse%
+\ GodExistenceImpliesNecExistence\ \isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
 \ simp\ %
-\isamarkupcmt{which follows from Axioms 11.11, 11.25 and 11.3B%
+\isamarkupcmt{follows from Axioms 11.11, 11.25 and 11.3B%
 }
 \isanewline
 \ \ \isacommand{hence}\isamarkupfalse%
@@ -646,10 +644,7 @@ Theorem 11.27 - Informal Proposition 8%
 \ \ \isacommand{have}\isamarkupfalse%
 \ {\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
 \ symm\ tran\ \isacommand{by}\isamarkupfalse%
-\ metis\ \ %
-\isamarkupcmt{Using S5 semantic frame conditions%
-}
-\isanewline
+\ metis\isanewline
 \ \ \isacommand{from}\isamarkupfalse%
 \ {\isadigit{1}}\ {\isadigit{2}}\ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
@@ -675,7 +670,8 @@ Theorem 11.27 - Informal Proposition 8%
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
-\ possExistenceImpliesNecEx\ \isacommand{by}\isamarkupfalse%
+\ possExistenceImpliesNecEx\ \isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
 \ simp\ %
 \isamarkupcmt{global consequence%
 }
@@ -708,9 +704,10 @@ Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):
 \endisadelimproof
 \ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ God{\isacharunderscore}starNecExists{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}%
+\ God{\isacharunderscore}starNecExists{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -724,36 +721,18 @@ Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Going Further%
+\isamarkupsubsubsection{Monotheism%
 }
 \isamarkuptrue%
-%
-\begin{isamarkuptext}%
-After introducing the S5 axioms Nitpick cannot find a countermodel for Modal Collapse:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ %
-\isadelimproof
-\ %
-\endisadelimproof
-%
-\isatagproof
-\isacommand{oops}\isamarkupfalse%
-%
-\endisatagproof
-{\isafoldproof}%
-%
-\isadelimproof
-%
-\endisadelimproof
 %
 \begin{isamarkuptext}%
 Monotheism for non-normal models (with Leibniz equality) follows directly from God having all and only positive properties:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
-\ Monotheism{\isacharunderscore}LeibnizEq{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}y{\isachardot}\ G\ y\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}x\ \ \isactrlbold {\isasymapprox}\isactrlsup L\ y{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ Monotheism{\isacharunderscore}LeibnizEq{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}y{\isachardot}\ G\ y\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}x\ \ \isactrlbold {\isasymapprox}\isactrlsup L\ y{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -768,7 +747,7 @@ Monotheism for non-normal models (with Leibniz equality) follows directly from G
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Monotheism for normal models is trickier. We need to consider some previous results (Page 162):%
+Monotheism for normal models is trickier. We need to consider some previous results (p. 162):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ GodExistenceIsValid{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}%
@@ -778,9 +757,10 @@ Monotheism for normal models is trickier. We need to consider some previous resu
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
-\ GodNecExists\ refl\ \isacommand{by}\isamarkupfalse%
-\ auto\ \ %
-\isamarkupcmt{useful lemma%
+\ GodNecExists\ refl\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ auto\ %
+\isamarkupcmt{Note that we hadn't needed frame reflexivity until now%
 }
 %
 \endisatagproof
@@ -810,7 +790,7 @@ Proposition 11.29%
 \ \ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
 \ GodExistenceIsValid\ \isacommand{by}\isamarkupfalse%
-\ simp\ \ \ %
+\ simp\ %
 \isamarkupcmt{follows from corollary 11.28%
 }
 \isanewline
@@ -824,8 +804,8 @@ Proposition 11.29%
 \ \ \isacommand{hence}\isamarkupfalse%
 \ {\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymE}\ G\ g\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
 \ GodIsEssential\ \isacommand{by}\isamarkupfalse%
-\ blast\ \ %
-\isamarkupcmt{Theorem 11.20 follows from Axioms 11.11 and 11.3B%
+\ blast\ %
+\isamarkupcmt{follows from ax. 11.11/11.3B%
 }
 \isanewline
 \ \ \isacommand{{\isacharbraceleft}}\isamarkupfalse%
@@ -843,9 +823,10 @@ Proposition 11.29%
 \ blast\ \ \ \ \ \ \isanewline
 \ \ \ \ \ \ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isacharparenleft}{\isasymE}\ G\ y\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}G\ {\isasymRrightarrow}\ id\ y{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ EssencesCharacterizeCompletely\ \isacommand{by}\isamarkupfalse%
+\ EssencesCharacterizeCompletely\isanewline
+\ \ \ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
 \ simp\ %
-\isamarkupcmt{Theorem 11.23%
+\isamarkupcmt{follows from theorem 11.23%
 }
 \isanewline
 \ \ \ \ \ \ \isacommand{hence}\isamarkupfalse%
@@ -872,9 +853,10 @@ Proposition 11.29%
 \ {\isacharparenleft}rule\ allE{\isacharparenright}\isanewline
 \ \ \ \ \ \ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}w\ r\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ refl\ \isacommand{by}\isamarkupfalse%
-\ simp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
-\isamarkupcmt{we rely explicitly on frame reflexivity (Axiom M)%
+\ refl\ \isanewline
+\ \ \ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
+\ simp\ %
+\isamarkupcmt{note that we rely explicitly on frame reflexivity (Axiom M)%
 }
 \isanewline
 \ \ \ \ \ \ \isacommand{hence}\isamarkupfalse%
@@ -930,9 +912,10 @@ Proposition 11.29%
 Corollary 11.30%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ GodImpliesExistence{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ E{\isacharbang}\ x{\isasymrfloor}{\isachardoublequoteclose}%
+\ GodImpliesExistence{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ E{\isacharbang}\ x{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -946,9 +929,9 @@ Corollary 11.30%
 %
 \endisadelimproof
 %
-\begin{isamarkuptext}%
-Proposition 11.31 - Positive properties are necessarily instantiated:%
-\end{isamarkuptext}\isamarkuptrue%
+\isamarkupsubsubsection{Positive Properties are Necessarily Instantiated%
+}
+\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ PosPropertiesNecExist{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ Y{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
@@ -957,9 +940,10 @@ Proposition 11.31 - Positive properties are necessarily instantiated:%
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
-\ GodNecExists\ A{\isadigit{4}}a\ \isacommand{by}\isamarkupfalse%
+\ GodNecExists\ A{\isadigit{4}}a\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
 \ meson\ %
-\isamarkupcmt{Corollary 11.28 and A4a needed for the proof%
+\isamarkupcmt{Proposition 11.31: follows from corollary 11.28 and axiom A4a%
 }
 %
 \endisatagproof
@@ -969,7 +953,7 @@ Proposition 11.31 - Positive properties are necessarily instantiated:%
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Objections and Criticism%
+\isamarkupsubsubsection{Objections and Criticism%
 }
 \isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
@@ -989,10 +973,10 @@ Proposition 11.31 - Positive properties are necessarily instantiated:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Modal Collapse (Sobel's version as shown in Pages 163-164):%
+After introducing the S5 axioms Modal Collapse becomes valid (pp. 163-4):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ MC{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+\ ModalCollapse{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
 %
 \isadelimproof
 %
@@ -1011,9 +995,10 @@ Modal Collapse (Sobel's version as shown in Pages 163-164):%
 \ Q\isanewline
 \ \ \ \ \isacommand{have}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymE}\ G\ x{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ GodIsEssential\ \isacommand{by}\isamarkupfalse%
+\ GodIsEssential\ \isanewline
+\ \ \ \ \ \ \isacommand{by}\isamarkupfalse%
 \ {\isacharparenleft}rule\ allE{\isacharparenright}\ %
-\isamarkupcmt{GodIsEssential follows from Axioms 11.11 and 11.3B%
+\isamarkupcmt{follows from Axioms 11.11 and 11.3B%
 }
 \isanewline
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
@@ -1040,11 +1025,9 @@ Modal Collapse (Sobel's version as shown in Pages 163-164):%
 \ {\isachardoublequoteopen}{\isacharparenleft}Q\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ G\ z\ \isactrlbold {\isasymrightarrow}\ Q{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
 \ {\isacharparenleft}rule\ mp{\isacharparenright}\isanewline
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isacharparenleft}Q\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ G\ z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ Q{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
-\ force\ \ %
-\isamarkupcmt{we can use rule 'useful' too%
-}
-\isanewline
+\ {\isachardoublequoteopen}{\isacharparenleft}Q\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ G\ z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ Q{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ useful\ \isacommand{by}\isamarkupfalse%
+\ blast\isanewline
 \ \ \ \ \isacommand{hence}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isacharparenleft}Q\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ G\ z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}Q{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
 \ simp\isanewline

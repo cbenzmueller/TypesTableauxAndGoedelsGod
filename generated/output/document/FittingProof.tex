@@ -15,15 +15,32 @@
 %
 \endisadelimtheory
 %
-\isamarkupsection{Fitting's Proof (pages 165-166)%
+\isamarkupsection{Fitting's Solution%
 }
 \isamarkuptrue%
 %
-\isamarkupsubsection{Implicit extensionality assumptions in Isabelle/HOL%
+\begin{isamarkuptext}%
+In this section we tackle Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
+especially the problem of Modal Collapse, which has been metaphysically interpreted as implying a rejection of free will.
+Since we are generally commited to the existence of free will (in a pre-theoretical sense), such a result is
+philosophically unappealing and rather seen as a problem in the argument's formalization.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+This part of the book still leaves several details unspecified and the reader is thus compelled to fill in the gaps.
+As a result, we came across some premises and theorems allowing for different formalizations and therefore leading to disparate implications.
+Only some of those cases are shown here for illustrative purposes. The options chosen were those better suiting argument's validity.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsection{Implicit Extensionality Assumptions%
 }
 \isamarkuptrue%
+%
+\begin{isamarkuptext}%
+Since Isabelle/HOL is extensional, extensionality principles are valid directly out of the box:%
+\end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ EXT{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isasymforall}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymforall}{\isasymgamma}{\isacharcolon}{\isacharcolon}O{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymgamma}\ {\isasymlongleftrightarrow}\ {\isasymbeta}\ {\isasymgamma}{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isacharparenright}{\isachardoublequoteclose}%
+\ EXT{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymforall}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymforall}{\isasymgamma}{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymgamma}\ {\isasymlongleftrightarrow}\ {\isasymbeta}\ {\isasymgamma}{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isacharparenright}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -39,7 +56,7 @@
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ EXT{\isacharunderscore}set{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardot}\ {\isasymforall}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymforall}{\isasymgamma}{\isacharcolon}{\isacharcolon}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymgamma}\ {\isasymlongleftrightarrow}\ {\isasymbeta}\ {\isasymgamma}{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isacharparenright}{\isachardoublequoteclose}%
+\ EXT{\isacharunderscore}set{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardot}\ {\isasymforall}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymforall}{\isasymgamma}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymgamma}\ {\isasymlongleftrightarrow}\ {\isasymbeta}\ {\isasymgamma}{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isacharparenright}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -55,7 +72,7 @@
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ EXT{\isacharunderscore}intensional{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isachardot}\ x\isactrlbold {\isasymapprox}y{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymup}O\ {\isacharparenright}{\isacharparenright}{\isacharparenright}\ \ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymup}O{\isacharparenright}\ {\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isachardoublequoteclose}%
+\ EXT{\isacharunderscore}intensional{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isachardot}\ x\isactrlbold {\isasymapprox}y{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}\ {\isacharparenright}{\isacharparenright}{\isacharparenright}\ \ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}\ {\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -71,7 +88,7 @@
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ EXT{\isacharunderscore}int{\isacharunderscore}pred{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isachardot}\ x\isactrlbold {\isasymapprox}y{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isachardoublequoteclose}%
+\ EXT{\isacharunderscore}int{\isacharunderscore}pred{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isachardot}\ x\isactrlbold {\isasymapprox}y{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -92,32 +109,28 @@
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Following enables using extensional objects as if they were rigid intensional objects (needed only for type correctness):%
+The following technical definitions are needed only for type correctness. They are used to convert
+ extensional objects into rigid intensional ones.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ trivialExpansion{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}bool{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlparr}{\isacharunderscore}{\isasymrparr}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}{\isachardoublequoteclose}\isanewline
-\ \ \isanewline
+\ trivialExpansion{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}bool{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlparr}{\isacharunderscore}{\isasymrparr}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}{\isachardoublequoteclose}\ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
 \ \ \isanewline
 \isacommand{consts}\isamarkupfalse%
-\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ {\isasymlparr}Y\ x{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ {\isasymlparr}Y\ x{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ {\isasymlparr}Y\ x{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ {\isasymlparr}Y\ x{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}O{\isasymrangle}{\isacharcomma}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}\ \isactrlbold {\isasymrightarrow}\ {\isasymlparr}Y\ z{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupsubsection{Part I - God's existence is possible%
+\isamarkupsubsection{Part I - God's Existence is Possible%
 }
 \isamarkuptrue%
-%
-\begin{isamarkuptext}%
-Following Scott's proposal we take T2 directly as an axiom.%
-\end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
 \ \ A{\isadigit{1}}a{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ {\isacharparenleft}{\isasymrightharpoondown}X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ {\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \ \ \ \ \ %
@@ -147,7 +160,7 @@ Following Scott's proposal we take T2 directly as an axiom.%
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{Axioms are consistent%
+\isamarkupcmt{Model found: axioms are consistent%
 }
 %
 \endisatagproof
@@ -177,30 +190,32 @@ Following Scott's proposal we take T2 directly as an axiom.%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-T1 (Positive properties are possibly instantiated) can be formalized in two different ways:%
+\isa{T{\isadigit{1}}} (Positive properties are possibly instantiated) can be formalized in two different ways:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{1}}a{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{1}}a{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
 \ A{\isadigit{1}}a\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
 \ blast\ %
-\isamarkupcmt{The one used in the book%
+\isamarkupcmt{this is the one used in the book%
 }
 %
 \endisatagproof
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{1}}b{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isasymP}\ {\isasymdown}X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ X\ z{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ T{\isadigit{1}}b{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymP}\ {\isasymdown}X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ X\ z{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{nitpick}\isamarkupfalse%
 %
 \isadelimproof
 \ %
@@ -209,7 +224,7 @@ T1 (Positive properties are possibly instantiated) can be formalized in two diff
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{Since this one is not valid, we won't use it%
+\isamarkupcmt{this one is also possible but not valid so we won't use it%
 }
 %
 \endisatagproof
@@ -220,10 +235,10 @@ T1 (Positive properties are possibly instantiated) can be formalized in two diff
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Interesting (non-) equivalences:%
+Some interesting (non-) equivalences:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -239,7 +254,7 @@ Interesting (non-) equivalences:%
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
 \ \ %
 \endisadelimproof
@@ -255,7 +270,7 @@ Interesting (non-) equivalences:%
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}X{\isacharparenright}\ Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}X{\isacharparenright}\ Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -271,7 +286,7 @@ Interesting (non-) equivalences:%
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ {\isacharparenleft}Q{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}Q{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \isadelimproof
 \ %
@@ -291,7 +306,7 @@ Interesting (non-) equivalences:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-T3 (God exists possibly) can be formalized in two different ways, using a de-re or a de-dicto reading.%
+\isa{T{\isadigit{3}}} (God exists possibly) can be formalized in two different ways, using a \isa{de\ re} or a \isa{de\ dicto} reading.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{3}}{\isacharunderscore}deRe{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
@@ -331,7 +346,8 @@ T3 (God exists possibly) can be formalized in two different ways, using a de-re 
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-T3_deRe should be the version implied in the book, because T3_deDicto is not valid unless T1b (from above) were valid%
+From the last two theorems, we think \isa{T{\isadigit{3}}{\isacharunderscore}deRe} should be the version originally implied in the book,
+ since \isa{T{\isadigit{3}}{\isacharunderscore}deDicto} is not valid (unless \isa{T{\isadigit{1}}b} were valid but it isn't)%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ \isakeyword{assumes}\ T{\isadigit{1}}b{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ {\isasymdown}X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ X\ z{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
@@ -351,12 +367,12 @@ T3_deRe should be the version implied in the book, because T3_deDicto is not val
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Part II - God's existence is necessary if possible%
+\isamarkupsubsection{Part II - God's Existence is Necessary if Possible%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-P satisfies so-called stability conditions (Page 124). This means P designates rigidly (an essentialist assumption!).%
+In this variant \isa{{\isasymP}} also designates rigidly.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -392,7 +408,7 @@ P satisfies so-called stability conditions (Page 124). This means P designates r
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{So far all axioms consistent%
+\isamarkupcmt{Model found: so far all axioms consistent%
 }
 %
 \endisatagproof
@@ -404,11 +420,8 @@ P satisfies so-called stability conditions (Page 124). This means P designates r
 \isanewline
 \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}O{\isasymrangle}{\isacharcomma}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isasymlparr}Y\ x{\isasymrparr}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymlangle}O{\isasymrangle}{\isachardot}\ {\isasymlparr}Z\ x{\isasymrparr}\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\ %
-\isamarkupcmt{The one used in the book%
-}
-%
+\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isasymlparr}Y\ x{\isasymrparr}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymlparr}Z\ x{\isasymrparr}\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 Theorem 11.20 - Informal Proposition 5%
 \end{isamarkuptext}\isamarkuptrue%
@@ -450,11 +463,8 @@ Theorem 11.21%
 \isanewline
 \ \ \ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ necExistencePred{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}NE\ x\ \ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ {\isasymlparr}Y\ z{\isasymrparr}{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ %
-\isamarkupcmt{the one used in the book%
-}
-%
+\ necExistencePred{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}NE\ x\ \ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ {\isasymlparr}Y\ z{\isasymrparr}{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 Informal Axiom 5%
 \end{isamarkuptext}\isamarkuptrue%
@@ -472,7 +482,7 @@ Informal Axiom 5%
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{So far all axioms consistent%
+\isamarkupcmt{Model found: so far all axioms consistent%
 }
 %
 \endisatagproof
@@ -483,7 +493,7 @@ Informal Axiom 5%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Reminder: We use the down-arrow notation because it is more explicit - see (non-) equivalences above.%
+Reminder: We use the down-arrow notation because it is more explicit. See (non-) equivalences above.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
@@ -538,7 +548,7 @@ Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies 
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-There are two different ways of formalizing this theorem. Both of them are proved valid:%
+There are two different ways of formalizing this theorem. Both of them are proven valid:%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -642,16 +652,17 @@ Second version (which can be proven directly by automated tools using last versi
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Compared to Goedel's argument, the following theorems can be proven in K (S5 no longer needed!):%
+Compared to Goedel's argument, the following theorems can be proven in \isa{K} logic (note that S5 no longer needed):%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
 Theorem 11.27 - Informal Proposition 8%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
-\ possExImpliesNecEx{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ possExImpliesNecEx{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -662,13 +673,14 @@ Theorem 11.27 - Informal Proposition 8%
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{theorem}\isamarkupfalse%
-\ possExImpliesNecEx{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ possExImpliesNecEx{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -686,9 +698,10 @@ Theorem 11.27 - Informal Proposition 8%
 Corollaries:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{4}}{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{4}}{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -699,13 +712,14 @@ Corollaries:%
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{4}}{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{4}}{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -719,34 +733,39 @@ Corollaries:%
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Conclusion - Necessary (actualist) existence of God (Corollary 11.28)%
+\isamarkupsubsection{Conclusion - Necessary Existence of God%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Version I - De dicto reading:%
+Version I - \isa{de\ dicto} reading:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ GodNecExists{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ GodNecExists{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
 \ GodExImpliesNecEx{\isacharunderscore}v{\isadigit{1}}\ T{\isadigit{3}}{\isacharunderscore}deRe\ \isacommand{by}\isamarkupfalse%
-\ fastforce%
+\ fastforce\ %
+\isamarkupcmt{Corollary 11.28%
+}
+%
 \endisatagproof
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ God{\isacharunderscore}starNecExists{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}%
+\ God{\isacharunderscore}starNecExists{\isacharunderscore}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -757,20 +776,21 @@ Version I - De dicto reading:%
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
 \isacommand{using}\isamarkupfalse%
 \ God{\isacharunderscore}starNecExists{\isacharunderscore}v{\isadigit{1}}\ \isacommand{by}\isamarkupfalse%
 \ simp\ %
-\isamarkupcmt{De dicto reading shown explicitly%
+\isamarkupcmt{\isa{de\ dicto} shown here explicitly%
 }
 %
 \endisatagproof
@@ -781,12 +801,13 @@ Version I - De dicto reading:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Version II - De re reading:%
+Version II - \isa{de\ re} reading:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ GodNecExists{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ GodNecExists{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -797,13 +818,14 @@ Version II - De re reading:%
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ God{\isacharunderscore}starNecExists{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}%
+\ God{\isacharunderscore}starNecExists{\isacharunderscore}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharasterisk}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -822,11 +844,12 @@ Version II - De re reading:%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Modal Collapse is countersatisfiable even in S5. Counterexamples with cardinality one for the domain
-of ground-level objects are found by Nitpick:%
+Modal Collapse is countersatisfiable even in \isa{S{\isadigit{5}}}. Note that countermodels with a cardinality of one 
+for the domain of ground-level objects are found by Nitpick (the countermodel shown in the book has cardinality of two).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \isadelimproof
 \ %
@@ -834,6 +857,9 @@ of ground-level objects are found by Nitpick:%
 %
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
+\ %
+\isamarkupcmt{countermodel found in \isa{K}%
+}
 %
 \endisatagproof
 {\isafoldproof}%
@@ -845,10 +871,14 @@ of ground-level objects are found by Nitpick:%
 \ \ \ \ \isanewline
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
-\ \ \ S{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}equivalence\ aRel{\isachardoublequoteclose}\isanewline
+\ \ \ S{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}equivalence\ aRel{\isachardoublequoteclose}\ %
+\isamarkupcmt{assume accesibility relation is an equivalence%
+}
+\isanewline
 \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \isadelimproof
 \ %
@@ -856,6 +886,9 @@ of ground-level objects are found by Nitpick:%
 %
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
+\ %
+\isamarkupcmt{countermodel found in \isa{S{\isadigit{5}}}%
+}
 \isanewline
 %
 \endisatagproof

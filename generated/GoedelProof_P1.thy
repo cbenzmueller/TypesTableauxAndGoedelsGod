@@ -6,26 +6,45 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e 
 sledgehammer_params[verbose=true]
 (*>*)  
 
-section \<open>Argument Part I - God's existence is possible\<close>
+section \<open>G\"odel's Argument, Formally (Chapter 11)\<close>
+
+text\<open> 
+ "G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
+  from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
+  if possible; and prove God's existence is possible." @{cite "fitting_book"} p. 138. \<close> 
+
+subsection \<open>Part I - God's Existence is Possible\<close>
+
+text\<open>  We divide G\"odel's Argument as presented in the book in two parts. For the first one, while Leibniz provides
+  some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
+ (T1) "Every positive property is possibly instantiated", which together with (T2) "God is a positive property"
+  directly implies the conclusion. In order to prove T1 G\"odel assumes A2: "Any property entailed by a positive property is positive". \<close>
+text\<open>  We are currently contemplating a follow-up analysis of the philosophical implications of these axioms,
+ which may encompass some criticism of the notion of property entailment used by G\"odel throughout the argument. \<close>
   
-subsection \<open>General definitions\<close>
+subsubsection \<open>General Definitions\<close>
                 
-abbreviation existencePredicate::"\<up>\<langle>O\<rangle>" ("E!") where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" 
-text\<open>  Safety check. Existence predicate correctly matches its meta-logical counterpart: \<close>
-lemma "E! x w \<longleftrightarrow> existsAt x w" by simp
+abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") 
+  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" --\<open> existence predicate in the object-language \<close>
 
-consts positiveProperty::"\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" ("\<P>") --\<open>  Positiveness/Perfection  \<close>
-  
-text\<open>  Definitions of God (later shown to be equivalent under axiom A1b):  \<close>    
-abbreviation God::"\<up>\<langle>O\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
-abbreviation God_star::"\<up>\<langle>O\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
-  
-text\<open>  Definitions needed to formalize A3:  \<close>
-abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>" ("pos") where "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
-abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>" ("intersec") where "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" (* note possibilist quantifier*)
-abbreviation Entailment::"\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
+lemma "E! x w \<longleftrightarrow> existsAt x w" 
+  by simp --\<open> safety check: correctly matches its meta-logical counterpart \<close>
 
-subsection \<open>Axioms\<close>
+consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") --\<open>  Positiveness/Perfection  \<close>
+  
+text\<open>  Definitions of God (later shown to be equivalent under axiom @{text "A1b"}):  \<close>    
+abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
+abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
+  
+text\<open>  Definitions needed to formalize @{text "A3"}:  \<close>
+abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
+  "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
+abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
+  "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" --\<open>  quantifier is possibilist \<close>
+abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where
+  "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
+
+subsubsection \<open>Axioms\<close>
     
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      --\<open>  Axiom 11.3A  \<close>
@@ -33,12 +52,12 @@ axiomatization where
   A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   --\<open>  Axiom 11.5  \<close>
   A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" --\<open>  Axiom 11.10  \<close>
 
-lemma True nitpick[satisfy] oops             --\<open>  Axioms are consistent \<close>
+lemma True nitpick[satisfy] oops       --\<open>  Model found: axioms are consistent \<close>
     
-lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast       --\<open>  Note that axioms imply D  \<close>
+lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast --\<open>  axioms already imply @{text "D"} axiom  \<close>
 lemma "\<lfloor>D\<rfloor>" using A1a A3 by metis
 
-subsection \<open>Theorems\<close>
+subsubsection \<open>Theorems\<close>
     
 lemma "\<lfloor>\<^bold>\<exists>X. \<P> X\<rfloor>" using A1b by auto
 lemma "\<lfloor>\<^bold>\<exists>X. \<P> X \<^bold>\<and>  \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A1b A2 by metis
@@ -53,7 +72,8 @@ lemma "\<lfloor>\<P> (\<lambda>x w. x = x)\<rfloor>" using A1b A2  by blast
 lemma "\<lfloor>\<P> (\<lambda>x w. x = x)\<rfloor>" using A3 by metis
                                 
 text\<open>  Being non-self-identical is a negative property: \<close>
-lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X  \<^bold>\<and> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A2 by fastforce
+lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X  \<^bold>\<and> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" 
+  using A2 by fastforce
     
 lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A2 by fastforce
 lemma "\<lfloor>(\<^bold>\<exists>X. \<P> X) \<^bold>\<rightarrow>  \<P> (\<^bold>\<rightharpoondown> (\<lambda>x w. \<not>x = x))\<rfloor>" using A3 by metis 
@@ -65,13 +85,13 @@ lemma "\<lfloor>\<^bold>\<not>\<P> (\<lambda>x w. \<not>x = x)\<rfloor>"  using 
 text\<open>  Proposition 11.8 (Informal Proposition 1) - Positive properties are possibly instantiated:  \<close>
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
     
-text\<open>  Proposition 11.14 - Both defs (God/God* ) are equivalent. For improved performance we may prefer to use one or the other:  \<close>
+text\<open>  Proposition 11.14 - Both defs (@{text "God/God*"}) are equivalent. For improved performance we may prefer to use one or the other:  \<close>
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by force 
 
-text\<open>  Proposition 11.15 - (possibilist) existence of God* directly implies A1b:  \<close>    
+text\<open>  Proposition 11.15 - Possibilist existence of @{text "God*"} directly implies @{text "A1b"}:  \<close>    
 lemma "\<lfloor>\<^bold>\<exists> G* \<^bold>\<rightarrow> (\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X))\<rfloor>" by meson
 
-text\<open>  Proposition 11.16 - A3 implies P(G) (local consequence):   \<close>   
+text\<open>  Proposition 11.16 - @{text "A3"} implies @{text "P(G)"} (local consequence):   \<close>   
 lemma A3implT2_local: "\<lfloor>(\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X) \<^bold>\<rightarrow> \<P> G\<rfloor>"
 proof -
   {
@@ -91,10 +111,12 @@ proof -
   thus ?thesis by (rule allI)
 qed    
 
-text\<open>  A3 implies P(G) (as global consequence): \<close>
-lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>" using A3implT2_local by smt (* TODO replace smt*)
+text\<open>  @{text "A3"} implies @{text "P(G)"} (as global consequence): \<close>
+lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>"
+  using A3implT2_local by smt (* --------- TODO smt is deprecated - replace *)
   
-text\<open>  God is a positive property. Note Scott's proposal of axiomatizing this (replacing A3):  \<close>
+text\<open>  God is a positive property. Note that this theorem can be axiomatized directly 
+ (as proposed by Dana Scott according to @{cite "fitting_book"} p. 152). We will do so for the second part.  \<close>
 theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
   
 text\<open>  Theorem 11.17 (Informal Proposition 3) - Possibly God exists:  \<close>

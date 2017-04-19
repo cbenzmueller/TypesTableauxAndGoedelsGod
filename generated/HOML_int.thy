@@ -5,43 +5,47 @@ begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e = a b c d]
 (*>*)
 
-section \<open>Embedding of Higher-Order Modal Logic with Intensional Types\<close>
+section \<open>Embedding of an Intensional Higher-Order Modal Logic\<close>
+  
+text\<open>  The following embedding of HOML in Isabelle/HOL is inspired by the work of @{cite "J23"}.
+We expand this approach to allow for intensional types and actualist quantifiers as exposed in the
+book (@{cite "fitting_book"}).  \<close>
 
 subsection \<open>Declarations\<close>
 
   typedecl i                    --\<open>  Type for possible worlds \<close>
   type_synonym io = "(i\<Rightarrow>bool)" --\<open>  Type for formulas whose truth-value is world-dependent \<close>
-  typedecl e  ("O")             --\<open>  Type for individuals \<close>               
+  typedecl e  ("\<zero>")             --\<open>  Type for individuals \<close>               
   
   text\<open>  Aliases for common unary predicate types:  \<close>
-  type_synonym ie =     "(i\<Rightarrow>O)"             ("\<up>O")
-  type_synonym se =     "(O\<Rightarrow>bool)"          ("\<langle>O\<rangle>")
-  type_synonym ise =    "(O\<Rightarrow>io)"           ("\<up>\<langle>O\<rangle>")
-  type_synonym sie =    "(\<up>O\<Rightarrow>bool)"        ("\<langle>\<up>O\<rangle>")
-  type_synonym isie =   "(\<up>O\<Rightarrow>io)"         ("\<up>\<langle>\<up>O\<rangle>")  
-  type_synonym sise =   "(\<up>\<langle>O\<rangle>\<Rightarrow>bool)"     ("\<langle>\<up>\<langle>O\<rangle>\<rangle>")
-  type_synonym isise =  "(\<up>\<langle>O\<rangle>\<Rightarrow>io)"      ("\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>")
-  type_synonym sisise=  "(\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>")
-  type_synonym isisise= "(\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<Rightarrow>io)"  ("\<up>\<langle>\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>")
-  type_synonym sse =    "\<langle>O\<rangle>\<Rightarrow>bool"         ("\<langle>\<langle>O\<rangle>\<rangle>")
-  type_synonym isse =   "\<langle>O\<rangle>\<Rightarrow>io"          ("\<up>\<langle>\<langle>O\<rangle>\<rangle>")
+  type_synonym ie =     "(i\<Rightarrow>\<zero>)"             ("\<up>\<zero>")
+  type_synonym se =     "(\<zero>\<Rightarrow>bool)"          ("\<langle>\<zero>\<rangle>")
+  type_synonym ise =    "(\<zero>\<Rightarrow>io)"           ("\<up>\<langle>\<zero>\<rangle>")
+  type_synonym sie =    "(\<up>\<zero>\<Rightarrow>bool)"        ("\<langle>\<up>\<zero>\<rangle>")
+  type_synonym isie =   "(\<up>\<zero>\<Rightarrow>io)"         ("\<up>\<langle>\<up>\<zero>\<rangle>")  
+  type_synonym sise =   "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>bool)"     ("\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym isise =  "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>io)"      ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym sisise=  "(\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
+  type_synonym isisise= "(\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>io)"  ("\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
+  type_synonym sse =    "\<langle>\<zero>\<rangle>\<Rightarrow>bool"         ("\<langle>\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym isse =   "\<langle>\<zero>\<rangle>\<Rightarrow>io"          ("\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>")
   
   text\<open>  Aliases for common binary relation types:  \<close>
-  type_synonym see =        "(O\<Rightarrow>O\<Rightarrow>bool)"          ("\<langle>O,O\<rangle>")
-  type_synonym isee =       "(O\<Rightarrow>O\<Rightarrow>io)"           ("\<up>\<langle>O,O\<rangle>")
-  type_synonym sieie =      "(\<up>O\<Rightarrow>\<up>O\<Rightarrow>bool)"       ("\<langle>\<up>O,\<up>O\<rangle>")
-  type_synonym isieie =     "(\<up>O\<Rightarrow>\<up>O\<Rightarrow>io)"        ("\<up>\<langle>\<up>O,\<up>O\<rangle>")
-  type_synonym ssese =      "(\<langle>O\<rangle>\<Rightarrow>\<langle>O\<rangle>\<Rightarrow>bool)"     ("\<langle>\<langle>O\<rangle>,\<langle>O\<rangle>\<rangle>")
-  type_synonym issese =     "(\<langle>O\<rangle>\<Rightarrow>\<langle>O\<rangle>\<Rightarrow>io)"      ("\<up>\<langle>\<langle>O\<rangle>,\<langle>O\<rangle>\<rangle>")
-  type_synonym ssee =       "(\<langle>O\<rangle>\<Rightarrow>O\<Rightarrow>bool)"       ("\<langle>\<langle>O\<rangle>,O\<rangle>")
-  type_synonym issee =      "(\<langle>O\<rangle>\<Rightarrow>O\<Rightarrow>io)"        ("\<up>\<langle>\<langle>O\<rangle>,O\<rangle>")
-  type_synonym isisee =     "(\<up>\<langle>O\<rangle>\<Rightarrow>O\<Rightarrow>io)"      ("\<up>\<langle>\<up>\<langle>O\<rangle>,O\<rangle>")
-  type_synonym isiseise =   "(\<up>\<langle>O\<rangle>\<Rightarrow>\<up>\<langle>O\<rangle>\<Rightarrow>io)"    ("\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>O\<rangle>\<rangle>")
-  type_synonym isiseisise=  "(\<up>\<langle>O\<rangle>\<Rightarrow>\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<langle>O\<rangle>,\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>\<rangle>")
+  type_synonym see =        "(\<zero>\<Rightarrow>\<zero>\<Rightarrow>bool)"          ("\<langle>\<zero>,\<zero>\<rangle>")
+  type_synonym isee =       "(\<zero>\<Rightarrow>\<zero>\<Rightarrow>io)"           ("\<up>\<langle>\<zero>,\<zero>\<rangle>")
+  type_synonym sieie =      "(\<up>\<zero>\<Rightarrow>\<up>\<zero>\<Rightarrow>bool)"       ("\<langle>\<up>\<zero>,\<up>\<zero>\<rangle>")
+  type_synonym isieie =     "(\<up>\<zero>\<Rightarrow>\<up>\<zero>\<Rightarrow>io)"        ("\<up>\<langle>\<up>\<zero>,\<up>\<zero>\<rangle>")
+  type_synonym ssese =      "(\<langle>\<zero>\<rangle>\<Rightarrow>\<langle>\<zero>\<rangle>\<Rightarrow>bool)"     ("\<langle>\<langle>\<zero>\<rangle>,\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym issese =     "(\<langle>\<zero>\<rangle>\<Rightarrow>\<langle>\<zero>\<rangle>\<Rightarrow>io)"      ("\<up>\<langle>\<langle>\<zero>\<rangle>,\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym ssee =       "(\<langle>\<zero>\<rangle>\<Rightarrow>\<zero>\<Rightarrow>bool)"       ("\<langle>\<langle>\<zero>\<rangle>,\<zero>\<rangle>")
+  type_synonym issee =      "(\<langle>\<zero>\<rangle>\<Rightarrow>\<zero>\<Rightarrow>io)"        ("\<up>\<langle>\<langle>\<zero>\<rangle>,\<zero>\<rangle>")
+  type_synonym isisee =     "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<zero>\<Rightarrow>io)"      ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>")
+  type_synonym isiseise =   "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>\<Rightarrow>io)"    ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>")
+  type_synonym isiseisise=  "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
   
-  consts aRel::"i\<Rightarrow>i\<Rightarrow>bool" (infixr "r" 70)  --\<open>  Accessibility relation r  \<close>
+  consts aRel::"i\<Rightarrow>i\<Rightarrow>bool" (infixr "r" 70)  --\<open>  Accessibility relation  \<close>
 
-subsection {* Definition of logical operators in HOL*}
+subsection \<open>Definition of Logical Operators\<close>
 
   abbreviation mnot   :: "io\<Rightarrow>io" ("\<^bold>\<not>_"[52]53)
     where "\<^bold>\<not>\<phi> \<equiv> \<lambda>w. \<not>(\<phi> w)" 
@@ -57,95 +61,100 @@ subsection {* Definition of logical operators in HOL*}
     where "\<phi>\<^bold>\<rightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longrightarrow>(\<psi> w)"  
   abbreviation mequ   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<leftrightarrow>"48)
     where "\<phi>\<^bold>\<leftrightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longleftrightarrow>(\<psi> w)"  
+      
+  text\<open>  Possibilist quantifiers: \<close>    
   abbreviation mforall   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<forall>")      
     where "\<^bold>\<forall>\<Phi> \<equiv> \<lambda>w.\<forall>x. (\<Phi> x w)"
   abbreviation mexists   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<exists>") 
     where "\<^bold>\<exists>\<Phi> \<equiv> \<lambda>w.\<exists>x. (\<Phi> x w)"
+  text\<open> Binder notation for quantifies: \<close>
   abbreviation mforallB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<forall>"[8]9)
     where "\<^bold>\<forall>x. \<phi>(x) \<equiv> \<^bold>\<forall>\<phi>"  
   abbreviation mexistsB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<exists>"[8]9)
     where "\<^bold>\<exists>x. \<phi>(x) \<equiv> \<^bold>\<exists>\<phi>" 
       
-subsection {* Definition of actualist quantifiers*}
-text\<open>  No polymorphic types are used since actualist quantification only makes sense for individuals.  \<close>
+subsection \<open>Definition of Actualist Quantifiers\<close>
+text\<open>  No polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals.  \<close>
   
-  text\<open>  (Meta-logical) existence predicate for restricting domains of quantification:  \<close>
-  consts Exists::"\<up>\<langle>O\<rangle>" ("existsAt")
-    
-  abbreviation mforallAct   :: "\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>E")      
+text\<open>  The following predicate is used to model actualist quantifiers by restricting domains of quantification.
+Note that since this is a meta-logical concept we never use it in our object language. \<close>
+  consts Exists::"\<up>\<langle>\<zero>\<rangle>" ("existsAt")
+  
+    text\<open>  Actualist quantifiers \<close>
+  abbreviation mforallAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>E")      
     where "\<^bold>\<forall>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<forall>x. (existsAt x w)\<longrightarrow>(\<Phi> x w)"
-  abbreviation mexistsAct   :: "\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" ("\<^bold>\<exists>\<^sup>E") 
+  abbreviation mexistsAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<exists>\<^sup>E") 
     where "\<^bold>\<exists>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<exists>x. (existsAt x w) \<and> (\<Phi> x w)"
       
   text\<open>  Binder notation for quantifiers: \<close>
-  abbreviation mforallActB  :: "\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" (binder"\<^bold>\<forall>\<^sup>E"[8]9)
+  abbreviation mforallActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<forall>\<^sup>E"[8]9)
     where "\<^bold>\<forall>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<forall>\<^sup>E\<phi>"     
-  abbreviation mexistsActB  :: "\<up>\<langle>\<up>\<langle>O\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>E"[8]9)
+  abbreviation mexistsActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>E"[8]9)
     where "\<^bold>\<exists>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<exists>\<^sup>E\<phi>"
       
-subsection {* Definition of modal operators*}
+subsection \<open>Definition of Modal Operators\<close>
     
   abbreviation mbox   :: "io\<Rightarrow>io" ("\<^bold>\<box>_"[52]53)
     where "\<^bold>\<box>\<phi> \<equiv> \<lambda>w.\<forall>v. (w r v)\<longrightarrow>(\<phi> v)"
   abbreviation mdia   :: "io\<Rightarrow>io" ("\<^bold>\<diamond>_"[52]53)
     where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
 
-  subsection {* Definition of the ExtensionOf operator *}
-text\<open>  Embedding in HOL of (world-dependent) atomic formulas whose first argument is relativized.  \<close>    
-text\<open>  ExtensionOf operator is therefore embedded in HOL as a binary operator. Depending on the
-types involved we need to define this operator differently to ensure type correctness.  \<close>   
+subsection \<open>Definition of the @{text extension_of} Operator\<close>
+text\<open>  In contrast to the approach taken in the book (p. 88), the @{text \<down>} operator is embedded as a binary operator
+ applying to (world-dependent) atomic formulas whose first argument is a `relativized' term (preceded by @{text \<down>}).
+ Depending on the types involved we need to define this operator differently to ensure type correctness. \<close>   
 
-text\<open>  (a) phi takes an (intensional) individual concept as argument: \<close>
-abbreviation mextIndiv   :: "\<up>\<langle>O\<rangle>\<Rightarrow>\<up>O\<Rightarrow>io" (infix "\<^bold>\<downharpoonleft>" 60)                             
+text\<open>  (a) Predicate @{text \<phi>} takes an (intensional) individual concept as argument: \<close>
+abbreviation mextIndiv::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zero>\<Rightarrow>io" (infix "\<^bold>\<downharpoonleft>" 60)                             
   where "\<phi> \<^bold>\<downharpoonleft>c \<equiv> \<lambda>w. \<phi> (c w) w"
-text\<open>  (b) phi takes an intensional predicate as argument: \<close>
-abbreviation mextPredArg   :: "(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
+text\<open>  (b) Predicate @{text \<phi>} takes an intensional predicate as argument: \<close>
+abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
   where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"
-text\<open>  (c) phi takes an extensional predicate as argument: \<close>
-abbreviation extPredArg   :: "(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
+text\<open>  (c) Predicate @{text \<phi>} takes an extensional predicate as argument: \<close>
+abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
   where "\<phi> \<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. P x w) w"
-text\<open>  (d) phi takes an extensional predicate as first argument: \<close>
-abbreviation extPredArg1   :: "(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
+text\<open>  (d) Predicate @{text \<phi>} takes an extensional predicate as first argument: \<close>
+abbreviation extPredArg1::"(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
   where "\<phi> \<down>\<^sub>1P \<equiv> \<lambda>z. \<lambda>w. \<phi> (\<lambda>x. P x w) z w"
     
     
-subsection {* Definition of Equality *}
+subsection \<open>Definition of Equality\<close>
   
   abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) --\<open> normal equality (for all types) \<close>
-    where "x\<^bold>\<approx>y \<equiv> \<lambda>w. x = y"
-  abbreviation meqC   :: "\<up>\<langle>\<up>O,\<up>O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>C"52) --\<open> equality for individual concepts \<close>
-    where "x\<^bold>\<approx>\<^sup>Cy \<equiv> \<lambda>w. \<forall>v. (x v) = (y v)"
-  abbreviation meqL   :: "\<up>\<langle>O,O\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) --\<open> Leibniz Equ. for individuals \<close>
-    where "x\<^bold>\<approx>\<^sup>Ly \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
+    where "x \<^bold>\<approx> y \<equiv> \<lambda>w. x = y"
+  abbreviation meqC   :: "\<up>\<langle>\<up>\<zero>,\<up>\<zero>\<rangle>" (infixr"\<^bold>\<approx>\<^sup>C"52) --\<open> eq. for individual concepts \<close>
+    where "x \<^bold>\<approx>\<^sup>C y \<equiv> \<lambda>w. \<forall>v. (x v) = (y v)"
+  abbreviation meqL   :: "\<up>\<langle>\<zero>,\<zero>\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) --\<open> Leibniz eq. for individuals \<close>
+    where "x \<^bold>\<approx>\<^sup>L y \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
       
-subsection {* Miscelaneous *}
+subsection \<open>Miscelaneous\<close>
   
-  abbreviation negpred :: "\<langle>O\<rangle>\<Rightarrow>\<langle>O\<rangle>" ("\<rightharpoondown>_"[52]53) 
+  abbreviation negpred :: "\<langle>\<zero>\<rangle>\<Rightarrow>\<langle>\<zero>\<rangle>" ("\<rightharpoondown>_"[52]53) 
     where "\<rightharpoondown>\<Phi> \<equiv> \<lambda>x. \<not>(\<Phi> x)" 
-  abbreviation mnegpred :: "\<up>\<langle>O\<rangle>\<Rightarrow>\<up>\<langle>O\<rangle>" ("\<^bold>\<rightharpoondown>_"[52]53) 
+  abbreviation mnegpred :: "\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("\<^bold>\<rightharpoondown>_"[52]53) 
     where "\<^bold>\<rightharpoondown>\<Phi> \<equiv> \<lambda>x.\<lambda>w. \<not>(\<Phi> x w)" 
-  abbreviation mandpred :: "\<up>\<langle>O\<rangle>\<Rightarrow>\<up>\<langle>O\<rangle>\<Rightarrow>\<up>\<langle>O\<rangle>" (infix "\<^bold>&" 53) 
+  abbreviation mandpred :: "\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" (infix "\<^bold>&" 53) 
     where "\<Phi> \<^bold>& \<phi> \<equiv> \<lambda>x.\<lambda>w. (\<Phi> x w) \<and> (\<phi> x w)"
 
 
-subsection {* Meta-logical predicates*}
+subsection \<open>Meta-logical Predicates\<close>
 
  abbreviation valid :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>" [8]) where "\<lfloor>\<psi>\<rfloor> \<equiv>  \<forall>w.(\<psi> w)"
  abbreviation satisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>s\<^sup>a\<^sup>t \<equiv> \<exists>w.(\<psi> w)"
- abbreviation cntrsatisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t \<equiv>  \<exists>w.\<not>(\<psi> w)"
+ abbreviation countersat :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t \<equiv>  \<exists>w.\<not>(\<psi> w)"
  abbreviation invalid :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>i\<^sup>n\<^sup>v" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>i\<^sup>n\<^sup>v \<equiv> \<forall>w.\<not>(\<psi> w)"
 
-subsection {* Verifying the Embedding *}
+subsection \<open>Verifying the Embedding\<close>
 
  text\<open>  Verifying K Principle and Necessitation:  \<close>
- lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp    --{* K Schema *}
- lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp    --{* Necessitation *}
+ lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp    --\<open>  K Schema  \<close>
+ lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp    --\<open>  Necessitation  \<close>
 
- text\<open>  Instances of the Barcan and converse Barcan Formulas are satisintensionalfied for standard (possibilist) quantifiers:  \<close>
+ text\<open>  Barcan and Converse Barcan Formulas are satisfied for standard (possibilist) quantifiers:  \<close>
  lemma "\<lfloor>(\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x))\<rfloor>" by simp
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x))\<rfloor>" by simp
     
- text\<open>  ... but not for actualist quantifiers:  \<close>
+ text\<open>  (Converse) Barcan Formulas not satisfied for actualist quantifiers:  \<close>
  lemma "\<lfloor>(\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x))\<rfloor>" nitpick oops --\<open>  countersatisfiable \<close>
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x))\<rfloor>" nitpick oops --\<open>  countersatisfiable \<close>
  
@@ -160,9 +169,9 @@ subsection {* Verifying the Embedding *}
  text\<open>  Modal Collapse is countersatisfiable:  \<close>
  lemma "\<lfloor>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<phi>\<rfloor>" nitpick oops                  --\<open>  countersatisfiable \<close>
 
-subsection {* Useful Definitions for Axiomatization of Further Logics *}
+subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close>
 
- text\<open>  The best known logics \emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...} are obtained through
+ text\<open>  The best known logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) are obtained through
  axiomatization of combinations of the following:  \<close>
 
   abbreviation M 
@@ -188,8 +197,8 @@ subsection {* Useful Definitions for Axiomatization of Further Logics *}
   lemma "reflexive aRel \<and> euclidean aRel  \<Longrightarrow>  \<lfloor>M\<rfloor> \<and> \<lfloor>V\<rfloor>" by blast --\<open>  S5  \<close>
 
   text\<open>  Using these definitions, we can derive axioms for the most common modal logics. Thereby we 
-  are free to use either the semantic constraints or the related Sahlqvist axioms. Here we provide 
-  both versions. We recommend to use the semantic constraints for improved performance.  \<close>
+  are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
+  both versions. In what follows we use the semantic constraints for improved performance.  \<close>
  
 (*<*)      
 end

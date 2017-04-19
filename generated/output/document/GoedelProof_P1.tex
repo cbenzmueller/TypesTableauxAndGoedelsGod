@@ -15,57 +15,91 @@
 %
 \endisadelimtheory
 %
-\isamarkupsection{Argument Part I - God's existence is possible%
+\isamarkupsection{G\"odel's Argument, Formally (Chapter 11)%
 }
 \isamarkuptrue%
 %
-\isamarkupsubsection{General definitions%
+\begin{isamarkuptext}%
+"G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
+  from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
+  if possible; and prove God's existence is possible." \cite{fitting_book} p. 138.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsection{Part I - God's Existence is Possible%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+We divide G\"odel's Argument as presented in the book in two parts. For the first one, while Leibniz provides
+  some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
+ (T1) "Every positive property is possibly instantiated", which together with (T2) "God is a positive property"
+  directly implies the conclusion. In order to prove T1 G\"odel assumes A2: "Any property entailed by a positive property is positive".%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+We are currently contemplating a follow-up analysis of the philosophical implications of these axioms,
+ which may encompass some criticism of the notion of property entailment used by G\"odel throughout the argument.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsubsection{General Definitions%
 }
 \isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-Safety check. Existence predicate correctly matches its meta-logical counterpart:%
-\end{isamarkuptext}\isamarkuptrue%
+\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isachardoublequoteclose}\ %
+\isamarkupcmt{existence predicate in the object-language%
+}
+\isanewline
+\isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}E{\isacharbang}\ x\ w\ {\isasymlongleftrightarrow}\ existsAt\ x\ w{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}E{\isacharbang}\ x\ w\ {\isasymlongleftrightarrow}\ existsAt\ x\ w{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
 \isacommand{by}\isamarkupfalse%
-\ simp%
+\ simp\ %
+\isamarkupcmt{safety check: correctly matches its meta-logical counterpart%
+}
+%
 \endisatagproof
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
 \isanewline
-\isanewline
 \isacommand{consts}\isamarkupfalse%
-\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\ %
+\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{Positiveness/Perfection%
 }
 %
 \begin{isamarkuptext}%
-Definitions of God (later shown to be equivalent under axiom A1b):%
+Definitions of God (later shown to be equivalent under axiom \isa{A{\isadigit{1}}b}):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}%
+\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-Definitions needed to formalize A3:%
+Definitions needed to formalize \isa{A{\isadigit{3}}}:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ appliesToPositiveProps{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}pos{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\isanewline
+\ appliesToPositiveProps{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}pos{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ intersectionOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}intersec{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ intersectionOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}intersec{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ %
+\isamarkupcmt{quantifier is possibilist%
+}
+\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}O{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupsubsection{Axioms%
+\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
+\isamarkupsubsubsection{Axioms%
 }
 \isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
@@ -96,8 +130,8 @@ Definitions needed to formalize A3:%
 %
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
-\ \ \ \ \ \ \ \ \ \ \ \ \ %
-\isamarkupcmt{Axioms are consistent%
+\ \ \ \ \ \ \ %
+\isamarkupcmt{Model found: axioms are consistent%
 }
 %
 \endisatagproof
@@ -117,8 +151,8 @@ Definitions needed to formalize A3:%
 \isatagproof
 \isacommand{using}\isamarkupfalse%
 \ A{\isadigit{1}}a\ A{\isadigit{1}}b\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
-\ blast\ \ \ \ \ \ \ %
-\isamarkupcmt{Note that axioms imply D%
+\ blast\ %
+\isamarkupcmt{axioms already imply \isa{D} axiom%
 }
 %
 \endisatagproof
@@ -145,7 +179,7 @@ Definitions needed to formalize A3:%
 %
 \endisadelimproof
 %
-\isamarkupsubsection{Theorems%
+\isamarkupsubsubsection{Theorems%
 }
 \isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
@@ -261,9 +295,10 @@ Proposition 11.6%
 Being non-self-identical is a negative property:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X\ \ \isactrlbold {\isasymand}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X\ \ \isactrlbold {\isasymand}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -274,9 +309,9 @@ Being non-self-identical is a negative property:%
 {\isafoldproof}%
 %
 \isadelimproof
+\isanewline
 %
 \endisadelimproof
-\isanewline
 \ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -370,7 +405,7 @@ Proposition 11.8 (Informal Proposition 1) - Positive properties are possibly ins
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Proposition 11.14 - Both defs (God/God* ) are equivalent. For improved performance we may prefer to use one or the other:%
+Proposition 11.14 - Both defs (\isa{God{\isacharslash}God{\isacharasterisk}}) are equivalent. For improved performance we may prefer to use one or the other:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ GodDefsAreEquivalent{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymleftrightarrow}\ G{\isacharasterisk}\ x{\isasymrfloor}{\isachardoublequoteclose}%
@@ -390,7 +425,7 @@ Proposition 11.14 - Both defs (God/God* ) are equivalent. For improved performan
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Proposition 11.15 - (possibilist) existence of God* directly implies A1b:%
+Proposition 11.15 - Possibilist existence of \isa{God{\isacharasterisk}} directly implies \isa{A{\isadigit{1}}b}:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G{\isacharasterisk}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -409,7 +444,7 @@ Proposition 11.15 - (possibilist) existence of God* directly implies A1b:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Proposition 11.16 - A3 implies P(G) (local consequence):%
+Proposition 11.16 - \isa{A{\isadigit{3}}} implies \isa{P{\isacharparenleft}G{\isacharparenright}} (local consequence):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}local{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
@@ -472,12 +507,13 @@ Proposition 11.16 - A3 implies P(G) (local consequence):%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-A3 implies P(G) (as global consequence):%
+\isa{A{\isadigit{3}}} implies \isa{P{\isacharparenleft}G{\isacharparenright}} (as global consequence):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}global{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}%
+\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}global{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
 \isadelimproof
-\ %
+\ \ %
 \endisadelimproof
 %
 \isatagproof
@@ -492,7 +528,8 @@ A3 implies P(G) (as global consequence):%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-God is a positive property. Note Scott's proposal of axiomatizing this (replacing A3):%
+God is a positive property. Note that this theorem can be axiomatized directly 
+ (as proposed by Dana Scott according to \cite{fitting_book} p. 152). We will do so for the second part.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}%

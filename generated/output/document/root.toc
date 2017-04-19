@@ -1,40 +1,42 @@
-\contentsline {section}{\numberline {1}Embedding of Higher-Order Modal Logic with Intensional Types}{2}{section.1}
+\contentsline {section}{\numberline {1}Embedding of an Intensional Higher-Order Modal Logic}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Declarations}{2}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Definition of logical operators in HOL}{3}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Definition of actualist quantifiers}{3}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Definition of modal operators}{4}{subsection.1.4}
-\contentsline {subsection}{\numberline {1.5}Definition of the ExtensionOf operator}{4}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Definition of Equality}{4}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.2}Definition of Logical Operators}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Definition of Actualist Quantifiers}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Definition of Modal Operators}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Definition of the \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it extension{\unhbox \voidb@x \hbox {-}}of} Operator}{4}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Definition of Equality}{5}{subsection.1.6}
 \contentsline {subsection}{\numberline {1.7}Miscelaneous}{5}{subsection.1.7}
-\contentsline {subsection}{\numberline {1.8}Meta-logical predicates}{5}{subsection.1.8}
+\contentsline {subsection}{\numberline {1.8}Meta-logical Predicates}{5}{subsection.1.8}
 \contentsline {subsection}{\numberline {1.9}Verifying the Embedding}{5}{subsection.1.9}
-\contentsline {subsection}{\numberline {1.10}Useful Definitions for Axiomatization of Further Logics}{5}{subsection.1.10}
-\contentsline {section}{\numberline {2}Examples in book}{6}{section.2}
-\contentsline {subsection}{\numberline {2.1}Chapter 7 - Modal Logic - Syntax and Semantics}{6}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}beta/eta-redex Considerations (page 94)}{6}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Exercises page 101}{8}{subsubsection.2.1.2}
-\contentsline {subsection}{\numberline {2.2}Chapter 9 - Miscellaneous Matters}{8}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}(1.1) Equality}{8}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}(1.2) Extensionality}{8}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}(2) De re & de dicto}{9}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}(3) Rigidity}{9}{subsubsection.2.2.4}
-\contentsline {subsubsection}{\numberline {2.2.5}(4) Stability Conditions}{10}{subsubsection.2.2.5}
-\contentsline {section}{\numberline {3}Argument Part I - God's existence is possible}{10}{section.3}
-\contentsline {subsection}{\numberline {3.1}General definitions}{10}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Axioms}{11}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Theorems}{11}{subsection.3.3}
-\contentsline {section}{\numberline {4}Argument Part II - God's existence is necessary if possible}{13}{section.4}
-\contentsline {subsection}{\numberline {4.1}General definitions}{13}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Axioms from Part I}{13}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Useful results from Part I}{13}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Axioms for Part II}{13}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Theorems}{13}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Going Further}{16}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Objections and Criticism}{18}{subsection.4.7}
-\contentsline {section}{\numberline {5}Fitting's Proof (pages 165-166)}{18}{section.5}
-\contentsline {subsection}{\numberline {5.1}Implicit extensionality assumptions in Isabelle/HOL}{18}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}General Definitions}{18}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Part I - God's existence is possible}{19}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Part II - God's existence is necessary if possible}{20}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Conclusion - Necessary (actualist) existence of God (Corollary 11.28)}{21}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Modal Collapse}{22}{subsection.5.6}
+\contentsline {subsection}{\numberline {1.10}Useful Definitions for Axiomatization of Further Logics}{6}{subsection.1.10}
+\contentsline {section}{\numberline {2}Book Examples}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Modal Logic - Syntax and Semantics (Chapter 7)}{6}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Considerations Regarding \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it {\emph {$\beta $}}{\emph {$\eta $}}}-redex (p. 94)}{6}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Exercises (p. 101)}{8}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Miscellaneous Matters (Chapter 9)}{8}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Equality Axioms (Subsection 1.1)}{8}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Extensionality (Subsection 1.2)}{8}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}D\emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it e\ Re} and \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it De\ Dicto} (Subsection 2)}{9}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Rigidity (Subsection 3)}{9}{subsubsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.5}Stability Conditions (Subsection 4)}{10}{subsubsection.2.2.5}
+\contentsline {section}{\numberline {3}G\"odel's Argument, Formally (Chapter 11)}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Part I - God's Existence is Possible}{10}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}General Definitions}{11}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Axioms}{11}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Theorems}{11}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Part II - God's Existence is Necessary if Possible}{13}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}General Definitions}{13}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Axioms from Part I}{13}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Useful Results from Part I}{14}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Axioms for Part II}{14}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Theorems}{14}{subsubsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.6}Monotheism}{17}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.7}Positive Properties are Necessarily Instantiated}{18}{subsubsection.3.2.7}
+\contentsline {subsubsection}{\numberline {3.2.8}Objections and Criticism}{18}{subsubsection.3.2.8}
+\contentsline {section}{\numberline {4}Fitting's Solution}{19}{section.4}
+\contentsline {subsection}{\numberline {4.1}Implicit Extensionality Assumptions}{19}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}General Definitions}{19}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Part I - God's Existence is Possible}{20}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Part II - God's Existence is Necessary if Possible}{20}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Conclusion - Necessary Existence of God}{22}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Modal Collapse}{23}{subsection.4.6}
