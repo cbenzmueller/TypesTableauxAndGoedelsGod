@@ -1,4 +1,6 @@
 \documentclass[11pt,a4paper]{article}
+\usepackage{authblk}
+%\usepackage{a4wide}
 \usepackage{isabelle,isabellesym}
 
 % further packages required for unusual symbols (see also
@@ -35,9 +37,27 @@
 
 \begin{document}
 
-\title{Formalization in Isabelle/HOL of \\ Types, Tableaus and G\"odel's God}
-\author{David Fuenmayor, Christoph Benzm\"uller}
+\title{Types, Tableaus and G\"odel's God \\ in Isabelle/HOL}
+%\author{David Fuenmayor, Christoph Benzm\"uller}
+\author[1]{David Fuenmayor}
+\author[2]{Christoph Benzm\"uller}
+\affil[1]{Freie Universit\"at Berlin, Germany}
+\affil[2]{University of Luxemburg, Luxemburg \& Freie Universit\"at
+  Berlin, Germany}
+
 \maketitle
+
+\begin{abstract}
+  A computer-formalisation of the most essential parts of Fitting's textbook
+  \emph{Types, Tableaus and G\"odel's Go}d in Isabelle/HOL is
+  presented. In particular, Fitting's variant of the ontological
+  argument is verified and confirmed. This variant avoids the modal
+  collapse, which has been criticised as an undesirable side-effect of Kurt G\"odel's (and
+  Dana Scott's) versions of the ontological argument. Fitting's work
+  is employing an intensional higher-order modal logic, which we
+  shallowly embed here in classical higher-order logic. We then
+  utilize the embedded logic for the formalisation of Fitting's argument.
+\end{abstract}
 
 \tableofcontents
 
@@ -48,8 +68,8 @@
 \input{session}
 
 % optional bibliography
-%\bibliographystyle{abbrv}
-%\bibliography{root}
+\bibliographystyle{abbrv}
+\bibliography{root}
 
 \end{document}
 

@@ -5,17 +5,52 @@ begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e = a b c d]
 (*>*)
 
-section \<open>Embedding of an Intensional Higher-Order Modal Logic\<close>
+section \<open>Introduction\<close>
+
+
+
+(** We present a study in Computational Metaphysics: a computer-formalisation and verification
+of Fitting's emendation of the ontological argument (for the existence of God) as presented in
+his well known textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}. Fitting's argument 
+is an emendation of Kurt G\"odel's modern variant @{cite "GoedelNotes"} (resp. Dana Scott's 
+variant @{cite "ScottNotes"}) of the ontological argument.
+
+The motivation is to avoid the modal collapse @{cite "Sobel,sobel2004logic"}, which has been criticised
+as an undesirable side-effect of the axioms of G\"odel resp. Scott. The modal collapse essentially  
+states that  there are no contingent truths and that everything is determined.
+Several authors (see e.g. @{cite "anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,Hajek,Bjordal"} 
+have proposed emendations of the argument with the aim of maintaining the essential result 
+(the necessary existence of God) while at the same time avoiding the modal collapse. 
+Related work  has 
+formalised several of these variants on the computer and verified or falsified them. For example,
+G\"odel's axioms @{cite "GoedelNotes"} have been shown inconsistent @{cite "IJCAI,C60"}
+while Scott's version has been verfied @{cite "ECAI"}. Further experiments, contributing amongst others
+to the clarification of a related debate between Hajek and Anderson, are presented and discussed in
+@{cite "J23"}. The enabling technique that has been employed in all of these experiments has been
+shallow semantical embeddings of (extensional) higher-order modal logics in classical higher-order
+logic (see @{cite "J23,R59"} and the references therein).
+
+Fitting's emendation also intends to avoid the modal collapse. In contrast to the above emendations, Fitting's
+solution is based on the use of an  intensional as opposed to an extensional higher-order modal logic.
+For our work this imposed the additional challenge to provide an shallow embedding of this more advanced
+logic. The experiments presented below confirm that Fitting's argument as presented in @{cite "Fitting"}
+is valid and that it indeed avoids the modal collapse as a side effect.
+*)
+
+
+
+
+section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
   
-text \<open>The following embedding of HOML in Isabelle/HOL is inspired by the work of @{cite "J23"}.
+(** The following shallow embedding of Intensional Higher-Order Modal Logic (IHOML) in Isabelle/HOL is inspired by the work of @{cite "J23"}.
 We expand this approach to allow for intensional types and actualist quantifiers as employed in Fitting's 
-textbook (@{cite "Fitting"}).\<close>
+textbook (@{cite "Fitting"}). *)
 
 subsection \<open>Declarations\<close>
 
-  typedecl i                    -- \<open>Type for possible worlds\<close>
-  type_synonym io = "(i\<Rightarrow>bool)" -- \<open>Type for formulas whose truth-value is world-dependent\<close>
-  typedecl e  ("\<zero>")             -- \<open>Type for individuals\<close>              
+  typedecl i                    (** Type for possible worlds *)
+  type_synonym io = "(i\<Rightarrow>bool)" (** Type for formulas whose truth-value is world-dependent *)
+  typedecl e  ("\<zero>")             (** Type for individuals *)             
   
   (** Aliases for common unary predicate types: *)
   type_synonym ie =     "(i\<Rightarrow>\<zero>)"             ("\<up>\<zero>")
