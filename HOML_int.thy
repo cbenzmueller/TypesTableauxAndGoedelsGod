@@ -34,7 +34,10 @@ Fitting's emendation also intends to avoid the modal collapse. In contrast to th
 solution is based on the use of an  intensional as opposed to an extensional higher-order modal logic.
 For our work this imposed the additional challenge to provide an shallow embedding of this more advanced
 logic. The experiments presented below confirm that Fitting's argument as presented in @{cite "Fitting"}
-is valid and that it indeed avoids the modal collapse as a side effect.
+is valid and that it avoids the modal collapse as intended.
+
+The work presented here originates from the \emph{Computational Metaphysics} lecture course  
+held at FU Berlin  in Summer 2016.
 *)
 
 
@@ -135,7 +138,7 @@ subsection \<open>Definition of Modal Operators\<close>
     where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
 
 subsection \<open>Definition of the @{text extension_of} Operator\<close>
-(** In contrast to the approach taken in the book (p. 88), the @{text \<down>} operator is embedded as a binary operator
+(** In contrast to the approach taken in Fitting's book (p. 88), the @{text \<down>} operator is embedded as a binary operator
  applying to (world-dependent) atomic formulas whose first argument is a `relativized' term (preceded by @{text \<down>}).
  Depending on the types involved we need to define this operator differently to ensure type correctness.*)   
 
