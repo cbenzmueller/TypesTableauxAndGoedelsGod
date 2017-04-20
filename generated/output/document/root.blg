@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: root.aux
+The style file: abbrv.bst
+Database file #1: root.bib
+Warning--I didn't find a database entry for "Hajek"
+Warning--I didn't find a database entry for "Bjordal"
+Warning--empty volume in GoedelNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
+Warning--empty volume in ScottNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
+You've used 12 entries,
+            2118 wiz_defined-function locations,
+            599 strings with 5852 characters,
+and the built_in function-call counts, 4134 in all, are:
+= -- 412
+> -- 131
+< -- 7
++ -- 51
+- -- 38
+* -- 244
+:= -- 646
+add.period$ -- 40
+call.type$ -- 12
+change.case$ -- 48
+chr.to.int$ -- 0
+cite$ -- 16
+duplicate$ -- 202
+empty$ -- 366
+format.name$ -- 38
+if$ -- 937
+int.to.chr$ -- 0
+int.to.str$ -- 12
+missing$ -- 16
+newline$ -- 63
+num.names$ -- 30
+pop$ -- 69
+preamble$ -- 1
+purify$ -- 40
+quote$ -- 0
+skip$ -- 157
+stack$ -- 0
+substring$ -- 245
+swap$ -- 69
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 40
+warning$ -- 4
+while$ -- 41
+width$ -- 14
+write$ -- 138
+(There were 6 warnings)

@@ -10,3 +10,4 @@ session "FittingBook" = "HOL" +
 	FittingProof	
   document_files
     "root.tex"
+    "root.bib"

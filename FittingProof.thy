@@ -11,9 +11,9 @@ section \<open>Fitting's Solution\<close>
 (**In this section we tackle Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
 especially the problem of Modal Collapse, which has been metaphysically interpreted as implying a rejection of free will.
 Since we are generally commited to the existence of free will (in a pre-theoretical sense), such a result is
-philosophically unappealing and rather seen as a problem in the argument's formalization.*)
+philosophically unappealing and rather seen as a problem in the argument's formalisation.*)
 (**This part of the book still leaves several details unspecified and the reader is thus compelled to fill in the gaps.
-As a result, we came across some premises and theorems allowing for different formalizations and therefore leading to disparate implications.
+As a result, we came across some premises and theorems allowing for different formalisations and therefore leading to disparate implications.
 Only some of those cases are shown here for illustrative purposes. The options chosen were those better suiting argument's validity.*)
   
 subsection \<open>Implicit Extensionality Assumptions\<close>
@@ -52,7 +52,7 @@ lemma True nitpick[satisfy] oops (** Model found: axioms are consistent*)
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
     
-(** @{text "T1"} (Positive properties are possibly instantiated) can be formalized in two different ways:*)    
+(** @{text "T1"} (Positive properties are possibly instantiated) can be formalised in two different ways:*)    
 theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" 
   using A1a A2 by blast (** this is the one used in the book*)
 theorem T1b: "\<lfloor>\<^bold>\<forall>X::\<up>\<langle>\<zero>\<rangle>. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" 
@@ -65,7 +65,7 @@ lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>\<zero
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>Q)\<rfloor>" nitpick oops (** not equivalent! *)
 
     
-(** @{text "T3"} (God exists possibly) can be formalized in two different ways, using a @{text "de re"} or a @{text "de dicto"} reading.*)
+(** @{text "T3"} (God exists possibly) can be formalised in two different ways, using a @{text "de re"} or a @{text "de dicto"} reading.*)
 theorem T3_deRe: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T1a T2 by simp 
 theorem T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" nitpick oops    (** countersatisfiable*)      
 
@@ -106,7 +106,7 @@ lemma "\<lfloor>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow> \<^bold>\<
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" by simp    
     
 (** Theorem 11.26 (Informal Proposition 7) - (possibilist) existence of God implies necessary (actualist) existence. *)
-(** There are two different ways of formalizing this theorem. Both of them are proven valid:*)
+(** There are two different ways of formalising this theorem. Both of them are proven valid:*)
 
 (** First version:*)
 theorem GodExImpliesNecEx_v1: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" 

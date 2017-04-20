@@ -26,8 +26,8 @@ abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<la
 
 subsubsection \<open>Axioms from Part I\<close>  
   
-text\<open>  Note that the only use Gödel makes of axiom A3 is to show that being Godlike is a positive property (@{text "T2"}). 
- We follow therefore Scott's proposal and take (@{text "T2"}) directly as an axiom (@{cite "fitting_book"} p. 152):  \<close>  
+text\<open>  Note that the only use G\"odel makes of axiom A3 is to show that being Godlike is a positive property (@{text "T2"}). 
+ We follow therefore Scott's proposal and take (@{text "T2"}) directly as an axiom:  \<close>  
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and          --\<open>  Axiom 11.3A  \<close>
   A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and           --\<open>  Axiom 11.3B  \<close>

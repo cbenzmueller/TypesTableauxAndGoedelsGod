@@ -11,7 +11,7 @@ section \<open>Introduction\<close>
 
 (** We present a study in Computational Metaphysics: a computer-formalisation and verification
 of Fitting's emendation of the ontological argument (for the existence of God) as presented in
-his well known textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}. Fitting's argument 
+his well-known textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}. Fitting's argument 
 is an emendation of Kurt G\"odel's modern variant @{cite "GoedelNotes"} (resp. Dana Scott's 
 variant @{cite "ScottNotes"}) of the ontological argument.
 
@@ -24,7 +24,7 @@ have proposed emendations of the argument with the aim of maintaining the essent
 Related work  has 
 formalised several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axioms @{cite "GoedelNotes"} have been shown inconsistent @{cite "IJCAI,C60"}
-while Scott's version has been verfied @{cite "ECAI"}. Further experiments, contributing amongst others
+while Scott's version has been verified @{cite "ECAI"}. Further experiments, contributing amongst others
 to the clarification of a related debate between Hajek and Anderson, are presented and discussed in
 @{cite "J23"}. The enabling technique that has been employed in all of these experiments has been
 shallow semantical embeddings of (extensional) higher-order modal logics in classical higher-order
@@ -91,41 +91,40 @@ subsection \<open>Definition of Logical Operators\<close>
     where "\<phi>\<^bold>\<and>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<and>(\<psi> w)"   
   abbreviation mor    :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<or>"50)
     where "\<phi>\<^bold>\<or>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<or>(\<psi> w)"
+  abbreviation mimp   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<rightarrow>"49) 
+    where "\<phi>\<^bold>\<rightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longrightarrow>(\<psi> w)"  
+  abbreviation mequ   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<leftrightarrow>"48)
+    where "\<phi>\<^bold>\<leftrightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longleftrightarrow>(\<psi> w)"
   abbreviation xor:: "bool\<Rightarrow>bool\<Rightarrow>bool" (infixr"\<oplus>"50)
     where "\<phi>\<oplus>\<psi> \<equiv>  (\<phi>\<or>\<psi>) \<and> \<not>(\<phi>\<and>\<psi>)" 
   abbreviation mxor   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<oplus>"50)
     where "\<phi>\<^bold>\<oplus>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<oplus>(\<psi> w)"
-  abbreviation mimp   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<rightarrow>"49) 
-    where "\<phi>\<^bold>\<rightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longrightarrow>(\<psi> w)"  
-  abbreviation mequ   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<leftrightarrow>"48)
-    where "\<phi>\<^bold>\<leftrightarrow>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<longleftrightarrow>(\<psi> w)"  
       
-  (** Possibilist quantifiers:*)    
+subsection \<open>Definition of Posibilist Quantifiers\<close>
+    
   abbreviation mforall   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<forall>")      
     where "\<^bold>\<forall>\<Phi> \<equiv> \<lambda>w.\<forall>x. (\<Phi> x w)"
   abbreviation mexists   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<exists>") 
     where "\<^bold>\<exists>\<Phi> \<equiv> \<lambda>w.\<exists>x. (\<Phi> x w)"
-  (**Binder notation for quantifies:*)
-  abbreviation mforallB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<forall>"[8]9)
+      
+  abbreviation mforallB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<forall>"[8]9) (**Binder notation*)
     where "\<^bold>\<forall>x. \<phi>(x) \<equiv> \<^bold>\<forall>\<phi>"  
   abbreviation mexistsB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<exists>"[8]9)
     where "\<^bold>\<exists>x. \<phi>(x) \<equiv> \<^bold>\<exists>\<phi>" 
       
 subsection \<open>Definition of Actualist Quantifiers\<close>
-(** No polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals. *)
   
 (** The following predicate is used to model actualist quantifiers by restricting domains of quantification.
 Note that since this is a meta-logical concept we never use it in our object language.*)
   consts Exists::"\<up>\<langle>\<zero>\<rangle>" ("existsAt")
   
-    (** Actualist quantifiers*)
+(** Note that no polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals. *)
   abbreviation mforallAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>E")      
     where "\<^bold>\<forall>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<forall>x. (existsAt x w)\<longrightarrow>(\<Phi> x w)"
   abbreviation mexistsAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<exists>\<^sup>E") 
     where "\<^bold>\<exists>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<exists>x. (existsAt x w) \<and> (\<Phi> x w)"
-      
-  (** Binder notation for quantifiers:*)
-  abbreviation mforallActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<forall>\<^sup>E"[8]9)
+
+  abbreviation mforallActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<forall>\<^sup>E"[8]9) (**Binder notation*)
     where "\<^bold>\<forall>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<forall>\<^sup>E\<phi>"     
   abbreviation mexistsActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>E"[8]9)
     where "\<^bold>\<exists>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<exists>\<^sup>E\<phi>"

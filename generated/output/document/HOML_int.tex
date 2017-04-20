@@ -22,7 +22,7 @@
 \begin{isamarkuptext}%
 We present a study in Computational Metaphysics: a computer-formalisation and verification
 of Fitting's emendation of the ontological argument (for the existence of God) as presented in
-his well known textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting}. Fitting's argument 
+his well-known textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting}. Fitting's argument 
 is an emendation of Kurt G\"odel's modern variant \cite{GoedelNotes} (resp. Dana Scott's 
 variant \cite{ScottNotes}) of the ontological argument.
 
@@ -35,7 +35,7 @@ have proposed emendations of the argument with the aim of maintaining the essent
 Related work  has 
 formalised several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axioms \cite{GoedelNotes} have been shown inconsistent \cite{IJCAI,C60}
-while Scott's version has been verfied \cite{ECAI}. Further experiments, contributing amongst others
+while Scott's version has been verified \cite{ECAI}. Further experiments, contributing amongst others
 to the clarification of a related debate between Hajek and Anderson, are presented and discussed in
 \cite{J23}. The enabling technique that has been employed in all of these experiments has been
 shallow semantical embeddings of (extensional) higher-order modal logics in classical higher-order
@@ -45,7 +45,10 @@ Fitting's emendation also intends to avoid the modal collapse. In contrast to th
 solution is based on the use of an  intensional as opposed to an extensional higher-order modal logic.
 For our work this imposed the additional challenge to provide an shallow embedding of this more advanced
 logic. The experiments presented below confirm that Fitting's argument as presented in \cite{Fitting}
-is valid and that it indeed avoids the modal collapse as a side effect.%
+is valid and that it avoids the modal collapse as intended.
+
+The work presented here originates from the \emph{Computational Metaphysics} lecture course  
+held at FU Berlin  in Summer 2016.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsection{Embedding of Intensional Higher-Order Modal Logic%
@@ -145,31 +148,32 @@ Aliases for common binary relation types:%
 \ mor\ \ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymor}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymor}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymor}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ xor{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}bool{\isasymRightarrow}bool{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}{\isasymoplus}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}{\isasymoplus}{\isasympsi}\ {\isasymequiv}\ \ {\isacharparenleft}{\isasymphi}{\isasymor}{\isasympsi}{\isacharparenright}\ {\isasymand}\ {\isasymnot}{\isacharparenleft}{\isasymphi}{\isasymand}{\isasympsi}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mxor\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymoplus}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymoplus}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymoplus}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mimp\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymrightarrow}{\isachardoublequoteclose}{\isadigit{4}}{\isadigit{9}}{\isacharparenright}\ \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\ \ \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mequ\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymleftrightarrow}{\isachardoublequoteclose}{\isadigit{4}}{\isadigit{8}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymleftrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongleftrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-Possibilist quantifiers:%
-\end{isamarkuptext}\isamarkuptrue%
+\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymleftrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongleftrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ xor{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}bool{\isasymRightarrow}bool{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}{\isasymoplus}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
+\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}{\isasymoplus}{\isasympsi}\ {\isasymequiv}\ \ {\isacharparenleft}{\isasymphi}{\isasymor}{\isasympsi}{\isacharparenright}\ {\isasymand}\ {\isasymnot}{\isacharparenleft}{\isasymphi}{\isasymand}{\isasympsi}{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ mxor\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymoplus}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
+\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymoplus}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymoplus}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}%
+\isamarkupsubsection{Definition of Posibilist Quantifiers%
+}
+\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforall\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharparenright}\ \ \ \ \ \ \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexists\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-Binder notation for quantifies:%
-\end{isamarkuptext}\isamarkuptrue%
+\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \ \ \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mforallB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\isanewline
+\ mforallB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\ %
+\isamarkupcmt{Binder notation%
+}
+\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}x{\isachardot}\ {\isasymphi}{\isacharparenleft}x{\isacharparenright}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardoublequoteclose}\ \ \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexistsB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\isanewline
@@ -179,29 +183,26 @@ Binder notation for quantifies:%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-No polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals.%
-\end{isamarkuptext}\isamarkuptrue%
-%
-\begin{isamarkuptext}%
 The following predicate is used to model actualist quantifiers by restricting domains of quantification.
 Note that since this is a meta-logical concept we never use it in our object language.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
 \ Exists{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}existsAt{\isachardoublequoteclose}{\isacharparenright}%
 \begin{isamarkuptext}%
-Actualist quantifiers%
+Note that no polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforallAct\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ \ \ \ \ \ \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}existsAt\ x\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexistsAct\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}existsAt\ x\ w{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-Binder notation for quantifiers:%
-\end{isamarkuptext}\isamarkuptrue%
+\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}existsAt\ x\ w{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mforallActB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\isanewline
+\ mforallActB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\ %
+\isamarkupcmt{Binder notation%
+}
+\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup Ex{\isachardot}\ {\isasymphi}{\isacharparenleft}x{\isacharparenright}\ {\isasymequiv}\ \isactrlbold {\isasymforall}\isactrlsup E{\isasymphi}{\isachardoublequoteclose}\ \ \ \ \ \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexistsActB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\isanewline
@@ -220,7 +221,7 @@ Binder notation for quantifiers:%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In contrast to the approach taken in the book (p. 88), the \isa{{\isasymdown}} operator is embedded as a binary operator
+In contrast to the approach taken in Fitting's book (p. 88), the \isa{{\isasymdown}} operator is embedded as a binary operator
  applying to (world-dependent) atomic formulas whose first argument is a `relativized' term (preceded by \isa{{\isasymdown}}).
  Depending on the types involved we need to define this operator differently to ensure type correctness.%
 \end{isamarkuptext}\isamarkuptrue%

@@ -2,14 +2,15 @@
 \contentsline {section}{\numberline {2}Embedding of Intensional Higher-Order Modal Logic}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Declarations}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Definition of Logical Operators}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Definition of Actualist Quantifiers}{5}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Definition of Modal Operators}{5}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Definition of the \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it extension{\unhbox \voidb@x \hbox {-}}of} Operator}{5}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Definition of Equality}{6}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}Miscellaneous}{6}{subsection.2.7}
-\contentsline {subsection}{\numberline {2.8}Meta-logical Predicates}{6}{subsection.2.8}
-\contentsline {subsection}{\numberline {2.9}Verifying the Embedding}{6}{subsection.2.9}
-\contentsline {subsection}{\numberline {2.10}Useful Definitions for Axiomatization of Further Logics}{7}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.3}Definition of Posibilist Quantifiers}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Definition of Actualist Quantifiers}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Definition of Modal Operators}{5}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Definition of the \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it extension{\unhbox \voidb@x \hbox {-}}of} Operator}{5}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Definition of Equality}{6}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Miscellaneous}{6}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Meta-logical Predicates}{6}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}Verifying the Embedding}{6}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.11}Useful Definitions for Axiomatization of Further Logics}{7}{subsection.2.11}
 \contentsline {section}{\numberline {3}Book Examples}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Modal Logic - Syntax and Semantics (Chapter 7)}{8}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Considerations Regarding \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it {\emph {$\beta $}}{\emph {$\eta $}}}-redex (p. 94)}{8}{subsubsection.3.1.1}

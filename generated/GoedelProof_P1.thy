@@ -11,7 +11,7 @@ section \<open>G\"odel's Argument, Formally (Chapter 11)\<close>
 text\<open> 
  "G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
   from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
-  if possible; and prove God's existence is possible." @{cite "fitting_book"} p. 138. \<close> 
+  if possible; and prove God's existence is possible." @{cite "Fitting"} p. 138. \<close> 
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 
@@ -36,7 +36,7 @@ text\<open>  Definitions of God (later shown to be equivalent under axiom @{text
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
 abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
   
-text\<open>  Definitions needed to formalize @{text "A3"}:  \<close>
+text\<open>  Definitions needed to formalise @{text "A3"}:  \<close>
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
   "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
@@ -116,7 +116,7 @@ lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> int
   using A3implT2_local by smt (* --------- TODO smt is deprecated - replace *)
   
 text\<open>  God is a positive property. Note that this theorem can be axiomatized directly 
- (as proposed by Dana Scott according to @{cite "fitting_book"} p. 152). We will do so for the second part.  \<close>
+ (as noted by Dana Scott). We will do so for the second part.  \<close>
 theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
   
 text\<open>  Theorem 11.17 (Informal Proposition 3) - Possibly God exists:  \<close>
