@@ -7,7 +7,7 @@ session "FittingBook" = "HOL" +
 	ExamplesHOML
 	GoedelProof_P1
 	GoedelProof_P2
-	FittingProof	
+	FittingProof		
   document_files
     "root.tex"
     "root.bib"

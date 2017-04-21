@@ -40,5 +40,5 @@
 \contentsline {subsection}{\numberline {5.2}General Definitions}{21}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Part I - God's Existence is Possible}{21}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Part II - God's Existence is Necessary if Possible}{22}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Conclusion - Necessary Existence of God}{23}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.5}Conclusion - Necessary Existence of God}{24}{subsection.5.5}
 \contentsline {subsection}{\numberline {5.6}Modal Collapse}{24}{subsection.5.6}

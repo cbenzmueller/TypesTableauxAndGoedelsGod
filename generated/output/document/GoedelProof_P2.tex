@@ -156,7 +156,8 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\isa{{\isasymP}} satisfies so-called stability conditions (p. 124). This means it designates rigidly (an essentialist assumption).%
+\isa{{\isasymP}} satisfies the so-called stability conditions in \cite{Fitting}, p. 124. This means
+ \isa{{\isasymP}} designates rigidly (an essentialist assumption).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -182,6 +183,32 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 \endisadelimproof
 \isanewline
 \ \ \ \ \isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ rigidPred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+\ {\isachardoublequoteopen}rigidPred\ {\isasymtau}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ {\isasymbeta}\ \isactrlbold {\isasymapprox}\ z{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isachardoublequoteclose}\isanewline
+\ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}rigidPred\ {\isasymP}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{4}}a\ A{\isadigit{4}}b\ \isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{\isa{{\isasymP}} is therefore rigid%
+}
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
 \ True\ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}satisfy{\isacharbrackright}%
@@ -192,7 +219,7 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 \isatagproof
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{Model found: so far all axioms consistent%
+\isamarkupcmt{Model found: so far all axioms A1-4 consistent%
 }
 %
 \endisatagproof
@@ -543,7 +570,8 @@ Modal Collapse is countersatisfiable until we introduce S5 axioms:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Axiomatizing semantic frame conditions for different modal logics. All axioms together imply an S5 logic:%
+Axiomatizing semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
+ All axioms together imply an \isa{S{\isadigit{5}}} logic.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -572,7 +600,7 @@ Axiomatizing semantic frame conditions for different modal logics. All axioms to
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Using an S5 logic modal collapse (\isa{{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}}) is actually valid (see proof below)%
+Using an \isa{S{\isadigit{5}}} logic modal collapse (\isa{{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}}) is actually valid (see proof below)%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%

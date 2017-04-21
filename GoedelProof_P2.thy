@@ -47,12 +47,19 @@ theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>" us
     
 subsubsection \<open>Axioms for Part II\<close>
         
-(** @{text "\<P>"} satisfies so-called stability conditions (p. 124). This means it designates rigidly (an essentialist assumption). *)
+(** @{text "\<P>"} satisfies the so-called stability conditions in @{cite "Fitting"}, p. 124. This means
+ @{text "\<P>"} designates rigidly (an essentialist assumption).*)
 axiomatization where
       A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** Axiom 11.11 *)
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
     
-lemma True nitpick[satisfy] oops (** Model found: so far all axioms consistent*)
+abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
+ "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
+ 
+lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
+  using A4a A4b by blast (** @{term "\<P>"} is therefore rigid*)
+    
+lemma True nitpick[satisfy] oops (** Model found: so far all axioms A1-4 consistent*)
     
     
 subsubsection \<open>Theorems\<close>
@@ -148,14 +155,15 @@ qed
 (** Modal Collapse is countersatisfiable until we introduce S5 axioms: *)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
   
-(** Axiomatizing semantic frame conditions for different modal logics. All axioms together imply an S5 logic:*)
+(** Axiomatizing semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
+ All axioms together imply an @{term "S5"} logic.*)
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
  symm: "symmetric aRel"
  
 lemma True nitpick[satisfy] oops (** Model found: axioms still consistent*)
-(** Using an S5 logic modal collapse (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see proof below)*)
+(** Using an @{term "S5"} logic modal collapse (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see proof below)*)
     
 (** Some useful rules:*)    
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast

@@ -8,7 +8,7 @@ sledgehammer_params[verbose=true]
   
 section \<open>Fitting's Solution\<close>
   
-(**In this section we tackle Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
+(**In this section we consider Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
 especially the problem of Modal Collapse, which has been metaphysically interpreted as implying a rejection of free will.
 Since we are generally commited to the existence of free will (in a pre-theoretical sense), such a result is
 philosophically unappealing and rather seen as a problem in the argument's formalisation.*)
@@ -76,7 +76,7 @@ lemma assumes T1b: "\<lfloor>\<^bold>\<forall>X. \<P> \<down>X \<^bold>\<rightar
     
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
   
-(** In this variant @{term "\<P>"} also designates rigidly.*)
+(** In this variant @{term "\<P>"} also designates rigidly, as shown in the last section.*)
 axiomatization where
       A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** Axiom 11.11 *)
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
@@ -176,10 +176,10 @@ lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\
   nitpick[card 't=1, card i=2] oops (** countermodel found in @{text "K"}*)
     
 axiomatization where
-   S5: "equivalence aRel" (**assume accesibility relation is an equivalence *)
+   S5: "equivalence aRel" (**assume @{text "S5"} logic *)
    
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countermodel found in @{text "S5"}*)
+  nitpick[card 't=1, card i=2] oops (** countermodel also found in @{text "S5"}*)
 
 (*<*)
 end

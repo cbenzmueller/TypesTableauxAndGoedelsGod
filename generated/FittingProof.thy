@@ -8,7 +8,7 @@ sledgehammer_params[verbose=true]
   
 section \<open>Fitting's Solution\<close>
   
-text\<open> In this section we tackle Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
+text\<open> In this section we consider Fitting's solution to the objections raised in his previous discussion of G\"odel's Argument (pp. 164-9), 
 especially the problem of Modal Collapse, which has been metaphysically interpreted as implying a rejection of free will.
 Since we are generally commited to the existence of free will (in a pre-theoretical sense), such a result is
 philosophically unappealing and rather seen as a problem in the argument's formalisation. \<close>
@@ -76,7 +76,7 @@ lemma assumes T1b: "\<lfloor>\<^bold>\<forall>X. \<P> \<down>X \<^bold>\<rightar
     
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
   
-text\<open>  In this variant @{term "\<P>"} also designates rigidly. \<close>
+text\<open>  In this variant @{term "\<P>"} also designates rigidly, as shown in the last section. \<close>
 axiomatization where
       A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  Axiom 11.11  \<close>
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
@@ -176,10 +176,10 @@ lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\
   nitpick[card 't=1, card i=2] oops --\<open>  countermodel found in @{text "K"} \<close>
     
 axiomatization where
-   S5: "equivalence aRel" --\<open> assume accesibility relation is an equivalence  \<close>
+   S5: "equivalence aRel" --\<open> assume @{text "S5"} logic  \<close>
    
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops --\<open>  countermodel found in @{text "S5"} \<close>
+  nitpick[card 't=1, card i=2] oops --\<open>  countermodel also found in @{text "S5"} \<close>
 
 (*<*)
 end
