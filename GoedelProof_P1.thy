@@ -6,7 +6,7 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e 
 sledgehammer_params[verbose=true]
 (*>*)  
 
-section \<open>G\"odel's Argument, Formally (Chapter 11)\<close>
+section \<open>G\"odel's Argument, Formally\<close>
 
 (**
  "G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
@@ -15,7 +15,7 @@ section \<open>G\"odel's Argument, Formally (Chapter 11)\<close>
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 
-(** We divide G\"odel's Argument as presented in the book in two parts. For the first one, while Leibniz provides
+(** We divide G\"odel's Argument as presented in this textbook (Chapter 11) in two parts. For the first one, while Leibniz provides
   some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
  (T1) "Every positive property is possibly instantiated", which together with (T2) "God is a positive property"
   directly implies the conclusion. In order to prove T1 G\"odel assumes A2: "Any property entailed by a positive property is positive".*)

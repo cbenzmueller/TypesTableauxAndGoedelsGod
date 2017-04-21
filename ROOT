@@ -8,6 +8,7 @@ session "FittingBook" = "HOL" +
 	GoedelProof_P1
 	GoedelProof_P2
 	FittingProof		
+	AndersonProof
   document_files
     "root.tex"
     "root.bib"

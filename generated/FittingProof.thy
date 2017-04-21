@@ -152,9 +152,9 @@ lemma T4_v2:  "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E
   using possExImpliesNecEx_v2 by simp
     
     
-subsection \<open>Conclusion - Necessary Existence of God\<close>        
+subsection \<open>Conclusion (@{text "De re"} and @{text "De dicto"})\<close>        
     
-text\<open>  Version I - @{text "de dicto"} reading:  \<close>    
+text\<open>  Version I - Necessary Existence of God (@{text "de dicto"} reading):  \<close>    
 lemma GodNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>"
   using GodExImpliesNecEx_v1 T3_deRe by fastforce --\<open>  Corollary 11.28 \<close>
 lemma God_starNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G*\<rfloor>"
@@ -162,7 +162,7 @@ lemma God_starNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<
 lemma "\<lfloor>\<^bold>\<box>(\<lambda>X. \<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>"
   using God_starNecExists_v1 by simp --\<open> @{text "de dicto"} shown here explicitly \<close>
     
-text\<open>  Version II - @{text "de re"} reading:  \<close>    
+text\<open>  Version II - Necessary Existence of God (@{text "de re"} reading)  \<close>    
 lemma GodNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>"
   using T3_deRe T4_v2 by blast
 lemma God_starNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>"

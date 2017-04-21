@@ -6,11 +6,11 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e =
 sledgehammer_params[verbose=true]
 (*>*)
 
-section \<open>Book Examples\<close>
+section \<open>Textbook Examples\<close>
   
 (** In this section we verify that our embedded logic works as intended by proving the examples provided in the book.
  In many cases, for good mesure, we consider further theorems derived from the original ones. We were able to confirm that all results
- (proves or counterexamples) agree with our expectations.*)
+ (proofs or counterexamples) agree with our expectations.*)
   
 subsection \<open>Modal Logic - Syntax and Semantics (Chapter 7)\<close>
  

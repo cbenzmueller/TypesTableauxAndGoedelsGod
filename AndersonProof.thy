@@ -61,9 +61,6 @@ lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<righta
   using A4a symm by auto (**note only symmetry is needed (@{term "B"} axiom) *)
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
   using A4a A4b by blast (**@{term "\<P>"} is therefore rigid in a @{term "B"} logic*)
-  
-    
-subsubsection \<open>Theorems\<close>
 
 (** Essence, Anderson Version (Definition 11.34)*)
 abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where
@@ -77,21 +74,27 @@ abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup
 (*abbreviation beingIdenticalTo::"\<zero>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("id") where
   "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"  note that @{term "id"} is a rigid predicate*)  
     
-(* Theorem 2. from Anderson (1990)
-If something is God-like, then the property of being God-like
-is an essence of that thing.
-Proof. Suppose that something g is God-like and let Q be any property of
-x. Then Q is positive by the lemma. Now by definition (of "God-like"),
-necessarily if Q is positive, anything which is God-like has Q. Hence, if
-necessarily Q is positive, then necessarily anything which is God-like has Q
-(by modal logic). But by Axiom 4, if Q is positive, necessarily Q is positive.
-Therefore, necessarily Q is positive. So necessarily anything which is God-
-like has Q - i.e., the property of being God-like entails Q. Thus we have
-shown that any property of g is entailed by the property of being God-like.
-So, by the definition of "essence," the property of being God-like is an
-essence of anything which has that property.*)
-    
-(** Theorem 11.36 *)
+(** Theorem 11.36 - If g is God-like, then the property of being God-like is the essence of g.*)
+
+(**As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
+For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
+given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"}, Theorem 2*, p. 296)*)
+(*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
+by definition (of "God-like*"), that property is positive. But necessarily, if
+Q is positive, then if anything is God-like*, then it has Q -again by the
+definition of "God-like* ," together with the fact that if something has a
+property necessarily, then it has the property. But if a property is positive,
+then it is necessarily positive (Axiom 4). Hence, if Q is positive, then it is
+entailed by being God-like* (by modal logic-as in the original Theorem 2).
+But Q is positive and hence is entailed by being God-like*. Thus we have
+proved that if an entity is God-like* and has a property essentially, then that
+property is entailed by the property of being God-like*.
+Suppose a property Q is entailed by the property of being God-like*. Then
+Q is positive by Axioms 2 and 3* and therefore, since g is God-like*, g has
+Q necessarily (by the definition of "God-like*"). Hence, if something is
+God-like*, it has a property essentially if and only if that property is entailed
+by being God-like-i.e., God-likeness* is an essence* of that thing.
+Q.E.D.*)
 theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)\<rfloor>"
 proof -
 {
@@ -99,12 +102,54 @@ proof -
   {
     fix g
     {
-    assume "G\<^sup>A g w"
-    hence "\<forall>Y. (\<P> Y w) \<longleftrightarrow>  (\<^bold>\<box>(Y g)) w" by auto
-    then obtain Q where 1: "(\<P> Q w) \<longleftrightarrow>  (\<^bold>\<box>(Q g)) w" ..
-     
-      (* \<dots>*)  
-      have "\<E>\<^sup>A G\<^sup>A g w" sorry
+      assume "G\<^sup>A g w"
+      hence 1: "\<forall>Y. (\<P> Y w) \<longleftrightarrow> (\<^bold>\<box>(Y g)) w" by simp
+      {
+        fix Q
+        from 1 have 2: "(\<P> Q w) \<longleftrightarrow> (\<^bold>\<box>(Q g)) w" by (rule allE)
+        have  "(\<^bold>\<box>(Q g)) w \<longleftrightarrow> (G\<^sup>A \<Rrightarrow> Q) w" (**we need to prove @{text "\<rightarrow>"} and @{text "\<leftarrow>"}*)
+        proof
+            assume "(\<^bold>\<box>(Q g)) w" (**Suppose g is God-like and necessarily has Q*)
+            hence 3: "(\<P> Q w)" using 2 by simp (** Then Q is positive*)
+            
+            {
+              fix u
+              have "(\<P> Q u) \<longrightarrow> (\<forall>x. G\<^sup>A x u \<longrightarrow> (\<^bold>\<box>(Q x)) u)" 
+                by auto (**using the definition of God-like*)
+              have "(\<P> Q u) \<longrightarrow> (\<forall>x. G\<^sup>A x u \<longrightarrow> ((Q x)) u)" 
+                using refl by auto (**and using @{text "\<box>(\<phi> x) \<longrightarrow> \<phi> x"}*)
+            }    
+            hence "\<forall>z. (\<P> Q z) \<longrightarrow> (\<forall>x. G\<^sup>A x z \<longrightarrow> Q x z)" by (rule allI)
+            hence "\<lfloor>\<P> Q \<^bold>\<rightarrow> (\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> Q x)\<rfloor>"
+              by auto (**if Q is positive, then whatever is God-like has Q*)
+            hence "\<lfloor>\<^bold>\<box>(\<P> Q \<^bold>\<rightarrow> (\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> Q x))\<rfloor>" by (rule NEC) 
+            
+            hence "\<lfloor>(\<^bold>\<box>(\<P> Q)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> Q x)\<rfloor>" using K by auto
+            hence "\<lfloor>(\<^bold>\<box>(\<P> Q)) \<^bold>\<rightarrow> G\<^sup>A \<Rrightarrow> Q\<rfloor>" by simp
+            hence "((\<^bold>\<box>(\<P> Q)) \<^bold>\<rightarrow> G\<^sup>A \<Rrightarrow> Q) w" by (rule allE)
+            hence 4: "(\<^bold>\<box>(\<P> Q)) w \<longrightarrow> (G\<^sup>A \<Rrightarrow> Q) w" by simp (*if a property is necessarily positive, then it is entailed by being God-like*)
+            have "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>" by (rule A4a) (** using axiom 4*)
+            hence "(\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> (\<^bold>\<box>(\<P> X))) w" by (rule allE)
+            hence "\<P> Q w \<longrightarrow> (\<^bold>\<box>(\<P> Q)) w" by (rule allE)
+            hence "\<P> Q w \<longrightarrow> (G\<^sup>A \<Rrightarrow> Q) w" using 4 by simp (*if Q is positive, then it is entailed by being God-like*)
+            thus "(G\<^sup>A \<Rrightarrow> Q) w" using 3 by (rule mp) (**@{text "\<rightarrow>"} direction*)
+         next
+           assume 5: "(G\<^sup>A \<Rrightarrow> Q) w" (**Suppose Q is entailed by being God-like*)
+           have "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" by (rule A2)
+           hence "(\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y) w" by (rule allE)
+           hence "\<forall>X Y. (\<P> X w \<and> (X \<Rrightarrow> Y) w) \<longrightarrow> \<P> Y w" by simp
+           hence "\<forall>Y. (\<P> G\<^sup>A w \<and> (G\<^sup>A \<Rrightarrow> Y) w) \<longrightarrow> \<P> Y w" by (rule allE)
+           hence 6: "(\<P> G\<^sup>A w \<and> (G\<^sup>A \<Rrightarrow> Q) w) \<longrightarrow> \<P> Q w" by (rule allE)
+           have "\<lfloor>\<P> G\<^sup>A\<rfloor>" by (rule T2)
+           hence "\<P> G\<^sup>A w" by (rule allE)
+           hence "\<P> G\<^sup>A w \<and> (G\<^sup>A \<Rrightarrow> Q) w" using 5 by (rule conjI)
+           from 6 this have "\<P> Q w" by (rule mp) (**Q is positive by A2 and T2*)
+           thus "(\<^bold>\<box>(Q g)) w" using 2 by simp (*@{text "\<leftarrow>"} direction *)
+         qed    
+     } 
+     hence  "\<forall>Z. (\<^bold>\<box>(Z g)) w \<longleftrightarrow> (G\<^sup>A \<Rrightarrow> Z) w" by (rule allI)
+     hence "(\<^bold>\<forall>Z. \<^bold>\<box>(Z g) \<^bold>\<leftrightarrow>  G\<^sup>A \<Rrightarrow> Z) w" by simp
+     hence "\<E>\<^sup>A G\<^sup>A g w" by simp
     }
     hence "G\<^sup>A g w  \<longrightarrow> \<E>\<^sup>A G\<^sup>A g w " by (rule impI)
   }
@@ -112,22 +157,6 @@ proof -
 }
  thus ?thesis by (rule allI) 
 qed
-
-(*proof (rule ccontr)
-  assume "\<not>\<lfloor>\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)\<rfloor>"
-  hence "\<exists>w. \<not>((\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)) w)" by simp
-  then obtain w where "\<not>((\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)) w)" ..
-  hence "\<exists>x. G\<^sup>A x w \<and> \<not>(\<E>\<^sup>A G\<^sup>A x w)" by auto
-  then obtain g where 1: "G\<^sup>A g w \<and> \<not>(\<E>\<^sup>A G\<^sup>A g w)" ..
-  hence 2: "G\<^sup>A g w" by (rule conjunct1)
-  from 1 have "\<not>(\<E>\<^sup>A G\<^sup>A g w)" by (rule conjunct2)
-  hence "\<not>(\<^bold>\<forall>Z. \<^bold>\<box>(Z g) \<^bold>\<leftrightarrow> G\<^sup>A \<Rrightarrow> Z) w" by auto
-  hence "\<exists>Z.\<not>((\<forall>v. (w r v) \<longrightarrow>(Z g v)) \<longleftrightarrow> ((G\<^sup>A \<Rrightarrow> Z) w))" by auto
-  then obtain Q where "\<not>((\<forall>v. (w r v) \<longrightarrow>(Q g v)) \<longleftrightarrow> ((G\<^sup>A \<Rrightarrow> Q) w))" ..    
-  (* ...*)
-  thus False sorry
-qed*)
-
 
 (** Axiom 11.37 (Anderson's Version of 11.25)*)
 axiomatization where 
@@ -143,11 +172,11 @@ proof -
   {
     assume "\<exists>x. G\<^sup>A x w"
     then obtain g where 1: "G\<^sup>A g w" ..
-    hence "NE\<^sup>A g w" using A5 by blast                     (** Axiom 11.25*)
+    hence "NE\<^sup>A g w" using A5 by blast                  (** Axiom 11.25*)
     hence "\<forall>Y. (\<E>\<^sup>A Y g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w" by simp
     hence 2: "(\<E>\<^sup>A G\<^sup>A g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A) w" by (rule allE)
     have  "(\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)) w" using GodIsEssential
-      by (rule allE)     (** GodIsEssential follows from Axioms 11.11 and 11.3B *)
+      by (rule allE) (** GodIsEssential follows from Axioms 11.11 and 11.3B *)
     hence  "(G\<^sup>A g \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A g)) w" by (rule allE)
     hence  "G\<^sup>A g w \<longrightarrow> \<E>\<^sup>A G\<^sup>A g w"  by blast
     from this 1 have 3: "\<E>\<^sup>A G\<^sup>A g w" by (rule mp)
@@ -181,7 +210,7 @@ lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<lon
 (** Conclusion - Necessary (actualist) existence of God: *)    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis    
     
-subsubsection \<open>Modal Collapse\<close>
+subsection \<open>Modal Collapse\<close>
   
 (** Modal Collapse is countersatisfiable *)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
