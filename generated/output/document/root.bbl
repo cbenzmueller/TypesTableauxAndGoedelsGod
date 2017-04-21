@@ -45,6 +45,12 @@ C.~Benzm{\"u}ller and B.~Woltzenlogel~Paleo.
 \newblock In M.~Helmert and F.~Wotawa, editors, {\em KI 2016: Advances in
   Artificial Intelligence, Proceedings}, LNCS, Berlin, Germany, 2016. Springer.
 
+\bibitem{bjordal99}
+F.~Bjørdal.
+\newblock Understanding gödel’s ontological argument.
+\newblock In T.~Childers, editor, {\em The Logica Yearbook 1998}. Filosofia,
+  1999.
+
 \bibitem{Fitting}
 M.~Fitting.
 \newblock {\em Types, Tableaux and G\"odel's God}.
@@ -54,6 +60,11 @@ M.~Fitting.
 K.~G\"odel.
 \newblock {\em Appx.A: Notes in Kurt G\"odel's Hand}, pages 144--145.
 \newblock In  \cite{sobel2004logic}, 2004.
+
+\bibitem{Hajek2002}
+P.~H{\'{a}}jek.
+\newblock A new small emendation of g{\"{o}}del's ontological proof.
+\newblock {\em Studia Logica}, 71(2):149--164, 2002.
 
 \bibitem{ScottNotes}
 D.~Scott.
