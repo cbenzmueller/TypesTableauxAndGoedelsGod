@@ -111,9 +111,12 @@ proof -
   thus ?thesis by (rule allI)
 qed    
 
+(** Useful lemma: local consequence implies global consequence*)
+lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
+    
 (** @{text "A3"} implies @{text "P(G)"} (as global consequence):*)
-lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>"
-  using A3implT2_local by smt (* --------- TODO smt is deprecated - replace *)
+lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>" 
+  using A3implT2_local by (rule localImpliesGlobal) 
   
 (** God is a positive property. Note that this theorem can be axiomatized directly 
  (as noted by Dana Scott). We will do so for the second part. *)
