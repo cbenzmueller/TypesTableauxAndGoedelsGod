@@ -1,6 +1,6 @@
 (*<*)
 theory AndersonProof  
-imports HOML_int
+imports IHOML
 begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 4,  atoms e = a b c d]
 sledgehammer_params[verbose=true]
@@ -18,7 +18,6 @@ abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!")
   
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
   
-text\<open>  Godlike, Anderson Version (Definition 11.33)  \<close>    
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G\<^sup>A") where "G\<^sup>A \<equiv> \<lambda>x. \<^bold>\<forall>Y. (\<P> Y) \<^bold>\<leftrightarrow> \<^bold>\<box>(Y x)"
   
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where
@@ -40,13 +39,13 @@ theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfl
     
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
         
-text\<open>  @{text "\<P>"} now satisfies only one of the stability conditions (p. 124). But since the argument uses an @{text "S5"} logic, 
-the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid.  \<close>
+text\<open>  @{text "\<P>"} now satisfies only one of the stability conditions. But since the argument uses an \emph{S5} logic, 
+the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid (see p. 124 in textbook).  \<close>
 axiomatization where
   A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  Axiom 11.11  \<close>
       
-text\<open>  Axiomatizing semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
- All axioms together imply an @{term "S5"} logic. \<close>
+text\<open>  We further axiomatize semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
+ All axioms together imply an \emph{S5} logic. \<close>
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
@@ -58,9 +57,9 @@ abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
  "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
 
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" 
-  using A4a symm by auto --\<open> note only symmetry is needed (@{term "B"} axiom)  \<close>
+  using A4a symm by auto --\<open> note only symmetry is needed (\emph{B} axiom)  \<close>
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
-  using A4a A4b by blast --\<open> @{term "\<P>"} is therefore rigid in a @{term "B"} logic \<close>
+  using A4a A4b by blast --\<open> @{text "\<P>"} is therefore rigid in a \emph{B} logic \<close>
 
 text\<open>  Essence, Anderson Version (Definition 11.34) \<close>
 abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where
@@ -70,15 +69,12 @@ abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<r
 text\<open>  Necessary Existence, Anderson Version (Definition 11.35)  \<close>  
 abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup>A") 
   where "NE\<^sup>A x  \<equiv> (\<lambda>w. (\<^bold>\<forall>Y.  \<E>\<^sup>A Y x \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w)"
-  
-(*abbreviation beingIdenticalTo::"\<zero>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("id") where
-  "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"  note that @{term "id"} is a rigid predicate*)  
     
 text\<open>  Theorem 11.36 - If g is God-like, then the property of being God-like is the essence of g. \<close>
 
 text\<open> As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
 For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
-given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"}, Theorem 2*, p. 296) \<close>
+given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"} , Theorem 2*, p. 296) \<close>
 (*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
 by definition (of "God-like*"), that property is positive. But necessarily, if
 Q is positive, then if anything is God-like*, then it has Q -again by the
@@ -204,8 +200,11 @@ proof -
   thus ?thesis by (rule modal_trans)
 qed
 
+text\<open>  Useful lemma: local consequence implies global consequence \<close>
+lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
+
 lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using possExistenceImpliesNecEx 
-    by simp --\<open>  global consequence \<close>
+    by (rule localImpliesGlobal) --\<open>  global consequence \<close>
   
 text\<open>  Conclusion - Necessary (actualist) existence of God:  \<close>    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis    

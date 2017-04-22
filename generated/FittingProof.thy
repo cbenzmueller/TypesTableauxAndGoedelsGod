@@ -1,6 +1,6 @@
 (*<*)
 theory FittingProof  
-imports HOML_int
+imports IHOML
 begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 4,  atoms e = a b c d]
 sledgehammer_params[verbose=true]
@@ -52,7 +52,7 @@ lemma True nitpick[satisfy] oops --\<open>  Model found: axioms are consistent \
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
     
-text\<open>  @{text "T1"} (Positive properties are possibly instantiated) can be formalised in two different ways: \<close>    
+text\<open>  \emph{T1} (Positive properties are possibly instantiated) can be formalised in two different ways: \<close>    
 theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" 
   using A1a A2 by blast --\<open>  this is the one used in the book \<close>
 theorem T1b: "\<lfloor>\<^bold>\<forall>X::\<up>\<langle>\<zero>\<rangle>. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" 
@@ -65,18 +65,18 @@ lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>\<zero
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E (Q::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<leftrightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>Q)\<rfloor>" nitpick oops --\<open>  not equivalent!  \<close>
 
     
-text\<open>  @{text "T3"} (God exists possibly) can be formalised in two different ways, using a @{text "de re"} or a @{text "de dicto"} reading. \<close>
+text\<open>  \emph{T3} (God exists possibly) can be formalised in two different ways, using a \emph{de re} or a \emph{de dicto} reading. \<close>
 theorem T3_deRe: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T1a T2 by simp 
 theorem T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" nitpick oops    --\<open>  countersatisfiable \<close>      
 
 text\<open>  From the last two theorems, we think @{text "T3_deRe"} should be the version originally implied in the book,
- since @{text "T3_deDicto"} is not valid (unless @{text "T1b"} were valid but it isn't) \<close>
+ since @{text "T3_deDicto"} is not valid (\emph{T1b} were valid but it isn't) \<close>
 lemma assumes T1b: "\<lfloor>\<^bold>\<forall>X. \<P> \<down>X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. X z)\<rfloor>" 
    shows T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" using assms T2 by simp
     
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
   
-text\<open>  In this variant @{term "\<P>"} also designates rigidly, as shown in the last section. \<close>
+text\<open>  In this variant @{text "\<P>"} also designates rigidly, as shown in the last section. \<close>
 axiomatization where
       A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  Axiom 11.11  \<close>
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
@@ -137,7 +137,7 @@ theorem GodExImpliesNecEx_v2: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bo
   using A4a GodExImpliesNecEx_v1 by metis
     
     
-text\<open>  Compared to Goedel's argument, the following theorems can be proven in @{text "K"} logic (note that S5 no longer needed):  \<close>
+text\<open>  Compared to Goedel's argument, the following theorems can be proven in \emph{K} logic (note that S5 no longer needed):  \<close>
 
 text\<open>  Theorem 11.27 - Informal Proposition 8  \<close> 
 theorem possExImpliesNecEx_v1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>"
@@ -152,34 +152,34 @@ lemma T4_v2:  "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E
   using possExImpliesNecEx_v2 by simp
     
     
-subsection \<open>Conclusion (@{text "De re"} and @{text "De dicto"})\<close>        
+subsection \<open>Conclusion (\emph{De Re} and \emph{De Dicto} Reading)\<close>        
     
-text\<open>  Version I - Necessary Existence of God (@{text "de dicto"} reading):  \<close>    
+text\<open>  Version I - Necessary Existence of God (\emph{de dicto}):  \<close>    
 lemma GodNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>"
   using GodExImpliesNecEx_v1 T3_deRe by fastforce --\<open>  Corollary 11.28 \<close>
 lemma God_starNecExists_v1: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G*\<rfloor>"
   using GodNecExists_v1 GodDefsAreEquivalent by simp
 lemma "\<lfloor>\<^bold>\<box>(\<lambda>X. \<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>"
-  using God_starNecExists_v1 by simp --\<open> @{text "de dicto"} shown here explicitly \<close>
+  using God_starNecExists_v1 by simp --\<open> \emph{de dicto} shown here explicitly \<close>
     
-text\<open>  Version II - Necessary Existence of God (@{text "de re"} reading)  \<close>    
+text\<open>  Version II - Necessary Existence of God (\emph{de re})  \<close>    
 lemma GodNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>"
   using T3_deRe T4_v2 by blast
 lemma God_starNecExists_v2: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G*\<rfloor>"
   using GodNecExists_v2 GodDefsAreEquivalent by simp
 
 subsection \<open>Modal Collapse\<close>
-text\<open>  Modal Collapse is countersatisfiable even in @{text "S5"}. Note that countermodels with a cardinality of one 
+text\<open>  Modal Collapse is countersatisfiable even in \emph{S5}. Note that countermodels with a cardinality of one 
 for the domain of ground-level objects are found by Nitpick (the countermodel shown in the book has cardinality of two). \<close>
     
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops --\<open>  countermodel found in @{text "K"} \<close>
+  nitpick[card 't=1, card i=2] oops --\<open>  countermodel found in \emph{K} \<close>
     
 axiomatization where
-   S5: "equivalence aRel" --\<open> assume @{text "S5"} logic  \<close>
+   S5: "equivalence aRel" --\<open> assume \emph{S5} logic  \<close>
    
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops --\<open>  countermodel also found in @{text "S5"} \<close>
+  nitpick[card 't=1, card i=2] oops --\<open>  countermodel also found in \emph{S5} \<close>
 
 (*<*)
 end

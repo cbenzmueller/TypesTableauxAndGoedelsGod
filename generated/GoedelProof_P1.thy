@@ -1,6 +1,6 @@
 (*<*)
 theory GoedelProof_P1
-imports HOML_int
+imports IHOML
 begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e = a b c d]
 sledgehammer_params[verbose=true]
@@ -17,10 +17,10 @@ subsection \<open>Part I - God's Existence is Possible\<close>
 
 text\<open>  We divide G\"odel's Argument as presented in this textbook (Chapter 11) in two parts. For the first one, while Leibniz provides
   some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
- (T1) "Every positive property is possibly instantiated", which together with (T2) "God is a positive property"
-  directly implies the conclusion. In order to prove T1 G\"odel assumes A2: "Any property entailed by a positive property is positive". \<close>
+ \emph{(T1) Every positive property is possibly instantiated}, which together with \emph{(T2) God is a positive property}
+  directly implies the conclusion. In order to prove \emph{T1} G\"odel assumes \emph{A2: Any property entailed by a positive property is positive}. \<close>
 text\<open>  We are currently contemplating a follow-up analysis of the philosophical implications of these axioms,
- which may encompass some criticism of the notion of property entailment used by G\"odel throughout the argument. \<close>
+ which encompasses some criticism of the notion of \emph{property entailment} used by G\"odel throughout the argument. \<close>
   
 subsubsection \<open>General Definitions\<close>
                 
@@ -32,11 +32,11 @@ lemma "E! x w \<longleftrightarrow> existsAt x w"
 
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") --\<open>  Positiveness/Perfection  \<close>
   
-text\<open>  Definitions of God (later shown to be equivalent under axiom @{text "A1b"}):  \<close>    
+text\<open>  Definitions of God (later shown to be equivalent under axiom \emph{A1b}):  \<close>    
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
 abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
   
-text\<open>  Definitions needed to formalise @{text "A3"}:  \<close>
+text\<open>  Definitions needed to formalise \emph{A3}:  \<close>
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
   "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
@@ -54,7 +54,7 @@ axiomatization where
 
 lemma True nitpick[satisfy] oops       --\<open>  Model found: axioms are consistent \<close>
     
-lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast --\<open>  axioms already imply @{text "D"} axiom  \<close>
+lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast --\<open>  axioms already imply \emph{D} axiom  \<close>
 lemma "\<lfloor>D\<rfloor>" using A1a A3 by metis
 
 subsubsection \<open>Theorems\<close>
@@ -85,13 +85,13 @@ lemma "\<lfloor>\<^bold>\<not>\<P> (\<lambda>x w. \<not>x = x)\<rfloor>"  using 
 text\<open>  Proposition 11.8 (Informal Proposition 1) - Positive properties are possibly instantiated:  \<close>
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
     
-text\<open>  Proposition 11.14 - Both defs (@{text "God/God*"}) are equivalent. For improved performance we may prefer to use one or the other:  \<close>
+text\<open>  Proposition 11.14 - Both defs (\emph{God/God*}) are equivalent. For improved performance we may prefer to use one or the other:  \<close>
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by force 
 
-text\<open>  Proposition 11.15 - Possibilist existence of @{text "God*"} directly implies @{text "A1b"}:  \<close>    
+text\<open>  Proposition 11.15 - Possibilist existence of \emph{God} directly implies \emph{A1b}:  \<close>    
 lemma "\<lfloor>\<^bold>\<exists> G* \<^bold>\<rightarrow> (\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X))\<rfloor>" by meson
 
-text\<open>  Proposition 11.16 - @{text "A3"} implies @{text "P(G)"} (local consequence):   \<close>   
+text\<open>  Proposition 11.16 - \emph{A3} implies \emph{P(G)} (local consequence):   \<close>   
 lemma A3implT2_local: "\<lfloor>(\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X) \<^bold>\<rightarrow> \<P> G\<rfloor>"
 proof -
   {
@@ -111,11 +111,14 @@ proof -
   thus ?thesis by (rule allI)
 qed    
 
-text\<open>  @{text "A3"} implies @{text "P(G)"} (as global consequence): \<close>
-lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>"
-  using A3implT2_local by smt (* --------- TODO smt is deprecated - replace *)
+text\<open>  Useful lemma: local consequence implies global consequence. \<close>
+lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
+    
+text\<open>  \emph{A3} implies @{text "P(G)"} (as global consequence): \<close>
+lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>" 
+  using A3implT2_local by (rule localImpliesGlobal) 
   
-text\<open>  God is a positive property. Note that this theorem can be axiomatized directly 
+text\<open>  Being Godlike is a positive property. Note that this theorem can be axiomatized directly 
  (as noted by Dana Scott). We will do so for the second part.  \<close>
 theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
   

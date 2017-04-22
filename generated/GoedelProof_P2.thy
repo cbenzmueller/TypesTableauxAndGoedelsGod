@@ -1,6 +1,6 @@
 (*<*)
 theory GoedelProof_P2
-imports HOML_int
+imports IHOML
 begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e = a b c d]
 sledgehammer_params[verbose=true]
@@ -26,8 +26,8 @@ abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<la
 
 subsubsection \<open>Axioms from Part I\<close>  
   
-text\<open>  Note that the only use G\"odel makes of axiom A3 is to show that being Godlike is a positive property (@{text "T2"}). 
- We follow therefore Scott's proposal and take (@{text "T2"}) directly as an axiom:  \<close>  
+text\<open>  Note that the only use G\"odel makes of axiom A3 is to show that being Godlike is a positive property (\emph{T2}). 
+ We follow therefore Scott's proposal and take (\emph{T2}) directly as an axiom:  \<close>  
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and          --\<open>  Axiom 11.3A  \<close>
   A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and           --\<open>  Axiom 11.3B  \<close>
@@ -67,7 +67,7 @@ subsubsection \<open>Theorems\<close>
 abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>") where
   "\<E> Y x \<equiv> (Y x) \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y \<Rrightarrow> Z)"
 abbreviation beingIdenticalTo::"\<zero>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("id") where
-  "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"  --\<open>  note that @{term "id"} is a rigid predicate \<close>  
+  "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"  --\<open>  note that \emph{id} is a rigid predicate \<close>  
 
 text\<open>  Theorem 11.20 - Informal Proposition 5  \<close>
 theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)\<rfloor>" using A1b A4a by metis
@@ -156,14 +156,14 @@ text\<open>  Modal Collapse is countersatisfiable until we introduce S5 axioms: 
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
   
 text\<open>  Axiomatizing semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
- All axioms together imply an @{term "S5"} logic. \<close>
+ All axioms together imply an \emph{S5} logic. \<close>
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
  symm: "symmetric aRel"
  
 lemma True nitpick[satisfy] oops --\<open>  Model found: axioms still consistent \<close>
-text\<open>  Using an @{term "S5"} logic modal collapse (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see proof below) \<close>
+text\<open>  Using an \emph{S5} logic, modal collapse (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see proof below) \<close>
     
 text\<open>  Some useful rules: \<close>    
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
@@ -181,8 +181,11 @@ proof -
   thus ?thesis by (rule modal_trans)
 qed
 
+text\<open>  Useful lemma: local consequence implies global consequence \<close>
+lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
+
 lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using possExistenceImpliesNecEx 
-    by simp --\<open>  global consequence \<close>
+    by (rule localImpliesGlobal)  --\<open>  global consequence \<close>
   
 text\<open>  Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):  \<close>    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T3 T4 by metis    

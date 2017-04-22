@@ -3,8 +3,8 @@ session "FittingBook" = "HOL" +
   theories [document = false]
     Relations    
   theories
-        HOML_int
-	ExamplesHOML
+        IHOML
+	IHOML_Examples
 	GoedelProof_P1
 	GoedelProof_P2
 	FittingProof		
