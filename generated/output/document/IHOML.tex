@@ -45,7 +45,7 @@ logic (see \cite{J23,R59} and the references therein).%
 %
 \begin{isamarkuptext}%
 Fitting's emendation also intends to avoid the modal collapse. However, in contrast to the above variants, Fitting's
-solution is based on the use of an as opposed to an extensional higher-order modal logic.
+solution is based on the use of an intensional as opposed to an extensional higher-order modal logic.
 For our work this imposed the additional challenge to provide a shallow embedding of this more advanced
 logic. The experiments presented below confirm that Fitting's argument as presented in his textbook \cite{Fitting}
 is valid and that it avoids the modal collapse as intended.%
@@ -185,7 +185,7 @@ Aliases for common binary relation types:%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexists\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \ \ \ \ \isanewline
+\ \ \ \ \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforallB\ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{binder}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{8}}{\isacharbrackright}{\isadigit{9}}{\isacharparenright}\ %
 \isamarkupcmt{Binder notation%
@@ -203,15 +203,13 @@ Aliases for common binary relation types:%
 The following predicate is used to model actualist quantifiers by restricting the domain of quantification at every possible world.
 This standard technique has been referred to as \emph{existence relativization} (\cite{fitting98}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
-which individuals \emph{actually} exist at a given world. This is meta-logical
-concept does not appear in our object language.%
+which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
-\ Exists{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}existsAt{\isachardoublequoteclose}{\isacharparenright}\isanewline
-\ \ \isanewline
+\ Exists{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}existsAt{\isachardoublequoteclose}{\isacharparenright}\ \ \isanewline
 \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mforallAct\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ \ \ \ \ \ \isanewline
+\ mforallAct\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ \ \ \ \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}existsAt\ x\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexistsAct\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
@@ -281,6 +279,10 @@ The IHOML operator \isa{{\isasymdown}} is embedded as a predicate applying to (w
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isadigit{1}}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}\isactrlsub {\isadigit{1}}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}\isactrlsub {\isadigit{1}}P\ {\isasymequiv}\ {\isasymlambda}z{\isachardot}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ z\ w{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
+%
 \isamarkupsubsubsection{Equality%
 }
 \isamarkuptrue%
@@ -486,7 +488,7 @@ Barcan and Converse Barcan Formulas are satisfied for standard (possibilist) qua
 \begin{isamarkuptext}%
 Above we have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the first time.  
 For all the conjectured lemmas above, \emph{Nitpick} has found a countermodel, i.e. a model satisfying all 
-the axioms which falsies the given formula. This means, the formulas are not valid.%
+the axioms which falsifies the given formula. This means, the formulas are not valid.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%

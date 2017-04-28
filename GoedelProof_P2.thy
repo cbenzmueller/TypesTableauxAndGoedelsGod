@@ -18,11 +18,13 @@ subsubsection \<open>General Definitions\<close>
   
 abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") where
   "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)" 
+  
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
   
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
 abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where
   "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
+  
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where 
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
 
@@ -48,7 +50,7 @@ theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>" us
     
 subsubsection \<open>Axioms\<close>
         
-(** @{text "\<P>"} satisfies the so-called stability conditions (see @{cite "Fitting"} p. 124), which means
+(** @{text "\<P>"} satisfies the so-called stability conditions (see @{cite "Fitting"}, p. 124), which means
  it designates rigidly (note that this makes for an \emph{essentialist} assumption).*)
 axiomatization where
       A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** axiom 11.11 *)
@@ -60,10 +62,11 @@ abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
   using A4a A4b by blast (** @{term "\<P>"} is therefore rigid*)
     
-lemma True nitpick[satisfy] oops (** model found: so far all axioms A1-4 consistent*)
+lemma True nitpick[satisfy] oops (** model found: so far all axioms A1-4 consistent*)    
+(**\bigbreak*)   
     
 subsubsection \<open>Theorems\<close>
-(** Remark: Essence is defined here (and in Fitting) in the version of Scott; G\"odel's original version leads to the inconsistency
+(** Remark: Essence is defined here (and in Fitting's variant) in the version of Scott; G\"odel's original version leads to the inconsistency
  reported in @{cite "C55,C60"}*)
 
 abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>") where
@@ -157,7 +160,7 @@ qed
 (** \emph{Modal collapse} is countersatisfiable (unless we introduce S5 axioms):*)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
   
-(** We postulate semantic frame conditions for some modal logics. Taken together, reflexivite, transsitivity and symmetry
+(** We postulate semantic frame conditions for some modal logics. Taken together, reflexivity, transitivity and symmetry
  make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
  We prefer to postulate them individually here in order to get more detailed information about their relevance 
  in the proofs presented below.*)
@@ -245,8 +248,8 @@ proof -
 }
 thus ?thesis by (rule allI) 
 qed
-          
-(** Corollary 11.30: *)
+(**\bigbreak*)  
+(**Corollary 11.30: *)
 lemma GodImpliesExistence: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> E! x\<rfloor>" 
   using GodExistenceIsValid Monotheism_normalModel by metis
 
@@ -264,7 +267,7 @@ subsubsection \<open>More Objections\<close>
 (** We start by proving an useful FOL lemma:*)  
 lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
     
-(** In the con text of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4): *)     
+(** In the context of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4): *)     
 lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"
 proof -
   {

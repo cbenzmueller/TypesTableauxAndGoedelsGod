@@ -22,7 +22,7 @@
 \begin{isamarkuptext}%
 "G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
   from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
-  if possible; and prove God's existence is possible." \cite{Fitting} p. 138.%
+  if possible; and prove God's existence is possible." \cite{Fitting}, p. 138.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsection{Part I - God's Existence is Possible%
@@ -50,6 +50,7 @@ We are currently contemplating a follow-up analysis of the philosophical implica
 \isamarkupcmt{existence predicate in object language%
 }
 \isanewline
+\ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}E{\isacharbang}\ x\ w\ {\isasymlongleftrightarrow}\ existsAt\ x\ w{\isachardoublequoteclose}\ \isanewline
 %
@@ -88,16 +89,20 @@ Definitions needed to formalise \emph{A3}:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ appliesToPositiveProps{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}pos{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\isanewline
+\ \ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ intersectionOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}intersec{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ %
 \isamarkupcmt{quantifier is possibilist%
 }
-\isanewline
+\ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
+%
 \isamarkupsubsubsection{Axioms%
 }
 \isamarkuptrue%
@@ -528,7 +533,7 @@ Proposition 11.16 - \emph{A3} implies \emph{P(G)} (local consequence):%
 %
 \begin{isamarkuptext}%
 Being Godlike is a positive property. Note that this theorem can be axiomatized directly,
-as noted by Dana Scott (see \cite{Fitting} p. 152). We will do so for the second part.%
+as noted by Dana Scott (see \cite{Fitting}, p. 152). We will do so for the second part.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}%

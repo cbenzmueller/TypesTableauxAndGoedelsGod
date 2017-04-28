@@ -214,15 +214,15 @@ lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\
     
 section \<open>Conclusion\<close>
 (** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
-(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook "Types, Tableaus and 
-G\"odel's God" @{cite "Fitting"}. 
+(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook \emph{Types, Tableaus and 
+G\"odel's God} @{cite "Fitting"}. 
 We subsequently employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
 to the discussion of G\"odel's ontological argument in the last part of Fitting's book. Three different versions of
 the ontological argument have been considered: the first one by G\"odel himself (respectively, Scott), the second 
 one by Fitting and the last one by Anderson.*)
   
 (**By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
-but also to quarantee consistency. We could prove even stronger versions
+but also to guarantee consistency. We could prove even stronger versions
 of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in the book.
 Another interesting aspect was the possibility to explore the implications of alternative formalisations
 for definitions and theorems which shed light on interesting philosophical issues concerning entailment,

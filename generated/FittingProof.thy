@@ -44,7 +44,7 @@ axiomatization where
   T2: "\<lfloor>\<P> \<down>G\<rfloor>"                               --\<open>  proposition 11.16 (modified) \<close>
         
 lemma True nitpick[satisfy] oops --\<open>  model found: axioms are consistent \<close>
-
+text\<open> \bigbreak \<close>
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
     
@@ -89,7 +89,7 @@ theorem God_starIsEssential: "\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<righta
     
 abbreviation necExistencePred:: "\<up>\<langle>\<zero>\<rangle>" ("NE") where
   "NE x  \<equiv> \<lambda>w. (\<^bold>\<forall>Y.  \<E> Y x \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<exists>\<^sup>Ez. \<lparr>Y z\<rparr>)) w"
-
+text\<open> \bigbreak \<close>
 text\<open>  Informal Axiom 5 \<close>
 axiomatization where
  A5: "\<lfloor>\<P> \<down>NE\<rfloor>"

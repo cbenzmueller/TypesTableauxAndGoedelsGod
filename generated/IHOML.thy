@@ -28,7 +28,7 @@ shallow semantical embeddings of (extensional) higher-order modal logics in clas
 logic (see @{cite "J23,R59"} and the references therein). \<close>
 
 text\<open> Fitting's emendation also intends to avoid the modal collapse. However, in contrast to the above variants, Fitting's
-solution is based on the use of an as opposed to an extensional higher-order modal logic.
+solution is based on the use of an intensional as opposed to an extensional higher-order modal logic.
 For our work this imposed the additional challenge to provide a shallow embedding of this more advanced
 logic. The experiments presented below confirm that Fitting's argument as presented in his textbook @{cite "Fitting"}
 is valid and that it avoids the modal collapse as intended. \<close>
@@ -110,7 +110,7 @@ subsubsection \<open>Possibilist Quantification\<close>
     where "\<^bold>\<forall>\<Phi> \<equiv> \<lambda>w.\<forall>x. (\<Phi> x w)"
   abbreviation mexists   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<exists>") 
     where "\<^bold>\<exists>\<Phi> \<equiv> \<lambda>w.\<exists>x. (\<Phi> x w)"
-      
+    
   abbreviation mforallB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<forall>"[8]9) --\<open> Binder notation \<close>
     where "\<^bold>\<forall>x. \<phi>(x) \<equiv> \<^bold>\<forall>\<phi>"  
   abbreviation mexistsB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<exists>"[8]9)
@@ -121,12 +121,10 @@ subsubsection \<open>Actualist Quantification\<close>
 text\<open>  The following predicate is used to model actualist quantifiers by restricting the domain of quantification at every possible world.
 This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
-which individuals \emph{actually} exist at a given world. This is meta-logical
-concept does not appear in our object language. \<close>
-  consts Exists::"\<up>\<langle>\<zero>\<rangle>" ("existsAt")
-  
-(* Note that no polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals. *)
-  abbreviation mforallAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>E")      
+which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language. \<close>
+  consts Exists::"\<up>\<langle>\<zero>\<rangle>" ("existsAt")  
+
+  abbreviation mforallAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>E")    
     where "\<^bold>\<forall>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<forall>x. (existsAt x w)\<longrightarrow>(\<Phi> x w)"
   abbreviation mexistsAct   :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<^bold>\<exists>\<^sup>E") 
     where "\<^bold>\<exists>\<^sup>E\<Phi> \<equiv> \<lambda>w.\<exists>x. (existsAt x w) \<and> (\<Phi> x w)"
@@ -168,7 +166,7 @@ abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t
 text\<open>  (\emph{d}) Predicate @{text \<phi>} takes an extensional predicate as \emph{first} argument: \<close>
 abbreviation extPredArg1::"(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
   where "\<phi> \<down>\<^sub>1P \<equiv> \<lambda>z. \<lambda>w. \<phi> (\<lambda>x. P x w) z w"
-    
+ text\<open> \bigbreak \<close>   
 subsubsection \<open>Equality\<close>
   
   abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) --\<open> normal equality (for all types) \<close>
@@ -210,7 +208,7 @@ as evidenced by the following tests: \<close>
     
 text\<open>  Above we have made use of (counter-)model finder \emph{Nitpick} @{cite "Nitpick"} for the first time.  
 For all the conjectured lemmas above, \emph{Nitpick} has found a countermodel, i.e. a model satisfying all 
-the axioms which falsies the given formula. This means, the formulas are not valid. \<close>   
+the axioms which falsifies the given formula. This means, the formulas are not valid. \<close>   
  
  text\<open>  Well known relations between meta-logical notions:  \<close>
  lemma  "\<lfloor>\<phi>\<rfloor> \<longleftrightarrow> \<not>\<lfloor>\<phi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" by simp

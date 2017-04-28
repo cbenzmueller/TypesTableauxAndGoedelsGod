@@ -32,6 +32,7 @@ We show here that God's necessary existence follows from its possible existence 
 \isacommand{abbreviation}\isamarkupfalse%
 \ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
+\ \ \isanewline
 \isacommand{consts}\isamarkupfalse%
 \ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \isanewline
@@ -40,6 +41,7 @@ We show here that God's necessary existence follows from its possible existence 
 \isacommand{abbreviation}\isamarkupfalse%
 \ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ \isanewline
 \ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
@@ -176,7 +178,7 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\isa{{\isasymP}} satisfies the so-called stability conditions (see \cite{Fitting} p. 124), which means
+\isa{{\isasymP}} satisfies the so-called stability conditions (see \cite{Fitting}, p. 124), which means
  it designates rigidly (note that this makes for an \emph{essentialist} assumption).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
@@ -249,12 +251,16 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 %
 \endisadelimproof
 %
+\begin{isamarkuptext}%
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
+%
 \isamarkupsubsubsection{Theorems%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Remark: Essence is defined here (and in Fitting) in the version of Scott; G\"odel's original version leads to the inconsistency
+Remark: Essence is defined here (and in Fitting's variant) in the version of Scott; G\"odel's original version leads to the inconsistency
  reported in \cite{C55,C60}%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
@@ -595,7 +601,7 @@ Theorem 11.26 (Informal Proposition 7) - Possibilist existence of God implies ne
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-We postulate semantic frame conditions for some modal logics. Taken together, reflexivite, transsitivity and symmetry
+We postulate semantic frame conditions for some modal logics. Taken together, reflexivity, transitivity and symmetry
  make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
  We prefer to postulate them individually here in order to get more detailed information about their relevance 
  in the proofs presented below.%
@@ -967,6 +973,10 @@ Proposition 11.29:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
 Corollary 11.30:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
@@ -1041,7 +1051,7 @@ We start by proving an useful FOL lemma:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-In the con text of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4):%
+In the context of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ ModalCollapse{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline

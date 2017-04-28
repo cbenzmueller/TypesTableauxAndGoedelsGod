@@ -24,15 +24,15 @@
 \contentsline {section}{\numberline {4}G\"odel's Argument, Formally}{14}{section.4}
 \contentsline {subsection}{\numberline {4.1}Part I - God's Existence is Possible}{14}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}General Definitions}{14}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Axioms}{14}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2}Axioms}{15}{subsubsection.4.1.2}
 \contentsline {subsubsection}{\numberline {4.1.3}Theorems}{15}{subsubsection.4.1.3}
 \contentsline {subsection}{\numberline {4.2}Part II - God's Existence is Necessary if Possible}{16}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}General Definitions}{16}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Results from Part I}{17}{subsubsection.4.2.2}
 \contentsline {subsubsection}{\numberline {4.2.3}Axioms}{17}{subsubsection.4.2.3}
-\contentsline {subsubsection}{\numberline {4.2.4}Theorems}{17}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.4}Theorems}{18}{subsubsection.4.2.4}
 \contentsline {subsubsection}{\numberline {4.2.5}Monotheism}{20}{subsubsection.4.2.5}
-\contentsline {subsubsection}{\numberline {4.2.6}Positive Properties are Necessarily Instantiated}{21}{subsubsection.4.2.6}
+\contentsline {subsubsection}{\numberline {4.2.6}Positive Properties are Necessarily Instantiated}{22}{subsubsection.4.2.6}
 \contentsline {subsubsection}{\numberline {4.2.7}More Objections}{22}{subsubsection.4.2.7}
 \contentsline {section}{\numberline {5}Fitting's Solution}{23}{section.5}
 \contentsline {subsection}{\numberline {5.1}General Definitions}{23}{subsection.5.1}

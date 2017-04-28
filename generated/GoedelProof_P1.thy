@@ -11,7 +11,7 @@ section \<open>G\"odel's Argument, Formally\<close>
 text\<open> 
  "G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
   from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
-  if possible; and prove God's existence is possible." @{cite "Fitting"} p. 138. \<close> 
+  if possible; and prove God's existence is possible." @{cite "Fitting"}, p. 138. \<close> 
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 
@@ -23,9 +23,10 @@ text\<open>  We are currently contemplating a follow-up analysis of the philosop
  which encompasses some criticism of the notion of \emph{property entailment} used by G\"odel throughout the argument. \<close>
   
 subsubsection \<open>General Definitions\<close>
-                
+               
 abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") 
   where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" --\<open> existence predicate in object language \<close>
+    
 lemma "E! x w \<longleftrightarrow> existsAt x w" 
   by simp --\<open> safety check: @{text "E!"} correctly matches its meta-logical counterpart \<close>
 
@@ -37,12 +38,13 @@ abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where "G* \<equiv
   
 text\<open>  Definitions needed to formalise \emph{A3}:  \<close>
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
-  "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"
+  "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"  
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
-  "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" --\<open>  quantifier is possibilist \<close>
+  "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" --\<open> quantifier is possibilist \<close>  
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
-
+text\<open> \bigbreak \<close>
+  
 subsubsection \<open>Axioms\<close>
     
 axiomatization where
@@ -115,7 +117,7 @@ lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> int
   using A3implT2_local by (rule localImpGlobalCons) 
   
 text\<open>  Being Godlike is a positive property. Note that this theorem can be axiomatized directly,
-as noted by Dana Scott (see @{cite "Fitting"} p. 152). We will do so for the second part. \<close>
+as noted by Dana Scott (see @{cite "Fitting"}, p. 152). We will do so for the second part. \<close>
 theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
   
 text\<open>  Theorem 11.17 (Informal Proposition 3) - Possibly God exists: \<close>
