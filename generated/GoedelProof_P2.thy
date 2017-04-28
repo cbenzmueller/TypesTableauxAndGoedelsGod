@@ -9,7 +9,8 @@ sledgehammer_params[verbose=true]
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
   
 text\<open>  We show here that God's necessary existence follows from its possible existence by adding some
- additional (potentially controversial) assumptions including, among others, an essentialist premise and the S5 axioms.
+ additional (potentially controversial) assumptions including, among others, an \emph{essentialist} premise and the emph{S5} axioms.
+ Further results like monotheism and the rejection of free will (\emph{modal collapse}) are also proved.
  A more detailed analysis of these rather philosophical issues is foreseen as follow-up work.  \<close>
 
 subsubsection \<open>General Definitions\<close>
@@ -24,33 +25,32 @@ abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where 
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
 
-subsubsection \<open>Axioms from Part I\<close>  
+subsubsection \<open>Results from Part I\<close> 
   
 text\<open>  Note that the only use G\"odel makes of axiom A3 is to show that being Godlike is a positive property (\emph{T2}). 
  We follow therefore Scott's proposal and take (\emph{T2}) directly as an axiom:  \<close>  
 axiomatization where
-  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and          --\<open>  Axiom 11.3A  \<close>
-  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and           --\<open>  Axiom 11.3B  \<close>
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and    --\<open>  Axiom 11.5  \<close>
-  T2: "\<lfloor>\<P> G\<rfloor>"                                  --\<open>  Proposition 11.16  \<close>
+  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and          --\<open>  axiom 11.3A  \<close>
+  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and           --\<open>  axiom 11.3B  \<close>
+  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and    --\<open>  axiom 11.5  \<close>
+  T2: "\<lfloor>\<P> G\<rfloor>"                                  --\<open>  proposition 11.16  \<close>
         
-lemma True nitpick[satisfy] oops --\<open>  Model found: axioms are consistent \<close>
-
-subsubsection \<open>Useful Results from Part I\<close>
+lemma True nitpick[satisfy] oops --\<open>  model found: axioms are consistent \<close>
+    
+lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast --\<open>  axioms already imply \emph{D} axiom  \<close>
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce 
     
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" 
-  using A1a A2 by blast  --\<open>  Positive properties are possibly instantiated \<close>  
+  using A1a A2 by blast  --\<open>  positive properties are possibly instantiated \<close>  
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T1 T2 by simp  --\<open>  God exists possibly  \<close>  
     
-    
-subsubsection \<open>Axioms for Part II\<close>
+subsubsection \<open>Axioms\<close>
         
-text\<open>  @{text "\<P>"} satisfies the so-called stability conditions in @{cite "Fitting"}, p. 124. This means
- @{text "\<P>"} designates rigidly (an essentialist assumption). \<close>
+text\<open>  @{text "\<P>"} satisfies the so-called stability conditions (see @{cite "Fitting"} p. 124), which means
+ it designates rigidly (note that this makes for an \emph{essentialist} assumption). \<close>
 axiomatization where
-      A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  Axiom 11.11  \<close>
+      A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      --\<open>  axiom 11.11  \<close>
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A1a A1b A4a by blast
     
 abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
@@ -59,8 +59,7 @@ abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
   using A4a A4b by blast --\<open>  @{term "\<P>"} is therefore rigid \<close>
     
-lemma True nitpick[satisfy] oops --\<open>  Model found: so far all axioms A1-4 consistent \<close>
-    
+lemma True nitpick[satisfy] oops --\<open>  model found: so far all axioms A1-4 consistent \<close>
     
 subsubsection \<open>Theorems\<close>
 
@@ -126,7 +125,7 @@ text\<open>  Axiom 11.25 (Informal Axiom 5) \<close>
 axiomatization where 
  A5: "\<lfloor>\<P> NE\<rfloor>"
  
-lemma True nitpick[satisfy] oops --\<open>  Model found: so far all axioms consistent \<close>
+lemma True nitpick[satisfy] oops --\<open>  model found: so far all axioms consistent \<close>
  
 text\<open>  Theorem 11.26 (Informal Proposition 7) - Possibilist existence of God implies necessary actualist existence:  \<close> 
 theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>"
@@ -136,7 +135,7 @@ proof -
   {
     assume "\<exists>x. G x w"
     then obtain g where 1: "G g w" ..
-    hence "NE g w" using A5 by auto                     --\<open>  Axiom 11.25 \<close>
+    hence "NE g w" using A5 by auto                     --\<open>  axiom 11.25 \<close>
     hence "\<forall>Y. (\<E> Y g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w" by simp
     hence 2: "(\<E> G g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E G) w" by (rule allE)
     have  "(\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)) w" using GodIsEssential
@@ -152,40 +151,39 @@ proof -
  thus ?thesis by (rule allI) 
 qed
   
-text\<open>  Modal Collapse is countersatisfiable until we introduce S5 axioms:  \<close>
+text\<open>  \emph{Modal collapse} is countersatisfiable (unless we introduce S5 axioms): \<close>
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
   
-text\<open>  Axiomatizing semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
- All axioms together imply an \emph{S5} logic. \<close>
+text\<open>  Below we axiomatize semantic frame conditions for some modal logics. Taken all together they make
+ for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
+ We prefer to introduce them individually in order to get more detailed information about their relevance.  \<close>
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
  symm: "symmetric aRel"
  
-lemma True nitpick[satisfy] oops --\<open>  Model found: axioms still consistent \<close>
-text\<open>  Using an \emph{S5} logic, modal collapse (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see proof below) \<close>
+lemma True nitpick[satisfy] oops --\<open>  model found: axioms still consistent \<close>
+text\<open>  Using an \emph{S5} logic, \emph{modal collapse} (@{text "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"}) is actually valid (see `More Objections' some pages below) \<close>
     
-text\<open>  Some useful rules: \<close>    
+text\<open>  We prove some useful inference rules: \<close>    
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
-text\<open>  Theorem 11.27 - Informal Proposition 8  \<close> 
+text\<open>  Theorem 11.27 - Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are needed.
+Nevertheless we already rely on an S5 logic here, since our axioms imply D and therefore seriality (via \emph{Sahlqvist correspondence}). \<close> 
 theorem possExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" --\<open> local consequence \<close>
 proof -
   have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecExistence 
     by simp --\<open>  follows from Axioms 11.11, 11.25 and 11.3B \<close>
   hence "\<lfloor>\<^bold>\<box>(\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G)\<rfloor>" using NEC by simp
   hence 1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" by (rule modal_distr)
-  have 2: "\<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using symm tran by metis
+  have 2: "\<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using symm tran by metis --\<open> frame conditions \<close>
   from 1 2 have "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor> \<and> \<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" by simp
   thus ?thesis by (rule modal_trans)
 qed
 
-text\<open>  Useful lemma: local consequence implies global consequence \<close>
-lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
-
 lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using possExistenceImpliesNecEx 
-    by (rule localImpliesGlobal)  --\<open>  global consequence \<close>
+    by (rule localImpGlobalCons)  --\<open>  global consequence \<close>
   
 text\<open>  Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):  \<close>    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T3 T4 by metis    
@@ -202,9 +200,9 @@ theorem Monotheism_LeibnizEq: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<righta
 text\<open>  Monotheism for normal models is trickier. We need to consider some previous results (p. 162): \<close>
     
 lemma GodExistenceIsValid: "\<lfloor>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodNecExists refl
-  by auto --\<open>  Note that we hadn't needed frame reflexivity until now \<close>
+  by auto --\<open> frame reflexivity is explicitly required by the solver \<close>
         
-text\<open>  Proposition 11.29  \<close>
+text\<open>  Proposition 11.29:  \<close>
 theorem Monotheism_normalModel: "\<lfloor>\<^bold>\<exists>x.\<^bold>\<forall>y. G y \<^bold>\<leftrightarrow> x \<^bold>\<approx> y\<rfloor>"
 proof -
 {
@@ -228,7 +226,7 @@ proof -
       hence "\<forall>z. (w r w \<and> existsAt z w \<and> G z w) \<longrightarrow> z = y" by auto
       hence 4: "(w r w \<and> existsAt g w \<and> G g w) \<longrightarrow> g = y" by (rule allE)
       have "w r w" using refl 
-        by simp --\<open>  note that we rely explicitly on frame reflexivity (Axiom M)  \<close>
+        by simp --\<open>  using frame reflexivity (Axiom M) \<close>
       hence  "w r w \<and> (existsAt g w \<and> G g w)" using 1 by (rule conjI)
       from 4 this have "g = y" by (rule mp)
       thus "(g \<^bold>\<approx> y) w" by simp
@@ -245,20 +243,25 @@ proof -
 thus ?thesis by (rule allI) 
 qed
           
-text\<open>  Corollary 11.30  \<close>
+text\<open>  Corollary 11.30:  \<close>
 lemma GodImpliesExistence: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> E! x\<rfloor>" 
   using GodExistenceIsValid Monotheism_normalModel by metis
 
-subsubsection \<open>Positive Properties are Necessarily Instantiated\<close>     
+subsubsection \<open>Positive Properties are Necessarily Instantiated\<close>
+  
 lemma PosPropertiesNecExist: "\<lfloor>\<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E Y\<rfloor>" using GodNecExists A4a
-  by meson --\<open> Proposition 11.31: follows from corollary 11.28 and axiom A4a \<close>
+  by meson --\<open> proposition 11.31: follows from corollary 11.28 and axiom A4a \<close>
  
     
-subsubsection \<open>Objections and Criticism\<close>
-    
+subsubsection \<open>More Objections\<close>
+text\<open>  In this section Fitting discusses the objection raised by Sobel @{cite "sobel2004logic"}, who argues that G\"odel's axiom system
+ is so strong it implies that whatever is the case is so necessarily, i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
+ The \emph{modal collapse} has been philosophically interpreted as implying the absence of free will. \<close>
+
+text\<open>  We start by proving an useful FOL lemma: \<close>  
 lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
     
-text\<open>  After introducing the S5 axioms Modal Collapse becomes valid (pp. 163-4):  \<close>     
+text\<open>  After introducing the S5 axioms \emph{modal collapse} becomes valid (pp. 163-4):  \<close>     
 lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"
 proof -
   {
@@ -282,6 +285,7 @@ proof -
   }
   thus ?thesis by (rule allI)
 qed
+  text\<open>  \pagebreak \<close>
 
 (*<*)
 end
