@@ -8,15 +8,15 @@ sledgehammer_params[verbose=true]
 
 section \<open>Textbook Examples\<close>
   
-(** In this section we verify that our embedded logic works as intended by proving the examples provided in the book.
- In many cases, for good mesure, we consider further theorems derived from the original ones. We were able to confirm that all results
+(** In this section we provide further evidence that our embedded logic works as intended by proving the examples discussed in the book.
+ In many cases, we consider further theorems which we derived from the original ones. We were able to confirm that all results
  (proofs or counterexamples) agree with Fitting's claims.*)
   
 subsection \<open>Modal Logic - Syntax and Semantics (Chapter 7)\<close>
 
 (**Note: In what follows, we will call a term \emph{relativized} if it is of the form @{text "\<down>\<phi>"}
 (i.e. an intensional term preceded by the \emph{extension-of} operator), otherwise it is \emph{non-relativized}.
-Note that all and only relativized terms are non-rigid.*)
+Relativized terms are non-rigid.*)
   
 subsubsection \<open>Considerations Regarding @{text "\<beta>\<eta>"}-redex  (p. 94)\<close>
 
@@ -104,8 +104,8 @@ lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X  (p::\<up>\<zero>))) \<^bold>\<do
     
 subsubsection \<open>Extensionality (Subsection 1.2)\<close>
   
-(** In the book (p. 118), extensionality is assumed (globally) for extensional terms. Whereas Fitting introduces following
-extensionality principles as axioms, they are already implicit in Isabelle/HOL: *)    
+(** In Fitting's book (p. 118), extensionality is assumed (globally) for extensional terms. While Fitting introduces 
+the following extensionality principles as axioms, they are already implicitly valid in Isabelle/HOL: *)    
 lemma EXT: "\<forall>\<alpha>::\<langle>\<zero>\<rangle>. \<forall>\<beta>::\<langle>\<zero>\<rangle>. (\<forall>\<gamma>::\<zero>. (\<alpha> \<gamma> \<longleftrightarrow> \<beta> \<gamma>)) \<longrightarrow> (\<alpha> = \<beta>)" by auto
 lemma EXT_set: "\<forall>\<alpha>::\<langle>\<langle>\<zero>\<rangle>\<rangle>. \<forall>\<beta>::\<langle>\<langle>\<zero>\<rangle>\<rangle>. (\<forall>\<gamma>::\<langle>\<zero>\<rangle>. (\<alpha> \<gamma> \<longleftrightarrow> \<beta> \<gamma>)) \<longrightarrow> (\<alpha> = \<beta>)" 
   by auto

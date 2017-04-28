@@ -8,8 +8,8 @@ sledgehammer_params[verbose=true]
   
 section \<open>Anderson's Alternative\<close>
   
-(**In this last section we consider Anderson's Alternative to the objections previously shown, as exposed in the last
-part of the textbook (pp. 169-171)*)
+(**In this final section, we verify Anderson's emendation of G\"odel's argument, as it is presented in the last
+part of the textbook by Fitting (pp. 169-171).*)
   
 subsection \<open>General Definitions\<close>
  
@@ -40,7 +40,7 @@ theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfl
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
         
 (** @{text "\<P>"} now satisfies only one of the stability conditions. But since the argument uses an \emph{S5} logic, 
-the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid (see p. 124 in textbook). *)
+the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid (see p. 124). *)
 axiomatization where
   A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** axiom 11.11 *)
       
@@ -153,7 +153,7 @@ proof -
  thus ?thesis by (rule allI) 
 qed
 
-(** Axiom 11.37 (Anderson's Version of 11.25)*)
+(** Axiom 11.37 (Anderson's version of 11.25)*)
 axiomatization where 
  A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>"
  
@@ -187,7 +187,7 @@ qed
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
-(** Anderson's Version of Theorem 11.27 *) 
+(** Anderson's version of Theorem 11.27 *) 
 theorem possExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" (**local consequence*)
 proof -
   have "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using GodExistenceImpliesNecExistence 
@@ -213,14 +213,16 @@ lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\
 (** \pagebreak*)
     
 section \<open>Conclusion\<close>
-(** In this work we presented a shallow embedding in Isabelle/HOL for an intensional higher-order modal logic
-(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook. 
-We employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
-to the discussion of G\"odel's ontological argument in the last part of the book. Three different versions of
-this ontological argument have been considered: the first one by G\"odel himself, the second one by Fitting and the last one by Anderson.*)
+(** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
+(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook "Types, Tableaus and 
+G\"odel's God" @{cite "Fitting"}. 
+We subsequently employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
+to the discussion of G\"odel's ontological argument in the last part of Fitting's book. Three different versions of
+the ontological argument have been considered: the first one by G\"odel himself (respectively, Scott), the second 
+one by Fitting and the last one by Anderson.*)
   
 (**By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
-but also to demonstrate axiom's consistency throughout the whole argumentation. We could prove even stronger versions
+but also to quarantee consistency. We could prove even stronger versions
 of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in the book.
 Another interesting aspect was the possibility to explore the implications of alternative formalisations
 for definitions and theorems which shed light on interesting philosophical issues concerning entailment,
