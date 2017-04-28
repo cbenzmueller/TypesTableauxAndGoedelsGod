@@ -9,9 +9,10 @@ sledgehammer_params[verbose=true]
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
   
 text\<open>  We show here that God's necessary existence follows from its possible existence by adding some
- additional (potentially controversial) assumptions including, among others, an \emph{essentialist} premise and the emph{S5} axioms.
+ additional (potentially controversial) assumptions including an \emph{essentialist} premise 
+ and the \emph{S5} axioms.
  Further results like monotheism and the rejection of free will (\emph{modal collapse}) are also proved.
- A more detailed analysis of these rather philosophical issues is foreseen as follow-up work.  \<close>
+  \<close>
 
 subsubsection \<open>General Definitions\<close>
   
@@ -62,9 +63,11 @@ lemma "\<lfloor>rigidPred \<P>\<rfloor>"
 lemma True nitpick[satisfy] oops --\<open>  model found: so far all axioms A1-4 consistent \<close>
     
 subsubsection \<open>Theorems\<close>
+text\<open>  Remark: Essence is defined here (and in Fitting) in the version of Scott; G\"odel's original version leads to the inconsistency
+ reported in @{cite "C55,C60"} \<close>
 
 abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>") where
-  "\<E> Y x \<equiv> (Y x) \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y \<Rrightarrow> Z)"
+  "\<E> Y x \<equiv> (Y x) \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y \<Rrightarrow> Z)"   
 abbreviation beingIdenticalTo::"\<zero>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("id") where
   "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"  --\<open>  note that \emph{id} is a rigid predicate \<close>  
 
@@ -154,9 +157,10 @@ qed
 text\<open>  \emph{Modal collapse} is countersatisfiable (unless we introduce S5 axioms): \<close>
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
   
-text\<open>  Below we axiomatize semantic frame conditions for some modal logics. Taken all together they make
- for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
- We prefer to introduce them individually in order to get more detailed information about their relevance.  \<close>
+text\<open>  We postulate semantic frame conditions for some modal logics. Taken together, reflexivite, transsitivity and symmetry
+ make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
+ We prefer to postulate them individually here in order to get more detailed information about their relevance 
+ in the proofs presented below. \<close>
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
@@ -169,8 +173,7 @@ text\<open>  We prove some useful inference rules: \<close>
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
-text\<open>  Theorem 11.27 - Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are needed.
-Nevertheless we already rely on an S5 logic here, since our axioms imply D and therefore seriality (via \emph{Sahlqvist correspondence}). \<close> 
+text\<open>  Theorem 11.27 - Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are used. \<close> 
 theorem possExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" --\<open> local consequence \<close>
 proof -
   have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecExistence 
@@ -185,7 +188,7 @@ qed
 lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using possExistenceImpliesNecEx 
     by (rule localImpGlobalCons)  --\<open>  global consequence \<close>
   
-text\<open>  Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):  \<close>    
+text\<open>  Corollary 11.28 - Necessary (actualist) existence of God (for both definitions); reflexivity is still not used:  \<close>    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T3 T4 by metis    
 lemma God_starNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G*\<rfloor>" 
   using GodNecExists GodDefsAreEquivalent by simp
@@ -200,7 +203,7 @@ theorem Monotheism_LeibnizEq: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<righta
 text\<open>  Monotheism for normal models is trickier. We need to consider some previous results (p. 162): \<close>
     
 lemma GodExistenceIsValid: "\<lfloor>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodNecExists refl
-  by auto --\<open> frame reflexivity is explicitly required by the solver \<close>
+  by auto --\<open> reflexivity is now required by the solver \<close>
         
 text\<open>  Proposition 11.29:  \<close>
 theorem Monotheism_normalModel: "\<lfloor>\<^bold>\<exists>x.\<^bold>\<forall>y. G y \<^bold>\<leftrightarrow> x \<^bold>\<approx> y\<rfloor>"
@@ -254,14 +257,14 @@ lemma PosPropertiesNecExist: "\<lfloor>\<^bold>\<forall>Y. \<P> Y \<^bold>\<righ
  
     
 subsubsection \<open>More Objections\<close>
-text\<open>  In this section Fitting discusses the objection raised by Sobel @{cite "sobel2004logic"}, who argues that G\"odel's axiom system
- is so strong it implies that whatever is the case is so necessarily, i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
+text\<open>  Fitting discusses the objection raised by Sobel @{cite "sobel2004logic"}, who argues that G\"odel's axiom system
+ is too strong: it implies that whatever is the case is so necessarily, i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
  The \emph{modal collapse} has been philosophically interpreted as implying the absence of free will. \<close>
 
 text\<open>  We start by proving an useful FOL lemma: \<close>  
 lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
     
-text\<open>  After introducing the S5 axioms \emph{modal collapse} becomes valid (pp. 163-4):  \<close>     
+text\<open>  In the con text of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4):  \<close>     
 lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"
 proof -
   {

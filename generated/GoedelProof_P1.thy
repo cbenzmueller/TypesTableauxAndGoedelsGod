@@ -15,10 +15,10 @@ text\<open>
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 
-text\<open>  We divide G\"odel's Argument as presented in Fitting's textbook (ch. 11) in two parts. For the first one, while Leibniz provides
+text\<open>  We separate G\"odel's Argument as presented in Fitting's textbook (ch. 11) in two parts. For the first one, while Leibniz provides
   some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
  \emph{(T1) Every positive property is possibly instantiated}, which together with \emph{(T2) God is a positive property}
-  directly implies the conclusion. In order to prove \emph{T1} G\"odel assumes \emph{A2: Any property entailed by a positive property is positive}. \<close>
+  directly implies the conclusion. In order to prove \emph{T1}, G\"odel assumes \emph{A2: Any property entailed by a positive property is positive}. \<close>
 text\<open>  We are currently contemplating a follow-up analysis of the philosophical implications of these axioms,
  which encompasses some criticism of the notion of \emph{property entailment} used by G\"odel throughout the argument. \<close>
   
@@ -29,7 +29,7 @@ abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!")
 lemma "E! x w \<longleftrightarrow> existsAt x w" 
   by simp --\<open> safety check: @{text "E!"} correctly matches its meta-logical counterpart \<close>
 
-consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") --\<open>  Positiveness/Perfection  \<close>
+consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") --\<open>  positiveness/perfection  \<close>
   
 text\<open>  Definitions of God (later shown to be equivalent under axiom \emph{A1b}):  \<close>    
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"

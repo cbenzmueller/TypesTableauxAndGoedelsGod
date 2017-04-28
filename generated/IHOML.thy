@@ -28,7 +28,7 @@ shallow semantical embeddings of (extensional) higher-order modal logics in clas
 logic (see @{cite "J23,R59"} and the references therein). \<close>
 
 text\<open> Fitting's emendation also intends to avoid the modal collapse. However, in contrast to the above variants, Fitting's
-solution is based on the use of an intensional as opposed to an extensional higher-order modal logic.
+solution is based on the use of an as opposed to an extensional higher-order modal logic.
 For our work this imposed the additional challenge to provide a shallow embedding of this more advanced
 logic. The experiments presented below confirm that Fitting's argument as presented in his textbook @{cite "Fitting"}
 is valid and that it avoids the modal collapse as intended. \<close>
@@ -39,8 +39,8 @@ held at FU Berlin in Summer 2016 @{cite "C65"}. \pagebreak \<close>
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
   
-text\<open>  The object logic being embedded (IHOML) is a modification of the intentional logic developed by Montague
-and Gallin (see @{cite "Gallin75"}). IHOML is introduced by Fitting in the second part of the book @{cite "Fitting"}
+text\<open>  The object logic being embedded, intensional higher-order modal logic (IHOML), is a modification of the intentional logic developed by Montague
+and Gallin @{cite "Gallin75"}. IHOML is introduced by Fitting in the second part of his textbook @{cite "Fitting"}
 in order to formalise his emendation of G\"odel's ontological argument. We offer here a shallow embedding
 of this logic in Isabelle/HOL, which has been inspired by previous work on the semantical embedding of
 multimodal logics with quantification @{cite "J23"}. We expand this approach to allow for actualist quantifiers,
@@ -48,8 +48,8 @@ intensional types and their related operations. \<close>
 
 subsection \<open>Type Declarations\<close>
   
-text\<open>  Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them
-by following as closely as possible the syntax given by Fitting (see p. 86). \<close>
+text\<open>  Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
+We follow as closely as possible the syntax given by Fitting (see p. 86). \<close>
 
   typedecl i                    --\<open> type for possible worlds  \<close>
   type_synonym io = "(i\<Rightarrow>bool)" --\<open> formulas with world-dependent truth-value \<close>
@@ -119,10 +119,10 @@ subsubsection \<open>Possibilist Quantification\<close>
 subsubsection \<open>Actualist Quantification\<close>
   
 text\<open>  The following predicate is used to model actualist quantifiers by restricting the domain of quantification at every possible world.
-This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"} p. 106),
+This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
-which individuals \emph{actually} exist at a given world. Note that since this is a meta-logical
-concept it will never appear in our object language. \<close>
+which individuals \emph{actually} exist at a given world. This is meta-logical
+concept does not appear in our object language. \<close>
   consts Exists::"\<up>\<langle>\<zero>\<rangle>" ("existsAt")
   
 (* Note that no polymorphic types are needed in the definitions since actualist quantification only makes sense for individuals. *)
@@ -146,11 +146,12 @@ subsubsection \<open>Modal Operators\<close>
     where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
 
 subsubsection \<open>\emph{Extension-of} Operator\<close>
-text\<open>  The IHOML @{text "\<down>"} operator is embedded as a predicate applying to (world-dependent) atomic formulas
- whose first argument is a \emph{relativized term} (i.e. a non-rigid term). This approach can be contrasted with 
- the one taken in Fitting's book, where @{text "\<down>"} is an operator which, applied to a (rigid) intensional term,
- gives us a new (non-rigid) extensional term (@{cite "Fitting"} p. 93, for more details). Also note that,
- depending on the types involved, we had to define this operator differently (emph{a-d}) to ensure type correctness.
+text\<open>  The IHOML operator @{text "\<down>"} is embedded as a predicate applying to (world-dependent) atomic formulas
+ whose first argument is a \emph{relativized term} (i.e. a non-rigid term). This approach slightly differs from  
+ the one taken in Fitting's book, where @{text "\<down>"} is an operator which, when applied to a (rigid) intensional term,
+ gives us a new (non-rigid) extensional term (see @{cite "Fitting"}, p. 93, for more details). Also note that,
+ depending on the particular types involved, we had to define this operator differently (\emph{a-d} below) to ensure 
+ type correctness.
  Nevertheless, in both approaches the essence of the \emph{Extension-of} operator remains the same:
  a term of the form @{text "\<down>\<phi>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
  to the extension of the original intensional term @{text "\<phi>"} at that world. \<close>
@@ -207,9 +208,9 @@ as evidenced by the following tests: \<close>
  lemma "\<lfloor>(\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x))\<rfloor>" nitpick oops --\<open>  countersatisfiable \<close>
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x))\<rfloor>" nitpick oops --\<open>  countersatisfiable \<close>
     
-text\<open>  Note that we have just made use of \emph{Nitpick} for the first time here. \emph{Nitpick} is a (counter-)model finder
-for Isabelle/HOL. In the lemmas above, \emph{Nitpick} has found a model satisfying all axioms 
-while falsifying the given formula. This means, the formula is not valid (i.e. is countersatisfiable). \<close>   
+text\<open>  Above we have made use of (counter-)model finder \emph{Nitpick} @{cite "Nitpick"} for the first time.  
+For all the conjectured lemmas above, \emph{Nitpick} has found a countermodel, i.e. a model satisfying all 
+the axioms which falsies the given formula. This means, the formulas are not valid. \<close>   
  
  text\<open>  Well known relations between meta-logical notions:  \<close>
  lemma  "\<lfloor>\<phi>\<rfloor> \<longleftrightarrow> \<not>\<lfloor>\<phi>\<rfloor>\<^sup>c\<^sup>s\<^sup>a\<^sup>t" by simp
@@ -238,22 +239,24 @@ subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close
   abbreviation V 
     where "V \<equiv> \<^bold>\<forall>\<phi>. \<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<diamond>\<phi>"
   
-  text\<open>  Because the embedding is of a semantic nature, it is more efficient to instead make use of 
+  text\<open>  Instead of postulating (combinations of) the above  axioms we instead make use of 
   the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
-  relation (e.g. reflexive, symmetric, etc. whose definitions are not shown here). We show below that
-  axioms $M, B, D, IV, V$ impose reflexivity, symmetry, seriality, transitivity and euclideanness respectively. \<close>
+  relation (e.g. reflexive, symmetric, etc.; the definitions of which are not shown here). We show
+  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
+  axioms $M, B, D, IV, V$ respectively. \<close>
 
   lemma "reflexive aRel  \<Longrightarrow>  \<lfloor>M\<rfloor>" by blast --\<open>  aka T  \<close>
   lemma "symmetric aRel \<Longrightarrow> \<lfloor>B\<rfloor>" by blast
   lemma "serial aRel  \<Longrightarrow> \<lfloor>D\<rfloor>" by blast         
-  lemma "transitive aRel  \<Longrightarrow> \<lfloor>IV\<rfloor>" by blast         
+  lemma "transitive aRel  \<Longrightarrow> \<lfloor>IV\<rfloor>" by blast   
+  lemma "euclidean aRel \<Longrightarrow> \<lfloor>V\<rfloor>" by blast         
   lemma "preorder aRel \<Longrightarrow>  \<lfloor>M\<rfloor> \<and> \<lfloor>IV\<rfloor>" by blast --\<open>  S4: reflexive + transitive \<close>
   lemma "equivalence aRel  \<Longrightarrow>  \<lfloor>M\<rfloor> \<and> \<lfloor>V\<rfloor>" by blast --\<open>  S5: preorder + symmetric  \<close>
   lemma "reflexive aRel \<and> euclidean aRel  \<Longrightarrow>  \<lfloor>M\<rfloor> \<and> \<lfloor>V\<rfloor>" by blast --\<open>  S5  \<close>
 
-  text\<open>  Using these definitions, we can derive axioms for the most common modal logics. Thereby we 
-  are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
-  both versions. In what follows we use the semantic constraints for improved performance.
+  text\<open>  Using these definitions, we can derive axioms for the most common modal logics (see also @{cite "C47"}). 
+  Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
+  both versions. In what follows we use the semantic constraints (for improved performance).
   \pagebreak \<close>
  
 (*<*)      

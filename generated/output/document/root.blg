@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2016/MacPorts 2016_4)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: root.aux
 The style file: abbrv.bst
@@ -7,45 +7,45 @@ Warning--empty volume in GoedelNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
 Warning--empty volume in ScottNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
-You've used 17 entries,
+You've used 19 entries,
             2118 wiz_defined-function locations,
-            623 strings with 6421 characters,
-and the built_in function-call counts, 5421 in all, are:
-= -- 520
-> -- 197
-< -- 8
-+ -- 79
-- -- 58
-* -- 322
-:= -- 875
-add.period$ -- 56
-call.type$ -- 17
-change.case$ -- 70
+            641 strings with 6783 characters,
+and the built_in function-call counts, 6389 in all, are:
+= -- 620
+> -- 236
+< -- 12
++ -- 93
+- -- 70
+* -- 387
+:= -- 1017
+add.period$ -- 64
+call.type$ -- 19
+change.case$ -- 81
 chr.to.int$ -- 0
-cite$ -- 21
-duplicate$ -- 261
-empty$ -- 486
-format.name$ -- 58
-if$ -- 1199
+cite$ -- 23
+duplicate$ -- 305
+empty$ -- 564
+format.name$ -- 70
+if$ -- 1427
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 23
-newline$ -- 88
-num.names$ -- 42
-pop$ -- 107
+int.to.str$ -- 19
+missing$ -- 25
+newline$ -- 98
+num.names$ -- 48
+pop$ -- 119
 preamble$ -- 1
-purify$ -- 59
+purify$ -- 68
 quote$ -- 0
-skip$ -- 183
+skip$ -- 220
 stack$ -- 0
-substring$ -- 272
-swap$ -- 72
-text.length$ -- 8
+substring$ -- 330
+swap$ -- 93
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
+type$ -- 64
 warning$ -- 4
-while$ -- 53
-width$ -- 19
-write$ -- 190
+while$ -- 62
+width$ -- 21
+write$ -- 217
 (There were 4 warnings)

@@ -20,8 +20,8 @@
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In this last section we consider Anderson's Alternative to the objections previously shown, as exposed in the last
-part of the textbook (pp. 169-171)%
+In this final section, we verify Anderson's emendation of G\"odel's argument, as it is presented in the last
+part of the textbook by Fitting (pp. 169-171).%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsection{General Definitions%
@@ -126,7 +126,7 @@ part of the textbook (pp. 169-171)%
 %
 \begin{isamarkuptext}%
 \isa{{\isasymP}} now satisfies only one of the stability conditions. But since the argument uses an \emph{S5} logic, 
-the other stability condition is implied. Therefore \isa{{\isasymP}} becomes rigid (see p. 124 in textbook).%
+the other stability condition is implied. Therefore \isa{{\isasymP}} becomes rigid (see p. 124).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -436,7 +436,7 @@ given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theor
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Axiom 11.37 (Anderson's Version of 11.25)%
+Axiom 11.37 (Anderson's version of 11.25)%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\ \isanewline
@@ -580,7 +580,7 @@ Some useful rules:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Anderson's Version of Theorem 11.27%
+Anderson's version of Theorem 11.27%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ possExistenceImpliesNecEx{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ %
@@ -705,16 +705,18 @@ Modal collapse is countersatisfiable%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In this work we presented a shallow embedding in Isabelle/HOL for an intensional higher-order modal logic
-(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook. 
-We employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
-to the discussion of G\"odel's ontological argument in the last part of the book. Three different versions of
-this ontological argument have been considered: the first one by G\"odel himself, the second one by Fitting and the last one by Anderson.%
+We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
+(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook "Types, Tableaus and 
+G\"odel's God" \cite{Fitting}. 
+We subsequently employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
+to the discussion of G\"odel's ontological argument in the last part of Fitting's book. Three different versions of
+the ontological argument have been considered: the first one by G\"odel himself (respectively, Scott), the second 
+one by Fitting and the last one by Anderson.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
 By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
-but also to demonstrate axiom's consistency throughout the whole argumentation. We could prove even stronger versions
+but also to quarantee consistency. We could prove even stronger versions
 of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in the book.
 Another interesting aspect was the possibility to explore the implications of alternative formalisations
 for definitions and theorems which shed light on interesting philosophical issues concerning entailment,

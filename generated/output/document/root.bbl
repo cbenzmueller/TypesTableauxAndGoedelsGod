@@ -18,6 +18,12 @@ C.~Benzm{\"u}ller.
   interaction.
 \newblock {\em arXiv, \url{http://arxiv.org/abs/1703.09620}}, 2017.
 
+\bibitem{C47}
+C.~Benzm{\"u}ller, M.~Claus, and N.~Sultana.
+\newblock Systematic verification of the modal logic cube in {Isabelle/HOL}.
+\newblock In C.~Kaliszyk and A.~Paskevich, editors, {\em PxTP 2015}, volume
+  186, pages 27--41, Berlin, Germany, 2015. EPTCS.
+
 \bibitem{ECAI}
 C.~Benzm{\"u}ller and B.~W. Paleo.
 \newblock Automating {G\"{o}del's} ontological proof of {God}'s existence with
@@ -57,6 +63,13 @@ F.~Bj{\o}rdal.
 \newblock Understanding {G\"{o}del's} ontological argument.
 \newblock In T.~Childers, editor, {\em The Logica Yearbook 1998}. Filosofia,
   1999.
+
+\bibitem{Nitpick}
+J.~Blanchette and T.~Nipkow.
+\newblock Nitpick: A counterexample generator for higher-order logic based on a
+  relational model finder.
+\newblock In {\em Proc. of ITP 2010}, number 6172 in LNCS, pages 131--146.
+  Springer, 2010.
 
 \bibitem{Fitting}
 M.~Fitting.

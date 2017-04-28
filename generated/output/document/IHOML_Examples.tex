@@ -20,8 +20,8 @@
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In this section we verify that our embedded logic works as intended by proving the examples provided in the book.
- In many cases, for good mesure, we consider further theorems derived from the original ones. We were able to confirm that all results
+In this section we provide further evidence that our embedded logic works as intended by proving the examples discussed in the book.
+ In many cases, we consider further theorems which we derived from the original ones. We were able to confirm that all results
  (proofs or counterexamples) agree with Fitting's claims.%
 \end{isamarkuptext}\isamarkuptrue%
 %
@@ -32,7 +32,7 @@ In this section we verify that our embedded logic works as intended by proving t
 \begin{isamarkuptext}%
 Note: In what follows, we will call a term \emph{relativized} if it is of the form \isa{{\isasymdown}{\isasymphi}}
 (i.e. an intensional term preceded by the \emph{extension-of} operator), otherwise it is \emph{non-relativized}.
-Note that all and only relativized terms are non-rigid.%
+Relativized terms are non-rigid.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsubsection{Considerations Regarding \isa{{\isasymbeta}{\isasymeta}}-redex  (p. 94)%
@@ -741,8 +741,8 @@ Example 9.1:%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In the book (p. 118), extensionality is assumed (globally) for extensional terms. Whereas Fitting introduces following
-extensionality principles as axioms, they are already implicit in Isabelle/HOL:%
+In Fitting's book (p. 118), extensionality is assumed (globally) for extensional terms. While Fitting introduces 
+the following extensionality principles as axioms, they are already implicitly valid in Isabelle/HOL:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ EXT{\isacharcolon}\ {\isachardoublequoteopen}{\isasymforall}{\isasymalpha}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymforall}{\isasymbeta}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isacharparenleft}{\isasymforall}{\isasymgamma}{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymgamma}\ {\isasymlongleftrightarrow}\ {\isasymbeta}\ {\isasymgamma}{\isacharparenright}{\isacharparenright}\ {\isasymlongrightarrow}\ {\isacharparenleft}{\isasymalpha}\ {\isacharequal}\ {\isasymbeta}{\isacharparenright}{\isachardoublequoteclose}%

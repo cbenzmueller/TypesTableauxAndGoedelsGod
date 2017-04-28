@@ -21,9 +21,9 @@
 %
 \begin{isamarkuptext}%
 We show here that God's necessary existence follows from its possible existence by adding some
- additional (potentially controversial) assumptions including, among others, an \emph{essentialist} premise and the emph{S5} axioms.
- Further results like monotheism and the rejection of free will (\emph{modal collapse}) are also proved.
- A more detailed analysis of these rather philosophical issues is foreseen as follow-up work.%
+ additional (potentially controversial) assumptions including an \emph{essentialist} premise 
+ and the \emph{S5} axioms.
+ Further results like monotheism and the rejection of free will (\emph{modal collapse}) are also proved.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsubsection{General Definitions%
@@ -252,9 +252,14 @@ Note that the only use G\"odel makes of axiom A3 is to show that being Godlike i
 \isamarkupsubsubsection{Theorems%
 }
 \isamarkuptrue%
+%
+\begin{isamarkuptext}%
+Remark: Essence is defined here (and in Fitting) in the version of Scott; G\"odel's original version leads to the inconsistency
+ reported in \cite{C55,C60}%
+\end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}Y\ x{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ Z\ x\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}Y\ x{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ Z\ x\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\ \ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ beingIdenticalTo{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymzero}{\isasymRightarrow}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}id{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
 \ \ {\isachardoublequoteopen}id\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}y{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}{\isachardoublequoteclose}\ \ %
@@ -590,9 +595,10 @@ Theorem 11.26 (Informal Proposition 7) - Possibilist existence of God implies ne
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Below we axiomatize semantic frame conditions for some modal logics. Taken all together they make
- for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
- We prefer to introduce them individually in order to get more detailed information about their relevance.%
+We postulate semantic frame conditions for some modal logics. Taken together, reflexivite, transsitivity and symmetry
+ make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
+ We prefer to postulate them individually here in order to get more detailed information about their relevance 
+ in the proofs presented below.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
@@ -660,8 +666,7 @@ We prove some useful inference rules:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Theorem 11.27 - Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are needed.
-Nevertheless we already rely on an S5 logic here, since our axioms imply D and therefore seriality (via \emph{Sahlqvist correspondence}).%
+Theorem 11.27 - Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are used.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ possExistenceImpliesNecEx{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ %
@@ -737,7 +742,7 @@ Nevertheless we already rely on an S5 logic here, since our axioms imply D and t
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Corollary 11.28 - Necessary (actualist) existence of God (for both definitions):%
+Corollary 11.28 - Necessary (actualist) existence of God (for both definitions); reflexivity is still not used:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ GodNecExists{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}%
@@ -813,7 +818,7 @@ Monotheism for normal models is trickier. We need to consider some previous resu
 \ GodNecExists\ refl\isanewline
 \ \ \isacommand{by}\isamarkupfalse%
 \ auto\ %
-\isamarkupcmt{frame reflexivity is explicitly required by the solver%
+\isamarkupcmt{reflexivity is now required by the solver%
 }
 %
 \endisatagproof
@@ -1011,8 +1016,8 @@ Corollary 11.30:%
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In this section Fitting discusses the objection raised by Sobel \cite{sobel2004logic}, who argues that G\"odel's axiom system
- is so strong it implies that whatever is the case is so necessarily, i.e. the modal system collapses (\isa{{\isasymphi}\ {\isasymlongrightarrow}\ {\isasymbox}{\isasymphi}}).
+Fitting discusses the objection raised by Sobel \cite{sobel2004logic}, who argues that G\"odel's axiom system
+ is too strong: it implies that whatever is the case is so necessarily, i.e. the modal system collapses (\isa{{\isasymphi}\ {\isasymlongrightarrow}\ {\isasymbox}{\isasymphi}}).
  The \emph{modal collapse} has been philosophically interpreted as implying the absence of free will.%
 \end{isamarkuptext}\isamarkuptrue%
 %
@@ -1036,7 +1041,7 @@ We start by proving an useful FOL lemma:%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-After introducing the S5 axioms \emph{modal collapse} becomes valid (pp. 163-4):%
+In the con text of our S5 axioms, the \emph{modal collapse} becomes valid (pp. 163-4):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ ModalCollapse{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline

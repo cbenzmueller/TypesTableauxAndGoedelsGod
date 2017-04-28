@@ -15,7 +15,7 @@ philosophically unappealing and rather seen as a problem in the argument's forma
 text\<open> This part of the book still leaves several details unspecified and the reader is thus compelled to fill in the gaps.
 As a result, we came across some premises and theorems allowing for different formalisations and therefore leading to disparate implications.
 Only some of those cases are shown here for illustrative purposes. The options we have chosen here are such that
-they validate the argument and we assume they correspond to Fitting's ideas. \<close>
+they indeed validate the argument (and we assume that they correspond to Fitting's intention. \<close>
   
 subsection \<open>General Definitions\<close>
 
@@ -128,13 +128,13 @@ proof -
  thus ?thesis by (rule allI) 
 qed
   
-text\<open>  Second version (which can be proven directly by automated tools using last version): \<close>
+text\<open>  Second version (which can be proven directly by automated tools using the previous version): \<close>
 theorem GodExImpliesNecEx_v2: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G)\<rfloor>"
   using A4a GodExImpliesNecEx_v1 by metis
     
     
-text\<open>  In contrast to G\"odel's argument (as presented by Fitting), the following theorems can be proven in \emph{K} logic
- (note that the \emph{S5} axioms are no longer needed):  \<close>
+text\<open>  In contrast to G\"odel's argument (as presented by Fitting), the following theorems can be proven in logic \emph{K}
+ (the \emph{S5} axioms are no longer needed):  \<close>
 
 text\<open>  Theorem 11.27 - Informal Proposition 8  \<close> 
 theorem possExImpliesNecEx_v1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>"
