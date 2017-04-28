@@ -10,12 +10,16 @@ section \<open>Textbook Examples\<close>
   
 (** In this section we verify that our embedded logic works as intended by proving the examples provided in the book.
  In many cases, for good mesure, we consider further theorems derived from the original ones. We were able to confirm that all results
- (proofs or counterexamples) agree with our expectations.*)
+ (proofs or counterexamples) agree with Fitting's claims.*)
   
 subsection \<open>Modal Logic - Syntax and Semantics (Chapter 7)\<close>
- 
-subsubsection \<open>Considerations Regarding @{text "\<beta>\<eta>"}-redex  (p. 94)\<close>
+
+(**Note: In what follows, we will call a term \emph{relativized} if it is of the form @{text "\<down>\<phi>"}
+(i.e. an intensional term preceded by the \emph{extension-of} operator), otherwise it is \emph{non-relativized}.
+Note that all and only relativized terms are non-rigid.*)
   
+subsubsection \<open>Considerations Regarding @{text "\<beta>\<eta>"}-redex  (p. 94)\<close>
+
 (** @{text "\<beta>\<eta>"}-redex is valid for non-relativized (intensional or extensional) terms (because they designate rigidly): *)
 lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
 lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
@@ -78,8 +82,6 @@ subsubsection \<open>Exercises (p. 101)\<close>
 (** For Exercises 7.1 and 7.2 see variations on Examples 7.13 and 7.14 above. *)
 (** Exercise 7.3: *)    
 lemma "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>(P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> (\<^bold>\<exists>X::\<up>\<zero>. \<^bold>\<diamond>(P \<^bold>\<downharpoonleft>X))\<rfloor>" by auto
-lemma "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>(P::\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>) \<^bold>\<rightarrow> (\<^bold>\<exists>X::\<up>\<langle>\<zero>\<rangle>. \<^bold>\<diamond>(P \<^bold>\<down>X))\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countersatisfiable *) (* TODO why?*)
 (** Exercise 7.4: *)  
 lemma "\<lfloor>\<^bold>\<diamond>(\<^bold>\<exists>x::\<zero>. (\<lambda>Y. Y x) \<^bold>\<down>(P::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x. (\<lambda>Y. \<^bold>\<diamond>(Y x)) \<^bold>\<down>P)\<rfloor>" 
   nitpick[card 't=1, card i=2] oops (** countersatisfiable *)    
@@ -101,18 +103,12 @@ lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X  (p::\<up>\<zero>))) \<^bold>\<do
 
     
 subsubsection \<open>Extensionality (Subsection 1.2)\<close>
-    
-(** In the book, extensionality is assumed (globally) for extensional terms. Extensionality is however
-   already implicit in Isabelle/HOL as we can see: *)    
+  
+(** In the book (p. 118), extensionality is assumed (globally) for extensional terms. Whereas Fitting introduces following
+extensionality principles as axioms, they are already implicit in Isabelle/HOL: *)    
 lemma EXT: "\<forall>\<alpha>::\<langle>\<zero>\<rangle>. \<forall>\<beta>::\<langle>\<zero>\<rangle>. (\<forall>\<gamma>::\<zero>. (\<alpha> \<gamma> \<longleftrightarrow> \<beta> \<gamma>)) \<longrightarrow> (\<alpha> = \<beta>)" by auto
 lemma EXT_set: "\<forall>\<alpha>::\<langle>\<langle>\<zero>\<rangle>\<rangle>. \<forall>\<beta>::\<langle>\<langle>\<zero>\<rangle>\<rangle>. (\<forall>\<gamma>::\<langle>\<zero>\<rangle>. (\<alpha> \<gamma> \<longleftrightarrow> \<beta> \<gamma>)) \<longrightarrow> (\<alpha> = \<beta>)" 
   by auto
-
-(** Extensionality for intensional terms is also already implicit in the HOL embedding: *)
-lemma EXT_int: "\<lfloor>(\<lambda>x. ((\<lambda>y. x\<^bold>\<approx>y) \<^bold>\<downharpoonleft>(\<alpha>::\<up>\<zero> )))  \<^bold>\<downharpoonleft>(\<beta>::\<up>\<zero>)\<rfloor> \<longrightarrow> \<alpha> = \<beta>" by auto
-lemma EXT_int_pred: "\<lfloor>(\<lambda>x. ((\<lambda>y. x\<^bold>\<approx>y) \<^bold>\<down>(\<alpha>::\<up>\<langle>\<zero>\<rangle>))) \<^bold>\<down>(\<beta>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<alpha> = \<beta>" 
-  using ext by metis
-    
     
 subsubsection \<open>\emph{De Re} and \emph{De Dicto} (Subsection 2)\<close>
 
@@ -128,67 +124,75 @@ lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>( (\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
   nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
   
-(** Proposition 9.6 - Equivalences between \emph{de dicto} and \emph{de re}: *)
-abbreviation deDictoEquDeRe::"\<up>\<langle>\<up>\<zero>\<rangle>" 
-  where "deDictoEquDeRe \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
-abbreviation deDictoImplDeRe::"\<up>\<langle>\<up>\<zero>\<rangle>" 
+(** Proposition 9.6 - If we can prove one side of the equivalence, then we can prove the other (p. 120): *)
+abbreviation deDictoImplDeRe::"\<up>\<zero>\<Rightarrow>io" 
   where "deDictoImplDeRe \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
-abbreviation deReImplDeDicto::"\<up>\<langle>\<up>\<zero>\<rangle>" 
+abbreviation deReImplDeDicto::"\<up>\<zero>\<Rightarrow>io" 
   where "deReImplDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<rightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
-  
-abbreviation deDictoEquDeRe_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
-  where "deDictoEquDeRe_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
+abbreviation deReEquDeDicto::"\<up>\<zero>\<Rightarrow>io" 
+  where "deReEquDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
+    
 abbreviation deDictoImplDeRe_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
   where "deDictoImplDeRe_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
 abbreviation deReImplDeDicto_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
   where "deReImplDeDicto_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<rightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
+abbreviation deReEquDeDicto_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
+  where "deReEquDeDicto_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
 
-(* The following are valid only when using global consequence: *)
-(* TODO: solvers need some help to find the proofs
-lemma "\<lfloor>deDictoImpliesDeRe (\<tau>::\<up>\<zero>)\<rfloor> \<longrightarrow> \<lfloor>deReImpliesDeDicto \<tau>\<rfloor>" oops
-lemma "\<lfloor>deReImpliesDeDicto (\<tau>::\<up>\<zero>)\<rfloor> \<longrightarrow> \<lfloor>deDictoImpliesDeRe \<tau>\<rfloor>" oops
-lemma "\<lfloor>deDictoImpliesDeRe_pred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>deReImpliesDeDicto_pred \<tau>\<rfloor>" oops
-lemma "\<lfloor>deReImpliesDeDicto_pred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>deDictoImpliesDeRe_pred \<tau>\<rfloor>" oops*)
+(** We can prove local consequence:*)
+lemma AimpB: "\<lfloor>deReImplDeDicto (\<tau>::\<up>\<zero>) \<^bold>\<rightarrow> deDictoImplDeRe \<tau>\<rfloor>"
+  by force (** for individuals*)
+lemma AimpB_p: "\<lfloor>deReImplDeDicto_pred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> deDictoImplDeRe_pred \<tau>\<rfloor>"
+  by force (** for predicates*)
+
+(** And global consequence follows directly (since local consequence implies global consequence, as shown before):*)
+lemma "\<lfloor>deReImplDeDicto (\<tau>::\<up>\<zero>)\<rfloor> \<longrightarrow> \<lfloor>deDictoImplDeRe \<tau>\<rfloor>"
+  using AimpB by (rule localImpGlobalCons) (** for individuals*)
+lemma "\<lfloor>deReImplDeDicto_pred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>deDictoImplDeRe_pred \<tau>\<rfloor>"
+  using AimpB_p by (rule localImpGlobalCons) (** for predicates*)
+       
     
 subsubsection \<open>Rigidity (Subsection 3)\<close>
     
-(** Rigidity for intensional individuals: *)    
+(** (Local) rigidity for intensional individuals: *)    
 abbreviation rigidIndiv::"\<up>\<langle>\<up>\<zero>\<rangle>" where
   "rigidIndiv \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<downharpoonleft>\<tau>)) \<^bold>\<downharpoonleft>\<tau>"
-(** Rigidity for intensional predicates: *)    
+(** (Local) rigidity for intensional predicates: *)    
 abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
   "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
   
-(** Proposition 9.8 - We can prove it using local consequence (global consequence follows directly). *)  
-lemma "\<lfloor>rigidIndiv (\<tau>::\<up>\<zero>) \<^bold>\<rightarrow> deReImplDeDicto \<tau>\<rfloor>" by simp
+(** Proposition 9.8 - An intensional term is rigid if and only if the \emph{de re/de dicto} distinction vanishes.
+Note that we can prove this theorem for local consequence (global consequence follows directly). *)  
+lemma "\<lfloor>rigidIndiv (\<tau>::\<up>\<zero>) \<^bold>\<rightarrow> deReEquDeDicto \<tau>\<rfloor>" by simp
 lemma "\<lfloor>deReImplDeDicto (\<tau>::\<up>\<zero>) \<^bold>\<rightarrow> rigidIndiv \<tau>\<rfloor>" by auto
-lemma "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> deReImplDeDicto_pred \<tau>\<rfloor>" by simp
+lemma "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> deReEquDeDicto_pred \<tau>\<rfloor>" by simp
 lemma "\<lfloor>deReImplDeDicto_pred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> rigidPred \<tau>\<rfloor>" by auto
-    
-    
+   
 subsubsection \<open>Stability Conditions (Subsection 4)\<close>
     
 axiomatization where
-S5: "equivalence aRel"  (** We use the Sahlqvist correspondence for improved performance*)
+ S5: "equivalence aRel" (**using Sahlqvist correspondence for improved performance*)
     
-(** Definition 9.10 - Stability: *)
+(** Definition 9.10 - Stability conditions come in pairs: *)
 abbreviation stabilityA::"('t\<Rightarrow>io)\<Rightarrow>io" where "stabilityA \<tau> \<equiv> \<^bold>\<forall>\<alpha>. (\<tau> \<alpha>) \<^bold>\<rightarrow> \<^bold>\<box>(\<tau> \<alpha>)"
 abbreviation stabilityB::"('t\<Rightarrow>io)\<Rightarrow>io" where "stabilityB \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<diamond>(\<tau> \<alpha>) \<^bold>\<rightarrow> (\<tau> \<alpha>)"
 
-(** Proposition 9.10 - Note it is valid only for global consequence.*)
+(** Proposition 9.10 - In an \emph{S5} modal logic both stability conditions are equivalent.*)
+(** The last proposition holds for global consequence:*)  
 lemma "\<lfloor>stabilityA (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityB \<tau>\<rfloor>" using S5 by blast    
-lemma "\<lfloor>stabilityA (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> stabilityB \<tau>\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countersatisfiable for local consequence*)
-    
 lemma "\<lfloor>stabilityB (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityA \<tau>\<rfloor>" using S5 by blast    
+(** But it does not hold for local consequence:*)      
+lemma "\<lfloor>stabilityA (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> stabilityB \<tau>\<rfloor>" 
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable*)
 lemma "\<lfloor>stabilityB (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> stabilityA \<tau>\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countersatisfiable for local consequence*)
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable*)
     
-(** Theorem 9.11 - Note that we can prove even local consequence. *)
+(** Theorem 9.11 - A term is rigid if and only if it satisfies the stability conditions. Note that
+ we can prove this theorem for local consequence (global consequence follows directly). *)
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<zero>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
-
+(** \pagebreak*)
 (*<*)
 end
 (*>*)

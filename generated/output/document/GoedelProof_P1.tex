@@ -1,0 +1,588 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{GoedelProof{\isacharunderscore}P{\isadigit{1}}}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isamarkupsection{G\"odel's Argument, Formally%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+"G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
+  from one of Descartes. These arguments all have a two-part structure: prove God's existence is necessary,
+  if possible; and prove God's existence is possible." \cite{Fitting} p. 138.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsection{Part I - God's Existence is Possible%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+We divide G\"odel's Argument as presented in Fitting's textbook (ch. 11) in two parts. For the first one, while Leibniz provides
+  some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
+ \emph{(T1) Every positive property is possibly instantiated}, which together with \emph{(T2) God is a positive property}
+  directly implies the conclusion. In order to prove \emph{T1} G\"odel assumes \emph{A2: Any property entailed by a positive property is positive}.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+We are currently contemplating a follow-up analysis of the philosophical implications of these axioms,
+ which encompasses some criticism of the notion of \emph{property entailment} used by G\"odel throughout the argument.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isamarkupsubsubsection{General Definitions%
+}
+\isamarkuptrue%
+\isacommand{abbreviation}\isamarkupfalse%
+\ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isachardoublequoteclose}\ %
+\isamarkupcmt{existence predicate in object language%
+}
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}E{\isacharbang}\ x\ w\ {\isasymlongleftrightarrow}\ existsAt\ x\ w{\isachardoublequoteclose}\ \isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ simp\ %
+\isamarkupcmt{safety check: \isa{E{\isacharbang}} correctly matches its meta-logical counterpart%
+}
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{consts}\isamarkupfalse%
+\ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\ %
+\isamarkupcmt{Positiveness/Perfection%
+}
+%
+\begin{isamarkuptext}%
+Definitions of God (later shown to be equivalent under axiom \emph{A1b}):%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{abbreviation}\isamarkupfalse%
+\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ God{\isacharunderscore}star{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G{\isacharasterisk}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G{\isacharasterisk}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isasymP}\ Y\ \isactrlbold {\isasymleftrightarrow}\ Y\ x{\isacharparenright}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+Definitions needed to formalise \emph{A3}:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{abbreviation}\isamarkupfalse%
+\ appliesToPositiveProps{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}pos{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ intersectionOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}intersec{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ %
+\isamarkupcmt{quantifier is possibilist%
+}
+\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}%
+\isamarkupsubsubsection{Axioms%
+}
+\isamarkuptrue%
+\isacommand{axiomatization}\isamarkupfalse%
+\ \isakeyword{where}\isanewline
+\ \ A{\isadigit{1}}a{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ {\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \ \ \ %
+\isamarkupcmt{axiom 11.3A%
+}
+\isanewline
+\ \ A{\isadigit{1}}b{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \ \ \ \ %
+\isamarkupcmt{axiom 11.3B%
+}
+\isanewline
+\ \ A{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X\ Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ X\ \isactrlbold {\isasymand}\ {\isacharparenleft}X\ {\isasymRrightarrow}\ Y{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ Y{\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ %
+\isamarkupcmt{axiom 11.5%
+}
+\isanewline
+\ \ A{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isasymrfloor}{\isachardoublequoteclose}\ %
+\isamarkupcmt{axiom 11.10%
+}
+\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ True\ \isacommand{nitpick}\isamarkupfalse%
+{\isacharbrackleft}satisfy{\isacharbrackright}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{oops}\isamarkupfalse%
+\ \ \ \ \ \ \ %
+\isamarkupcmt{model found: axioms are consistent%
+}
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\ \ \ \ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}D{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{1}}b\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{axioms already imply \emph{D} axiom%
+}
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}D{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{3}}\ \isacommand{by}\isamarkupfalse%
+\ metis%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isamarkupsubsubsection{Theorems%
+}
+\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}b\ \isacommand{by}\isamarkupfalse%
+\ auto%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymand}\ \ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{1}}b\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ metis%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Being self-identical is a positive property:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymand}\ \ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ x\ {\isacharequal}\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ fastforce%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.6%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ x\ {\isacharequal}\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ fastforce%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\ \ \ \ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ x\ {\isacharequal}\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}b\ A{\isadigit{2}}\ \ \isacommand{by}\isamarkupfalse%
+\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ x\ {\isacharequal}\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{3}}\ \isacommand{by}\isamarkupfalse%
+\ metis%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Being non-self-identical is a negative property:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X\ \ \isactrlbold {\isasymand}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ fastforce%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\ \ \ \ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ fastforce%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{3}}\ \isacommand{by}\isamarkupfalse%
+\ metis%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.7%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymexists}X{\isachardot}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymnot}{\isasymP}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymnot}{\isasymP}\ {\isacharparenleft}{\isasymlambda}x\ w{\isachardot}\ {\isasymnot}x\ {\isacharequal}\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.8 (Informal Proposition 1) - Positive properties are possibly instantiated:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{theorem}\isamarkupfalse%
+\ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ blast%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.14 - Both defs (\emph{God/God*}) are equivalent. For improved performance we may prefer to use one or the other:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ GodDefsAreEquivalent{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymleftrightarrow}\ G{\isacharasterisk}\ x{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}b\ \isacommand{by}\isamarkupfalse%
+\ force%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.15 - Possibilist existence of \emph{God} directly implies \emph{A1b}:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G{\isacharasterisk}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{by}\isamarkupfalse%
+\ meson%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Proposition 11.16 - \emph{A3} implies \emph{P(G)} (local consequence):%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}local{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharminus}\isanewline
+\ \ \isacommand{{\isacharbraceleft}}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{fix}\isamarkupfalse%
+\ w\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ {\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}pos\ {\isasymP}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{have}\isamarkupfalse%
+\ {\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}intersec\ G\ {\isasymP}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{{\isacharbraceleft}}\isamarkupfalse%
+\ \ \ \ \isanewline
+\ \ \ \ \isacommand{assume}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isacharparenright}\ w{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}\isactrlbold {\isasymforall}X{\isachardot}\ {\isacharparenleft}{\isacharparenleft}pos\ {\isasymP}{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}intersec\ X\ {\isasymP}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isacharparenright}\ w{\isachardoublequoteclose}\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ allE{\isacharparenright}\ \ \ \isanewline
+\ \ \ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharparenleft}pos\ {\isasymP}{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}intersec\ G\ {\isasymP}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ G{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ allE{\isacharparenright}\isanewline
+\ \ \ \ \isacommand{hence}\isamarkupfalse%
+\ {\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}pos\ {\isasymP}\ \isactrlbold {\isasymand}\ intersec\ G\ {\isasymP}{\isacharparenright}\ w{\isacharparenright}\ {\isasymlongrightarrow}\ {\isasymP}\ G\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{hence}\isamarkupfalse%
+\ {\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}pos\ {\isasymP}{\isacharparenright}\ \isactrlbold {\isasymand}\ {\isacharparenleft}intersec\ G\ {\isasymP}{\isacharparenright}{\isacharparenright}\ w{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
+\ {\isadigit{1}}\ {\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+\ \ \ \ \isacommand{from}\isamarkupfalse%
+\ {\isadigit{3}}\ {\isadigit{4}}\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymP}\ G\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ mp{\isacharparenright}\isanewline
+\ \ \isacommand{{\isacharbraceright}}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{hence}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isacharparenleft}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isacharparenright}\ w\ \ {\isasymlongrightarrow}\ {\isasymP}\ G\ w{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ impI{\isacharparenright}\isanewline
+\ \ \isacommand{{\isacharbraceright}}\isamarkupfalse%
+\ \isanewline
+\ \ \isacommand{thus}\isamarkupfalse%
+\ {\isacharquery}thesis\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ allI{\isacharparenright}\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+\emph{A3} implies \isa{P{\isacharparenleft}G{\isacharparenright}} (as global consequence):%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}global{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z\ X{\isachardot}\ {\isacharparenleft}pos\ Z\ \isactrlbold {\isasymand}\ intersec\ X\ Z{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}local\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}rule\ localImpGlobalCons{\isacharparenright}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Being Godlike is a positive property. Note that this theorem can be axiomatized directly,
+as noted by Dana Scott (see \cite{Fitting} p. 152). We will do so for the second part.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{theorem}\isamarkupfalse%
+\ T{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ G{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{3}}implT{\isadigit{2}}{\isacharunderscore}global\ A{\isadigit{3}}\ \isacommand{by}\isamarkupfalse%
+\ simp%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+Theorem 11.17 (Informal Proposition 3) - Possibly God exists:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{theorem}\isamarkupfalse%
+\ T{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ T{\isadigit{1}}\ T{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ simp\isanewline
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "root"
+%%% End:

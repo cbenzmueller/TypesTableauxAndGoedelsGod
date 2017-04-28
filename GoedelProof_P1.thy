@@ -15,7 +15,7 @@ section \<open>G\"odel's Argument, Formally\<close>
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 
-(** We divide G\"odel's Argument as presented in this textbook (Chapter 11) in two parts. For the first one, while Leibniz provides
+(** We divide G\"odel's Argument as presented in Fitting's textbook (ch. 11) in two parts. For the first one, while Leibniz provides
   some kind of proof for the compatibility of all perfections, G\"odel goes on to prove an analogous result:
  \emph{(T1) Every positive property is possibly instantiated}, which together with \emph{(T2) God is a positive property}
   directly implies the conclusion. In order to prove \emph{T1} G\"odel assumes \emph{A2: Any property entailed by a positive property is positive}.*)
@@ -25,10 +25,9 @@ subsection \<open>Part I - God's Existence is Possible\<close>
 subsubsection \<open>General Definitions\<close>
                 
 abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") 
-  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" (**existence predicate in the object-language*)
-
+  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" (**existence predicate in object language*)
 lemma "E! x w \<longleftrightarrow> existsAt x w" 
-  by simp (**safety check: correctly matches its meta-logical counterpart*)
+  by simp (**safety check: @{text "E!"} correctly matches its meta-logical counterpart*)
 
 consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") (** Positiveness/Perfection *)
   
@@ -47,12 +46,12 @@ abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<la
 subsubsection \<open>Axioms\<close>
     
 axiomatization where
-  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      (** Axiom 11.3A *)
-  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and       (** Axiom 11.3B *)
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** Axiom 11.5 *)
-  A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" (** Axiom 11.10 *)
+  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      (** axiom 11.3A *)
+  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and       (** axiom 11.3B *)
+  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** axiom 11.5 *)
+  A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" (** axiom 11.10 *)
 
-lemma True nitpick[satisfy] oops       (** Model found: axioms are consistent*)
+lemma True nitpick[satisfy] oops       (** model found: axioms are consistent*)
     
 lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast (** axioms already imply \emph{D} axiom *)
 lemma "\<lfloor>D\<rfloor>" using A1a A3 by metis
@@ -110,19 +109,16 @@ proof -
   } 
   thus ?thesis by (rule allI)
 qed    
-
-(** Useful lemma: local consequence implies global consequence.*)
-lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
     
 (** \emph{A3} implies @{text "P(G)"} (as global consequence):*)
 lemma A3implT2_global: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor> \<longrightarrow> \<lfloor>\<P> G\<rfloor>" 
-  using A3implT2_local by (rule localImpliesGlobal) 
+  using A3implT2_local by (rule localImpGlobalCons) 
   
-(** Being Godlike is a positive property. Note that this theorem can be axiomatized directly 
- (as noted by Dana Scott). We will do so for the second part. *)
+(** Being Godlike is a positive property. Note that this theorem can be axiomatized directly,
+as noted by Dana Scott (see @{cite "Fitting"} p. 152). We will do so for the second part.*)
 theorem T2: "\<lfloor>\<P> G\<rfloor>" using A3implT2_global A3 by simp
   
-(** Theorem 11.17 (Informal Proposition 3) - Possibly God exists: *)
+(** Theorem 11.17 (Informal Proposition 3) - Possibly God exists:*)
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>"  using T1 T2 by simp
 
 (*<*)

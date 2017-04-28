@@ -1,0 +1,48 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Embedding of Intensional Higher-Order Modal Logic}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Type Declarations}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Definitions}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Logical Operators as Truth-Sets}{5}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Possibilist Quantification}{5}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Actualist Quantification}{5}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Modal Operators}{6}{subsubsection.2.2.4}
+\contentsline {subsubsection}{\numberline {2.2.5}\emph {Extension-of} Operator}{6}{subsubsection.2.2.5}
+\contentsline {subsubsection}{\numberline {2.2.6}Equality}{7}{subsubsection.2.2.6}
+\contentsline {subsubsection}{\numberline {2.2.7}Meta-logical Predicates}{7}{subsubsection.2.2.7}
+\contentsline {subsection}{\numberline {2.3}Verifying the Embedding}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Useful Definitions for Axiomatization of Further Logics}{8}{subsection.2.4}
+\contentsline {section}{\numberline {3}Textbook Examples}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Modal Logic - Syntax and Semantics (Chapter 7)}{9}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Considerations Regarding \emph {\sfcode 42 1000 \sfcode 63 1000 \sfcode 33 1000 \sfcode 58 1000 \sfcode 59 1000 \sfcode 44 1000 \it {\emph {$\beta $}}{\emph {$\eta $}}}-redex (p. 94)}{9}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Exercises (p. 101)}{10}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Miscellaneous Matters (Chapter 9)}{11}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Equality Axioms (Subsection 1.1)}{11}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Extensionality (Subsection 1.2)}{11}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}\emph {De Re} and \emph {De Dicto} (Subsection 2)}{11}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Rigidity (Subsection 3)}{12}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Stability Conditions (Subsection 4)}{12}{subsubsection.3.2.5}
+\contentsline {section}{\numberline {4}G\"odel's Argument, Formally}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Part I - God's Existence is Possible}{14}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}General Definitions}{14}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Axioms}{14}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Theorems}{15}{subsubsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2}Part II - God's Existence is Necessary if Possible}{16}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}General Definitions}{16}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Results from Part I}{17}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Axioms}{17}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.4}Theorems}{17}{subsubsection.4.2.4}
+\contentsline {subsubsection}{\numberline {4.2.5}Monotheism}{20}{subsubsection.4.2.5}
+\contentsline {subsubsection}{\numberline {4.2.6}Positive Properties are Necessarily Instantiated}{21}{subsubsection.4.2.6}
+\contentsline {subsubsection}{\numberline {4.2.7}More Objections}{22}{subsubsection.4.2.7}
+\contentsline {section}{\numberline {5}Fitting's Solution}{23}{section.5}
+\contentsline {subsection}{\numberline {5.1}General Definitions}{23}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Part I - God's Existence is Possible}{23}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Part II - God's Existence is Necessary if Possible}{24}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Conclusion (\emph {De Re} and \emph {De Dicto} Reading)}{26}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Modal Collapse}{26}{subsection.5.5}
+\contentsline {section}{\numberline {6}Anderson's Alternative}{27}{section.6}
+\contentsline {subsection}{\numberline {6.1}General Definitions}{27}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Part I - God's Existence is Possible}{27}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Part II - God's Existence is Necessary if Possible}{27}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Modal Collapse}{30}{subsection.6.4}
+\contentsline {section}{\numberline {7}Conclusion}{31}{section.7}

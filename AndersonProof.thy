@@ -30,10 +30,10 @@ axiomatization where
   A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** Axiom 11.5 *)
   T2: "\<lfloor>\<P> G\<^sup>A\<rfloor>"                                 (** Proposition 11.16 *)
         
-lemma True nitpick[satisfy] oops (** Model found: axioms are consistent*)
+lemma True nitpick[satisfy] oops (** model found: axioms are consistent*)
     
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" 
-  using A1a A2 by blast  (** Positive properties are possibly instantiated*)  
+  using A1a A2 by blast  (** positive properties are possibly instantiated*)  
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T1 T2 by simp  (** God exists possibly *)  
     
     
@@ -42,16 +42,15 @@ subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
 (** @{text "\<P>"} now satisfies only one of the stability conditions. But since the argument uses an \emph{S5} logic, 
 the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid (see p. 124 in textbook). *)
 axiomatization where
-  A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** Axiom 11.11 *)
+  A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** axiom 11.11 *)
       
-(** We further axiomatize semantic frame conditions for different modal logics (via \emph{Sahlqvist correspondence}).
- All axioms together imply an \emph{S5} logic.*)
+(** We again postulate our \emph{S5} axioms:*)
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
  symm: "symmetric aRel"
  
-lemma True nitpick[satisfy] oops (** Model found: so far all axioms consistent*)
+lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
  
 abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
  "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
@@ -74,7 +73,7 @@ abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup
 
 (**As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
 For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
-given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"} , Theorem 2*, p. 296)*)
+given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"} Theorem 2*, p. 296)*)
 (*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
 by definition (of "God-like*"), that property is positive. But necessarily, if
 Q is positive, then if anything is God-like*, then it has Q -again by the
@@ -105,8 +104,8 @@ proof -
         from 1 have 2: "(\<P> Q w) \<longleftrightarrow> (\<^bold>\<box>(Q g)) w" by (rule allE)
         have  "(\<^bold>\<box>(Q g)) w \<longleftrightarrow> (G\<^sup>A \<Rrightarrow> Q) w" (**we need to prove @{text "\<rightarrow>"} and @{text "\<leftarrow>"}*)
         proof
-            assume "(\<^bold>\<box>(Q g)) w" (**Suppose g is God-like and necessarily has Q*)
-            hence 3: "(\<P> Q w)" using 2 by simp (** Then Q is positive*)
+            assume "(\<^bold>\<box>(Q g)) w" (**suppose g is God-like and necessarily has Q*)
+            hence 3: "(\<P> Q w)" using 2 by simp (** then Q is positive*)
             
             {
               fix u
@@ -130,7 +129,7 @@ proof -
             hence "\<P> Q w \<longrightarrow> (G\<^sup>A \<Rrightarrow> Q) w" using 4 by simp (*if Q is positive, then it is entailed by being God-like*)
             thus "(G\<^sup>A \<Rrightarrow> Q) w" using 3 by (rule mp) (**@{text "\<rightarrow>"} direction*)
          next
-           assume 5: "(G\<^sup>A \<Rrightarrow> Q) w" (**Suppose Q is entailed by being God-like*)
+           assume 5: "(G\<^sup>A \<Rrightarrow> Q) w" (**suppose Q is entailed by being God-like*)
            have "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" by (rule A2)
            hence "(\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y) w" by (rule allE)
            hence "\<forall>X Y. (\<P> X w \<and> (X \<Rrightarrow> Y) w) \<longrightarrow> \<P> Y w" by simp
@@ -158,7 +157,7 @@ qed
 axiomatization where 
  A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>"
  
-lemma True nitpick[satisfy] oops (** Model found: so far all axioms consistent*)
+lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
  
 (** Theorem 11.38 - Possibilist existence of God implies necessary actualist existence: *) 
 theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>"
@@ -168,7 +167,7 @@ proof -
   {
     assume "\<exists>x. G\<^sup>A x w"
     then obtain g where 1: "G\<^sup>A g w" ..
-    hence "NE\<^sup>A g w" using A5 by blast                  (** Axiom 11.25*)
+    hence "NE\<^sup>A g w" using A5 by blast                  (** axiom 11.25*)
     hence "\<forall>Y. (\<E>\<^sup>A Y g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w" by simp
     hence 2: "(\<E>\<^sup>A G\<^sup>A g w) \<longrightarrow> (\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A) w" by (rule allE)
     have  "(\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)) w" using GodIsEssential
@@ -200,20 +199,43 @@ proof -
   thus ?thesis by (rule modal_trans)
 qed
 
-(** Useful lemma: local consequence implies global consequence*)
-lemma localImpliesGlobal: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
-
 lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using possExistenceImpliesNecEx 
-    by (rule localImpliesGlobal) (** global consequence*)
+    by (rule localImpGlobalCons) (** global consequence*)
   
 (** Conclusion - Necessary (actualist) existence of God: *)    
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis    
     
 subsection \<open>Modal Collapse\<close>
   
-(** Modal Collapse is countersatisfiable *)
+(** Modal collapse is countersatisfiable *)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
-     
+    
+(** \pagebreak*)
+    
+section \<open>Conclusion\<close>
+(** In this work we presented a shallow embedding in Isabelle/HOL for an intensional higher-order modal logic
+(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook. 
+We employed this logic to formalise and verify all results (theorems, examples and exercises) relevant 
+to the discussion of G\"odel's ontological argument in the last part of the book. Three different versions of
+this ontological argument have been considered: the first one by G\"odel himself, the second one by Fitting and the last one by Anderson.*)
+  
+(**By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
+but also to demonstrate axiom's consistency throughout the whole argumentation. We could prove even stronger versions
+of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in the book.
+Another interesting aspect was the possibility to explore the implications of alternative formalisations
+for definitions and theorems which shed light on interesting philosophical issues concerning entailment,
+essentialism and free will, which are currently the subject of some follow-up analysis.*)
+
+(**The latest developments in \emph{automated theorem proving} allow us to engage in much more experimentation
+during the formalisation and assessment of arguments than ever before. The potential reduction (of several orders of magnitude)
+in the time needed for proving or disproving theorems (compared to pen-and-paper proofs), results in almost real-time
+feedback about the suitability of our speculations. The practical benefits of computer-supported argumentation go beyond
+mere quantitative (easier, faster and more reliable proofs). The advantages are also qualitative, since it fosters a
+different approach to argumentation: We can now work iteratively (by `trial-and-error') on an argument
+by making gradual adjustments to its definitions, axioms and theorems. This allows us to continuously expose and revise 
+the assumptions we indirectly commit ourselves everytime we opt for some particular formalisation.
+\pagebreak
+*)
 (*<*)
 end
 (*>*)
