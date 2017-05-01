@@ -30,9 +30,9 @@ In this section we provide further evidence that our embedded logic works as int
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Note: In what follows, we will call a term \emph{relativized} if it is of the form \isa{{\isasymdown}{\isasymphi}}
+Reminder: We call a term \emph{relativized} if it is of the form \isa{{\isasymdown}{\isasymalpha}}
 (i.e. an intensional term preceded by the \emph{extension-of} operator), otherwise it is \emph{non-relativized}.
-Relativized terms are non-rigid.%
+Relativized terms are non-rigid and non-relativized terms are rigid.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsubsection{Considerations Regarding \isa{{\isasymbeta}{\isasymeta}}-redex  (p. 94)%
@@ -110,7 +110,7 @@ Relativized terms are non-rigid.%
 \isa{{\isasymbeta}{\isasymeta}}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -129,7 +129,7 @@ Relativized terms are non-rigid.%
 \isa{{\isasymbeta}{\isasymeta}}-redex is non-valid for relativized terms when modal operators are present:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \isadelimproof
 \ %
@@ -149,7 +149,7 @@ Relativized terms are non-rigid.%
 \endisadelimproof
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymdiamond}{\isasymphi}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \isadelimproof
 \ %
@@ -534,7 +534,7 @@ with other types for \isa{P}:%
 Example 7.16, p. 100:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}P\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}c{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}P\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}P\ {\isasymdownharpoonleft}{\isacharparenleft}c{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}P\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
 \ \ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{2}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \isadelimproof
@@ -558,7 +558,7 @@ Example 7.16, p. 100:%
 Example 7.17, p. 101:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymlambda}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ x\ \isactrlbold {\isasymapprox}\ y{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}Z{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}Z{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymlambda}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ x\ \isactrlbold {\isasymapprox}\ y{\isacharparenright}\ {\isasymdownharpoonleft}Z{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}Z{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
 \ \ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{2}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \isadelimproof
@@ -622,7 +622,7 @@ For Exercises 7.1 and 7.2 see variations on Examples 7.13 and 7.14 above.%
 Exercise 7.3:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}{\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}X{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}P\ \isactrlbold {\isasymdownharpoonleft}X{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}{\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}X{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}P\ {\isasymdownharpoonleft}X{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
 \ %
 \endisadelimproof
@@ -681,7 +681,7 @@ For Exercise 7.5 see Example 7.17 above.%
 Example 9.1:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\ x{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\ x{\isacharparenright}\ {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
 %
 \isadelimproof
 \ \ %
@@ -701,7 +701,7 @@ Example 9.1:%
 %
 \endisadelimproof
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\isactrlsup L\ x{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\isactrlsup L\ x{\isacharparenright}\ {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
 %
 \isadelimproof
 \ \ %
@@ -853,10 +853,10 @@ the following extensionality principles as axioms, they are already implicitly v
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-\emph{De re} is not equivalent to \emph{de dicto} for relativized (intensional) terms:%
+\emph{De re} is not equivalent to \emph{de dicto} for relativized terms:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
 \ \ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{2}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \isadelimproof
@@ -902,13 +902,13 @@ Proposition 9.6 - If we can prove one side of the equivalence, then we can prove
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ deDictoImplDeRe{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}deDictoImplDeRe\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}deDictoImplDeRe\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ deReImplDeDicto{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}deReImplDeDicto\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}deReImplDeDicto\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ deReEquDeDicto{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}deReEquDeDicto\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}deReEquDeDicto\ {\isasymtau}\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ deDictoImplDeRe{\isacharunderscore}pred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isanewline
@@ -1016,7 +1016,7 @@ And global consequence follows directly (since local consequence implies global 
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ rigidIndiv{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}rigidIndiv\ {\isasymtau}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ {\isasymbeta}\ \isactrlbold {\isasymapprox}\ z{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdownharpoonleft}{\isasymtau}{\isachardoublequoteclose}%
+\ \ {\isachardoublequoteopen}rigidIndiv\ {\isasymtau}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ {\isasymbeta}\ \isactrlbold {\isasymapprox}\ z{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}{\isasymtau}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 (Local) rigidity for intensional predicates:%
 \end{isamarkuptext}\isamarkuptrue%

@@ -19,14 +19,13 @@ they indeed validate the argument (and we assume that they correspond to Fitting
   
 subsection \<open>General Definitions\<close>
 
-text\<open>  The following technical definition is needed only for type correctness. It is used to convert
- extensional objects into rigid intensional ones: \<close>  
-abbreviation trivialExpansion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") where "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"  
-
 text\<open>  The following is an existence predicate for our object-language. (We have previously shown it is equivalent to its
  meta-logical counterpart.) \<close>  
 abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") where
-  "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)" 
+  "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)"
+  
+text\<open> Reminder: The `@{text "\<lparr>_\<rparr>"}' parenthesis are used to convert an extensional object into its `rigid'
+intensional counterpart (e.g. @{text "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"}). They were introduced only for type correctness. \<close>
   
 consts positiveProperty::"\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> \<lparr>Y x\<rparr>)"

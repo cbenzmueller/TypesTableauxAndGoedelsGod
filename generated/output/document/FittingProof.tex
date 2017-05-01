@@ -38,19 +38,16 @@ they indeed validate the argument (and we assume that they correspond to Fitting
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-The following technical definition is needed only for type correctness. It is used to convert
- extensional objects into rigid intensional ones:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ trivialExpansion{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}bool{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlparr}{\isacharunderscore}{\isasymrparr}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
 The following is an existence predicate for our object-language. (We have previously shown it is equivalent to its
  meta-logical counterpart.)%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ existencePredicate{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
-\ \ \isanewline
+\ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+Reminder: The `\isa{{\isasymlparr}{\isacharunderscore}{\isasymrparr}}' parenthesis are used to convert an extensional object into its `rigid'
+intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}}). They were introduced only for type correctness.%
+\end{isamarkuptext}\isamarkuptrue%
 \isacommand{consts}\isamarkupfalse%
 \ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%

@@ -49,7 +49,10 @@ intensional types and their related operations.*)
 subsection \<open>Type Declarations\<close>
   
 (** Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
-We follow as closely as possible the syntax given by Fitting (see p. 86).*)
+We follow as closely as possible the syntax given by Fitting (see p. 86). According to this syntax,
+if @{text "\<tau>"} is an extensional type, @{text "\<up>\<tau>"} is the corresponding intensional type. For instance,
+a set of (red) objects has the extensional type @{text "\<langle>\<zero>\<rangle>"}, whereas the concept `red' has intensional type @{text "\<up>\<langle>\<zero>\<rangle>"}.
+In what follows, terms having extensional (intensional) types will be called extensional (intensional) terms.*)
 
   typedecl i                    (**type for possible worlds *)
   type_synonym io = "(i\<Rightarrow>bool)" (**formulas with world-dependent truth-value*)
@@ -144,29 +147,51 @@ subsubsection \<open>Modal Operators\<close>
     where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
 
 subsubsection \<open>\emph{Extension-of} Operator\<close>
-(** The IHOML operator @{text "\<down>"} is embedded as a predicate applying to (world-dependent) atomic formulas
- whose first argument is a \emph{relativized term} (i.e. a non-rigid term). This approach slightly differs from  
- the one taken in Fitting's book, where @{text "\<down>"} is an operator which, when applied to a (rigid) intensional term,
- gives us a new (non-rigid) extensional term (see @{cite "Fitting"}, p. 93, for more details). Also note that,
- depending on the particular types involved, we had to define this operator differently (\emph{a-d} below) to ensure 
- type correctness.
- Nevertheless, in both approaches the essence of the \emph{Extension-of} operator remains the same:
- a term of the form @{text "\<down>\<phi>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
- to the extension of the original intensional term @{text "\<phi>"} at that world.*)
+(**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4) @{text "\<down>"} is an unary operator applying only to 
+ intensional terms. A term of the form @{text "\<down>\<alpha>"} designates the extension of the intensional object designated by 
+ @{text "\<alpha>"}, at some \emph{given} world. For instance, suppose we take possible worlds as people,
+ we can therefore think of the concept `red' as a function that maps each person to the set of objects that person
+ classifies as red (its extension). We can further state, the intensional term \emph{r} of type @{text "\<up>\<langle>\<zero>\<rangle>"} designates the concept `red'.
+ As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
+ We will sometimes refer to an intensional object explicitly as `rigid', implying that its (rigidly) designated function has
+ the same extension in all possible worlds.*)
 
-(** (\emph{a}) Predicate @{text \<phi>} takes an (intensional) individual concept as argument:*)
-abbreviation mextIndiv::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zero>\<Rightarrow>io" (infix "\<^bold>\<downharpoonleft>" 60)                             
-  where "\<phi> \<^bold>\<downharpoonleft>c \<equiv> \<lambda>w. \<phi> (c w) w"
-(** (\emph{b}) Predicate @{text \<phi>} takes an intensional predicate as argument:*)
-abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
-  where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"
-(** (\emph{c}) Predicate @{text \<phi>} takes an extensional predicate as argument:*)
+(** Terms of the form @{text "\<down>\<alpha>"} are called \emph{relativized} (extensional) terms; they are always derived
+from intensional terms and their type is \emph{extensional} (in the color example @{text "\<down>r"} would be of type @{text "\<langle>\<zero>\<rangle>"}).
+Relativized terms may vary their denotation from world to world of a model, because the extension of an intensional term can change
+from world to world, i.e. they are non-rigid.*)
+(**To recap: an intensional term denotes the same function in all worlds (i.e. it's rigid), whereas a relativized term
+denotes a (possibly) different extension (an object or a set) at every world (i.e. it's non-rigid). To find out
+the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.
+\bigbreak*)
+(** For our Isabelle/HOL embedding, we had to follow a slightly different approach; we model @{text "\<down>"}
+as a predicate applying to formulas of the form @{text "\<Phi>(\<down>\<alpha>\<^sub>1,\<dots>\<alpha>\<^sub>n)"} (for our treatment
+we only need to consider cases involving one or two arguments, the first one being a relativized term).
+For instance, the formula @{text "Q(\<down>a\<^sub>1)\<^sup>w"} (evaluated at world \emph{w}) is modelled as @{text "\<downharpoonleft>(Q,a\<^sub>1)\<^sup>w"}
+(or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation), which gets further translated into @{text "Q(a\<^sub>1(w))\<^sup>w"}.
+
+Depending on the particular types involved, we have to define @{text "\<down>"} differently to ensure type correctness
+(see \emph{a-d} below). Nevertheless, the essence of the \emph{Extension-of} operator remains the same:
+a term @{text "\<alpha>"} preceded by @{text "\<down>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
+to the extension of the original intensional term @{text "\<alpha>"} at that world.*)
+
+(** (\emph{a}) Predicate @{text \<phi>} takes as argument a relativized term derived from an (intensional) individual of type @{text "\<up>\<zero>"}:*)
+abbreviation extIndivArg::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zero>\<Rightarrow>io" (infix "\<downharpoonleft>" 60)                           
+  where "\<phi> \<downharpoonleft>c \<equiv> \<lambda>w. \<phi> (c w) w"
+(** (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}):*)
 abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
   where "\<phi> \<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. P x w) w"
-(** (\emph{d}) Predicate @{text \<phi>} takes an extensional predicate as \emph{first} argument:*)
+(** (\emph{c}) A variant of (\emph{b}) with a second argument:*)
 abbreviation extPredArg1::"(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
   where "\<phi> \<down>\<^sub>1P \<equiv> \<lambda>z. \<lambda>w. \<phi> (\<lambda>x. P x w) z w"
- (**\bigbreak*)   
+    
+(**Following technical definition is needed for type correctness. The `@{text "\<lparr>_\<rparr>"}' parentheses convert
+ extensional objects into `rigid' intensional ones:*)  
+abbreviation trivialExpansion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") where "\<lparr>\<phi>\<rparr> \<equiv> (\<lambda>w. \<phi>)"  
+(** (\emph{d}) A variant of (\emph{b}) where @{text \<phi>} takes `rigid' intensional terms as argument:*)
+abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
+  where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. \<lparr>P x w\<rparr>) w" (* where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"*)
+    
 subsubsection \<open>Equality\<close>
   
   abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) (**normal equality (for all types)*)
@@ -220,7 +245,7 @@ the axioms which falsifies the given formula. This means, the formulas are not v
 
  (** \emph{Modal collapse} is countersatisfiable: *)
  lemma "\<lfloor>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<phi>\<rfloor>" nitpick oops                  (** countersatisfiable*)
-
+(**\pagebreak*)
 subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close>
 
  (** The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by

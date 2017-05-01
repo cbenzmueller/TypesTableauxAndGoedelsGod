@@ -75,7 +75,10 @@ intensional types and their related operations.%
 %
 \begin{isamarkuptext}%
 Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
-We follow as closely as possible the syntax given by Fitting (see p. 86).%
+We follow as closely as possible the syntax given by Fitting (see p. 86). According to this syntax,
+if \isa{{\isasymtau}} is an extensional type, \isa{{\isasymup}{\isasymtau}} is the corresponding intensional type. For instance,
+a set of (red) objects has the extensional type \isa{{\isasymlangle}{\isasymzero}{\isasymrangle}}, whereas the concept `red' has intensional type \isa{{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}}.
+In what follows, terms having extensional (intensional) types will be called extensional (intensional) terms.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{typedecl}\isamarkupfalse%
 \ i\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
@@ -244,45 +247,73 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-The IHOML operator \isa{{\isasymdown}} is embedded as a predicate applying to (world-dependent) atomic formulas
- whose first argument is a \emph{relativized term} (i.e. a non-rigid term). This approach slightly differs from  
- the one taken in Fitting's book, where \isa{{\isasymdown}} is an operator which, when applied to a (rigid) intensional term,
- gives us a new (non-rigid) extensional term (see \cite{Fitting}, p. 93, for more details). Also note that,
- depending on the particular types involved, we had to define this operator differently (\emph{a-d} below) to ensure 
- type correctness.
- Nevertheless, in both approaches the essence of the \emph{Extension-of} operator remains the same:
- a term of the form \isa{{\isasymdown}{\isasymphi}} behaves as a non-rigid term, whose denotation at a given possible world corresponds
- to the extension of the original intensional term \isa{{\isasymphi}} at that world.%
+According to Fitting's semantics (\cite{Fitting}, pp. 92-4) \isa{{\isasymdown}} is an unary operator applying only to 
+ intensional terms. A term of the form \isa{{\isasymdown}{\isasymalpha}} designates the extension of the intensional object designated by 
+ \isa{{\isasymalpha}}, at some \emph{given} world. For instance, suppose we take possible worlds as people,
+ we can therefore think of the concept `red' as a function that maps each person to the set of objects that person
+ classifies as red (its extension). We can further state, the intensional term \emph{r} of type \isa{{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}} designates the concept `red'.
+ As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
+ We will sometimes refer to an intensional object explicitly as `rigid', implying that its (rigidly) designated function has
+ the same extension in all possible worlds.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-(\emph{a}) Predicate \isa{{\isasymphi}} takes an (intensional) individual concept as argument:%
+Terms of the form \isa{{\isasymdown}{\isasymalpha}} are called \emph{relativized} (extensional) terms; they are always derived
+from intensional terms and their type is \emph{extensional} (in the color example \isa{{\isasymdown}r} would be of type \isa{{\isasymlangle}{\isasymzero}{\isasymrangle}}).
+Relativized terms may vary their denotation from world to world of a model, because the extension of an intensional term can change
+from world to world, i.e. they are non-rigid.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+To recap: an intensional term denotes the same function in all worlds (i.e. it's rigid), whereas a relativized term
+denotes a (possibly) different extension (an object or a set) at every world (i.e. it's non-rigid). To find out
+the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+For our Isabelle/HOL embedding, we had to follow a slightly different approach; we model \isa{{\isasymdown}}
+as a predicate applying to formulas of the form \isa{{\isasymPhi}{\isacharparenleft}{\isasymdown}{\isasymalpha}\isactrlsub {\isadigit{1}}{\isacharcomma}{\isasymdots}{\isasymalpha}\isactrlsub n{\isacharparenright}} (for our treatment
+we only need to consider cases involving one or two arguments, the first one being a relativized term).
+For instance, the formula \isa{Q{\isacharparenleft}{\isasymdown}a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w} (evaluated at world \emph{w}) is modelled as \isa{{\isasymdownharpoonleft}{\isacharparenleft}Q{\isacharcomma}a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w}
+(or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w} using infix notation), which gets further translated into \isa{Q{\isacharparenleft}a\isactrlsub {\isadigit{1}}{\isacharparenleft}w{\isacharparenright}{\isacharparenright}\isactrlsup w}.
+
+Depending on the particular types involved, we have to define \isa{{\isasymdown}} differently to ensure type correctness
+(see \emph{a-d} below). Nevertheless, the essence of the \emph{Extension-of} operator remains the same:
+a term \isa{{\isasymalpha}} preceded by \isa{{\isasymdown}} behaves as a non-rigid term, whose denotation at a given possible world corresponds
+to the extension of the original intensional term \isa{{\isasymalpha}} at that world.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+(\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual of type \isa{{\isasymup}{\isasymzero}}:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ mextIndiv{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}\isactrlbold {\isasymdownharpoonleft}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ \isactrlbold {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
+\ extIndivArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdownharpoonleft}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-(\emph{b}) Predicate \isa{{\isasymphi}} takes an intensional predicate as argument:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ mextPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}\isactrlbold {\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ \isactrlbold {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x\ u{\isachardot}\ P\ x\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-(\emph{c}) Predicate \isa{{\isasymphi}} takes an extensional predicate as argument:%
+(\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form \isa{{\isasymup}{\isasymlangle}t{\isasymrangle}}):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-(\emph{d}) Predicate \isa{{\isasymphi}} takes an extensional predicate as \emph{first} argument:%
+(\emph{c}) A variant of (\emph{b}) with a second argument:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isadigit{1}}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}\isactrlsub {\isadigit{1}}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}\isactrlsub {\isadigit{1}}P\ {\isasymequiv}\ {\isasymlambda}z{\isachardot}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ z\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-\bigbreak%
+Following technical definition is needed for type correctness. The `\isa{{\isasymlparr}{\isacharunderscore}{\isasymrparr}}' parentheses convert
+ extensional objects into `rigid' intensional ones:%
 \end{isamarkuptext}\isamarkuptrue%
-%
+\isacommand{abbreviation}\isamarkupfalse%
+\ trivialExpansion{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}bool{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlparr}{\isacharunderscore}{\isasymrparr}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isasymphi}{\isacharparenright}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+(\emph{d}) A variant of (\emph{b}) where \isa{{\isasymphi}} takes `rigid' intensional terms as argument:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{abbreviation}\isamarkupfalse%
+\ mextPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}\isactrlbold {\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ \isactrlbold {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isasymlparr}P\ x\ w{\isasymrparr}{\isacharparenright}\ w{\isachardoublequoteclose}%
 \isamarkupsubsubsection{Equality%
 }
 \isamarkuptrue%
@@ -591,6 +622,10 @@ Contingent truth does not allow for necessitation:%
 \isadelimproof
 %
 \endisadelimproof
+%
+\begin{isamarkuptext}%
+\pagebreak%
+\end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsection{Useful Definitions for Axiomatization of Further Logics%
 }

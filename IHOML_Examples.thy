@@ -14,9 +14,9 @@ section \<open>Textbook Examples\<close>
   
 subsection \<open>Modal Logic - Syntax and Semantics (Chapter 7)\<close>
 
-(**Note: In what follows, we will call a term \emph{relativized} if it is of the form @{text "\<down>\<phi>"}
+(**Reminder: We call a term \emph{relativized} if it is of the form @{text "\<down>\<alpha>"}
 (i.e. an intensional term preceded by the \emph{extension-of} operator), otherwise it is \emph{non-relativized}.
-Relativized terms are non-rigid.*)
+Relativized terms are non-rigid and non-relativized terms are rigid.*)
   
 subsubsection \<open>Considerations Regarding @{text "\<beta>\<eta>"}-redex  (p. 94)\<close>
 
@@ -26,10 +26,10 @@ lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<zero>)) \<^bol
 lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp
 lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp    
 (** @{text "\<beta>\<eta>"}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract: *)
-lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>) \<^bold>\<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi> \<^bold>\<downharpoonleft>\<tau>)\<rfloor>" by simp
+lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi> \<downharpoonleft>\<tau>)\<rfloor>" by simp
 (** @{text "\<beta>\<eta>"}-redex is non-valid for relativized terms when modal operators are present: *)
-lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) \<^bold>\<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<^bold>\<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
-lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<diamond>\<phi> \<alpha>) \<^bold>\<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<diamond>\<phi> \<^bold>\<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<diamond>\<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<diamond>\<phi> \<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
     
 (** Example 7.13, p. 96:*)
 lemma "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>X)  (P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> \<^bold>\<diamond>((\<lambda>X. \<^bold>\<exists>X)  P)\<rfloor>"  by simp    
@@ -68,11 +68,11 @@ lemma "\<lfloor>\<^bold>\<box>(P (c::\<zero>)) \<^bold>\<rightarrow> (\<^bold>\<
 lemma "\<lfloor>\<^bold>\<box>(P (c::\<langle>\<zero>\<rangle>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x::\<langle>\<zero>\<rangle>. \<^bold>\<box>(P x))\<rfloor>" by auto
     
 (** Example 7.16, p. 100:*)
-lemma "\<lfloor>\<^bold>\<box>(P \<^bold>\<downharpoonleft>(c::\<up>\<zero>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x::\<zero>. \<^bold>\<box>(P x))\<rfloor>" 
+lemma "\<lfloor>\<^bold>\<box>(P \<downharpoonleft>(c::\<up>\<zero>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x::\<zero>. \<^bold>\<box>(P x))\<rfloor>" 
   nitpick[card 't=2, card i=2] oops (** counterexample with two worlds found *)
     
 (** Example 7.17, p. 101:*)
-lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>x::\<zero>.  \<^bold>\<box>((\<lambda>y::\<zero>.  x \<^bold>\<approx> y) \<^bold>\<downharpoonleft>Z)) \<^bold>\<downharpoonleft>Z\<rfloor>" 
+lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>x::\<zero>.  \<^bold>\<box>((\<lambda>y::\<zero>.  x \<^bold>\<approx> y) \<downharpoonleft>Z)) \<downharpoonleft>Z\<rfloor>" 
   nitpick[card 't=2, card i=2] oops (** countersatisfiable *)
 lemma "\<lfloor>\<^bold>\<forall>z::\<zero>.  (\<lambda>x::\<zero>.  \<^bold>\<box>((\<lambda>y::\<zero>.  x \<^bold>\<approx> y)  z)) z\<rfloor>" by simp
 lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>X::\<up>\<zero>. \<^bold>\<box>((\<lambda>Y::\<up>\<zero>. X \<^bold>\<approx> Y)  Z)) Z\<rfloor>" by simp
@@ -81,7 +81,7 @@ subsubsection \<open>Exercises (p. 101)\<close>
     
 (** For Exercises 7.1 and 7.2 see variations on Examples 7.13 and 7.14 above. *)
 (** Exercise 7.3: *)    
-lemma "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>(P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> (\<^bold>\<exists>X::\<up>\<zero>. \<^bold>\<diamond>(P \<^bold>\<downharpoonleft>X))\<rfloor>" by auto
+lemma "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>(P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> (\<^bold>\<exists>X::\<up>\<zero>. \<^bold>\<diamond>(P \<downharpoonleft>X))\<rfloor>" by auto
 (** Exercise 7.4: *)  
 lemma "\<lfloor>\<^bold>\<diamond>(\<^bold>\<exists>x::\<zero>. (\<lambda>Y. Y x) \<^bold>\<down>(P::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x. (\<lambda>Y. \<^bold>\<diamond>(Y x)) \<^bold>\<down>P)\<rfloor>" 
   nitpick[card 't=1, card i=2] oops (** countersatisfiable *)    
@@ -93,9 +93,9 @@ subsection \<open>Miscellaneous Matters (Chapter 9)\<close>
 subsubsection \<open>Equality Axioms (Subsection 1.1)\<close>
     
 (** Example 9.1: *)
-lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<^bold>\<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx> x) \<^bold>\<downharpoonleft>p))\<rfloor>" 
+lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx> x) \<downharpoonleft>p))\<rfloor>" 
   by auto (** using normal equality *)
-lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<^bold>\<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>L x) \<^bold>\<downharpoonleft>p))\<rfloor>" 
+lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>L x) \<downharpoonleft>p))\<rfloor>" 
   by auto (** using Leibniz equality *)
 lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X  (p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>C x) p))\<rfloor>" 
   by simp  (** using equality as defined for individual concepts *)
@@ -117,19 +117,19 @@ lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>\<zero>\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
 
-(** \emph{De re} is not equivalent to \emph{de dicto} for relativized (intensional) terms: *)    
-lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> \<^bold>\<box>( (\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)\<rfloor>" 
+(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms: *)    
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> \<^bold>\<box>( (\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>)\<rfloor>" 
   nitpick[card 't=2, card i=2] oops (** countersatisfiable *)
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>( (\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
   nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
   
 (** Proposition 9.6 - If we can prove one side of the equivalence, then we can prove the other (p. 120): *)
 abbreviation deDictoImplDeRe::"\<up>\<zero>\<Rightarrow>io" 
-  where "deDictoImplDeRe \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
+  where "deDictoImplDeRe \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>\<tau>)"
 abbreviation deReImplDeDicto::"\<up>\<zero>\<Rightarrow>io" 
-  where "deReImplDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<rightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
+  where "deReImplDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>\<tau>) \<^bold>\<rightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>)"
 abbreviation deReEquDeDicto::"\<up>\<zero>\<Rightarrow>io" 
-  where "deReEquDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<downharpoonleft>\<tau>)"
+  where "deReEquDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>)"
 
 abbreviation deDictoImplDeRe_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
   where "deDictoImplDeRe_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
@@ -155,7 +155,7 @@ subsubsection \<open>Rigidity (Subsection 3)\<close>
     
 (** (Local) rigidity for intensional individuals: *)    
 abbreviation rigidIndiv::"\<up>\<langle>\<up>\<zero>\<rangle>" where
-  "rigidIndiv \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<downharpoonleft>\<tau>)) \<^bold>\<downharpoonleft>\<tau>"
+  "rigidIndiv \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<downharpoonleft>\<tau>)) \<downharpoonleft>\<tau>"
 (** (Local) rigidity for intensional predicates: *)    
 abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
   "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
