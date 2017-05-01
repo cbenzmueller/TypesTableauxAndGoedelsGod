@@ -56,7 +56,7 @@ abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
  "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
 
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" 
-  using A4a symm by auto --\<open> note only symmetry is needed (\emph{B} axiom)  \<close>
+  using A4a symm by auto --\<open> symmetry is needed (which corresponds to \emph{B} axiom) \<close>
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
   using A4a A4b by blast --\<open> @{text "\<P>"} is therefore rigid in a \emph{B} logic \<close>
 

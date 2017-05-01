@@ -149,7 +149,7 @@ subsubsection \<open>Modal Operators\<close>
 subsubsection \<open>\emph{Extension-of} Operator\<close>
 (**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4) @{text "\<down>"} is an unary operator applying only to 
  intensional terms. A term of the form @{text "\<down>\<alpha>"} designates the extension of the intensional object designated by 
- @{text "\<alpha>"}, at some \emph{given} world. For instance, suppose we take possible worlds as people,
+ @{text "\<alpha>"}, at some \emph{given} world. For instance, suppose we take possible worlds as persons,
  we can therefore think of the concept `red' as a function that maps each person to the set of objects that person
  classifies as red (its extension). We can further state, the intensional term \emph{r} of type @{text "\<up>\<langle>\<zero>\<rangle>"} designates the concept `red'.
  As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
@@ -181,13 +181,12 @@ abbreviation extIndivArg::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zer
 (** (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}):*)
 abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
   where "\<phi> \<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. P x w) w"
-(** (\emph{c}) A variant of (\emph{b}) with a second argument:*)
+(** (\emph{c}) A variant of (\emph{b}) with a second argument (the first one being relativized):*)
 abbreviation extPredArg1::"(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
   where "\<phi> \<down>\<^sub>1P \<equiv> \<lambda>z. \<lambda>w. \<phi> (\<lambda>x. P x w) z w"
     
-(**Following technical definition is needed for type correctness. The `@{text "\<lparr>_\<rparr>"}' parentheses convert
- extensional objects into `rigid' intensional ones:*)  
-abbreviation trivialExpansion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") where "\<lparr>\<phi>\<rparr> \<equiv> (\<lambda>w. \<phi>)"  
+(**In what follows, the `@{text "\<lparr>_\<rparr>"}' parentheses are an operator used to convert extensional objects into `rigid' intensional ones:*)  
+abbreviation trivialConversion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") where "\<lparr>\<phi>\<rparr> \<equiv> (\<lambda>w. \<phi>)"  
 (** (\emph{d}) A variant of (\emph{b}) where @{text \<phi>} takes `rigid' intensional terms as argument:*)
 abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
   where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. \<lparr>P x w\<rparr>) w" (* where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"*)

@@ -25,7 +25,7 @@ abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") where
   "E! x  \<equiv> (\<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w)"
   
 (**Reminder: The `@{text "\<lparr>_\<rparr>"}' parenthesis are used to convert an extensional object into its `rigid'
-intensional counterpart (e.g. @{text "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"}). They were introduced only for type correctness.*)
+intensional counterpart (e.g. @{text "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"}).*)
   
 consts positiveProperty::"\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> \<lparr>Y x\<rparr>)"
@@ -43,10 +43,11 @@ axiomatization where
   T2: "\<lfloor>\<P> \<down>G\<rfloor>"                               (** proposition 11.16 (modified)*)
         
 lemma True nitpick[satisfy] oops (** model found: axioms are consistent*)
-(**\bigbreak*)
+    
+lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast (** axioms already imply \emph{D} axiom *)
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
-    
+(**\bigbreak*)  
 (** \emph{T1} (Positive properties are possibly instantiated) can be formalised in two different ways:*)    
 theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" 
   using A1a A2 by blast (** this is the one used in the book*)
@@ -92,10 +93,10 @@ abbreviation necExistencePred:: "\<up>\<langle>\<zero>\<rangle>" ("NE") where
 (** Informal Axiom 5*)
 axiomatization where
  A5: "\<lfloor>\<P> \<down>NE\<rfloor>"
- 
+    
 lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
 
-(** Reminder: We use the down-arrow notation because it is more explicit. See (non-)equivalences above.*)
+(** Reminder: We use @{text "\<down>G"} instead of @{text "G"} because it is more explicit. See (non-)equivalences above.*)
 lemma "\<lfloor>\<^bold>\<exists> G \<^bold>\<leftrightarrow> \<^bold>\<exists> \<^bold>\<down>G\<rfloor>" by simp       
 lemma "\<lfloor>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow> \<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" by simp    
 lemma "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G \<^bold>\<leftrightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" by simp    

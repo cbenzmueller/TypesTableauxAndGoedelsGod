@@ -46,7 +46,7 @@ The following is an existence predicate for our object-language. (We have previo
 \ \ {\isachardoublequoteopen}E{\isacharbang}\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 Reminder: The `\isa{{\isasymlparr}{\isacharunderscore}{\isasymrparr}}' parenthesis are used to convert an extensional object into its `rigid'
-intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}}). They were introduced only for type correctness.%
+intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}}).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{consts}\isamarkupfalse%
 \ positiveProperty{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
@@ -99,10 +99,29 @@ intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\i
 \isadelimproof
 %
 \endisadelimproof
+\isanewline
+\ \ \ \ \isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}D{\isasymrfloor}{\isachardoublequoteclose}%
+\isadelimproof
+\ \ %
+\endisadelimproof
 %
-\begin{isamarkuptext}%
-\bigbreak%
-\end{isamarkuptext}\isamarkuptrue%
+\isatagproof
+\isacommand{using}\isamarkupfalse%
+\ A{\isadigit{1}}a\ A{\isadigit{1}}b\ A{\isadigit{2}}\ \isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{axioms already imply \emph{D} axiom%
+}
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
 \ GodDefsAreEquivalent{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\ x\ \isactrlbold {\isasymleftrightarrow}\ G{\isacharasterisk}\ x{\isasymrfloor}{\isachardoublequoteclose}%
 \isadelimproof
@@ -119,6 +138,10 @@ intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\i
 \isadelimproof
 %
 \endisadelimproof
+%
+\begin{isamarkuptext}%
+\bigbreak%
+\end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
 \emph{T1} (Positive properties are possibly instantiated) can be formalised in two different ways:%
@@ -406,7 +429,7 @@ Informal Axiom 5%
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
 \ A{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ {\isasymdown}NE{\isasymrfloor}{\isachardoublequoteclose}\isanewline
-\ \isanewline
+\ \ \ \ \isanewline
 \isacommand{lemma}\isamarkupfalse%
 \ True\ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}satisfy{\isacharbrackright}%
@@ -428,7 +451,7 @@ Informal Axiom 5%
 \endisadelimproof
 %
 \begin{isamarkuptext}%
-Reminder: We use the down-arrow notation because it is more explicit. See (non-)equivalences above.%
+Reminder: We use \isa{{\isasymdown}G} instead of \isa{G} because it is more explicit. See (non-)equivalences above.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
