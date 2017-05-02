@@ -4,11 +4,9 @@ session "Types_Tableaus_and_Goedels_God" = "HOL" +
     Relations    
   theories
         IHOML
-	IHOML_Examples
 	GoedelProof_P1
-	GoedelProof_P2
 	FittingProof		
 	AndersonProof
   document_files
     "root.tex"
-    "FittingBook.bib"
+    "root.bib"

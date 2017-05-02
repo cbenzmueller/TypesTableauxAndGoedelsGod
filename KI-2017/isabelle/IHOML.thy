@@ -84,9 +84,7 @@ In what follows, terms having extensional (intensional) types will be called ext
   type_synonym isiseise =   "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>\<Rightarrow>io)"    ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>")
   type_synonym isiseisise=  "(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
   
-subsection \<open>Definitions\<close>
-  
-subsubsection \<open>Logical Operators as Truth-Sets\<close>    
+subsection \<open>Logical Operators as Truth-Sets\<close>    
 
   abbreviation mnot   :: "io\<Rightarrow>io" ("\<^bold>\<not>_"[52]53)
     where "\<^bold>\<not>\<phi> \<equiv> \<lambda>w. \<not>(\<phi> w)"
@@ -107,7 +105,7 @@ subsubsection \<open>Logical Operators as Truth-Sets\<close>
   abbreviation mxor   :: "io\<Rightarrow>io\<Rightarrow>io" (infixr"\<^bold>\<oplus>"50)
     where "\<phi>\<^bold>\<oplus>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<oplus>(\<psi> w)"
       
-subsubsection \<open>Possibilist Quantification\<close>
+subsection \<open>Possibilist Quantification\<close>
     
   abbreviation mforall   :: "('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<forall>")      
     where "\<^bold>\<forall>\<Phi> \<equiv> \<lambda>w.\<forall>x. (\<Phi> x w)"
@@ -119,7 +117,7 @@ subsubsection \<open>Possibilist Quantification\<close>
   abbreviation mexistsB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<exists>"[8]9)
     where "\<^bold>\<exists>x. \<phi>(x) \<equiv> \<^bold>\<exists>\<phi>" 
       
-subsubsection \<open>Actualist Quantification\<close>
+subsection \<open>Actualist Quantification\<close>
   
 (** The following predicate is used to model actualist quantifiers by restricting the domain of quantification at every possible world.
 This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
@@ -137,7 +135,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
   abbreviation mexistsActB  :: "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>E"[8]9)
     where "\<^bold>\<exists>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<exists>\<^sup>E\<phi>"
       
-subsubsection \<open>Modal Operators\<close>
+subsection \<open>Modal Operators\<close>
   
    consts aRel::"i\<Rightarrow>i\<Rightarrow>bool" (infixr "r" 70)  (** accessibility relation \emph{r} *)
   
@@ -146,7 +144,7 @@ subsubsection \<open>Modal Operators\<close>
   abbreviation mdia   :: "io\<Rightarrow>io" ("\<^bold>\<diamond>_"[52]53)
     where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
 
-subsubsection \<open>\emph{Extension-of} Operator\<close>
+subsection \<open>\emph{Extension-of} Operator\<close>
 (**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4) @{text "\<down>"} is an unary operator applying only to 
  intensional terms. A term of the form @{text "\<down>\<alpha>"} designates the extension of the intensional object designated by 
  @{text "\<alpha>"}, at some \emph{given} world. For instance, suppose we take possible worlds as persons,
@@ -190,7 +188,7 @@ abbreviation trivialConversion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") wher
 abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
   where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. \<lparr>P x w\<rparr>) w" (* where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"*)
     
-subsubsection \<open>Equality\<close>
+subsection \<open>Equality\<close>
   
   abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) (**normal equality (for all types)*)
     where "x \<^bold>\<approx> y \<equiv> \<lambda>w. x = y"
@@ -199,7 +197,7 @@ subsubsection \<open>Equality\<close>
   abbreviation meqL   :: "\<up>\<langle>\<zero>,\<zero>\<rangle>" (infixr"\<^bold>\<approx>\<^sup>L"52) (**Leibniz eq. for individuals*)
     where "x \<^bold>\<approx>\<^sup>L y \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
 
-subsubsection \<open>Meta-logical Predicates\<close>
+subsection \<open>Meta-logical Predicates\<close>
 
  abbreviation valid :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>" [8]) where "\<lfloor>\<psi>\<rfloor> \<equiv>  \<forall>w.(\<psi> w)"
  abbreviation satisfiable :: "io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>\<^sup>s\<^sup>a\<^sup>t" [8]) where "\<lfloor>\<psi>\<rfloor>\<^sup>s\<^sup>a\<^sup>t \<equiv> \<exists>w.(\<psi> w)"
@@ -278,6 +276,79 @@ subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close
   (** Using these definitions, we can derive axioms for the most common modal logics (see also @{cite "C47"}). 
   Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
   both versions. In what follows we use the semantic constraints (for improved performance).*)
+
+subsection \<open>Considerations Regarding @{text "\<beta>\<eta>"}-redex\<close>
+  
+(** @{text "\<beta>\<eta>"}-redex is valid for non-relativized (intensional or extensional) terms: *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
+lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp    
+(** @{text "\<beta>\<eta>"}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract: *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi> \<downharpoonleft>\<tau>)\<rfloor>" by simp
+(** @{text "\<beta>\<eta>"}-redex is non-valid for relativized terms when modal operators are present: *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
+lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<diamond>\<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<diamond>\<phi> \<downharpoonleft>\<tau>)\<rfloor>" nitpick oops   (** countersatisfiable *)
+    
+subsection \<open>Textbook Examples\<close>
+  
+(** In this section we provide further evidence that our embedded logic works as intended by proving the examples discussed in the book.
+ We were able to confirm that all results (proofs or counterexamples) agree with Fitting's claims.*)
+    
+(** Example 7.13, p. 96:*)
+lemma "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>X)  (P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> \<^bold>\<diamond>((\<lambda>X. \<^bold>\<exists>X)  P)\<rfloor>"  by simp    
+lemma "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>X) \<^bold>\<down>(P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> \<^bold>\<diamond>((\<lambda>X. \<^bold>\<exists>X) \<^bold>\<down>P)\<rfloor>"
+  nitpick[card 't=1, card i=2] oops (** nitpick finds same counterexample as book*)
+    
+(** Example 7.14, p. 98:*)
+lemma "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>X) \<^bold>\<down>(P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> (\<lambda>X. \<^bold>\<exists>X) \<^bold>\<down>P\<rfloor>" by simp
+lemma "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>X)  (P::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<rightarrow> (\<lambda>X. \<^bold>\<exists>X)  P\<rfloor>" 
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
+
+lemma "\<lfloor>\<^bold>\<box>(P (c::\<up>\<zero>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x::\<up>\<zero>. \<^bold>\<box>(P x))\<rfloor>" by auto (** Example 7.15, p. 99:*)
+
+lemma "\<lfloor>\<^bold>\<box>(P \<downharpoonleft>(c::\<up>\<zero>)) \<^bold>\<rightarrow> (\<^bold>\<exists>x::\<zero>. \<^bold>\<box>(P x))\<rfloor>" (** Example 7.16, p. 100:*)
+  nitpick[card 't=2, card i=2] oops (** counterexample with two worlds found *)
+    
+(** Example 7.17, p. 101:*)
+lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>x::\<zero>.  \<^bold>\<box>((\<lambda>y::\<zero>.  x \<^bold>\<approx> y) \<downharpoonleft>Z)) \<downharpoonleft>Z\<rfloor>" 
+  nitpick[card 't=2, card i=2] oops (** countersatisfiable *)
+lemma "\<lfloor>\<^bold>\<forall>z::\<zero>.  (\<lambda>x::\<zero>.  \<^bold>\<box>((\<lambda>y::\<zero>.  x \<^bold>\<approx> y)  z)) z\<rfloor>" by simp
+lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>X::\<up>\<zero>. \<^bold>\<box>((\<lambda>Y::\<up>\<zero>. X \<^bold>\<approx> Y)  Z)) Z\<rfloor>" by simp
+
+subsection \<open>Equality Axioms\<close>
+lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx> x) \<downharpoonleft>p))\<rfloor>" 
+  by auto (** using normal equality *)
+lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>L x) \<downharpoonleft>p))\<rfloor>" 
+  by auto (** using Leibniz equality *)
+lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X  (p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>C x) p))\<rfloor>" 
+  by simp  (** using equality as defined for individual concepts *)
+    
+subsection \<open>\emph{De Re} and \emph{De Dicto}\<close>
+(** \emph{De re} is equivalent to \emph{de dicto} for non-relativized (extensional or intensional) terms: *)
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>\<zero>\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
+(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms: *)    
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
+
+subsection \<open>Stability Conditions and Rigid Designation\<close>
+    
+(** Rigidity for intensional predicates: *)    
+abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
+  "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
+  
+(**Following definitions are called `stability conditions' by Fitting (@{cite "Fitting"}, p. 124).*)
+abbreviation stabilityA::"('t\<Rightarrow>io)\<Rightarrow>io" where "stabilityA \<tau> \<equiv> \<^bold>\<forall>\<alpha>. (\<tau> \<alpha>) \<^bold>\<rightarrow> \<^bold>\<box>(\<tau> \<alpha>)"
+abbreviation stabilityB::"('t\<Rightarrow>io)\<Rightarrow>io" where "stabilityB \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<diamond>(\<tau> \<alpha>) \<^bold>\<rightarrow> (\<tau> \<alpha>)"
+
+(**We can prove them equivalent in an \emph{S5} logic (using \emph{Sahlqvist correspondence}).*)  
+lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityA (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityB \<tau>\<rfloor>" by blast    
+lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityB (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityA \<tau>\<rfloor>" by blast    
+    
+(** A term is rigid if and only if it satisfies the stability conditions.*)
+theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
+theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
  
 (*<*)      
 end
