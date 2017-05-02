@@ -1,0 +1,79 @@
+% This is LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.4 for LaTeX2e as of 16. April 2010
+%
+\documentclass{llncs}
+%
+\usepackage{makeidx}  % allows for indexgeneration
+\usepackage{amssymb}  % packages for math symbols
+\usepackage{isabelle,isabellesym} % packages for Isabelle-specific math symbols
+
+\isabellestyle{it} % theory text in math-similar italics
+
+%
+\begin{document}
+%
+\frontmatter          % for the preliminaries
+%
+\pagestyle{headings}  % switches on printing of running heads
+
+%
+\mainmatter              % start of the contributions
+%
+\title{Types, Tableaus and G\"odel's God \\ in Isabelle/HOL}
+%
+%\titlerunning{??}  % abbreviated title (for running head) also used for the TOC unless \toctitle is used
+\author{David Fuenmayor\inst{1} \and Christoph Benzm\"uller\inst{2,1}}
+%
+%\authorrunning{??} % abbreviated author list (for running head)
+
+%%%% list of authors for the TOC (use if author list has to be modified)
+\tocauthor{David Fuenmayor, Christoph Benzm\"uller}
+%
+\institute{Freie Universit\"at Berlin, Germany
+%\email{davfuenmayor@gmail.com}
+\and
+University of Luxembourg, Luxembourg
+%\email{c.benzmueller@gmail.com},\\ WWW home page:
+%\texttt{http://christoph-benzmueller.de}
+}
+
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+	A computer-formalization of the essential parts of Fitting's textbook
+	\emph{Types, Tableaus and G\"odel's Go}d in Isabelle/HOL is
+	presented. In particular, Fitting's (and Anderson's) variant of the ontological
+	argument is verified and confirmed. This variant avoids the modal
+	collapse, which has been criticized as an undesirable side-effect of Kurt G\"odel's (and
+	Dana Scott's) versions of the ontological argument. Fitting's work
+	is employing an intensional higher-order modal logic, which we
+	shallowly embed here in classical higher-order logic. We then
+	utilize the embedded logic for the formalization of Fitting's argument.
+	\keywords{Automated Theorem Proving. Computational Metaphysics. Isabelle. Modal Logic. Ontological Argument}
+\end{abstract}
+
+\input{IHOML.tex}
+\input{IHOML_Examples.tex}
+\input{GoedelProof_P1.tex}
+\input{GoedelProof_P2.tex}
+\input{FittingProof.tex}
+\input{AndersonProof.tex}
+
+%
+% ---- Bibliography ----
+\bibliographystyle{abbrv}
+\bibliography{FittingBook}
+
+
+%\clearpage
+%\addtocmark[2]{Author Index} % additional numbered TOC entry
+%\renewcommand{\indexname}{Author Index}
+%\printindex
+%\clearpage
+%\addtocmark[2]{Subject Index} % additional numbered TOC entry
+%\markboth{Subject Index}{Subject Index}
+%\renewcommand{\indexname}{Subject Index}
+%\input{subjidx.ind}
+\end{document}

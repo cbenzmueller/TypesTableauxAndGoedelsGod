@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: FittingBook.aux
+The style file: abbrv.bst
+Database file #1: FittingBook.bib
+Warning--empty volume in GoedelNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
+Warning--empty volume in ScottNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
+You've used 19 entries,
+            2118 wiz_defined-function locations,
+            641 strings with 6797 characters,
+and the built_in function-call counts, 6389 in all, are:
+= -- 620
+> -- 236
+< -- 12
++ -- 93
+- -- 70
+* -- 387
+:= -- 1017
+add.period$ -- 64
+call.type$ -- 19
+change.case$ -- 81
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 305
+empty$ -- 564
+format.name$ -- 70
+if$ -- 1427
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 25
+newline$ -- 98
+num.names$ -- 48
+pop$ -- 119
+preamble$ -- 1
+purify$ -- 68
+quote$ -- 0
+skip$ -- 220
+stack$ -- 0
+substring$ -- 330
+swap$ -- 93
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 64
+warning$ -- 4
+while$ -- 62
+width$ -- 21
+write$ -- 217
+(There were 4 warnings)

@@ -1,0 +1,115 @@
+\begin{thebibliography}{10}
+
+\bibitem{AndersonGettings}
+A.~Anderson and M.~Gettings.
+\newblock G\"odel ontological proof revisited.
+\newblock In {\em {G\"odel'96: Logical Foundations of Mathematics, Computer
+  Science, and Physics: Lecture Notes in Logic 6}}, pages 167--172. {Springer},
+  1996.
+
+\bibitem{anderson90:_some_emend_of_goedel_ontol_proof}
+C.~Anderson.
+\newblock Some emendations of {G{\"o}del's} ontological proof.
+\newblock {\em Faith and Philosophy}, 7(3), 1990.
+
+\bibitem{R59}
+C.~Benzm{\"u}ller.
+\newblock Universal reasoning, rational argumentation and human-machine
+  interaction.
+\newblock {\em arXiv, \url{http://arxiv.org/abs/1703.09620}}, 2017.
+
+\bibitem{C47}
+C.~Benzm{\"u}ller, M.~Claus, and N.~Sultana.
+\newblock Systematic verification of the modal logic cube in {Isabelle/HOL}.
+\newblock In C.~Kaliszyk and A.~Paskevich, editors, {\em PxTP 2015}, volume
+  186, pages 27--41, Berlin, Germany, 2015. EPTCS.
+
+\bibitem{ECAI}
+C.~Benzm{\"u}ller and B.~W. Paleo.
+\newblock Automating {G\"{o}del's} ontological proof of {God}'s existence with
+  higher-order automated theorem provers.
+\newblock In T.~Schaub, G.~Friedrich, and B.~O'Sullivan, editors, {\em ECAI
+  2014}, volume 263 of {\em Frontiers in Artificial Intelligence and
+  Applications}, pages 93 -- 98. IOS Press, 2014.
+
+\bibitem{J23}
+C.~Benzm{\"u}ller and L.~Paulson.
+\newblock Quantified multimodal logics in simple type theory.
+\newblock {\em Logica Universalis (Special Issue on Multimodal Logics)},
+  7(1):7--20, 2013.
+
+\bibitem{C65}
+C.~Benzm{\"u}ller, A.~Steen, and M.~Wisniewski.
+\newblock The computational metaphysics lecture course at {Freie
+  Universit{\"a}t Berlin}.
+\newblock In S.~Krajewski and P.~Balcerowicz, editors, {\em Handbook of the 2nd
+  World Congress on Logic and Religion, Warsaw, Poland}, page~2, 2017.
+
+\bibitem{C55}
+C.~Benzm{\"u}ller and B.~Woltzenlogel~Paleo.
+\newblock The inconsistency in {G{\"o}del’s} ontological argument: A success
+  story for {AI} in metaphysics.
+\newblock In {\em IJCAI 2016}, 2016.
+
+\bibitem{C60}
+C.~Benzm{\"u}ller and B.~Woltzenlogel~Paleo.
+\newblock An object-logic explanation for the inconsistency in {G\"odel's}
+  ontological theory (extended abstract).
+\newblock In M.~Helmert and F.~Wotawa, editors, {\em KI 2016: Advances in
+  Artificial Intelligence, Proceedings}, LNCS, Berlin, Germany, 2016. Springer.
+
+\bibitem{bjordal99}
+F.~Bj{\o}rdal.
+\newblock Understanding {G\"{o}del's} ontological argument.
+\newblock In T.~Childers, editor, {\em The Logica Yearbook 1998}. Filosofia,
+  1999.
+
+\bibitem{Nitpick}
+J.~Blanchette and T.~Nipkow.
+\newblock Nitpick: A counterexample generator for higher-order logic based on a
+  relational model finder.
+\newblock In {\em Proc. of ITP 2010}, number 6172 in LNCS, pages 131--146.
+  Springer, 2010.
+
+\bibitem{Fitting}
+M.~Fitting.
+\newblock {\em Types, Tableaus and G\"odel's God}.
+\newblock Kluwer, 2002.
+
+\bibitem{fitting98}
+M.~Fitting and R.~Mendelsohn.
+\newblock {\em First-Order Modal Logic}, volume 277 of {\em Synthese Library}.
+\newblock Kluwer, 1998.
+
+\bibitem{Gallin75}
+D.~Gallin.
+\newblock {\em Intensinonal and Higher-Order Modal Logic}.
+\newblock N.-Holland, 1975.
+
+\bibitem{GoedelNotes}
+K.~G\"odel.
+\newblock {\em Appx.A: Notes in Kurt G\"odel's Hand}, pages 144--145.
+\newblock In  \cite{sobel2004logic}, 2004.
+
+\bibitem{Hajek2002}
+P.~H{\'{a}}jek.
+\newblock A new small emendation of {G\"{o}del's} ontological proof.
+\newblock {\em Studia Logica}, 71(2):149--164, 2002.
+
+\bibitem{ScottNotes}
+D.~Scott.
+\newblock {\em Appx.B: Notes in Dana Scott's Hand}, pages 145--146.
+\newblock In  \cite{sobel2004logic}, 2004.
+
+\bibitem{Sobel}
+J.~Sobel.
+\newblock G\"odel's ontological proof.
+\newblock In {\em {On Being and Saying. Essays for Richard Cartwright}}, pages
+  241--261. {MIT Press}, 1987.
+
+\bibitem{sobel2004logic}
+J.~Sobel.
+\newblock {\em Logic and Theism: Arguments for and Against Beliefs in God}.
+\newblock Cambridge U. Press, 2004.
+
+\end{thebibliography}
