@@ -7,45 +7,45 @@ Warning--empty volume in GoedelNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
 Warning--empty volume in ScottNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            641 strings with 6797 characters,
-and the built_in function-call counts, 6389 in all, are:
-= -- 620
-> -- 236
+            646 strings with 6867 characters,
+and the built_in function-call counts, 6604 in all, are:
+= -- 639
+> -- 243
 < -- 12
-+ -- 93
-- -- 70
-* -- 387
-:= -- 1017
-add.period$ -- 64
-call.type$ -- 19
-change.case$ -- 81
++ -- 96
+- -- 72
+* -- 395
+:= -- 1055
+add.period$ -- 67
+call.type$ -- 20
+change.case$ -- 84
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 305
-empty$ -- 564
-format.name$ -- 70
-if$ -- 1427
+cite$ -- 24
+duplicate$ -- 317
+empty$ -- 586
+format.name$ -- 72
+if$ -- 1473
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 25
-newline$ -- 98
-num.names$ -- 48
-pop$ -- 119
+int.to.str$ -- 20
+missing$ -- 27
+newline$ -- 103
+num.names$ -- 50
+pop$ -- 127
 preamble$ -- 1
-purify$ -- 68
+purify$ -- 71
 quote$ -- 0
-skip$ -- 220
+skip$ -- 226
 stack$ -- 0
-substring$ -- 330
-swap$ -- 93
+substring$ -- 335
+swap$ -- 94
 text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 66
 warning$ -- 4
-while$ -- 62
-width$ -- 21
-write$ -- 217
+while$ -- 64
+width$ -- 22
+write$ -- 227
 (There were 4 warnings)

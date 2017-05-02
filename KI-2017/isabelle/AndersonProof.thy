@@ -7,21 +7,14 @@ sledgehammer_params[verbose=true]
 (*>*)
   
 section \<open>Anderson's Alternative\<close>
-  
-(**In this final section, we verify Anderson's emendation of G\"odel's argument, as it is presented in the last
-part of the textbook by Fitting (pp. 169-171).*)
-  
-subsection \<open>General Definitions\<close>
- 
-abbreviation existencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("E!") 
-  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w"
-  
-consts positiveProperty::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
-  
-abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G\<^sup>A") where "G\<^sup>A \<equiv> \<lambda>x. \<^bold>\<forall>Y. (\<P> Y) \<^bold>\<leftrightarrow> \<^bold>\<box>(Y x)"
+(**In this final section, we verify Anderson's emendation of G\"odel's argument, as it is presented
+ by Fitting in @{cite "Fitting"}, pp. 169-171).*)
   
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where
-  "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
+  "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)" 
+consts Positiveness::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
+abbreviation Existence::"\<up>\<langle>\<zero>\<rangle>" ("E!") where "E! x \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w"
+abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G\<^sup>A") where "G\<^sup>A \<equiv> \<lambda>x. \<^bold>\<forall>Y. (\<P> Y) \<^bold>\<leftrightarrow> \<^bold>\<box>(Y x)"
   
 subsection \<open>Part I - God's Existence is Possible\<close>  
   
@@ -32,46 +25,35 @@ axiomatization where
         
 lemma True nitpick[satisfy] oops (** model found: axioms are consistent*)
     
-theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" 
-  using A1a A2 by blast  (** positive properties are possibly instantiated*)  
-theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T1 T2 by simp  (** God exists possibly *)  
-    
+(** \emph{T1} Positive properties are possibly instantiated*)        
+theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
+(** \emph{T3} God exists possibly*)
+theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T1 T2 by simp
     
 subsection \<open>Part II - God's Existence is Necessary if Possible\<close>
         
-(** @{text "\<P>"} now satisfies only one of the stability conditions. But since the argument uses an \emph{S5} logic, 
-the other stability condition is implied. Therefore @{text "\<P>"} becomes rigid (see p. 124). *)
-axiomatization where
-  A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"      (** axiom 11.11 *)
+(** @{text "\<P>"} now satisfies only one of the stability conditions. But since this variant uses an \emph{S5} logic, 
+the other stability condition is implied (see @{cite "Fitting"}, p. 124). Therefore @{text "\<P>"} becomes rigid . *)
+axiomatization where A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"
       
 (** We again postulate our \emph{S5} axioms:*)
 axiomatization where
  refl: "reflexive aRel" and
  tran: "transitive aRel" and
  symm: "symmetric aRel"
- 
 lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
- 
-abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
- "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
 
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" 
-  using A4a symm by auto (**symmetry is needed (which corresponds to \emph{B} axiom)*)
-lemma "\<lfloor>rigidPred \<P>\<rfloor>" 
-  using A4a A4b by blast (**@{text "\<P>"} is therefore rigid in a \emph{B} logic*)
+  using A4a symm by auto (**symmetry is needed (corresponding to \emph{B} axiom)*)
+lemma "\<lfloor>rigidPred \<P>\<rfloor>" using A4a A4b by blast (**@{text "\<P>"} is rigid in \emph{B}*)
 
-(** Essence, Anderson Version (Definition 11.34)*)
-abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where
+abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where (** Essence, Anderson Version*)
   "\<E>\<^sup>A Y x \<equiv> (\<^bold>\<forall>Z. \<^bold>\<box>(Z x) \<^bold>\<leftrightarrow> Y \<Rrightarrow> Z)"
-
-      
-(** Necessary Existence, Anderson Version (Definition 11.35) *)  
-abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup>A") 
+abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup>A")
   where "NE\<^sup>A x  \<equiv> (\<lambda>w. (\<^bold>\<forall>Y.  \<E>\<^sup>A Y x \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w)"
     
-(** Theorem 11.36 - If g is God-like, then the property of being God-like is the essence of g.*)
-
-(**As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
+(**If g is God-like, the property of being God-like is its essence.
+As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
 For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
 given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"} Theorem 2*, p. 296)*)
 (*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
@@ -90,9 +72,8 @@ Q necessarily (by the definition of "God-like*"). Hence, if something is
 God-like*, it has a property essentially if and only if that property is entailed
 by being God-like-i.e., God-likeness* is an essence* of that thing.
 Q.E.D.*)
-theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)\<rfloor>"
-proof -
-{
+theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<rightarrow> (\<E>\<^sup>A G\<^sup>A x)\<rfloor>" proof - (**not shown here*)
+(*<*){
   fix w
   {
     fix g
@@ -152,17 +133,13 @@ proof -
 }
  thus ?thesis by (rule allI) 
 qed
-
-(** Axiom 11.37 (Anderson's version of 11.25)*)
-axiomatization where 
- A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>"
+(*>*)
+  axiomatization where A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>"
+  lemma True nitpick[satisfy] oops (**model found: so far all axioms consistent*)
  
-lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
- 
-(** Theorem 11.38 - Possibilist existence of God implies necessary actualist existence: *) 
-theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>"
-proof -
-{
+(** Possibilist existence of God implies necessary actualist existence:*) 
+theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" proof - (**not shown here*)
+(*<*){
   fix w 
   {
     assume "\<exists>x. G\<^sup>A x w"
@@ -182,13 +159,13 @@ proof -
 }
  thus ?thesis by (rule allI) 
 qed
-    
+(*>*)    
 (** Some useful rules:*)    
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
 (** Anderson's version of Theorem 11.27 *) 
-theorem possExistenceImpliesNecEx: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" (**local consequence*)
+theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>"
 proof -
   have "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using GodExistenceImpliesNecExistence 
     by simp (** follows from Axioms 11.11, 11.25 and 11.3B*)
@@ -196,19 +173,13 @@ proof -
   hence 1: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" by (rule modal_distr)
   have 2: "\<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using symm tran by metis
   from 1 2 have "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor> \<and> \<lfloor>\<^bold>\<diamond>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" by simp
-  thus ?thesis by (rule modal_trans)
+  hence "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" by (rule modal_trans)
+  thus ?thesis by (rule localImpGlobalCons)
 qed
-
-lemma T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using possExistenceImpliesNecEx 
-    by (rule localImpGlobalCons) (** global consequence*)
   
 (** Conclusion - Necessary (actualist) existence of God: *)    
-lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis    
-    
-subsection \<open>Modal Collapse\<close>
-  
-(** Modal collapse is countersatisfiable *)
-lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
+lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis  
+lemma MC: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops (**modal collapse countersatisfiable*)
     
 section \<open>Conclusion\<close>
 (** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
