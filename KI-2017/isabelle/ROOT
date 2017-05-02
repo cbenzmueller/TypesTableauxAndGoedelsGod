@@ -4,7 +4,7 @@ session "Types_Tableaus_and_Goedels_God" = "HOL" +
     Relations    
   theories
         IHOML
-	GoedelProof_P1
+	GoedelProof
 	FittingProof		
 	AndersonProof
   document_files

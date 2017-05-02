@@ -1,5 +1,5 @@
 (*<*)
-theory GoedelProof_P1
+theory GoedelProof
 imports IHOML
 begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3,  atoms e = a b c d]
