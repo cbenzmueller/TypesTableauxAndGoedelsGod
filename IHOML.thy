@@ -34,7 +34,7 @@ logic. The experiments presented below confirm that Fitting's argument as presen
 is valid and that it avoids the modal collapse as intended.*)
 
 (**The work presented here originates from the \emph{Computational Metaphysics} lecture course  
-held at FU Berlin in Summer 2016 @{cite "C65"}. \pagebreak*)
+held at FU Berlin in Summer 2016 @{cite "C65"}.*)
 
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
@@ -162,8 +162,7 @@ Relativized terms may vary their denotation from world to world of a model, beca
 from world to world, i.e. they are non-rigid.*)
 (**To recap: an intensional term denotes the same function in all worlds (i.e. it's rigid), whereas a relativized term
 denotes a (possibly) different extension (an object or a set) at every world (i.e. it's non-rigid). To find out
-the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.
-\bigbreak*)
+the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.*)
 (** For our Isabelle/HOL embedding, we had to follow a slightly different approach; we model @{text "\<down>"}
 as a predicate applying to formulas of the form @{text "\<Phi>(\<down>\<alpha>\<^sub>1,\<dots>\<alpha>\<^sub>n)"} (for our treatment
 we only need to consider cases involving one or two arguments, the first one being a relativized term).
@@ -244,7 +243,7 @@ the axioms which falsifies the given formula. This means, the formulas are not v
 
  (** \emph{Modal collapse} is countersatisfiable: *)
  lemma "\<lfloor>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<phi>\<rfloor>" nitpick oops                  (** countersatisfiable*)
-(**\pagebreak*)
+
 subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close>
 
  (** The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
@@ -278,8 +277,7 @@ subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close
 
   (** Using these definitions, we can derive axioms for the most common modal logics (see also @{cite "C47"}). 
   Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
-  both versions. In what follows we use the semantic constraints (for improved performance).
-  \pagebreak*)
+  both versions. In what follows we use the semantic constraints (for improved performance).*)
  
 (*<*)      
 end

@@ -87,7 +87,7 @@ lemma "\<lfloor>\<^bold>\<diamond>(\<^bold>\<exists>x::\<zero>. (\<lambda>Y. Y x
   nitpick[card 't=1, card i=2] oops (** countersatisfiable *)    
     
 (** For Exercise 7.5 see Example 7.17 above. *)
-(**\bigbreak*)    
+    
 subsection \<open>Miscellaneous Matters (Chapter 9)\<close>
 
 subsubsection \<open>Equality Axioms (Subsection 1.1)\<close>
@@ -130,7 +130,6 @@ abbreviation deReImplDeDicto::"\<up>\<zero>\<Rightarrow>io"
   where "deReImplDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>\<tau>) \<^bold>\<rightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>)"
 abbreviation deReEquDeDicto::"\<up>\<zero>\<Rightarrow>io" 
   where "deReEquDeDicto \<tau> \<equiv> \<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<downharpoonleft>\<tau>) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<downharpoonleft>\<tau>)"
-(**\bigbreak*)
 abbreviation deDictoImplDeRe_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
   where "deDictoImplDeRe_pred \<tau> \<equiv> \<^bold>\<forall>\<alpha>. \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>) \<^bold>\<rightarrow> ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>\<tau>)"
 abbreviation deReImplDeDicto_pred::"('t\<Rightarrow>io)\<Rightarrow>io" 
@@ -191,7 +190,6 @@ lemma "\<lfloor>stabilityB (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<ri
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<zero>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>) \<^bold>\<leftrightarrow> (stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
-(** \pagebreak*)
 (*<*)
 end
 (*>*)

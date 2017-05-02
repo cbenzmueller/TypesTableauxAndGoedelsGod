@@ -63,7 +63,6 @@ lemma "\<lfloor>rigidPred \<P>\<rfloor>"
   using A4a A4b by blast (** @{term "\<P>"} is therefore rigid*)
     
 lemma True nitpick[satisfy] oops (** model found: so far all axioms A1-4 consistent*)    
-(**\bigbreak*)   
     
 subsubsection \<open>Theorems\<close>
 (** Remark: Essence is defined here (and in Fitting's variant) in the version of Scott; G\"odel's original version leads to the inconsistency
@@ -248,7 +247,7 @@ proof -
 }
 thus ?thesis by (rule allI) 
 qed
-(**\bigbreak*)  
+  
 (**Corollary 11.30: *)
 lemma GodImpliesExistence: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> E! x\<rfloor>" 
   using GodExistenceIsValid Monotheism_normalModel by metis
@@ -291,7 +290,6 @@ proof -
   }
   thus ?thesis by (rule allI)
 qed
-  (** \pagebreak*)
 
 (*<*)
 end

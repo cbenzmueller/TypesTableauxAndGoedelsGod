@@ -47,7 +47,7 @@ lemma True nitpick[satisfy] oops (** model found: axioms are consistent*)
 lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast (** axioms already imply \emph{D} axiom *)
     
 lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by fastforce
-(**\bigbreak*)  
+    
 (** \emph{T1} (Positive properties are possibly instantiated) can be formalised in two different ways:*)    
 theorem T1a: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" 
   using A1a A2 by blast (** this is the one used in the book*)
@@ -89,7 +89,7 @@ theorem God_starIsEssential: "\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<righta
     
 abbreviation necExistencePred:: "\<up>\<langle>\<zero>\<rangle>" ("NE") where
   "NE x  \<equiv> \<lambda>w. (\<^bold>\<forall>Y.  \<E> Y x \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<exists>\<^sup>Ez. \<lparr>Y z\<rparr>)) w"
-(**\bigbreak*)
+  
 (** Informal Axiom 5*)
 axiomatization where
  A5: "\<lfloor>\<P> \<down>NE\<rfloor>"
@@ -178,7 +178,6 @@ axiomatization where
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" 
   nitpick[card 't=1, card i=2] oops (** countermodel also found in \emph{S5}*)
 
-(** \pagebreak*)
 (*<*)
 end
 (*>*)

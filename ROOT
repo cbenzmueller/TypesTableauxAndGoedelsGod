@@ -11,4 +11,4 @@ session "Types_Tableaus_and_Goedels_God" = "HOL" +
 	AndersonProof
   document_files
     "root.tex"
-    "root.bib"
+    "FittingBook.bib"

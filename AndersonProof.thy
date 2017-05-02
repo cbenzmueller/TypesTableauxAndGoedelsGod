@@ -210,8 +210,6 @@ subsection \<open>Modal Collapse\<close>
 (** Modal collapse is countersatisfiable *)
 lemma "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops
     
-(** \pagebreak*)
-    
 section \<open>Conclusion\<close>
 (** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
 (a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook \emph{Types, Tableaus and 
@@ -236,7 +234,6 @@ mere quantitative (easier, faster and more reliable proofs). The advantages are 
 different approach to argumentation: We can now work iteratively (by `trial-and-error') on an argument
 by making gradual adjustments to its definitions, axioms and theorems. This allows us to continuously expose and revise 
 the assumptions we indirectly commit ourselves everytime we opt for some particular formalisation.
-\pagebreak
 *)
 (*<*)
 end
