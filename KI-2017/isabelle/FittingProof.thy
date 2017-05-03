@@ -11,13 +11,13 @@ section \<open>Fitting's Variant\<close>
 (**In this section we consider Fitting's solution to the objections raised in his discussion of G\"odel's Argument pp. 164-9, 
 especially the problem of \emph{modal collapse}, which has been metaphysically interpreted as implying a rejection of free will.
 Since we are generally commited to the existence of free will (in a pre-theoretical sense), such a result is
-philosophically unappealing and rather seen as a problem in the argument's formalisation.*)
+philosophically unappealing and rather seen as a problem in the argument's formalization.*)
 (*This part of the book still leaves several details unspecified and the reader is thus compelled to fill in the gaps.
-As a result, we came across some premises and theorems allowing for different formalisations and therefore leading to disparate implications.
+As a result, we came across some premises and theorems allowing for different formalizations and therefore leading to disparate implications.
 Only some of those cases are shown here for illustrative purposes. The options we have chosen here are such that
 they indeed validate the argument (and we assume that they correspond to Fitting's intention.*)
   
-(**Reminder: The `@{text "\<lparr>_\<rparr>"}' parentheses are used to convert an extensional object into its `rigid'
+(**Remark: The `@{text "\<lparr>_\<rparr>"}' parentheses are used to convert an extensional object into its `rigid'
 intensional counterpart (e.g. @{text "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"}).*)
   
 abbreviation Entailment::"\<up>\<langle>\<langle>\<zero>\<rangle>,\<langle>\<zero>\<rangle>\<rangle>" (infix"\<Rrightarrow>"60)
@@ -37,7 +37,7 @@ lemma True nitpick[satisfy] oops (** model found: axioms are consistent*)
     
 (** \emph{T1} Positive properties are possibly instantiated*)    
 theorem T1: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" using A1a A2 by blast 
-(** \emph{T3} (God exists possibly) can be formalised in two different ways, using a \emph{de re} or a \emph{de dicto} reading.*)
+(** \emph{T3} (God exists possibly) can be formalized in two different ways, using a \emph{de re} or a \emph{de dicto} reading.*)
 theorem T3_deRe: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T1 T2 by simp 
 theorem T3_deDicto: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" nitpick oops (**countersatisfiable: not used*)      
     

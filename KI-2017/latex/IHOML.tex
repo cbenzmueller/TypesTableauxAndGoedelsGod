@@ -8,26 +8,46 @@
 %
 %
 %
+\begin{isamarkuptext}%
+\begin{abstract}
+	A computer-formalization in Isabelle/HOL of several variants of G\"odel's ontological argument is presented
+	(as discussed in M. Fitting's textbook \emph{Types, Tableaus and G\"odel's God}). Fitting's work
+	introduces an intensional higher-order modal logic (by drawing on Montague/Gallin approach), which we
+	shallowly embed here in classical higher-order logic (Isabelle/HOL). We then	utilize the embedded logic for the
+  formalization of the ontological argument. In particular, Fitting's and Anderson's variants are verified
+  and their claims confirmed. These variants aim to avoid the modal collapse, which has been criticized as
+  an undesirable side-effect of Kurt G\"odel's (and Dana Scott's) versions of the ontological argument.
+  \\ \\
+  \textbf{Keywords:} Automated Theorem Proving. Computational Metaphysics. Isabelle. Modal Logic.
+	Intensional Logic. Ontological Argument
+\end{abstract}%
+\end{isamarkuptext}\isamarkuptrue%
+%
 \isamarkupsection{Introduction%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-We present a study on Computational Metaphysics: a computer-formalisation and verification
-of Fitting's variant of the ontological argument (for the existence of God) as presented in
-his textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting}. Fitting's argument 
-is an emendation of Kurt G\"odel's modern variant \cite{GoedelNotes} (resp. Dana Scott's 
-variant \cite{ScottNotes}) of the ontological argument.%
+We present a shallow semantical embedding of an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL
+which has been introduced Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting} in order
+to formalize his emendation of G\"odel's ontological argument (for the existence of God). IHOML is a modification of the
+intentional logic originally developed by Montague and later expanded by Gallin \cite{Gallin75} by building upon Church's
+type theory and Kripke's possible-world semantics. Our approach has been inspired by previous work on the semantical embedding of
+multimodal logics with quantification \cite{J23}, which we expand here to allow for actualist quantification,
+intensional terms and their related operations.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-The motivation is to avoid the \emph{modal collapse} \cite{Sobel,sobel2004logic}, which has been criticised
-as an undesirable side-effect of the axioms of G\"odel resp. Scott. The modal collapse essentially  
-states that  there are no contingent truths and that everything is determined.
+We subsequently present a study on Computational Metaphysics: a computer-formalization and verification
+of G\"odel's \cite{GoedelNotes} (resp. Dana Scott's \cite{ScottNotes}) modern variant of the ontological argument,
+followed by Fitting's emendation thereof. A third variant (by Anderson \cite{anderson90:_some_emend_of_goedel_ontol_proof})
+is also discussed. The motivation is to avoid the \emph{modal collapse} \cite{Sobel,sobel2004logic}, which has been criticized
+as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
+states that there are no contingent truths and that everything is determined.
 Several authors (e.g. \cite{anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,Hajek2002,bjordal99}) 
 have proposed emendations of the argument with the aim of maintaining the essential result 
 (the necessary existence of God) while at the same time avoiding the modal collapse. 
-Related work  has formalised several of these variants on the computer and verified or falsified them. For example,
+Related work  has formalized several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axioms \cite{GoedelNotes} have been shown inconsistent \cite{C55,C60}
 while Scott's version has been verified \cite{ECAI}. Further experiments, contributing amongst others
 to the clarification of a related debate between H\'ajek and Anderson, are presented and discussed in
@@ -48,15 +68,6 @@ the \emph{Computational Metaphysics} lecture course held at FU Berlin in Summer 
 \isamarkupsection{Embedding of Intensional Higher-Order Modal Logic%
 }
 \isamarkuptrue%
-%
-\begin{isamarkuptext}%
-The object logic being embedded, intensional higher-order modal logic (IHOML), is a modification of the intentional logic developed by Montague
-and Gallin \cite{Gallin75}. IHOML is introduced by Fitting in the second part of his textbook \cite{Fitting}
-in order to formalise his emendation of G\"odel's ontological argument. We offer here a shallow embedding
-of this logic in Isabelle/HOL, which has been inspired by previous work on the semantical embedding of
-multimodal logics with quantification \cite{J23}. We expand this approach to allow for actualist quantifiers,
-intensional types and their related operations.%
-\end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsubsection{Type Declarations%
 }
@@ -84,7 +95,7 @@ a set of (red) objects has the extensional type \isa{{\isasymlangle}{\isasymzero
 }
 %
 \begin{isamarkuptext}%
-Aliases for common unary predicate types:%
+Aliases for common complex types (predicates and relations):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ ie{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}i{\isasymRightarrow}{\isasymzero}{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymzero}{\isachardoublequoteclose}{\isacharparenright}\ %
@@ -98,7 +109,7 @@ Aliases for common unary predicate types:%
 \isanewline
 \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ ise{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymzero}{\isasymRightarrow}io{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
-\isamarkupcmt{intensional predicates (concepts)%
+\isamarkupcmt{intensional (predicate) concepts%
 }
 \ \isanewline
 \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
@@ -110,10 +121,6 @@ Aliases for common unary predicate types:%
 \ isise{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}io{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{2nd-order intensional concepts%
 }
-%
-\begin{isamarkuptext}%
-Aliases for common binary relation types:%
-\end{isamarkuptext}\isamarkuptrue%
 \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ see{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymzero}{\isasymRightarrow}{\isasymzero}{\isasymRightarrow}bool{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlangle}{\isasymzero}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{(extensional) relations%
@@ -217,12 +224,7 @@ For our Isabelle/HOL embedding, we had to follow a slightly different approach; 
 as a predicate applying to formulas of the form \isa{{\isasymPhi}{\isacharparenleft}{\isasymdown}{\isasymalpha}\isactrlsub {\isadigit{1}}{\isacharcomma}{\isasymdots}{\isasymalpha}\isactrlsub n{\isacharparenright}} (for our treatment
 we only need to consider cases involving one or two arguments, the first one being a relativized term).
 For instance, the formula \isa{Q{\isacharparenleft}{\isasymdown}a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w} (evaluated at world \emph{w}) is modelled as \isa{{\isasymdownharpoonleft}{\isacharparenleft}Q{\isacharcomma}a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w}
-(or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w} using infix notation), which gets further translated into \isa{Q{\isacharparenleft}a\isactrlsub {\isadigit{1}}{\isacharparenleft}w{\isacharparenright}{\isacharparenright}\isactrlsup w}.
-
-Depending on the particular types involved, we have to define \isa{{\isasymdown}} differently to ensure type correctness
-(see \emph{a-d} below). Nevertheless, the essence of the \emph{Extension-of} operator remains the same:
-a term \isa{{\isasymalpha}} preceded by \isa{{\isasymdown}} behaves as a non-rigid term, whose denotation at a given possible world corresponds
-to the extension of the original intensional term \isa{{\isasymalpha}} at that world.%
+(or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{1}}{\isacharparenright}\isactrlsup w} using infix notation), which gets further translated into \isa{Q{\isacharparenleft}a\isactrlsub {\isadigit{1}}{\isacharparenleft}w{\isacharparenright}{\isacharparenright}\isactrlsup w}.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -237,23 +239,6 @@ to the extension of the original intensional term \isa{{\isasymalpha}} at that w
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-(\emph{c}) A variant of (\emph{b}) with a second argument (the first one being relativized):%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ extPredArg{\isadigit{1}}{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharprime}b{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}\isactrlsub {\isadigit{1}}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}\isactrlsub {\isadigit{1}}P\ {\isasymequiv}\ {\isasymlambda}z{\isachardot}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ z\ w{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-In what follows, the `\isa{{\isasymlparr}{\isacharunderscore}{\isasymrparr}}' parentheses are an operator used to convert extensional objects into `rigid' intensional ones:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ trivialConversion{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}bool{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlparr}{\isacharunderscore}{\isasymrparr}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isasymphi}{\isacharparenright}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-(\emph{d}) A variant of (\emph{b}) where \isa{{\isasymphi}} takes `rigid' intensional terms as argument:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
-\ mextPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}\isactrlbold {\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ \isactrlbold {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ {\isasymlparr}P\ x\ w{\isasymrparr}{\isacharparenright}\ w{\isachardoublequoteclose}%
 \isamarkupsubsection{Equality%
 }
 \isamarkuptrue%
@@ -755,57 +740,17 @@ Example 9.1, p.116 (using normal-, Leibniz- and concept-equality)%
 %
 %
 %
-\isamarkupsubsection{\emph{De Re} and \emph{De Dicto}%
-}
-\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-\emph{De re} is equivalent to \emph{de dicto} for non-relativized (both extensional and intensional) terms:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-%
-\begin{isamarkuptext}%
-\emph{De re} is not equivalent to \emph{de dicto} for relativized terms:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
-\ \ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{countersatisfiable%
-}
-%
-%
-%
-%
 \isamarkupsubsection{Stability Conditions and Rigid Designation%
 }
 \isamarkuptrue%
+%
+\begin{isamarkuptext}%
+As said before, intensional terms are trivially rigid. The following predicate tests whether an intensional
+predicate is `rigid' in the sense of denoting a world-independent function.%
+\end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ rigidPred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ %
-\isamarkupcmt{rigidity for intensional predicates%
-}
-\ \ \ \ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}rigidPred\ {\isasymtau}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ {\isasymbeta}\ \isactrlbold {\isasymapprox}\ z{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isachardoublequoteclose}%
+\ rigidPred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+\ \ {\isachardoublequoteopen}rigidPred\ {\isasymtau}\ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ {\isasymbeta}\ \isactrlbold {\isasymapprox}\ z{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 Following definitions are called `stability conditions' by Fitting (\cite{Fitting}, p. 124).%
 \end{isamarkuptext}\isamarkuptrue%
@@ -851,7 +796,49 @@ A term is rigid if and only if it satisfies the stability conditions.%
 \ %
 %
 \isacommand{by}\isamarkupfalse%
-\ meson\ \ \ \isanewline
+\ meson%
+%
+%
+%
+\isamarkupsubsection{\emph{De Re} and \emph{De Dicto}%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+\emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ simp%
+%
+%
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ simp%
+%
+%
+%
+\begin{isamarkuptext}%
+\emph{De re} is not equivalent to \emph{de dicto} for relativized terms:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ \ \isacommand{nitpick}\isamarkupfalse%
+{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
+\ %
+%
+\isacommand{oops}\isamarkupfalse%
+\ %
+\isamarkupcmt{countersatisfiable%
+}
+\isanewline
 %
 %
 %

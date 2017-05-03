@@ -35,7 +35,7 @@ For this first part, while Leibniz provides some kind of proof for the compatibi
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-comment about the original Leibnizian notion of \emph{concept containment}? cite Zalta and who else?%
+TODO: comment about the original Leibnizian notion of \emph{concept containment}? cite Zalta and who else?%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
@@ -76,8 +76,8 @@ comment about the original Leibnizian notion of \emph{concept containment}? cite
 \ \ {\isachardoublequoteopen}pos\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymforall}X{\isachardot}\ Z\ X\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ X{\isachardoublequoteclose}\ \ \isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ intersectionOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}intersec{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupcmt{quantifier is possibilist%
+\ \ {\isachardoublequoteopen}intersec\ X\ Z\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}X\ x\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}Z\ Y{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}Y\ x{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}\ %
+\isamarkupcmt{possibilist quantifier%
 }
 \ \ \isanewline
 \ \ \isanewline
@@ -106,7 +106,7 @@ comment about the original Leibnizian notion of \emph{concept containment}? cite
 \ %
 %
 \isacommand{oops}\isamarkupfalse%
-\ \ \ \ \ \ \ %
+\ \ \ \ %
 \isamarkupcmt{model found: axioms are consistent%
 }
 %
@@ -127,7 +127,7 @@ comment about the original Leibnizian notion of \emph{concept containment}? cite
 %
 %
 \begin{isamarkuptext}%
-(Informal Proposition 1) - Positive properties are possibly instantiated.%
+Positive properties are possibly instantiated.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
@@ -214,7 +214,7 @@ as noted by Dana Scott (see \cite{Fitting}, p. 152).%
 %
 %
 \begin{isamarkuptext}%
-(Informal Proposition 3) - Possibly God exists:%
+Conclusion for the first part: Possibly God exists.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}%
@@ -354,7 +354,7 @@ An essential property offers a complete characterization of an individual:%
 %
 %
 \begin{isamarkuptext}%
-Possibilist existence of God implies its necessary actualist existence:%
+(Possibilist) existence of God implies its necessary (actualist) existence:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
 \ GodExistenceImpliesNecExistence{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
@@ -416,10 +416,13 @@ We prove some useful inference rules:%
 %
 %
 \begin{isamarkuptext}%
-Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are used.%
+Possible existence of God implies its necessary (actualist) existence:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\isanewline
+\ T{\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G{\isasymrfloor}{\isachardoublequoteclose}\ %
+\isamarkupcmt{only symmetry and transitivity needed%
+}
+\isanewline
 %
 %
 %
@@ -549,7 +552,7 @@ In the context of our S5 axioms, the \emph{modal collapse} becomes valid (\cite{
 %
 \isacommand{by}\isamarkupfalse%
 \ simp\ %
-\isamarkupcmt{useful inference rule%
+\isamarkupcmt{useful inf. rule%
 }
 %
 %

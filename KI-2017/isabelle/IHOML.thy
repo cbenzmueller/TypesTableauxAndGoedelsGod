@@ -5,21 +5,52 @@ begin
 nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e = a b c d]
 (*>*)
   
+(**
+\begin{abstract}
+	A computer-formalization in Isabelle/HOL of several variants of G\"odel's ontological argument is presented
+	(as discussed in M. Fitting's textbook \emph{Types, Tableaus and G\"odel's God}). Fitting's work
+	introduces an intensional higher-order modal logic (by drawing on Montague/Gallin approach), which we
+	shallowly embed here in classical higher-order logic (Isabelle/HOL). We then	utilize the embedded logic for the
+  formalization of the ontological argument. In particular, Fitting's and Anderson's variants are verified
+  and their claims confirmed. These variants aim to avoid the modal collapse, which has been criticized as
+  an undesirable side-effect of Kurt G\"odel's (and Dana Scott's) versions of the ontological argument.
+  \\ \\
+  \textbf{Keywords:} Automated Theorem Proving. Computational Metaphysics. Isabelle. Modal Logic.
+	Intensional Logic. Ontological Argument
+\end{abstract}
+*)
+  
+(*- old version
+	A computer-formalization of the essential parts of Fitting's textbook
+	\emph{Types, Tableaus and G\"odel's Go}d in Isabelle/HOL is
+	presented. In particular, Fitting's (and Anderson's) variant of the ontological
+	argument is verified and confirmed. This variant avoids the modal
+	collapse, which has been criticized as an undesirable side-effect of Kurt G\"odel's (and
+	Dana Scott's) versions of the ontological argument. Fitting's work
+	is employing an intensional higher-order modal logic, which we
+	shallowly embed here in classical higher-order logic. We then
+	utilize the embedded logic for the formalization of Fitting's argument.
+*)  
+  
 section \<open>Introduction\<close>
-
-(** We present a study on Computational Metaphysics: a computer-formalisation and verification
-of Fitting's variant of the ontological argument (for the existence of God) as presented in
-his textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}. Fitting's argument 
-is an emendation of Kurt G\"odel's modern variant @{cite "GoedelNotes"} (resp. Dana Scott's 
-variant @{cite "ScottNotes"}) of the ontological argument.*)
-
-(**The motivation is to avoid the \emph{modal collapse} @{cite "Sobel,sobel2004logic"}, which has been criticised
-as an undesirable side-effect of the axioms of G\"odel resp. Scott. The modal collapse essentially  
-states that  there are no contingent truths and that everything is determined.
+(** We present a shallow semantical embedding of an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL
+which has been introduced Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"} in order
+to formalize his emendation of G\"odel's ontological argument (for the existence of God). IHOML is a modification of the
+intentional logic originally developed by Montague and later expanded by Gallin @{cite "Gallin75"} by building upon Church's
+type theory and Kripke's possible-world semantics. Our approach has been inspired by previous work on the semantical embedding of
+multimodal logics with quantification @{cite "J23"}, which we expand here to allow for actualist quantification,
+intensional terms and their related operations.*)
+  
+(** We subsequently present a study on Computational Metaphysics: a computer-formalization and verification
+of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"}) modern variant of the ontological argument,
+followed by Fitting's emendation thereof. A third variant (by Anderson @{cite "anderson90:_some_emend_of_goedel_ontol_proof"})
+is also discussed. The motivation is to avoid the \emph{modal collapse} @{cite "Sobel,sobel2004logic"}, which has been criticized
+as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
+states that there are no contingent truths and that everything is determined.
 Several authors (e.g. @{cite "anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,Hajek2002,bjordal99"}) 
 have proposed emendations of the argument with the aim of maintaining the essential result 
 (the necessary existence of God) while at the same time avoiding the modal collapse. 
-Related work  has formalised several of these variants on the computer and verified or falsified them. For example,
+Related work  has formalized several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axioms @{cite "GoedelNotes"} have been shown inconsistent @{cite "C55,C60"}
 while Scott's version has been verified @{cite "ECAI"}. Further experiments, contributing amongst others
 to the clarification of a related debate between H\'ajek and Anderson, are presented and discussed in
@@ -36,16 +67,8 @@ the \emph{Computational Metaphysics} lecture course held at FU Berlin in Summer 
 
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
-  
-(** The object logic being embedded, intensional higher-order modal logic (IHOML), is a modification of the intentional logic developed by Montague
-and Gallin @{cite "Gallin75"}. IHOML is introduced by Fitting in the second part of his textbook @{cite "Fitting"}
-in order to formalise his emendation of G\"odel's ontological argument. We offer here a shallow embedding
-of this logic in Isabelle/HOL, which has been inspired by previous work on the semantical embedding of
-multimodal logics with quantification @{cite "J23"}. We expand this approach to allow for actualist quantifiers,
-intensional types and their related operations.*)
 
-subsection \<open>Type Declarations\<close>
-  
+subsection \<open>Type Declarations\<close>  
 (** Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
 We follow as closely as possible the syntax given by Fitting (see p. 86). According to this syntax,
 if @{text "\<tau>"} is an extensional type, @{text "\<up>\<tau>"} is the corresponding intensional type. For instance,
@@ -55,10 +78,10 @@ typedecl i                    (**type for possible worlds *)
 type_synonym io = "(i\<Rightarrow>bool)" (**formulas with world-dependent truth-value*)
 typedecl e  ("\<zero>")             (**individual objects *)             
 
-(** Aliases for common unary predicate types: *)
+(** Aliases for common complex types (predicates and relations):*)
 type_synonym ie="(i\<Rightarrow>\<zero>)" ("\<up>\<zero>") (**individual concepts map worlds to objects*)
 type_synonym se="(\<zero>\<Rightarrow>bool)" ("\<langle>\<zero>\<rangle>") (** (extensional) sets*)
-type_synonym ise="(\<zero>\<Rightarrow>io)" ("\<up>\<langle>\<zero>\<rangle>") (** intensional predicates (concepts)*) 
+type_synonym ise="(\<zero>\<Rightarrow>io)" ("\<up>\<langle>\<zero>\<rangle>") (** intensional (predicate) concepts*) 
 type_synonym sise="(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>") (** sets of concepts*) 
 type_synonym isise="(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>") (** 2nd-order intensional concepts*) 
 (*<*)
@@ -67,9 +90,8 @@ type_synonym isie=    "(\<up>\<zero>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<zer
 type_synonym sisise=  "(\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
 type_synonym isisise= "(\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<Rightarrow>io)"  ("\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>")
 type_synonym sse =    "\<langle>\<zero>\<rangle>\<Rightarrow>bool"         ("\<langle>\<langle>\<zero>\<rangle>\<rangle>")
-type_synonym isse =   "\<langle>\<zero>\<rangle>\<Rightarrow>io"          ("\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>")
+type_synonym isse =   "\<langle>\<zero>\<rangle>\<Rightarrow>io"          ("\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>") 
 (*>*)
-(** Aliases for common binary relation types: *)
 type_synonym see="(\<zero>\<Rightarrow>\<zero>\<Rightarrow>bool)" ("\<langle>\<zero>,\<zero>\<rangle>") (**(extensional) relations*)
 type_synonym isee="(\<zero>\<Rightarrow>\<zero>\<Rightarrow>io)" ("\<up>\<langle>\<zero>,\<zero>\<rangle>") (**intensional relational concepts*)
 type_synonym isisee="(\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<zero>\<Rightarrow>io)" ("\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>") (**2nd-order intensional relation*) 
@@ -159,9 +181,9 @@ the denotation of a relativized term, a world must be given. Relativized terms a
 as a predicate applying to formulas of the form @{text "\<Phi>(\<down>\<alpha>\<^sub>1,\<dots>\<alpha>\<^sub>n)"} (for our treatment
 we only need to consider cases involving one or two arguments, the first one being a relativized term).
 For instance, the formula @{text "Q(\<down>a\<^sub>1)\<^sup>w"} (evaluated at world \emph{w}) is modelled as @{text "\<downharpoonleft>(Q,a\<^sub>1)\<^sup>w"}
-(or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation), which gets further translated into @{text "Q(a\<^sub>1(w))\<^sup>w"}.
-
-Depending on the particular types involved, we have to define @{text "\<down>"} differently to ensure type correctness
+(or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation), which gets further translated into @{text "Q(a\<^sub>1(w))\<^sup>w"}.*)
+  
+(*Depending on the particular types involved, we have to define @{text "\<down>"} differently to ensure type correctness
 (see \emph{a-d} below). Nevertheless, the essence of the \emph{Extension-of} operator remains the same:
 a term @{text "\<alpha>"} preceded by @{text "\<down>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
 to the extension of the original intensional term @{text "\<alpha>"} at that world.*)
@@ -172,6 +194,7 @@ abbreviation extIndivArg::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zer
 (** (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}):*)
 abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
   where "\<phi> \<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. P x w) w"
+(*<*)    
 (** (\emph{c}) A variant of (\emph{b}) with a second argument (the first one being relativized):*)
 abbreviation extPredArg1::"(('t\<Rightarrow>bool)\<Rightarrow>'b\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>'b\<Rightarrow>io" (infix "\<down>\<^sub>1" 60)
   where "\<phi> \<down>\<^sub>1P \<equiv> \<lambda>z. \<lambda>w. \<phi> (\<lambda>x. P x w) z w"
@@ -181,7 +204,7 @@ abbreviation trivialConversion::"bool\<Rightarrow>io" ("\<lparr>_\<rparr>") wher
 (** (\emph{d}) A variant of (\emph{b}) where @{text \<phi>} takes `rigid' intensional terms as argument:*)
 abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<^bold>\<down>" 60)
   where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. \<lparr>P x w\<rparr>) w" (* where "\<phi> \<^bold>\<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x u. P x w) w"*)
-    
+(*>*)    
 subsection \<open>Equality\<close>
   
   abbreviation meq    :: "'t\<Rightarrow>'t\<Rightarrow>io" (infix"\<^bold>\<approx>"60) (**normal equality (for all types)*)
@@ -287,19 +310,13 @@ lemma "\<lfloor>\<^bold>\<forall>Z::\<up>\<zero>. (\<lambda>X::\<up>\<zero>. \<^
 lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx> x) \<downharpoonleft>p))\<rfloor>" by auto (* using normal equality *)
 lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X \<downharpoonleft>(p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>L x) \<downharpoonleft>p))\<rfloor>" by auto (* using Leibniz equality *)
 lemma "\<lfloor>((\<lambda>X. \<^bold>\<box>(X  (p::\<up>\<zero>))) \<^bold>\<down>(\<lambda>x. \<^bold>\<diamond>(\<lambda>z. z \<^bold>\<approx>\<^sup>C x) p))\<rfloor>" by simp (* using equality as defined for individual concepts *)
-    
-subsection \<open>\emph{De Re} and \emph{De Dicto}\<close>
-(** \emph{De re} is equivalent to \emph{de dicto} for non-relativized (both extensional and intensional) terms: *)
-lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>\<zero>\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
-lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
-(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms: *)    
-lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
 
 subsection \<open>Stability Conditions and Rigid Designation\<close>
-    
-abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" (**rigidity for intensional predicates*)    
-  where "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
+  
+(**As said before, intensional terms are trivially rigid. The following predicate tests whether an intensional
+predicate is `rigid' in the sense of denoting a world-independent function.*)   
+abbreviation rigidPred::"('t\<Rightarrow>io)\<Rightarrow>io" where
+  "rigidPred \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta> \<^bold>\<approx> z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
   
 (**Following definitions are called `stability conditions' by Fitting (@{cite "Fitting"}, p. 124).*)
 abbreviation stabilityA::"('t\<Rightarrow>io)\<Rightarrow>io" where "stabilityA \<tau> \<equiv> \<^bold>\<forall>\<alpha>. (\<tau> \<alpha>) \<^bold>\<rightarrow> \<^bold>\<box>(\<tau> \<alpha>)"
@@ -312,6 +329,14 @@ lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityB (\<tau>::\<up>\<la
 (** A term is rigid if and only if it satisfies the stability conditions.*)
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
+    
+subsection \<open>\emph{De Re} and \emph{De Dicto}\<close>
+(** \emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms: *)
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>\<zero>\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
+(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms: *)    
+lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
  
 (*<*)      
 end

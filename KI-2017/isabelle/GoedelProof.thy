@@ -23,7 +23,7 @@ subsection \<open>Part I - God's Existence is Possible\<close>
  In particular, when we assert that property A does not entail property B, we implicitly assume that
  A is possibly instantiated. Conversely, an impossible property (like being a round square) entails any property
  (like being a triangle). It is precisely by virtue of these paradoxes that G\"odel manages to prove \emph{T1}.*)
-(**comment about the original Leibnizian notion of \emph{concept containment}? cite Zalta and who else? *)
+(**TODO: comment about the original Leibnizian notion of \emph{concept containment}? cite Zalta and who else? *)
   
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)"
@@ -37,7 +37,7 @@ abbreviation Existence::"\<up>\<langle>\<zero>\<rangle>" ("E!") (**object-langua
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
   "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"  
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
-  "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))"(**quantifier is possibilist*)  
+  "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))" (**possibilist quantifier*)  
   
 axiomatization where
   A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      (** axiom 11.3A *)
@@ -45,10 +45,10 @@ axiomatization where
   A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** axiom 11.5 *)
   A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" (** axiom 11.10 *)
 
-lemma True nitpick[satisfy] oops       (** model found: axioms are consistent*)
+lemma True nitpick[satisfy] oops    (** model found: axioms are consistent*)
 lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast (**\emph{D} axiom is implicitely assumed*)
     
-(**(Informal Proposition 1) - Positive properties are possibly instantiated.*)
+(** Positive properties are possibly instantiated.*)
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
 
 (**Being Godlike is defined as having all (and only) positive properties.*)
@@ -76,7 +76,7 @@ proof -
 thus ?thesis by (rule allI)
 qed    
   
-(** (Informal Proposition 3) - Possibly God exists:*)
+(** Conclusion for the first part: Possibly God exists.*)
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<rfloor>"  using T1 T2 by simp
     
 subsection \<open>Part II - God's Existence is Necessary, if Possible\<close>
@@ -155,7 +155,7 @@ abbreviation necessaryExistencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("NE"
 axiomatization where  A5: "\<lfloor>\<P> NE\<rfloor>"
 lemma True nitpick[satisfy] oops (**model found: so far all axioms consistent*)
  
-(**Possibilist existence of God implies its necessary actualist existence:*) 
+(**(Possibilist) existence of God implies its necessary (actualist) existence:*)
 theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>"
 proof - (**direct proof not shown here*)
   (*<*)
@@ -178,9 +178,7 @@ proof - (**direct proof not shown here*)
   hence "((\<^bold>\<exists>x. G x) \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G) w" by simp
 }
   thus ?thesis by (rule allI) 
-qed
-(*>*)
-  
+qed (*>*)  
 (** We postulate semantic frame conditions for some modal logics. Taken together, reflexivity, transitivity and symmetry
  make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
  They are individually postulated in order to get more detailed information about their relevance in the proofs presented below.*)
@@ -195,8 +193,8 @@ lemma True nitpick[satisfy] oops (** model found: axioms still consistent*)
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 
-(** Informal Proposition 8. Note that only symmetry and transitivity for the accessibility relation are used.*) 
-theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>"
+(**Possible existence of God implies its necessary (actualist) existence:*)
+theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" (**only symmetry and transitivity needed*)
 proof -
   have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecExistence 
     by simp (** follows from Axioms 11.11, 11.25 and 11.3B*)
@@ -259,7 +257,6 @@ proof - (**direct proof not shown here*)
   thus ?thesis by (rule allI) 
 qed
 (*>*)
-
 (**One of the objections to G\"odel's argument is that his axioms imply that positive properties are necessarily instantiated.
 We can prove this true:*)  
 lemma PosPropertiesNecExist: "\<lfloor>\<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E Y\<rfloor>" using GodNecExists A4a
@@ -269,7 +266,7 @@ lemma PosPropertiesNecExist: "\<lfloor>\<^bold>\<forall>Y. \<P> Y \<^bold>\<righ
 is too strong: it implies that whatever is the case is so necessarily, i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
 The \emph{modal collapse} has been philosophically interpreted as implying the absence of free will.    
 In the context of our S5 axioms, the \emph{modal collapse} becomes valid (@{cite "Fitting"}, pp. 163-4): *)     
-lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp (**useful inference rule*)
+lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp (**useful inf. rule*)
 theorem ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>"
 proof -
   {
