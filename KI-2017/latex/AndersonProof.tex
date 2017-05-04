@@ -17,48 +17,41 @@ In this final section, we verify Anderson's emendation of G\"odel's argument, as
  by Fitting in \cite{Fitting}, pp. 169-171).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ %
+\isamarkupcmt{def changed%
+}
+\isanewline
 \ \ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ X\ z\ \isactrlbold {\isasymrightarrow}\ Y\ z{\isacharparenright}{\isachardoublequoteclose}\ \isanewline
 \isacommand{consts}\isamarkupfalse%
 \ Positiveness{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
 \ Existence{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}E{\isacharbang}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}E{\isacharbang}\ x\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ey{\isachardot}\ y\isactrlbold {\isasymapprox}x{\isacharparenright}\ w{\isachardoublequoteclose}\isanewline
 \isacommand{abbreviation}\isamarkupfalse%
-\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\isactrlsup A\ {\isasymequiv}\ {\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ Y{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}Y\ x{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupsubsection{Part I - God's Existence is Possible%
+\ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\isactrlsup A\ {\isasymequiv}\ {\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ Y{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}Y\ x{\isacharparenright}{\isachardoublequoteclose}\ %
+\isamarkupcmt{def changed%
 }
-\isamarkuptrue%
+\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ %
+\isamarkupcmt{def changed%
+}
+\isanewline
+\ \ {\isachardoublequoteopen}{\isasymE}\isactrlsup A\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}Z\ x{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ necessaryExistencePred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ %
+\isamarkupcmt{def changed%
+}
+\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}NE\isactrlsup A\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\isactrlsup A\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ Y{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isanewline
 \isacommand{axiomatization}\isamarkupfalse%
 \ \isakeyword{where}\isanewline
-\ \ A{\isadigit{1}}a{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ {\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \ \ \ \ \ \ \ %
-\isamarkupcmt{Axiom 11.3A%
-}
-\isanewline
-\ \ A{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X\ Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ X\ \isactrlbold {\isasymand}\ {\isacharparenleft}X\ {\isasymRrightarrow}\ Y{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ Y{\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ %
-\isamarkupcmt{Axiom 11.5%
-}
-\isanewline
-\ \ T{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ %
-\isamarkupcmt{Proposition 11.16%
-}
-\isanewline
-\ \ \ \ \ \ \ \ \isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ True\ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}satisfy{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{model found: axioms are consistent%
-}
-%
-%
-%
-%
-\begin{isamarkuptext}%
-\emph{T1} Positive properties are possibly instantiated%
-\end{isamarkuptext}\isamarkuptrue%
+\ \ A{\isadigit{1}}a{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ {\isacharparenleft}\isactrlbold {\isasymrightharpoondown}X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ {\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \ \ \ \ \ \ \ \isanewline
+\ \ A{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X\ Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ X\ \isactrlbold {\isasymand}\ {\isacharparenleft}X\ {\isasymRrightarrow}\ Y{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ Y{\isasymrfloor}{\isachardoublequoteclose}\ \isakeyword{and}\ \ \ \isanewline
+\ \ T{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \ \ \ \ \ \ \ \isakeyword{and}\isanewline
+\ \ A{\isadigit{4}}a{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \ \isakeyword{and}\isanewline
+\ \ A{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ NE\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
+\ \ \isanewline
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
@@ -68,10 +61,7 @@ In this final section, we verify Anderson's emendation of G\"odel's argument, as
 \ blast%
 %
 %
-%
-\begin{isamarkuptext}%
-\emph{T3} God exists possibly%
-\end{isamarkuptext}\isamarkuptrue%
+\isanewline
 \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
@@ -81,53 +71,25 @@ In this final section, we verify Anderson's emendation of G\"odel's argument, as
 \ simp%
 %
 %
-%
-\isamarkupsubsection{Part II - God's Existence is Necessary if Possible%
-}
-\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-\isa{{\isasymP}} now satisfies only one of the stability conditions. But since this variant uses an \emph{S5} logic, 
-the other stability condition is implied (see \cite{Fitting}, p. 124). Therefore \isa{{\isasymP}} becomes rigid .%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{axiomatization}\isamarkupfalse%
-\ \isakeyword{where}\ A{\isadigit{4}}a{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-We again postulate our \emph{S5} axioms:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{axiomatization}\isamarkupfalse%
-\ \isakeyword{where}\isanewline
-\ refl{\isacharcolon}\ {\isachardoublequoteopen}reflexive\ aRel{\isachardoublequoteclose}\ \isakeyword{and}\isanewline
-\ tran{\isacharcolon}\ {\isachardoublequoteopen}transitive\ aRel{\isachardoublequoteclose}\ \isakeyword{and}\isanewline
-\ symm{\isacharcolon}\ {\isachardoublequoteopen}symmetric\ aRel{\isachardoublequoteclose}\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ True\ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}satisfy{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{model found: so far all axioms consistent%
-}
-%
-%
-%
 \isanewline
+\ \ \ \ \ \ \isanewline
+\isacommand{axiomatization}\isamarkupfalse%
+\ \isakeyword{where}\ %
+\isamarkupcmt{We again postulate our \emph{S5} axioms:%
+}
+\isanewline
+\ refl{\isacharcolon}\ {\isachardoublequoteopen}reflexive\ aRel{\isachardoublequoteclose}\ \isakeyword{and}\ tran{\isacharcolon}\ {\isachardoublequoteopen}transitive\ aRel{\isachardoublequoteclose}\ \isakeyword{and}\ symm{\isacharcolon}\ {\isachardoublequoteopen}symmetric\ aRel{\isachardoublequoteclose}\isanewline
 \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ A{\isadigit{4}}b{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
-%
-\ \ %
+\ A{\isadigit{4}}b{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
 %
 \isacommand{using}\isamarkupfalse%
 \ A{\isadigit{4}}a\ symm\ \isacommand{by}\isamarkupfalse%
-\ auto\ %
-\isamarkupcmt{symmetry is needed (corresponding to \emph{B} axiom)%
-}
+\ auto%
 %
 %
 \isanewline
-%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}rigidPred\ {\isasymP}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
@@ -135,42 +97,13 @@ We again postulate our \emph{S5} axioms:%
 \isacommand{using}\isamarkupfalse%
 \ A{\isadigit{4}}a\ A{\isadigit{4}}b\ \isacommand{by}\isamarkupfalse%
 \ blast\ %
-\isamarkupcmt{\isa{{\isasymP}} is rigid in \emph{B}%
+\isamarkupcmt{\isa{{\isasymP}} is rigid%
 }
 %
 %
 %
 \isanewline
-\isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ %
-\isamarkupcmt{Essence, Anderson Version%
-}
-\isanewline
-\ \ {\isachardoublequoteopen}{\isasymE}\isactrlsup A\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}Z\ x{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ necessaryExistencePred{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}NE\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}NE\isactrlsup A\ x\ \ {\isasymequiv}\ {\isacharparenleft}{\isasymlambda}w{\isachardot}\ {\isacharparenleft}\isactrlbold {\isasymforall}Y{\isachardot}\ \ {\isasymE}\isactrlsup A\ Y\ x\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ Y{\isacharparenright}\ w{\isacharparenright}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-If g is God-like, the property of being God-like is its essence.
-As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
-For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
-given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theorem 2*, p. 296)%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{theorem}\isamarkupfalse%
-\ GodIsEssential{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\isactrlsup A\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymE}\isactrlsup A\ G\isactrlsup A\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}\ %
-\isamarkupcmt{not shown here%
-}
-%
-%
-%
-\ \ \isacommand{axiomatization}\isamarkupfalse%
-\ \isakeyword{where}\ A{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymP}\ NE\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
+\isacommand{lemma}\isamarkupfalse%
 \ True\ \isacommand{nitpick}\isamarkupfalse%
 {\isacharbrackleft}satisfy{\isacharbrackright}%
 \ %
@@ -184,106 +117,74 @@ given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theor
 %
 %
 \begin{isamarkuptext}%
-Possibilist existence of God implies necessary actualist existence:%
+If g is God-like, the property of being God-like is its essence.
+\footnote{As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
+For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
+given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theorem 2*, p. 296)}%
 \end{isamarkuptext}\isamarkuptrue%
+\isacommand{theorem}\isamarkupfalse%
+\ GodIsEssential{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\isactrlsup A\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymE}\isactrlsup A\ G\isactrlsup A\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharminus}\ %
+\isamarkupcmt{not shown%
+}
+%
+%
+%
 \isacommand{theorem}\isamarkupfalse%
 \ GodExistenceImpliesNecExistence{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}\ %
-\isamarkupcmt{not shown here%
-}
+\ {\isacharminus}%
 %
 %
 %
 %
-\begin{isamarkuptext}%
-Some useful rules:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ modal{\isacharunderscore}distr{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasympsi}{\isacharparenright}{\isasymrfloor}\ {\isasymLongrightarrow}\ {\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymdiamond}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isasympsi}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast%
-%
-%
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ modal{\isacharunderscore}trans{\isacharcolon}\ {\isachardoublequoteopen}{\isacharparenleft}{\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasympsi}{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}{\isasympsi}\ \isactrlbold {\isasymrightarrow}\ {\isasymchi}{\isasymrfloor}{\isacharparenright}\ {\isasymLongrightarrow}\ {\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasymchi}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
 %
 %
 %
-\begin{isamarkuptext}%
-Anderson's version of Theorem 11.27%
-\end{isamarkuptext}\isamarkuptrue%
+%
+%
+%
+%
+%
+%
+%
 \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\isanewline
-%
-%
+\ T{\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
 %
 \isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}\isanewline
-\ \ \isacommand{have}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ GodExistenceImpliesNecExistence\ \isanewline
-\ \ \ \ \isacommand{by}\isamarkupfalse%
-\ simp\ %
-\isamarkupcmt{follows from Axioms 11.11, 11.25 and 11.3B%
+\ {\isacharminus}\ %
+\isamarkupcmt{not shown%
 }
-\isanewline
-\ \ \isacommand{hence}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ NEC\ \isacommand{by}\isamarkupfalse%
-\ simp\isanewline
-\ \ \isacommand{hence}\isamarkupfalse%
-\ {\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
-\ {\isacharparenleft}rule\ modal{\isacharunderscore}distr{\isacharparenright}\isanewline
-\ \ \isacommand{have}\isamarkupfalse%
-\ {\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{using}\isamarkupfalse%
-\ symm\ tran\ \isacommand{by}\isamarkupfalse%
-\ metis\isanewline
-\ \ \isacommand{from}\isamarkupfalse%
-\ {\isadigit{1}}\ {\isadigit{2}}\ \isacommand{have}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
-\ simp\isanewline
-\ \ \isacommand{hence}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
-\ {\isacharparenleft}rule\ modal{\isacharunderscore}trans{\isacharparenright}\isanewline
-\ \ \isacommand{thus}\isamarkupfalse%
-\ {\isacharquery}thesis\ \isacommand{by}\isamarkupfalse%
-\ {\isacharparenleft}rule\ localImpGlobalCons{\isacharparenright}\isanewline
-\isacommand{qed}\isamarkupfalse%
 %
 %
 %
-%
-\begin{isamarkuptext}%
-Conclusion - Necessary (actualist) existence of God:%
-\end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ GodNecExists{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
 \ T{\isadigit{3}}\ T{\isadigit{4}}\ \isacommand{by}\isamarkupfalse%
-\ metis%
+\ metis\ %
+\isamarkupcmt{argument's conclusion%
+}
 %
 %
-\ \ \isanewline
+%
+\ \isanewline
 \isacommand{lemma}\isamarkupfalse%
-\ MC{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+\ ModalCollapse{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \ %
 %
 \isacommand{oops}\isamarkupfalse%
 \ %
-\isamarkupcmt{modal collapse countersatisfiable%
+\isamarkupcmt{countersatisfiable%
 }
 %
 %

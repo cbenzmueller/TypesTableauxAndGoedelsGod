@@ -121,6 +121,7 @@ Aliases for common complex types (predicates and relations):%
 \ isise{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}io{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{2nd-order intensional concepts%
 }
+\ \ \isanewline
 \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ see{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymzero}{\isasymRightarrow}{\isasymzero}{\isasymRightarrow}bool{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlangle}{\isasymzero}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{(extensional) relations%
@@ -143,20 +144,16 @@ Aliases for common complex types (predicates and relations):%
 \begin{isamarkuptext}%
 We embed each modal operator as the set of worlds satisfying the corresponding HOL formula.%
 \end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mnot\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymnot}{\isacharunderscore}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{5}}{\isadigit{2}}{\isacharbrackright}{\isadigit{5}}{\isadigit{3}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymnot}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymnot}{\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mand\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymand}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{1}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymand}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\ \ \ \isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mor\ \ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymor}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymor}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymor}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mimp\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymrightarrow}{\isachardoublequoteclose}{\isadigit{4}}{\isadigit{9}}{\isacharparenright}\ \isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}%
+\isacommand{abbreviation}\isamarkupfalse%
+\ mnot{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymnot}{\isacharunderscore}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{5}}{\isadigit{2}}{\isacharbrackright}{\isadigit{5}}{\isadigit{3}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymnot}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymnot}{\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mand{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymand}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{1}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymand}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mor{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymor}{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymor}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymor}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mimp{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}\isactrlbold {\isasymrightarrow}{\isachardoublequoteclose}{\isadigit{4}}{\isadigit{9}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-Following can be seen as modelling \emph{possibilist quantification}:%
+Following can be seen as modeling \emph{possibilist quantification}:%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforall{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
@@ -173,7 +170,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 \isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforallAct{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\ %
-\isamarkupcmt{actualist variants use superscript!%
+\isamarkupcmt{actualist variants use superscript%
 }
 \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}x\ existsAt\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
@@ -181,15 +178,33 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 \ mexistsAct{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}x\ existsAt\ w{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-\emph{aRel} is the frame's \emph{accessibility relation} (aliased \emph{r}) used to embed the modal operators
-\isa{{\isasymbox}} and \isa{{\isasymdiamond}}.%
+\emph{Accessibility relation} (\emph{r}) is used to embed modal operators \isa{{\isasymbox}} and \isa{{\isasymdiamond}}.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
 \ aRel{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}i{\isasymRightarrow}i{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}\ {\isachardoublequoteopen}r{\isachardoublequoteclose}\ {\isadigit{7}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mbox\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymbox}{\isacharunderscore}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{5}}{\isadigit{2}}{\isacharbrackright}{\isadigit{5}}{\isadigit{3}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mdia\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isacharunderscore}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{5}}{\isadigit{2}}{\isacharbrackright}{\isadigit{5}}{\isadigit{3}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}%
+\ mdia\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isacharunderscore}{\isachardoublequoteclose}{\isacharbrackleft}{\isadigit{5}}{\isadigit{2}}{\isacharbrackright}{\isadigit{5}}{\isadigit{3}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\ \ \isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ meq{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharprime}t{\isasymRightarrow}{\isacharprime}t{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}{\isachardoublequoteclose}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ %
+\isamarkupcmt{normal equality (for all types)%
+}
+\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\ y\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ x\ {\isacharequal}\ y{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ meqC{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymzero}{\isacharcomma}{\isasymup}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}\isactrlsup C{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{2}}{\isacharparenright}\ %
+\isamarkupcmt{equality for individual concepts%
+}
+\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\isactrlsup C\ y\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymforall}v{\isachardot}\ {\isacharparenleft}x\ v{\isacharparenright}\ {\isacharequal}\ {\isacharparenleft}y\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ meqL{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}\isactrlsup L{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{2}}{\isacharparenright}\ %
+\isamarkupcmt{Leibniz equality for individuals%
+}
+\isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\isactrlsup L\ y\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ {\isasymphi}{\isacharparenleft}x{\isacharparenright}\isactrlbold {\isasymrightarrow}{\isasymphi}{\isacharparenleft}y{\isacharparenright}{\isachardoublequoteclose}%
 \isamarkupsubsection{\emph{Extension-of} Operator%
 }
 \isamarkuptrue%
@@ -202,8 +217,8 @@ According to Fitting's semantics (\cite{Fitting}, pp. 92-4) \isa{{\isasymdown}} 
  classifies as red (its extension). We can further state, the intensional term \emph{r} of type \isa{{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}} designates the concept `red'.
  As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
  We will sometimes refer to an intensional object explicitly as `rigid', implying that its (rigidly) designated function has
- the same extension in all possible worlds. (The notion of rigidity was introduced by Kripke in \cite{kripke1980},
- where he discusses its interesting philosophical ramifications at some length.)%
+ the same extension in all possible worlds. \footnote{The notion of rigidity was introduced by Kripke in \cite{kripke1980},
+ where he discusses its interesting philosophical ramifications at some length.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -211,12 +226,6 @@ Terms of the form \isa{{\isasymdown}{\isasymalpha}} are called \emph{relativized
 from intensional terms and their type is \emph{extensional} (in the color example \isa{{\isasymdown}r} would be of type \isa{{\isasymlangle}{\isasymzero}{\isasymrangle}}).
 Relativized terms may vary their denotation from world to world of a model, because the extension of an intensional term can change
 from world to world, i.e. they are non-rigid.%
-\end{isamarkuptext}\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-To recap: an intensional term denotes the same function in all worlds (i.e. it's rigid), whereas a relativized term
-denotes a (possibly) different extension (an object or a set) at every world (i.e. it's non-rigid). To find out
-the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -231,42 +240,22 @@ For instance, the formula \isa{Q{\isacharparenleft}{\isasymdown}a\isactrlsub {\i
 (\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual of type \isa{{\isasymup}{\isasymzero}}:%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
-\ extIndivArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdownharpoonleft}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \isanewline
-\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
+\ extIndArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdownharpoonleft}{\isachardoublequoteclose}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
 (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form \isa{{\isasymup}{\isasymlangle}t{\isasymrangle}}):%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
 \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
-\isamarkupsubsection{Equality%
-}
-\isamarkuptrue%
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ meq\ \ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharprime}t{\isasymRightarrow}{\isacharprime}t{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}{\isachardoublequoteclose}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ %
-\isamarkupcmt{normal equality (for all types)%
-}
-\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\ y\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ x\ {\isacharequal}\ y{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ meqC\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymzero}{\isacharcomma}{\isasymup}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}\isactrlsup C{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{2}}{\isacharparenright}\ %
-\isamarkupcmt{eq. for individual concepts%
-}
-\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\isactrlsup C\ y\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymforall}v{\isachardot}\ {\isacharparenleft}x\ v{\isacharparenright}\ {\isacharequal}\ {\isacharparenleft}y\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ meqL\ \ \ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}{\isachardoublequoteopen}\isactrlbold {\isasymapprox}\isactrlsup L{\isachardoublequoteclose}{\isadigit{5}}{\isadigit{2}}{\isacharparenright}\ %
-\isamarkupcmt{Leibniz eq. for individuals%
-}
-\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\isactrlsup L\ y\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ {\isasymphi}{\isacharparenleft}x{\isacharparenright}\isactrlbold {\isasymrightarrow}{\isasymphi}{\isacharparenleft}y{\isacharparenright}{\isachardoublequoteclose}%
 \isamarkupsubsection{Verifying the Embedding%
 }
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
 The above definitions introduce modal logic \emph{K} with possibilist and actualist quantifiers,
-as evidenced by the following tests:%
+as evidenced by following tests:\footnote{In our formalization of Fitting's textbook \cite{AFP_FittingIHOML}
+we provide further evidence that our embedded logic works as intended by formalizing the book's theorems and examples.
+We were able to confirm that our results agree with Fitting's claims.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{abbreviation}\isamarkupfalse%
 \ valid{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlfloor}{\isacharunderscore}{\isasymrfloor}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasympsi}{\isasymrfloor}\ {\isasymequiv}\ \ {\isasymforall}w{\isachardot}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\ %
@@ -301,7 +290,10 @@ Verifying \emph{K} principle and the \emph{necessitation} rule:%
 %
 %
 \begin{isamarkuptext}%
-Local consequence implies global consequence (but not the other way round!):%
+Local consequence implies global consequence (not the other way round):
+  \footnote{We make use here of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the first time.  
+  For the conjectured lemma below, \emph{Nitpick} finds a countermodel, i.e. a model satisfying all 
+  the axioms which falsifies the given formula. This means, the formula is not valid.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ localImpGlobalCons{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasymxi}{\isasymrfloor}\ {\isasymLongrightarrow}\ {\isasymlfloor}{\isasymphi}{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isasymxi}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -326,7 +318,7 @@ Local consequence implies global consequence (but not the other way round!):%
 %
 %
 \begin{isamarkuptext}%
-(Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantifiers:%
+(Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantification:%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymphi}\ x{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}{\isasymphi}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -373,15 +365,9 @@ Local consequence implies global consequence (but not the other way round!):%
 %
 %
 \begin{isamarkuptext}%
-We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the first time.  
-  For all the conjectured lemmas above, \emph{Nitpick} has found a countermodel, i.e. a model satisfying all 
-  the axioms which falsifies the given formula. This means, the formulas are not valid.%
-\end{isamarkuptext}\isamarkuptrue%
-%
-\begin{isamarkuptext}%
 \isa{{\isasymbeta}{\isasymeta}}-redex is valid for non-relativized (intensional or extensional) terms:%
 \end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ \ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -390,7 +376,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 %
 %
 \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ \ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -399,7 +385,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 %
 %
 \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -408,7 +394,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 %
 %
 \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -420,7 +406,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 \begin{isamarkuptext}%
 \isa{{\isasymbeta}{\isasymeta}}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract:%
 \end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -429,21 +415,8 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 %
 %
 \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
+\ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
-%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{countersatisfiable%
-}
-%
-%
-%
-\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \ %
 %
@@ -458,7 +431,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 \begin{isamarkuptext}%
 \emph{Modal collapse} is countersatisfiable:%
 \end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{lemma}\isamarkupfalse%
+\isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isasymphi}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \ %
@@ -471,276 +444,7 @@ We have made use of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the
 %
 %
 %
-\isamarkupsubsection{Useful Definitions for Axiomatization of Further Logics%
-}
-\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
- combinations of the following axioms:%
-\end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ M\ \ \isakeyword{where}\ {\isachardoublequoteopen}M\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasymphi}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ B\ \ \isakeyword{where}\ {\isachardoublequoteopen}B\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ {\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ D\ \ \isakeyword{where}\ {\isachardoublequoteopen}D\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ IV\ \isakeyword{where}\ {\isachardoublequoteopen}IV\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymbox}{\isasymphi}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ V\ \ \isakeyword{where}\ {\isachardoublequoteopen}V\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}%
-\begin{isamarkuptext}%
-Instead of postulating (combinations of) the above  axioms we instead make use of 
-  the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
-  relation (e.g. reflexive, symmetric, etc). We show  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
-  axioms $M, B, D, IV, V$ respectively.%
-\end{isamarkuptext}\isamarkuptrue%
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}reflexive\ aRel\ \ {\isasymLongrightarrow}\ \ {\isasymlfloor}M{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast\ %
-\isamarkupcmt{aka T%
-}
-%
-%
-%
-\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}symmetric\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}B{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast%
-%
-%
-\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}serial\ aRel\ \ {\isasymLongrightarrow}\ {\isasymlfloor}D{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast%
-%
-%
-\ \ \ \ \ \ \ \ \ \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}transitive\ aRel\ \ {\isasymLongrightarrow}\ {\isasymlfloor}IV{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast%
-%
-%
-\ \ \ \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}euclidean\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}V{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast%
-%
-%
-\ \ \ \ \ \ \ \ \ \isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}preorder\ aRel\ {\isasymLongrightarrow}\ \ {\isasymlfloor}M{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}IV{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast\ %
-\isamarkupcmt{S4: reflexive + transitive%
-}
-%
-%
-%
-\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}equivalence\ aRel\ \ {\isasymLongrightarrow}\ \ {\isasymlfloor}M{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}V{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast\ %
-\isamarkupcmt{S5: preorder + symmetric%
-}
-%
-%
-%
-\isanewline
-\ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}reflexive\ aRel\ {\isasymand}\ euclidean\ aRel\ \ {\isasymLongrightarrow}\ \ {\isasymlfloor}M{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}V{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ blast\ %
-\isamarkupcmt{S5%
-}
-%
-%
-%
-%
-\begin{isamarkuptext}%
-Using these definitions, we can derive axioms for the most common modal logics (see also \cite{C47}). 
-  Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
-  both versions. In what follows we use the semantic constraints (for improved performance).%
-\end{isamarkuptext}\isamarkuptrue%
-%
-\isamarkupsubsection{Textbook Examples%
-}
-\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-In this section we provide further evidence that our embedded logic works as intended by proving the examples
- discussed in Fitting's textbook \cite{Fitting}. We were able to confirm that all results agree with his claims.%
-\end{isamarkuptext}\isamarkuptrue%
-%
-\begin{isamarkuptext}%
-Example 7.13, p. 96:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}X{\isacharparenright}\ \ {\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}X{\isacharparenright}\ \ P{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ \ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-\ \ \ \ \isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}X{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}X{\isacharparenright}\ \isactrlbold {\isasymdown}P{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{nitpick finds same counterexample as book%
-}
-%
-%
-%
-%
-\begin{isamarkuptext}%
-Example 7.14, p. 98:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}X{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}X{\isacharparenright}\ \isactrlbold {\isasymdown}P{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}X{\isacharparenright}\ \ {\isacharparenleft}P{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymexists}X{\isacharparenright}\ \ P{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
-\ \ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{countersatisfiable%
-}
-%
-%
-%
-%
-\begin{isamarkuptext}%
-Example 7.15, p. 99:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}P\ {\isacharparenleft}c{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}x{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}P\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ auto%
-%
-%
-%
-\begin{isamarkuptext}%
-Example 7.16, p. 100:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}{\isacharparenleft}P\ {\isasymdownharpoonleft}{\isacharparenleft}c{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymexists}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}P\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
-\ \ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{2}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{counterexample with two worlds found%
-}
-%
-%
-%
-%
-\begin{isamarkuptext}%
-Example 7.17, p. 101:%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymlambda}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ x\ \isactrlbold {\isasymapprox}\ y{\isacharparenright}\ {\isasymdownharpoonleft}Z{\isacharparenright}{\isacharparenright}\ {\isasymdownharpoonleft}Z{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
-\ \ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{2}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
-\ %
-%
-\isacommand{oops}\isamarkupfalse%
-\ %
-\isamarkupcmt{countersatisfiable%
-}
-%
-%
-%
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}z{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ {\isacharparenleft}{\isasymlambda}x{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}y{\isacharcolon}{\isacharcolon}{\isasymzero}{\isachardot}\ \ x\ \isactrlbold {\isasymapprox}\ y{\isacharparenright}\ \ z{\isacharparenright}{\isacharparenright}\ z{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-\isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ {\isacharparenleft}{\isasymlambda}X{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}Y{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isachardot}\ X\ \isactrlbold {\isasymapprox}\ Y{\isacharparenright}\ \ Z{\isacharparenright}{\isacharparenright}\ Z{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-%
-\begin{isamarkuptext}%
-Example 9.1, p.116 (using normal-, Leibniz- and concept-equality)%
-\end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\ x{\isacharparenright}\ {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ auto%
-%
-%
-\ \isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ {\isasymdownharpoonleft}{\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\isactrlsup L\ x{\isacharparenright}\ {\isasymdownharpoonleft}p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ auto%
-%
-%
-\ \isanewline
-\isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}X\ \ {\isacharparenleft}p{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}{\isasymlambda}z{\isachardot}\ z\ \isactrlbold {\isasymapprox}\isactrlsup C\ x{\isacharparenright}\ p{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
-\ %
-%
-\isacommand{by}\isamarkupfalse%
-\ simp%
-%
-%
-%
-\isamarkupsubsection{Stability Conditions and Rigid Designation%
+\isamarkupsubsection{Stability, Rigid Designation, \emph{De Re} and \emph{De Dicto}%
 }
 \isamarkuptrue%
 %
@@ -800,10 +504,6 @@ A term is rigid if and only if it satisfies the stability conditions.%
 %
 %
 %
-\isamarkupsubsection{\emph{De Re} and \emph{De Dicto}%
-}
-\isamarkuptrue%
-%
 \begin{isamarkuptext}%
 \emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms:%
 \end{isamarkuptext}\isamarkuptrue%
@@ -838,7 +538,177 @@ A term is rigid if and only if it satisfies the stability conditions.%
 \ %
 \isamarkupcmt{countersatisfiable%
 }
+%
+%
+%
+%
+\isamarkupsubsection{Useful Definitions for Axiomatization of Further Logics%
+}
+\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
+ combinations of the following axioms:%
+\end{isamarkuptext}\isamarkuptrue%
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ M\ \ \isakeyword{where}\ {\isachardoublequoteopen}M\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasymphi}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ B\ \ \isakeyword{where}\ {\isachardoublequoteopen}B\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ {\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ D\ \ \isakeyword{where}\ {\isachardoublequoteopen}D\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ IV\ \isakeyword{where}\ {\isachardoublequoteopen}IV\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \ \isactrlbold {\isasymbox}\isactrlbold {\isasymbox}{\isasymphi}{\isachardoublequoteclose}\isanewline
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ V\ \ \isakeyword{where}\ {\isachardoublequoteopen}V\ {\isasymequiv}\ \isactrlbold {\isasymforall}{\isasymphi}{\isachardot}\ \isactrlbold {\isasymdiamond}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymdiamond}{\isasymphi}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+Instead of postulating (combinations of) the above  axioms we instead make use of 
+  the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
+  relation (e.g. reflexive, symmetric, etc). We show  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
+  axioms $M, B, D, IV, V$ respectively.
+  \footnote{Using these definitions, we can derive axioms for the most common modal logics (see also \cite{C47}). 
+  Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
+  both versions. In what follows we use the semantic constraints (for improved performance).}%
+\end{isamarkuptext}\isamarkuptrue%
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}reflexive\ aRel\ \ {\isasymLongrightarrow}\ \ {\isasymlfloor}M{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{aka T%
+}
+%
+%
+%
 \isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}symmetric\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}B{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast%
+%
+%
+\isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}serial\ aRel\ \ {\isasymLongrightarrow}\ {\isasymlfloor}D{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast%
+%
+%
+\ \ \ \ \ \ \ \ \ \isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}transitive\ aRel\ \ {\isasymLongrightarrow}\ {\isasymlfloor}IV{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast%
+%
+%
+\ \ \ \isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}euclidean\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}V{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast%
+%
+%
+\ \ \ \ \ \ \ \ \ \isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}preorder\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}M{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}IV{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{S4: reflexive + transitive%
+}
+%
+%
+%
+\isanewline
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}equivalence\ aRel\ {\isasymLongrightarrow}\ {\isasymlfloor}M{\isasymrfloor}\ {\isasymand}\ {\isasymlfloor}V{\isasymrfloor}{\isachardoublequoteclose}%
+\ %
+%
+\isacommand{by}\isamarkupfalse%
+\ blast\ %
+\isamarkupcmt{S5: preorder + symmetric%
+}
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 %
 %
 %
