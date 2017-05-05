@@ -6,18 +6,28 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 4,  atoms e 
 sledgehammer_params[verbose=true]
 (*>*)
   
-section \<open>Anderson's Alternative\<close>
-(**In this final section, we verify Anderson's emendation of G\"odel's argument, as it is presented
- by Fitting in @{cite "Fitting"}, pp. 169-171).*)
-  
+section \<open>Anderson's Variant\<close>
+(**In this final section, we verify Anderson's emendation of G\"odel's argument @{cite "anderson90:_some_emend_of_goedel_ontol_proof"},
+as presented by Fitting (@{cite "Fitting"}, pp. 169-171). In the previous variants `indifferent' properties were not possible,
+ every property had to be either positive or negative. Anderson makes room for `indifferent' properties by
+ dropping axiom \emph{A1b} (@{text "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<rightharpoondown>X)\<rfloor>"}). Consequently, he also changed some definitions
+ in order to ensure argument's validity.*)
+(*<*)  
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where (**def changed*)
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)" 
 consts Positiveness::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
 abbreviation Existence::"\<up>\<langle>\<zero>\<rangle>" ("E!") where "E! x \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w"
-abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G\<^sup>A") where "G\<^sup>A \<equiv> \<lambda>x. \<^bold>\<forall>Y. (\<P> Y) \<^bold>\<leftrightarrow> \<^bold>\<box>(Y x)" (**def changed*)
-abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where (**def changed*)
+(*>*)
+abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G\<^sup>A") where "G\<^sup>A \<equiv> \<lambda>x. \<^bold>\<forall>Y. (\<P> Y) \<^bold>\<leftrightarrow> \<^bold>\<box>(Y x)"
+abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>" ("\<E>\<^sup>A") where
   "\<E>\<^sup>A Y x \<equiv> (\<^bold>\<forall>Z. \<^bold>\<box>(Z x) \<^bold>\<leftrightarrow> Y \<Rrightarrow> Z)"
-abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup>A") (**def changed*)
+  
+(** There is now the requirement, a Godlike being must have positive properties \emph{necessarily}.
+For the definition of essence, Scott's addition, that the essence of an object 
+actually applies to the object, is dropped. A necessity operator has been introduced instead.
+\footnote{Without Scott's addition @{cite "ScottNotes"}, G\"odel's original axiom system can be proven inconsistent as shown by @{cite "C55"}.} *)
+(*<*)
+abbreviation necessaryExistencePred::"\<up>\<langle>\<zero>\<rangle>" ("NE\<^sup>A")
   where "NE\<^sup>A x  \<equiv> (\<lambda>w. (\<^bold>\<forall>Y.  \<E>\<^sup>A Y x \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E Y) w)"
   
 axiomatization where
@@ -26,17 +36,18 @@ axiomatization where
   T2: "\<lfloor>\<P> G\<^sup>A\<rfloor>"        and
   A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"  and
   A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>" 
-  
+(*>*)
+(**The rest of the ontological argument is essentially similar to G\"odel's variant (which also needs \emph{S5} axioms).*)
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T1 T2 by simp
-      
+(*<*)
 axiomatization where (** We again postulate our \emph{S5} axioms:*)
  refl: "reflexive aRel" and tran: "transitive aRel" and symm: "symmetric aRel"
 
 lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<not>(\<P> X)\<rfloor>" using A4a symm by auto
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" using A4a A4b by blast (**@{text "\<P>"} is rigid*)
 lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
-    
+(*>*)   
 (**If g is God-like, the property of being God-like is its essence.
 \footnote{As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
 For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
@@ -119,9 +130,7 @@ theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G\<^sup>A x \<^bold>\<righ
 }
  thus ?thesis by (rule allI) 
 qed
-(*>*)
 theorem GodExistenceImpliesNecExistence: "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" proof -
-(*<*)
 {
   fix w 
   {
@@ -145,7 +154,8 @@ qed
   
 lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)\<rfloor> \<Longrightarrow> \<lfloor>(\<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<diamond>\<psi>)\<rfloor>" by blast
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
-(*>*)    
+(*>*)
+(** The necessary existence of God follows from its possible existence:*)    
 theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" proof - (**not shown*)
 (*<*)      
   have "\<lfloor>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using GodExistenceImpliesNecExistence 
@@ -157,14 +167,16 @@ theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<l
   hence "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" by (rule modal_trans)
   thus ?thesis by (rule localImpGlobalCons)
 qed
-(*>*)     
-lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis (**argument's conclusion *) 
+(*>*)
+(**The conclusion of the argument can be proven (and with one fewer axiom, though more complex definitions).
+\emph{Nitpick} is able to find a countermodel for the \emph{modal collapse}, thus confirming Anderson's (and Fitting's) claims.*)  
+lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis
 lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops (**countersatisfiable*)
     
 section \<open>Conclusion\<close>
 (** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
 (a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook \emph{Types, Tableaus and 
-G\"odel's God} @{cite "Fitting"}. 
+G\"odel's God} @{cite "Fitting,J35"}. 
 We employed this logic to formalize and verify all results relevant to the subsequent discussion of three different
 variants of the ontological argument: the first one by G\"odel himself (respectively, Scott), the second 
 one by Fitting and the last one by Anderson.*)
@@ -181,9 +193,10 @@ during the formalization and assessment of arguments than ever before. The poten
 in the time needed for proving or disproving theorems (compared to pen-and-paper proofs), results in almost real-time
 feedback about the suitability of our speculations. The practical benefits of computer-supported argumentation go beyond
 mere quantitative (easier, faster and more reliable proofs). The advantages are also qualitative, since it fosters a
-different approach to argumentation: We can now work iteratively (by `trial-and-error') on an argument
-by making gradual adjustments to its definitions, axioms and theorems. This allows us to continuously expose and revise 
-the assumptions we indirectly commit ourselves everytime we opt for some particular formalization.
+different approach to argumentation: We can now work iteratively (by trial-and-error) on an argument
+by making gradual adjustments to its definitions, axioms and theorems (and getting instant feedback).
+This allows us to continuously expose and revise the assumptions we indirectly commit ourselves
+everytime we opt for some particular formalization.
 *)
 (*<*)
 end

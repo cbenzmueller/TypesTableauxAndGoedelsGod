@@ -7,63 +7,58 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e =
   
 (**
 \begin{abstract}
-	A computer-formalization in Isabelle/HOL of several variants of G\"odel's ontological argument is presented
-	(as discussed in M. Fitting's textbook \emph{Types, Tableaus and G\"odel's God}). Fitting's work
-	introduces an intensional higher-order modal logic (by drawing on Montague/Gallin approach), which we
-	shallowly embed here in classical higher-order logic (Isabelle/HOL). We then	utilize the embedded logic for the
-  formalization of the ontological argument. In particular, Fitting's and Anderson's variants are verified
-  and their claims confirmed. These variants aim to avoid the modal collapse, which has been criticized as
+  A shallow semantical embedding of an intensional higher-order modal logic (IHOML) in Isabelle/HOL is presented.
+  IHOML draws on Montague/Gallin intensional logics and has been introduced by M. Fitting in his textbook
+  \emph{Types, Tableaus and G\"odel's God} in order to discuss his emendation of G\"odel's ontological argument
+  (for the existence of God). We subsequently	utilize the embedded logic for the computer-formalization and evaluation
+  of these arguments. In particular, Fitting's and Anderson's variants are verified and their claims confirmed.
+  These variants aim to avoid the modal collapse, which has been criticized as
   an undesirable side-effect of Kurt G\"odel's (and Dana Scott's) versions of the ontological argument.
-  \\ \\
+\\ \\
   \textbf{Keywords:} Automated Theorem Proving. Computational Metaphysics. Isabelle. Modal Logic.
-	Intensional Logic. Ontological Argument
+	Intensional Logic. Ontological Argument. Semantic Analysis
 \end{abstract}
 *)
   
-(*- old version
-	A computer-formalization of the essential parts of Fitting's textbook
-	\emph{Types, Tableaus and G\"odel's Go}d in Isabelle/HOL is
-	presented. In particular, Fitting's (and Anderson's) variant of the ontological
-	argument is verified and confirmed. This variant avoids the modal
-	collapse, which has been criticized as an undesirable side-effect of Kurt G\"odel's (and
-	Dana Scott's) versions of the ontological argument. Fitting's work
-	is employing an intensional higher-order modal logic, which we
-	shallowly embed here in classical higher-order logic. We then
-	utilize the embedded logic for the formalization of Fitting's argument.
-*)  
-  
 section \<open>Introduction\<close>
-(** We present a shallow semantical embedding of an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL
-which has been introduced Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"} in order
-to formalize his emendation of G\"odel's ontological argument (for the existence of God). IHOML is a modification of the
+  
+(** This work is divided in two parts. In the first one we present a shallow semantical embedding of
+an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL,
+which has been introduced by Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}, in order
+to formalize his emendation of G\"odel's ontological argument. IHOML is a modification of the
 intentional logic originally developed by Montague and later expanded by Gallin @{cite "Gallin75"} by building upon Church's
 type theory and Kripke's possible-world semantics. Our approach has been inspired by previous work on the semantical embedding of
 multimodal logics with quantification @{cite "J23"}, which we expand here to allow for actualist quantification,
-intensional terms and their related operations.*)
+intensional terms and their related operations.
+From an AI perspective we contribute a highly flexible `implementation' of an automated reasoning infrastructure for IHOML.
+Such an intensional logic has not been automated before and it is highly relevant e.g. for the deep semantical analysis of
+natural language rational arguments. In this sense, our work contributes to the objective
+of the new DFG Schwerpunktprogramm RATIO (SPP 1999).*)
   
-(** We subsequently present a study on Computational Metaphysics: a computer-formalization and verification
-of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"}) modern variant of the ontological argument,
-followed by Fitting's emendation thereof. A third variant (by Anderson @{cite "anderson90:_some_emend_of_goedel_ontol_proof"})
-is also discussed. The motivation is to avoid the \emph{modal collapse} @{cite "Sobel,sobel2004logic"}, which has been criticized
-as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
+(**For the second part, we present an exemplary, non-trivial application of this reasoning infrastructure,
+a study on Computational Metaphysics: the computer-formalization and critical assessment
+of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"}) modern variant of the ontological argument.
+Several authors (e.g. @{cite "anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,bjordal99,Hajek2002,Fitting"}) 
+have proposed emendations of this argument with the aim of retaining its essential result 
+(the necessary existence of God) while at the same time avoiding the \emph{modal collapse} @{cite "Sobel,sobel2004logic"},
+which has been criticized as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
 states that there are no contingent truths and that everything is determined.
-Several authors (e.g. @{cite "anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,Hajek2002,bjordal99"}) 
-have proposed emendations of the argument with the aim of maintaining the essential result 
-(the necessary existence of God) while at the same time avoiding the modal collapse. 
-Related work  has formalized several of these variants on the computer and verified or falsified them. For example,
-G\"odel's axioms @{cite "GoedelNotes"} have been shown inconsistent @{cite "C55,C60"}
+Related work has formalized several of these variants on the computer and verified or falsified them. For example,
+G\"odel's axiom's system has been shown inconsistent @{cite "C55,C60"},
 while Scott's version has been verified @{cite "ECAI"}. Further experiments, contributing amongst others
 to the clarification of a related debate between H\'ajek and Anderson, are presented and discussed in
 @{cite "J23"}. The enabling technique in all of these experiments has been
 shallow semantical embeddings of (extensional) higher-order modal logics in classical higher-order
 logic (see @{cite "J23,R59"} and the references therein).*)
 
-(**Fitting's emendation also intends to avoid the modal collapse. However, in contrast to the above variants, Fitting's
-solution is based on the use of an intensional as opposed to an extensional higher-order modal logic.
-For our work this imposed the additional challenge to provide a shallow embedding of this more advanced
-logic. The experiments presented below confirm that Fitting's argument as presented in his textbook @{cite "Fitting"}
-is valid and that it avoids the modal collapse as intended. The work presented here originates from 
-the \emph{Computational Metaphysics} lecture course held at FU Berlin in Summer 2016 @{cite "C65"}.*)
+(**In our work, we additionally discuss two emendations of G\"odel's argument (by Fitting @{cite "Fitting"} and
+Anderson @{cite "anderson90:_some_emend_of_goedel_ontol_proof"}).
+In contrast to all variants mentioned above, Fitting's solution is based on the use of an intensional as opposed
+to an extensional higher-order modal logic. For our work this imposed the additional challenge to provide
+a shallow embedding of this more advanced logic (IHOML). The experiments presented below confirm that Fitting's argument
+as presented in his textbook @{cite "Fitting"} is valid and that it avoids the modal collapse as intended.
+The work presented here originates from the \emph{Computational Metaphysics} lecture course held at
+FU Berlin in Summer 2016 @{cite "C65"}.*)
 
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
@@ -125,7 +120,10 @@ abbreviation mimp::"io\<Rightarrow>io\<Rightarrow>io" (infix"\<^bold>\<rightarro
   abbreviation mnegpred :: "\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("\<^bold>\<rightharpoondown>_"[52]53) 
     where "\<^bold>\<rightharpoondown>\<Phi> \<equiv> \<lambda>x.\<lambda>w. \<not>(\<Phi> x w)"
 (*>*)      
-(**Following can be seen as modeling \emph{possibilist quantification}:*)    
+(**\emph{Possibilist} and \emph{actualist} quantifiers are embedded as follows.
+\footnote{Possibilist and actualist quantification can be seen as the semantic counterparts of the concepts
+of possibilism and actualism in the metaphysics of modality. They relate to natural-language expressions such as
+`there is', `exists', `is actual', etc.}*)    
   abbreviation mforall::"('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<forall>") where "\<^bold>\<forall>\<Phi> \<equiv> \<lambda>w.\<forall>x. (\<Phi> x w)"
   abbreviation mexists::"('t\<Rightarrow>io)\<Rightarrow>io" ("\<^bold>\<exists>") where "\<^bold>\<exists>\<Phi> \<equiv> \<lambda>w.\<exists>x. (\<Phi> x w)"    
 (*<*)
@@ -134,8 +132,8 @@ abbreviation mimp::"io\<Rightarrow>io\<Rightarrow>io" (infix"\<^bold>\<rightarro
   abbreviation mexistsB  :: "('t\<Rightarrow>io)\<Rightarrow>io" (binder"\<^bold>\<exists>"[8]9)
     where "\<^bold>\<exists>x. \<phi>(x) \<equiv> \<^bold>\<exists>\<phi>" 
 (*>*)      
-(** The \emph{existsAt} predicate is used to embed actualist quantifiers by restricting the domain of quantification at every possible world.
-This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
+(** The \emph{existsAt} predicate is used to embed \emph{actualist} quantifiers by restricting the domain of quantification
+at every possible world. This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
 which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language.*)
   consts ExistsAt::"\<up>\<langle>\<zero>\<rangle>" (infix "existsAt" 70)  
@@ -150,7 +148,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
   abbreviation mexistsActB::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>E"[8]9)
     where "\<^bold>\<exists>\<^sup>Ex. \<phi>(x) \<equiv> \<^bold>\<exists>\<^sup>E\<phi>"
 (*>*)      
-(**\emph{Accessibility relation} (\emph{r}) is used to embed modal operators @{text "\<box>"} and @{text "\<diamond>"}.*)  
+(**Model's \emph{accessibility relation} and modal operators @{text "\<box>"} and @{text "\<diamond>"}.*)  
   consts aRel::"i\<Rightarrow>i\<Rightarrow>bool" (infixr "r" 70)
   abbreviation mbox :: "io\<Rightarrow>io" ("\<^bold>\<box>_"[52]53) where "\<^bold>\<box>\<phi> \<equiv> \<lambda>w.\<forall>v. (w r v)\<longrightarrow>(\<phi> v)"
   abbreviation mdia :: "io\<Rightarrow>io" ("\<^bold>\<diamond>_"[52]53) where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
@@ -191,9 +189,9 @@ For instance, the formula @{text "Q(\<down>a\<^sub>1)\<^sup>w"} (evaluated at wo
 a term @{text "\<alpha>"} preceded by @{text "\<down>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
 to the extension of the original intensional term @{text "\<alpha>"} at that world.*)
 
-(** (\emph{a}) Predicate @{text \<phi>} takes as argument a relativized term derived from an (intensional) individual of type @{text "\<up>\<zero>"}:*)
+(** (\emph{a}) Predicate @{text \<phi>} takes as argument a relativized term derived from an (intensional) individual of type @{text "\<up>\<zero>"}.*)
 abbreviation extIndArg::"\<up>\<langle>\<zero>\<rangle>\<Rightarrow>\<up>\<zero>\<Rightarrow>io" (infix "\<downharpoonleft>"60) where "\<phi> \<downharpoonleft>c \<equiv> \<lambda>w. \<phi> (c w) w"
-(** (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}):*)
+(** (\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}).*)
 abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>io)\<Rightarrow>('t\<Rightarrow>io)\<Rightarrow>io" (infix "\<down>" 60)
   where "\<phi> \<down>P \<equiv> \<lambda>w. \<phi> (\<lambda>x. P x w) w"
 (*<*)    
@@ -210,39 +208,44 @@ abbreviation mextPredArg::"(('t\<Rightarrow>io)\<Rightarrow>io)\<Rightarrow>('t\
  
 subsection \<open>Verifying the Embedding\<close>
  (** The above definitions introduce modal logic \emph{K} with possibilist and actualist quantifiers,
-as evidenced by following tests:\footnote{In our formalization of Fitting's textbook @{cite "AFP_FittingIHOML"}
-we provide further evidence that our embedded logic works as intended by formalizing the book's theorems and examples.
-We were able to confirm that our results agree with Fitting's claims.}*)
+as evidenced by following tests:\footnote{In our computer-formalization and assessment of Fitting's textbook @{cite "J35"},
+we provide further evidence that our embedded logic works as intended by formalizing and verifying
+the book's theorems and examples. We refer the reader to this work for further details.}*)
    
  abbreviation valid::"io\<Rightarrow>bool" ("\<lfloor>_\<rfloor>") where "\<lfloor>\<psi>\<rfloor> \<equiv>  \<forall>w.(\<psi> w)" (**modal validity *)
 
- (** Verifying \emph{K} principle and the \emph{necessitation} rule: *)
+ (** Verifying \emph{K} principle and the \emph{necessitation} rule.
+ \footnote{We prove here our first theorem with Isabelle, as indicated by the keyword `by' followed by
+ the name of the method used for the proof. In this case Isabelle's simplifier (term rewriting) sufficed.
+ Other proof methods used in this work are: \emph{blast} (tableaus), \emph{meson} (model elimination),
+ \emph{metis} (ordered resolution and paramodulation), \emph{auto} (classical reasoning and term rewriting)
+ and \emph{force} (exhaustive search trying different tools).} *)
  lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp    (** \emph{K} schema *)
  lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp    (** necessitation *)
     
- (** Local consequence implies global consequence (not the other way round):
-  \footnote{We make use here of (counter-)model finder \emph{Nitpick} @{cite "Nitpick"} for the first time.  
-  For the conjectured lemma below, \emph{Nitpick} finds a countermodel, i.e. a model satisfying all 
-  the axioms which falsifies the given formula. This means, the formula is not valid.}*)
+ (** Local consequence implies global consequence (not the other way round).
+  \footnote{We utilize here (counter-)model finder \emph{Nitpick} @{cite "Nitpick"} for the first time.  
+  For the conjectured lemma, \emph{Nitpick} finds a countermodel, i.e. a model satisfying all 
+  the axioms which falsifies the given formula, which means it is not valid, as indicated by the `oops' keyword.}*)
  lemma localImpGlobalCons: "\<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor>" by simp
  lemma "\<lfloor>\<phi>\<rfloor> \<longrightarrow> \<lfloor>\<xi>\<rfloor> \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<xi>\<rfloor>" nitpick oops (** countersatisfiable*)
 
- (** (Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantification:*)
+ (** (Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantification.*)
  lemma "\<lfloor>(\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x))\<rfloor>" by simp
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>x.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>x.\<^bold>\<box>(\<phi> x))\<rfloor>" by simp
  lemma "\<lfloor>(\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x)) \<^bold>\<rightarrow> \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x))\<rfloor>" nitpick oops (** countersatisfiable*)
  lemma "\<lfloor>\<^bold>\<box>(\<^bold>\<forall>\<^sup>Ex.(\<phi> x)) \<^bold>\<rightarrow> (\<^bold>\<forall>\<^sup>Ex.\<^bold>\<box>(\<phi> x))\<rfloor>" nitpick oops (** countersatisfiable*)
        
- (** @{text "\<beta>\<eta>"}-redex is valid for non-relativized (intensional or extensional) terms: *)
+ (** @{text "\<beta>\<eta>"}-redex is valid for non-relativized (intensional or extensional) terms.*)
  lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
  lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>)  (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<phi>  \<tau>)\<rfloor>" by simp
  lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp
  lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) (\<tau>::\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<tau>)\<rfloor>" by simp    
- (** @{text "\<beta>\<eta>"}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract: *)
+ (** @{text "\<beta>\<eta>"}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract.*)
  lemma "\<lfloor>((\<lambda>\<alpha>. \<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<phi> \<downharpoonleft>\<tau>)\<rfloor>" by simp
  lemma "\<lfloor>((\<lambda>\<alpha>. \<^bold>\<box>\<phi> \<alpha>) \<downharpoonleft>(\<tau>::\<up>\<zero>)) \<^bold>\<leftrightarrow> (\<^bold>\<box>\<phi> \<downharpoonleft>\<tau>)\<rfloor>" nitpick oops (**countersatisfiable*)
 
-(** \emph{Modal collapse} is countersatisfiable:*)
+(** Modal collapse is countersatisfiable.*)
 lemma "\<lfloor>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<phi>\<rfloor>" nitpick oops   (** countersatisfiable*)
     
 subsection\<open>Stability, Rigid Designation, \emph{De Re} and \emph{De Dicto}\<close>
@@ -264,12 +267,12 @@ lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityB (\<tau>::\<up>\<la
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
 theorem "\<lfloor>rigidPred (\<tau>::\<up>\<langle>\<up>\<zero>\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
     
-(** \emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms: *)
+(** \emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms.*)
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>\<zero>\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp
-(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms: *)    
+(** \emph{De re} is not equivalent to \emph{de dicto} for relativized terms.*)    
 lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) \<^bold>\<down>(\<tau>::\<up>\<langle>\<zero>\<rangle>)) \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<^bold>\<down>\<tau>)\<rfloor>" 
-  nitpick[card 't=1, card i=2] oops (** countersatisfiable *)
+  nitpick[card 't=1, card i=2] oops (** countersatisfiable*)
     
 subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close>
 
@@ -285,7 +288,8 @@ subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close
   the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
   relation (e.g. reflexive, symmetric, etc). We show  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
   axioms $M, B, D, IV, V$ respectively.
-  \footnote{Using these definitions, we can derive axioms for the most common modal logics (see also @{cite "C47"}). 
+  \footnote{Implication can also be proven in the reverse direction (which is not needed for our purposes).
+  Using these definitions, we can derive axioms for the most common modal logics (see also @{cite "C47"}). 
   Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
   both versions. In what follows we use the semantic constraints (for improved performance).}
 *)

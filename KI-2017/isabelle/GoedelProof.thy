@@ -10,8 +10,7 @@ section \<open>G\"odel's Ontological Argument\<close>
 
 subsection \<open>Part I - God's Existence is Possible\<close>
 (**G\"odel's particular version of the argument is a direct descendent of that of Leibniz, which in turn derives
-  from one of Descartes. While Leibniz provides some kind of proof for the compatibility of all perfections,
- G\"odel goes on to prove an analogous result: \emph{(T1) `Every positive property is possibly instantiated'},
+  from one of Descartes. His argument relies on proving \emph{(T1) `Every positive property is possibly instantiated'},
  which together with \emph{(T2) `God is a positive property'} directly implies the conclusion.
  In order to prove \emph{T1}, G\"odel assumes \emph{(A2) `Any property entailed by a positive property is itself positive'}.
  As we will see, the success of this argumentation depends on how we choose to formalize our notion of entailment:*)
@@ -28,22 +27,24 @@ lemma "\<lfloor>\<^bold>\<not>(\<phi> \<Rrightarrow> \<chi>) \<^bold>\<rightarro
  (like being a triangle). It is precisely by virtue of these paradoxes that G\"odel manages to prove \emph{T1}.
  \footnote{When proving T1 we need to use the fact that positive properties cannot \emph{entail} negative ones (A2), 
  from which the possible instantiation of positive properties follow. 
- A computer-friendly formalization of Leibniz's Theory of Concepts can be found in the work of @{cite "Zalta_Leibniz"}
+ A computer-formalization of Leibniz's theory of concepts can be found in the work of @{cite "Zalta15"},
  where the notion of \emph{concept containment} in contrast to ordinary \emph{property entailment} is discussed at some length.}*)
 
 consts Positiveness::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>") (**positiveness applies to intensional predicates*)
 abbreviation Existence::"\<up>\<langle>\<zero>\<rangle>" ("E!") (**object-language existence predicate*) 
-  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w" 
+  where "E! x  \<equiv> \<lambda>w. (\<^bold>\<exists>\<^sup>Ey. y\<^bold>\<approx>x) w"
+    
+(**The following two definitions are needed to formalize \emph{A3}:*)
 abbreviation appliesToPositiveProps::"\<up>\<langle>\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("pos") where
   "pos Z \<equiv>  \<^bold>\<forall>X. Z X \<^bold>\<rightarrow> \<P> X"  
 abbreviation intersectionOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>\<rangle>" ("intersec") where
   "intersec X Z \<equiv>  \<^bold>\<box>(\<^bold>\<forall>x.(X x \<^bold>\<leftrightarrow> (\<^bold>\<forall>Y. (Z Y) \<^bold>\<rightarrow> (Y x))))"  
   
 axiomatization where
-  A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and      (** axiom 11.3A *)
-  A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and       (** axiom 11.3B *)
-  A2: "\<lfloor>\<^bold>\<forall>X Y. (\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and   (** axiom 11.5 *)
-  A3: "\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>" (** axiom 11.10 *)
+ A1a:"\<lfloor>\<^bold>\<forall>X. \<P> (\<^bold>\<rightharpoondown>X) \<^bold>\<rightarrow> \<^bold>\<not>(\<P> X) \<rfloor>" and (** for any property, exactly one of it*)  
+ A1b:"\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<^bold>\<rightharpoondown>X)\<rfloor>" and  (** or its negation must be positive*)  
+ A2:"\<lfloor>\<^bold>\<forall>X Y.(\<P> X \<^bold>\<and> (X \<Rrightarrow> Y)) \<^bold>\<rightarrow> \<P> Y\<rfloor>" and (**perfections closed under entailment*)
+ A3:"\<lfloor>\<^bold>\<forall>Z X. (pos Z \<^bold>\<and> intersec X Z) \<^bold>\<rightarrow> \<P> X\<rfloor>"(** and also under conjunction*)
 
 lemma True nitpick[satisfy] oops    (** model found: axioms are consistent*)
 lemma "\<lfloor>D\<rfloor>"  using A1a A1b A2 by blast (**\emph{D} axiom is implicitely assumed*)
@@ -54,13 +55,14 @@ theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\
 (**Being Godlike is defined as having all (and only) positive properties.*)
 abbreviation God::"\<up>\<langle>\<zero>\<rangle>" ("G") where "G \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<rightarrow> Y x)"
 abbreviation God_star::"\<up>\<langle>\<zero>\<rangle>" ("G*") where "G* \<equiv> (\<lambda>x. \<^bold>\<forall>Y. \<P> Y \<^bold>\<leftrightarrow> Y x)"
-(**Both are equivalent. We can use either one or the other in our proofs.*)
-lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by force 
+lemma GodDefsAreEquivalent: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<leftrightarrow> G* x\<rfloor>" using A1b by force
 
-(** Being Godlike is itself a positive property.\footnote{This theorem can also be axiomatized directly,
-as noted by Dana Scott (see @{cite "Fitting"}, p. 152). We provide here a proof in Isabelle/Isar, a language
-specifically tailored for writing proofs that are both computer- and human-readable. Because of space
-constraints we can't show the other proofs in this article.}*)
+(** Being Godlike is itself a positive property. While Leibniz provides an informal proof for the compatibility of all perfections,
+ G\"odel postulates this as \emph{A3} (the conjunction of \emph{any} collection of positive properties is positive),
+which is a third-order axiom. As can be seen in the proof below, the only use of \emph{A3} is to show that
+being Godlike is positive. Dana Scott, apparently noting this, proposed taking \emph{T2} directly as an axiom (see @{cite "Fitting"}, p. 152).
+\footnote{We provide a proof in Isabelle/Isar, a language specifically tailored for writing proofs that are
+both computer- and human-readable. We refer the reader to @{cite "J35"} for all proofs not shown in this article.}*)
 theorem T2: "\<lfloor>\<P> G\<rfloor>" proof -
 { fix w
   have 1: "pos \<P> w" by simp
@@ -89,7 +91,7 @@ lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<righta
 lemma True nitpick[satisfy] oops (**model found: all axioms A1-4 consistent*)
 
 (** Axiom \emph{A4a} and its consequence \emph{A4b} together imply that @{text "\<P>"} satisfies Fitting's
-`stability conditions' (@{cite "Fitting"}, p. 124). This means @{text "\<P>"} designates rigidly.
+\emph{stability conditions} (@{cite "Fitting"}, p. 124). This means @{text "\<P>"} designates rigidly.
 Note that this makes for an \emph{essentialist} assumption which may be considered controversial by
 some philosophers: every property considered positive in our world (e.g. honesty) is necessarily so.*)    
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" using A4a A4b by blast
@@ -103,12 +105,12 @@ abbreviation essenceOf::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<r
 abbreviation beingIdenticalTo::"\<zero>\<Rightarrow>\<up>\<langle>\<zero>\<rangle>" ("id") where
   "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)" (**\emph{id} is here a rigid predicate (following Kripke @{cite "kripke1980"})*)  
 
-(** Being God-like is an essential property:*)  
+(** Being Godlike is an essential property.*)  
 theorem GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)\<rfloor>" using A1b A4a by metis            
 (** Something can only have \emph{one} essence:*)
 theorem "\<lfloor>\<^bold>\<forall>X Y z. (\<E> X z \<^bold>\<and> \<E> Y z) \<^bold>\<rightarrow> (X \<Rrightarrow> Y)\<rfloor>" by meson  
   
-(** An essential property offers a complete characterization of an individual:*)
+(** An essential property offers a complete characterization of an individual.*)
 theorem EssencesCharacterizeCompletely: "\<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<Rrightarrow> (id y))\<rfloor>"
   proof (rule ccontr) (**Isar proof by contradiction not shown here*)
 (*<*) assume "\<not> \<lfloor>\<^bold>\<forall>X y. \<E> X y \<^bold>\<rightarrow> (X \<Rrightarrow> (id y))\<rfloor>"
@@ -156,7 +158,7 @@ abbreviation necessaryExistencePredicate::"\<up>\<langle>\<zero>\<rangle>" ("NE"
 axiomatization where A5: "\<lfloor>\<P> NE\<rfloor>" (**necessary existence is a positive property*)
 lemma True nitpick[satisfy] oops (**model found: so far all axioms consistent*)
  
-(**(Possibilist) existence of God implies its necessary (actualist) existence:*)
+(**(Possibilist) existence of God implies its necessary (actualist) existence.*)
 theorem GodExistenceImpliesNecEx: "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" proof - (**not shown*)
 (*<*)
 {
@@ -180,9 +182,9 @@ theorem GodExistenceImpliesNecEx: "\<lfloor>\<^bold>\<exists> G \<^bold>\<righta
   thus ?thesis by (rule allI) 
 qed
 (*>*)
-(** Below we postulate semantic frame conditions for some modal logics. \footnote{Taken together, reflexivity, transitivity and symmetry
+(** Below we postulate semantic frame conditions for some modal logics:\footnote{Taken together, reflexivity, transitivity and symmetry
  make for an equivalence relation and therefore an \emph{S5} logic (via \emph{Sahlqvist correspondence}).
- They are individually postulated in order to get more detailed information about their relevance in the proofs presented below.}*)
+ They are individually postulated in order to get more detailed information about their relevance in the proofs below.}*)
 axiomatization where
  refl: "reflexive aRel" and tran: "transitive aRel" and symm: "symmetric aRel"
  
@@ -193,7 +195,7 @@ lemma modal_distr: "\<lfloor>\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)
 lemma modal_trans: "(\<lfloor>\<phi> \<^bold>\<rightarrow> \<psi>\<rfloor> \<and> \<lfloor>\<psi> \<^bold>\<rightarrow> \<chi>\<rfloor>) \<Longrightarrow> \<lfloor>\<phi> \<^bold>\<rightarrow> \<chi>\<rfloor>" by simp
 (*>*)
 (**Possible existence of God implies its necessary (actualist) existence (note that only symmetry and
-transitivity are needed as frame conditions):*)
+transitivity are needed as frame conditions).*)
 theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longrightarrow> \<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" proof - (** not shown*)
 (*<*)
   have "\<lfloor>\<^bold>\<exists> G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodExistenceImpliesNecEx by simp (* follows from Axioms 11.11, 11.25 and 11.3B*)
@@ -205,14 +207,13 @@ theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<rfloor> \<longright
   thus ?thesis by (rule localImpGlobalCons)
 qed
 (*>*)  
-(** Conclusion: Necessary (actualist) existence of God: *)    
+(** Conclusion: Necessary (actualist) existence of God. (To prove validity we still need reflexivity for our frame conditions.)*)    
 theorem GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<rfloor>" using T3 T4 by metis
-(** To prove validity we still need reflexivity for our frame conditions:*)    
 theorem GodExistenceIsValid: "\<lfloor>\<^bold>\<exists>\<^sup>E G\<rfloor>" using GodNecExists refl by auto
     
 (**Monotheism for non-normal models (using Leibniz equality) follows directly from God having all
 and only positive properties, but the proof for normal models is trickier. We need to consider previous results
- (@{cite "Fitting"}, p. 162):*)
+ (@{cite "Fitting"}, p. 162).*)
 theorem Monotheism_LeibnizEq:"\<lfloor>\<^bold>\<forall>x. G* x \<^bold>\<rightarrow> (\<^bold>\<forall>y. G* y \<^bold>\<rightarrow> x\<^bold>\<approx>\<^sup>Ly)\<rfloor>" by meson
 theorem Monotheism_normal: "\<lfloor>\<^bold>\<exists>x.\<^bold>\<forall>y. G y \<^bold>\<leftrightarrow> x \<^bold>\<approx> y\<rfloor>" proof - (**not shown*)
 (*<*)
@@ -253,15 +254,14 @@ theorem Monotheism_normal: "\<lfloor>\<^bold>\<exists>x.\<^bold>\<forall>y. G y 
 }
   thus ?thesis by (rule allI) 
 qed
-  
-lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
 (*>*)
-(**Fitting @{cite "Fitting"} also discusses the objection raised by Sobel @{cite "sobel2004logic"}, who argues that G\"odel's axiom system
-is too strong: it implies that whatever is the case is so necessarily, i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
-This has been philosophically interpreted as implying the absence of free will.    
-In the context of our S5 axioms, the \emph{modal collapse} becomes valid (@{cite "Fitting"}, pp. 163-4): *)     
-theorem ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" proof - (**not shown here*)
-(*<*)
+(**Fitting @{cite "Fitting"} also discusses the objection raised by Sobel @{cite "sobel2004logic"}, 
+who argues that G\"odel's axiom system is too strong: it implies that whatever is the case is so necessarily,
+i.e. the modal system collapses (@{text "\<phi> \<longrightarrow> \<box>\<phi>"}).
+Modal collapse has been philosophically interpreted as implying the absence of free will.    
+In the context of our S5 axioms, we were able to formalize Sobel's argument and prove \emph{modal collapse} valid (@{cite "Fitting"}, pp. 163-4):*)     
+lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
+theorem ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" proof -
   { fix w
    { fix Q
     have "(\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)) w" using GodIsEssential by (rule allE) (* follows from Axioms 11.11 and 11.3B *)
@@ -278,5 +278,6 @@ theorem ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<right
    } hence "(\<^bold>\<forall>\<Phi>. \<Phi> \<^bold>\<rightarrow> \<^bold>\<box> \<Phi>) w" by (rule allI)
   } thus ?thesis by (rule allI)
 qed
+(*<*)
 end
 (*>*)

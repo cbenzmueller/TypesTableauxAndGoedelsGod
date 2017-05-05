@@ -10,16 +10,16 @@
 %
 \begin{isamarkuptext}%
 \begin{abstract}
-	A computer-formalization in Isabelle/HOL of several variants of G\"odel's ontological argument is presented
-	(as discussed in M. Fitting's textbook \emph{Types, Tableaus and G\"odel's God}). Fitting's work
-	introduces an intensional higher-order modal logic (by drawing on Montague/Gallin approach), which we
-	shallowly embed here in classical higher-order logic (Isabelle/HOL). We then	utilize the embedded logic for the
-  formalization of the ontological argument. In particular, Fitting's and Anderson's variants are verified
-  and their claims confirmed. These variants aim to avoid the modal collapse, which has been criticized as
+  A shallow semantical embedding of an intensional higher-order modal logic (IHOML) in Isabelle/HOL is presented.
+  IHOML draws on Montague/Gallin intensional logics and has been introduced by M. Fitting in his textbook
+  \emph{Types, Tableaus and G\"odel's God} in order to discuss his emendation of G\"odel's ontological argument
+  (for the existence of God). We subsequently	utilize the embedded logic for the computer-formalization and evaluation
+  of these arguments. In particular, Fitting's and Anderson's variants are verified and their claims confirmed.
+  These variants aim to avoid the modal collapse, which has been criticized as
   an undesirable side-effect of Kurt G\"odel's (and Dana Scott's) versions of the ontological argument.
-  \\ \\
+\\ \\
   \textbf{Keywords:} Automated Theorem Proving. Computational Metaphysics. Isabelle. Modal Logic.
-	Intensional Logic. Ontological Argument
+	Intensional Logic. Ontological Argument. Semantic Analysis
 \end{abstract}%
 \end{isamarkuptext}\isamarkuptrue%
 %
@@ -28,27 +28,31 @@
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-We present a shallow semantical embedding of an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL
-which has been introduced Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting} in order
-to formalize his emendation of G\"odel's ontological argument (for the existence of God). IHOML is a modification of the
+This work is divided in two parts. In the first one we present a shallow semantical embedding of
+an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL,
+which has been introduced by Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} \cite{Fitting}, in order
+to formalize his emendation of G\"odel's ontological argument. IHOML is a modification of the
 intentional logic originally developed by Montague and later expanded by Gallin \cite{Gallin75} by building upon Church's
 type theory and Kripke's possible-world semantics. Our approach has been inspired by previous work on the semantical embedding of
 multimodal logics with quantification \cite{J23}, which we expand here to allow for actualist quantification,
-intensional terms and their related operations.%
+intensional terms and their related operations.
+From an AI perspective we contribute a highly flexible `implementation' of an automated reasoning infrastructure for IHOML.
+Such an intensional logic has not been automated before and it is highly relevant e.g. for the deep semantical analysis of
+natural language rational arguments. In this sense, our work contributes to the objective
+of the new DFG Schwerpunktprogramm RATIO (SPP 1999).%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-We subsequently present a study on Computational Metaphysics: a computer-formalization and verification
-of G\"odel's \cite{GoedelNotes} (resp. Dana Scott's \cite{ScottNotes}) modern variant of the ontological argument,
-followed by Fitting's emendation thereof. A third variant (by Anderson \cite{anderson90:_some_emend_of_goedel_ontol_proof})
-is also discussed. The motivation is to avoid the \emph{modal collapse} \cite{Sobel,sobel2004logic}, which has been criticized
-as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
+For the second part, we present an exemplary, non-trivial application of this reasoning infrastructure,
+a study on Computational Metaphysics: the computer-formalization and critical assessment
+of G\"odel's \cite{GoedelNotes} (resp. Dana Scott's \cite{ScottNotes}) modern variant of the ontological argument.
+Several authors (e.g. \cite{anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,bjordal99,Hajek2002,Fitting}) 
+have proposed emendations of this argument with the aim of retaining its essential result 
+(the necessary existence of God) while at the same time avoiding the \emph{modal collapse} \cite{Sobel,sobel2004logic},
+which has been criticized as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
 states that there are no contingent truths and that everything is determined.
-Several authors (e.g. \cite{anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,Hajek2002,bjordal99}) 
-have proposed emendations of the argument with the aim of maintaining the essential result 
-(the necessary existence of God) while at the same time avoiding the modal collapse. 
-Related work  has formalized several of these variants on the computer and verified or falsified them. For example,
-G\"odel's axioms \cite{GoedelNotes} have been shown inconsistent \cite{C55,C60}
+Related work has formalized several of these variants on the computer and verified or falsified them. For example,
+G\"odel's axiom's system has been shown inconsistent \cite{C55,C60},
 while Scott's version has been verified \cite{ECAI}. Further experiments, contributing amongst others
 to the clarification of a related debate between H\'ajek and Anderson, are presented and discussed in
 \cite{J23}. The enabling technique in all of these experiments has been
@@ -57,12 +61,14 @@ logic (see \cite{J23,R59} and the references therein).%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-Fitting's emendation also intends to avoid the modal collapse. However, in contrast to the above variants, Fitting's
-solution is based on the use of an intensional as opposed to an extensional higher-order modal logic.
-For our work this imposed the additional challenge to provide a shallow embedding of this more advanced
-logic. The experiments presented below confirm that Fitting's argument as presented in his textbook \cite{Fitting}
-is valid and that it avoids the modal collapse as intended. The work presented here originates from 
-the \emph{Computational Metaphysics} lecture course held at FU Berlin in Summer 2016 \cite{C65}.%
+In our work, we additionally discuss two emendations of G\"odel's argument (by Fitting \cite{Fitting} and
+Anderson \cite{anderson90:_some_emend_of_goedel_ontol_proof}).
+In contrast to all variants mentioned above, Fitting's solution is based on the use of an intensional as opposed
+to an extensional higher-order modal logic. For our work this imposed the additional challenge to provide
+a shallow embedding of this more advanced logic (IHOML). The experiments presented below confirm that Fitting's argument
+as presented in his textbook \cite{Fitting} is valid and that it avoids the modal collapse as intended.
+The work presented here originates from the \emph{Computational Metaphysics} lecture course held at
+FU Berlin in Summer 2016 \cite{C65}.%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsection{Embedding of Intensional Higher-Order Modal Logic%
@@ -153,15 +159,18 @@ We embed each modal operator as the set of worlds satisfying the corresponding H
 \isacommand{abbreviation}\isamarkupfalse%
 \ mimp{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}io{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}\isactrlbold {\isasymrightarrow}{\isachardoublequoteclose}{\isadigit{4}}{\isadigit{9}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\isactrlbold {\isasymrightarrow}{\isasympsi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isacharparenleft}{\isasymphi}\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-Following can be seen as modeling \emph{possibilist quantification}:%
+\emph{Possibilist} and \emph{actualist} quantifiers are embedded as follows.
+\footnote{Possibilist and actualist quantification can be seen as the semantic counterparts of the concepts
+of possibilism and actualism in the metaphysics of modality. They relate to natural-language expressions such as
+`there is', `exists', `is actual', etc.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforall{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymforall}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mexists{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-The \emph{existsAt} predicate is used to embed actualist quantifiers by restricting the domain of quantification at every possible world.
-This standard technique has been referred to as \emph{existence relativization} (\cite{fitting98}, p. 106),
+The \emph{existsAt} predicate is used to embed \emph{actualist} quantifiers by restricting the domain of quantification
+at every possible world. This standard technique has been referred to as \emph{existence relativization} (\cite{fitting98}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
 which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language.%
 \end{isamarkuptext}\isamarkuptrue%
@@ -178,7 +187,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 \ mexistsAct{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymexists}\isactrlsup E{\isasymPhi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}x{\isachardot}\ {\isacharparenleft}x\ existsAt\ w{\isacharparenright}\ {\isasymand}\ {\isacharparenleft}{\isasymPhi}\ x\ w{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-\emph{Accessibility relation} (\emph{r}) is used to embed modal operators \isa{{\isasymbox}} and \isa{{\isasymdiamond}}.%
+Model's \emph{accessibility relation} and modal operators \isa{{\isasymbox}} and \isa{{\isasymdiamond}}.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
 \ aRel{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}i{\isasymRightarrow}i{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infixr}\ {\isachardoublequoteopen}r{\isachardoublequoteclose}\ {\isadigit{7}}{\isadigit{0}}{\isacharparenright}\isanewline
@@ -237,12 +246,12 @@ For instance, the formula \isa{Q{\isacharparenleft}{\isasymdown}a\isactrlsub {\i
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-(\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual of type \isa{{\isasymup}{\isasymzero}}:%
+(\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual of type \isa{{\isasymup}{\isasymzero}}.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ extIndArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymRightarrow}{\isasymup}{\isasymzero}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdownharpoonleft}{\isachardoublequoteclose}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-(\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form \isa{{\isasymup}{\isasymlangle}t{\isasymrangle}}):%
+(\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form \isa{{\isasymup}{\isasymlangle}t{\isasymrangle}}).%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}io{\isacharparenright}{\isasymRightarrow}io{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
@@ -253,9 +262,9 @@ For instance, the formula \isa{Q{\isacharparenleft}{\isasymdown}a\isactrlsub {\i
 %
 \begin{isamarkuptext}%
 The above definitions introduce modal logic \emph{K} with possibilist and actualist quantifiers,
-as evidenced by following tests:\footnote{In our formalization of Fitting's textbook \cite{AFP_FittingIHOML}
-we provide further evidence that our embedded logic works as intended by formalizing the book's theorems and examples.
-We were able to confirm that our results agree with Fitting's claims.}%
+as evidenced by following tests:\footnote{In our computer-formalization and assessment of Fitting's textbook \cite{J35},
+we provide further evidence that our embedded logic works as intended by formalizing and verifying
+the book's theorems and examples. We refer the reader to this work for further details.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{abbreviation}\isamarkupfalse%
 \ valid{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}io{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlfloor}{\isacharunderscore}{\isasymrfloor}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasympsi}{\isasymrfloor}\ {\isasymequiv}\ \ {\isasymforall}w{\isachardot}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\ %
@@ -263,7 +272,12 @@ We were able to confirm that our results agree with Fitting's claims.}%
 }
 %
 \begin{isamarkuptext}%
-Verifying \emph{K} principle and the \emph{necessitation} rule:%
+Verifying \emph{K} principle and the \emph{necessitation} rule.
+ \footnote{We prove here our first theorem with Isabelle, as indicated by the keyword `by' followed by
+ the name of the method used for the proof. In this case Isabelle's simplifier (term rewriting) sufficed.
+ Other proof methods used in this work are: \emph{blast} (tableaus), \emph{meson} (model elimination),
+ \emph{metis} (ordered resolution and paramodulation), \emph{auto} (classical reasoning and term rewriting)
+ and \emph{force} (exhaustive search trying different tools).}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ K{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasympsi}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isasympsi}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -290,10 +304,10 @@ Verifying \emph{K} principle and the \emph{necessitation} rule:%
 %
 %
 \begin{isamarkuptext}%
-Local consequence implies global consequence (not the other way round):
-  \footnote{We make use here of (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the first time.  
-  For the conjectured lemma below, \emph{Nitpick} finds a countermodel, i.e. a model satisfying all 
-  the axioms which falsifies the given formula. This means, the formula is not valid.}%
+Local consequence implies global consequence (not the other way round).
+  \footnote{We utilize here (counter-)model finder \emph{Nitpick} \cite{Nitpick} for the first time.  
+  For the conjectured lemma, \emph{Nitpick} finds a countermodel, i.e. a model satisfying all 
+  the axioms which falsifies the given formula, which means it is not valid, as indicated by the `oops' keyword.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ localImpGlobalCons{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasymxi}{\isasymrfloor}\ {\isasymLongrightarrow}\ {\isasymlfloor}{\isasymphi}{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isasymxi}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -318,7 +332,7 @@ Local consequence implies global consequence (not the other way round):
 %
 %
 \begin{isamarkuptext}%
-(Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantification:%
+(Converse-)Barcan formulas are satisfied for possibilist, but not for actualist, quantification.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymphi}\ x{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}x{\isachardot}{\isacharparenleft}{\isasymphi}\ x{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -365,7 +379,7 @@ Local consequence implies global consequence (not the other way round):
 %
 %
 \begin{isamarkuptext}%
-\isa{{\isasymbeta}{\isasymeta}}-redex is valid for non-relativized (intensional or extensional) terms:%
+\isa{{\isasymbeta}{\isasymeta}}-redex is valid for non-relativized (intensional or extensional) terms.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ \ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ \ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -404,7 +418,7 @@ Local consequence implies global consequence (not the other way round):
 %
 %
 \begin{isamarkuptext}%
-\isa{{\isasymbeta}{\isasymeta}}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract:%
+\isa{{\isasymbeta}{\isasymeta}}-redex is valid for relativized terms as long as no modal operators occur inside the predicate abstract.%
 \end{isamarkuptext}\isamarkuptrue%
 \ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymalpha}{\isachardot}\ {\isasymphi}\ {\isasymalpha}{\isacharparenright}\ {\isasymdownharpoonleft}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymzero}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ {\isacharparenleft}{\isasymphi}\ {\isasymdownharpoonleft}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -429,7 +443,7 @@ Local consequence implies global consequence (not the other way round):
 %
 %
 \begin{isamarkuptext}%
-\emph{Modal collapse} is countersatisfiable:%
+Modal collapse is countersatisfiable.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isasymphi}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
@@ -505,7 +519,7 @@ A term is rigid if and only if it satisfies the stability conditions.%
 %
 %
 \begin{isamarkuptext}%
-\emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms:%
+\emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -526,7 +540,7 @@ A term is rigid if and only if it satisfies the stability conditions.%
 %
 %
 \begin{isamarkuptext}%
-\emph{De re} is not equivalent to \emph{de dicto} for relativized terms:%
+\emph{De re} is not equivalent to \emph{de dicto} for relativized terms.%
 \end{isamarkuptext}\isamarkuptrue%
 \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymalpha}{\isachardot}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}{\isacharparenleft}{\isasymlambda}{\isasymbeta}{\isachardot}\ {\isacharparenleft}{\isasymalpha}\ {\isasymbeta}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymdown}{\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isanewline
@@ -565,7 +579,8 @@ Instead of postulating (combinations of) the above  axioms we instead make use o
   the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
   relation (e.g. reflexive, symmetric, etc). We show  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
   axioms $M, B, D, IV, V$ respectively.
-  \footnote{Using these definitions, we can derive axioms for the most common modal logics (see also \cite{C47}). 
+  \footnote{Implication can also be proven in the reverse direction (which is not needed for our purposes).
+  Using these definitions, we can derive axioms for the most common modal logics (see also \cite{C47}). 
   Thereby we are free to use either the semantic constraints or the related \emph{Sahlqvist} axioms. Here we provide 
   both versions. In what follows we use the semantic constraints (for improved performance).}%
 \end{isamarkuptext}\isamarkuptrue%

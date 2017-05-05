@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{Zalta15}
+J.~Alama, P.~E. Oppenheimer, and E.~N. Zalta.
+\newblock Automating leibniz's theory of concepts.
+\newblock In A.~P. Felty and A.~Middeldorp, editors, {\em Automated Deduction -
+  {CADE-25} - 25th International Conference on Automated Deduction, Berlin,
+  Germany, August 1-7, 2015, Proceedings}, volume 9195 of {\em LNCS}, pages
+  73--97. Springer, 2015.
+
 \bibitem{AndersonGettings}
 A.~Anderson and M.~Gettings.
 \newblock G\"odel ontological proof revisited.
@@ -81,9 +89,15 @@ M.~Fitting and R.~Mendelsohn.
 \newblock {\em First-Order Modal Logic}, volume 277 of {\em Synthese Library}.
 \newblock Kluwer, 1998.
 
+\bibitem{J35}
+D.~Fuenmayor and C.~Benzm\"uller.
+\newblock {Types, Tableaus and G{\"o}del's God in Isabelle/HOL}.
+\newblock {\em Archive of Formal Proofs}, 2017.
+\newblock Formally verified with Isabelle/HOL.
+
 \bibitem{Gallin75}
 D.~Gallin.
-\newblock {\em Intensinonal and Higher-Order Modal Logic}.
+\newblock {\em Intensional and Higher-Order Modal Logic}.
 \newblock N.-Holland, 1975.
 
 \bibitem{GoedelNotes}

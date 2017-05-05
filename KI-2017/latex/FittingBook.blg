@@ -1,51 +1,55 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: FittingBook.aux
+White space in argument---line 58 of file FittingBook.aux
+ : \citation{Fitting,
+ :                    J35}
+I'm skipping whatever remains of this command
 The style file: abbrv.bst
 Database file #1: FittingBook.bib
 Warning--empty volume in GoedelNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
 Warning--empty volume in ScottNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
-You've used 20 entries,
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            646 strings with 6867 characters,
-and the built_in function-call counts, 6604 in all, are:
-= -- 639
-> -- 243
-< -- 12
-+ -- 96
-- -- 72
-* -- 395
-:= -- 1055
-add.period$ -- 67
-call.type$ -- 20
-change.case$ -- 84
+            660 strings with 7310 characters,
+and the built_in function-call counts, 7371 in all, are:
+= -- 715
+> -- 282
+< -- 14
++ -- 110
+- -- 84
+* -- 447
+:= -- 1180
+add.period$ -- 75
+call.type$ -- 22
+change.case$ -- 95
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 317
-empty$ -- 586
-format.name$ -- 72
-if$ -- 1473
+cite$ -- 26
+duplicate$ -- 349
+empty$ -- 643
+format.name$ -- 84
+if$ -- 1639
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 27
-newline$ -- 103
-num.names$ -- 50
-pop$ -- 127
+int.to.str$ -- 22
+missing$ -- 29
+newline$ -- 114
+num.names$ -- 56
+pop$ -- 138
 preamble$ -- 1
-purify$ -- 71
+purify$ -- 80
 quote$ -- 0
-skip$ -- 226
+skip$ -- 251
 stack$ -- 0
-substring$ -- 335
-swap$ -- 94
-text.length$ -- 12
+substring$ -- 369
+swap$ -- 106
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 74
 warning$ -- 4
-while$ -- 64
-width$ -- 22
-write$ -- 227
-(There were 4 warnings)
+while$ -- 72
+width$ -- 24
+write$ -- 252
+(There was 1 error message)
