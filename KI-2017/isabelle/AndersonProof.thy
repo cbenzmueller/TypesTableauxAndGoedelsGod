@@ -7,11 +7,11 @@ sledgehammer_params[verbose=true]
 (*>*)
   
 section \<open>Anderson's Variant\<close>
-(**In this final section, we verify Anderson's emendation of G\"odel's argument @{cite "anderson90:_some_emend_of_goedel_ontol_proof"},
-as presented by Fitting (@{cite "Fitting"}, pp. 169-171). In the previous variants `indifferent' properties were not possible,
- every property had to be either positive or negative. Anderson makes room for `indifferent' properties by
- dropping axiom \emph{A1b} (@{text "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<rightharpoondown>X)\<rfloor>"}). Consequently, he also changed some definitions
- in order to ensure argument's validity.*)
+(**In this section, we verify Anderson's emendation of G\"odel's argument @{cite "anderson90:_some_emend_of_goedel_ontol_proof"},
+ as presented by Fitting (@{cite "Fitting"}, pp. 169-171). In the previous variants there were no `indifferent' properties,
+ every property was either positive or negative. Anderson makes room for `indifferent' properties by
+ dropping axiom \emph{A1b} (@{text "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<rightarrow> \<P> (\<rightharpoondown>X)\<rfloor>"}). Consequently, he changes following definitions
+ to ensure argument's validity:*)
 (*<*)  
 abbreviation Entailment::"\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<up>\<langle>\<zero>\<rangle>\<rangle>" (infix "\<Rrightarrow>" 60) where (**def changed*)
   "X \<Rrightarrow> Y \<equiv>  \<^bold>\<box>(\<^bold>\<forall>\<^sup>Ez. X z \<^bold>\<rightarrow> Y z)" 
@@ -37,7 +37,7 @@ axiomatization where
   A4a: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<box>(\<P> X)\<rfloor>"  and
   A5: "\<lfloor>\<P> NE\<^sup>A\<rfloor>" 
 (*>*)
-(**The rest of the ontological argument is essentially similar to G\"odel's variant (which also needs \emph{S5} axioms).*)
+(**The rest of the ontological argument is essentially similar to G\"odel's variant.*)
 theorem T1: "\<lfloor>\<^bold>\<forall>X. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X\<rfloor>" using A1a A2 by blast
 theorem T3: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T1 T2 by simp
 (*<*)
@@ -49,8 +49,8 @@ lemma "\<lfloor>rigidPred \<P>\<rfloor>" using A4a A4b by blast (**@{text "\<P>"
 lemma True nitpick[satisfy] oops (** model found: so far all axioms consistent*)
 (*>*)   
 (**If g is God-like, the property of being God-like is its essence.
-\footnote{As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
-For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
+\footnote{This theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
+For Anderson's version however, we had to reproduce in Isabelle the original natural-language proof 
 given by Anderson (see @{cite "anderson90:_some_emend_of_goedel_ontol_proof"} Theorem 2*, p. 296)}*)
 (*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
 by definition (of "God-like*"), that property is positive. But necessarily, if
@@ -168,35 +168,32 @@ theorem T4: "\<lfloor>\<^bold>\<diamond>\<^bold>\<exists> G\<^sup>A\<rfloor> \<l
   thus ?thesis by (rule localImpGlobalCons)
 qed
 (*>*)
-(**The conclusion of the argument can be proven (and with one fewer axiom, though more complex definitions).
-\emph{Nitpick} is able to find a countermodel for the \emph{modal collapse}, thus confirming Anderson's (and Fitting's) claims.*)  
+(**The conclusion could be proven (with one fewer axiom, though more complex definitions) and
+\emph{Nitpick} is able to find a countermodel for the \emph{modal collapse}.*)  
 lemma GodNecExists: "\<lfloor>\<^bold>\<box>\<^bold>\<exists>\<^sup>E G\<^sup>A\<rfloor>" using T3 T4 by metis
 lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick oops (**countersatisfiable*)
     
 section \<open>Conclusion\<close>
 (** We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
-(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook \emph{Types, Tableaus and 
-G\"odel's God} @{cite "Fitting,J35"}. 
-We employed this logic to formalize and verify all results relevant to the subsequent discussion of three different
-variants of the ontological argument: the first one by G\"odel himself (respectively, Scott), the second 
-one by Fitting and the last one by Anderson.*)
+(a successor of Montague/Gallin intensional logics) and employed this logic to formalize and verify
+three different variants of the ontological argument:
+the first one by G\"odel himself (resp. Scott), the second one by Fitting and the last one by Anderson.*)
   
-(**By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
-but also to guarantee consistency. We could prove even stronger versions
-of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in his book.
+(**By employing an interactive theorem-prover like Isabelle, we could not only verify Fitting's results,
+but also guarantee consistency. We could also prove even stronger versions of many of the theorems
+and find better countermodels (i.e. with smaller cardinality) than the ones presented in his book.
 Another interesting aspect was the possibility to explore the implications of alternative formalizations
-for definitions and theorems which shed light on interesting philosophical issues concerning entailment,
-essentialism and free will, which are currently the subject of some follow-up analysis.*)
+of axioms and theorems which shed light on interesting philosophical issues concerning entailment,
+essentialism and free will.*)
 
-(**The latest developments in \emph{automated theorem proving} allow us to engage in much more experimentation
+(**Latest developments in automated theorem proving allow us to engage in much more experimentation
 during the formalization and assessment of arguments than ever before. The potential reduction (of several orders of magnitude)
 in the time needed for proving or disproving theorems (compared to pen-and-paper proofs), results in almost real-time
 feedback about the suitability of our speculations. The practical benefits of computer-supported argumentation go beyond
 mere quantitative (easier, faster and more reliable proofs). The advantages are also qualitative, since it fosters a
 different approach to argumentation: We can now work iteratively (by trial-and-error) on an argument
-by making gradual adjustments to its definitions, axioms and theorems (and getting instant feedback).
-This allows us to continuously expose and revise the assumptions we indirectly commit ourselves
-everytime we opt for some particular formalization.
+by making gradual adjustments to its definitions, axioms and theorems. This allows us to continuously
+expose and revise the assumptions we indirectly commit ourselves every time we opt for some particular formalization.
 *)
 (*<*)
 end

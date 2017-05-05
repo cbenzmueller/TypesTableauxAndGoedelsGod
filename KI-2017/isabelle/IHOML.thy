@@ -22,15 +22,13 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e =
   
 section \<open>Introduction\<close>
   
-(** This work is divided in two parts. In the first one we present a shallow semantical embedding of
-an \emph{intensional} higher-order modal logic (IHOML) in Isabelle/HOL,
-which has been introduced by Fitting in his textbook \emph{Types, Tableaus and G\"odel's God} @{cite "Fitting"}, in order
-to formalize his emendation of G\"odel's ontological argument. IHOML is a modification of the
+(** This work is divided in two parts. The first one introduces a shallow semantical embedding of
+an \emph{intensional} higher-order modal logic. IHOML, as introduced by Fitting @{cite "Fitting"}, is a modification of the
 intentional logic originally developed by Montague and later expanded by Gallin @{cite "Gallin75"} by building upon Church's
 type theory and Kripke's possible-world semantics. Our approach has been inspired by previous work on the semantical embedding of
 multimodal logics with quantification @{cite "J23"}, which we expand here to allow for actualist quantification,
 intensional terms and their related operations.
-From an AI perspective we contribute a highly flexible `implementation' of an automated reasoning infrastructure for IHOML.
+From an AI perspective we contribute a highly flexible framework for automated reasoning in IHOML.
 Such an intensional logic has not been automated before and it is highly relevant e.g. for the deep semantical analysis of
 natural language rational arguments. In this sense, our work contributes to the objective
 of the new DFG Schwerpunktprogramm RATIO (SPP 1999).*)
@@ -41,7 +39,7 @@ of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"}) mod
 Several authors (e.g. @{cite "anderson90:_some_emend_of_goedel_ontol_proof,AndersonGettings,bjordal99,Hajek2002,Fitting"}) 
 have proposed emendations of this argument with the aim of retaining its essential result 
 (the necessary existence of God) while at the same time avoiding the \emph{modal collapse} @{cite "Sobel,sobel2004logic"},
-which has been criticized as an undesirable side-effect of the axioms of G\"odel (resp. Scott). The modal collapse essentially  
+which has been criticized as an undesirable side-effect of the axioms of G\"odel (resp. Scott), since it essentially  
 states that there are no contingent truths and that everything is determined.
 Related work has formalized several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axiom's system has been shown inconsistent @{cite "C55,C60"},
@@ -53,9 +51,8 @@ logic (see @{cite "J23,R59"} and the references therein).*)
 
 (**In our work, we additionally discuss two emendations of G\"odel's argument (by Fitting @{cite "Fitting"} and
 Anderson @{cite "anderson90:_some_emend_of_goedel_ontol_proof"}).
-In contrast to all variants mentioned above, Fitting's solution is based on the use of an intensional as opposed
-to an extensional higher-order modal logic. For our work this imposed the additional challenge to provide
-a shallow embedding of this more advanced logic (IHOML). The experiments presented below confirm that Fitting's argument
+In contrast to the variants mentioned above, Fitting's solution is based on the use of an intensional as opposed
+to an extensional higher-order modal logic. The experiments presented below confirm that Fitting's argument
 as presented in his textbook @{cite "Fitting"} is valid and that it avoids the modal collapse as intended.
 The work presented here originates from the \emph{Computational Metaphysics} lecture course held at
 FU Berlin in Summer 2016 @{cite "C65"}.*)
@@ -161,7 +158,7 @@ abbreviation meqL:: "\<up>\<langle>\<zero>,\<zero>\<rangle>" (infixr"\<^bold>\<a
   where "x \<^bold>\<approx>\<^sup>L y \<equiv> \<^bold>\<forall>\<phi>. \<phi>(x)\<^bold>\<rightarrow>\<phi>(y)"
       
 subsection \<open>\emph{Extension-of} Operator\<close> 
-(**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4) @{text "\<down>"} is an unary operator applying only to 
+(**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4), @{text "\<down>"} is an unary operator applying only to 
  intensional terms. A term of the form @{text "\<down>\<alpha>"} designates the extension of the intensional object designated by 
  @{text "\<alpha>"}, at some \emph{given} world. For instance, suppose we take possible worlds as persons,
  we can therefore think of the concept `red' as a function that maps each person to the set of objects that person
@@ -173,16 +170,15 @@ subsection \<open>\emph{Extension-of} Operator\<close>
 
 (** Terms of the form @{text "\<down>\<alpha>"} are called \emph{relativized} (extensional) terms; they are always derived
 from intensional terms and their type is \emph{extensional} (in the color example @{text "\<down>r"} would be of type @{text "\<langle>\<zero>\<rangle>"}).
-Relativized terms may vary their denotation from world to world of a model, because the extension of an intensional term can change
+Relativized terms may vary their denotation from world to world of a model, because the \emph{extension of} an intensional term can change
 from world to world, i.e. they are non-rigid.*)
 (*To recap: an intensional term denotes the same function in all worlds (i.e. it's rigid), whereas a relativized term
 denotes a (possibly) different extension (an object or a set) at every world (i.e. it's non-rigid). To find out
 the denotation of a relativized term, a world must be given. Relativized terms are the \emph{only} non-rigid terms.*)
 (** For our Isabelle/HOL embedding, we had to follow a slightly different approach; we model @{text "\<down>"}
-as a predicate applying to formulas of the form @{text "\<Phi>(\<down>\<alpha>\<^sub>1,\<dots>\<alpha>\<^sub>n)"} (for our treatment
-we only need to consider cases involving one or two arguments, the first one being a relativized term).
-For instance, the formula @{text "Q(\<down>a\<^sub>1)\<^sup>w"} (evaluated at world \emph{w}) is modelled as @{text "\<downharpoonleft>(Q,a\<^sub>1)\<^sup>w"}
-(or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation), which gets further translated into @{text "Q(a\<^sub>1(w))\<^sup>w"}.*)
+as a predicate applying to formulas of the form @{text "\<Phi>(\<down>\<alpha>\<^sub>1,\<dots>\<alpha>\<^sub>n)"}.
+For instance, the formula @{text "Q(\<down>a\<^sub>1)\<^sup>w"} (evaluated at world \emph{w}) is modelled as @{text "\<downharpoonleft>(Q,a\<^sub>1)\<^sup>w"}, 
+or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation, which gets further translated into @{text "Q(a\<^sub>1(w))\<^sup>w"}.*)
   
 (*Depending on the particular types involved, we have to define @{text "\<down>"} differently to ensure type correctness
 (see \emph{a-d} below). Nevertheless, the essence of the \emph{Extension-of} operator remains the same:
@@ -284,7 +280,7 @@ subsection \<open>Useful Definitions for Axiomatization of Further Logics\<close
   abbreviation IV where "IV \<equiv> \<^bold>\<forall>\<phi>. \<^bold>\<box>\<phi> \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<box>\<phi>"
   abbreviation V  where "V \<equiv> \<^bold>\<forall>\<phi>. \<^bold>\<diamond>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<diamond>\<phi>"
   
-  (** Instead of postulating (combinations of) the above  axioms we instead make use of 
+  (** Instead of postulating combinations of the above  axioms we instead make use of 
   the well-known \emph{Sahlqvist correspondence}, which links axioms to constraints on a model's accessibility
   relation (e.g. reflexive, symmetric, etc). We show  that  reflexivity, symmetry, seriality, transitivity and euclideanness imply
   axioms $M, B, D, IV, V$ respectively.

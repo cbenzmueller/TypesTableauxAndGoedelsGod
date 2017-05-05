@@ -14,9 +14,11 @@ In G\"odel variant, positiveness and essence were thought of as predicates apply
 correspondingly formalized using intensional types for their arguments (@{text "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>\<rangle>"} and @{text "\<up>\<langle>\<up>\<langle>\<zero>\<rangle>,\<zero>\<rangle>"} respectively).
 In this variant, Fitting chooses to reformulate these definitions using \emph{extensional} types instead (@{text "\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>"} and @{text "\<up>\<langle>\<langle>\<zero>\<rangle>,\<zero>\<rangle>"})
 and makes the corresponding adjustments to the rest of the argument (to ensure type correctness).
-This has some philosophical repercusions, e.g. while we could say before that honesty (as concept) was a
-positive property, we can now only talk of its extension at some world and say of some group of people
-that they are honest (and in fact, that they are \emph{necessarily} so, since @{text "\<P>"} has also be proven rigid in this variant).*)
+\footnote{Fitting's original treatment in @{cite "Fitting"} left several details unspecified and
+we had to fill in the gaps by choosing appropriate formalization variants (see @{cite "J35"} for details).}
+This has some philosophical repercusions; e.g. before we could say that honesty (as concept) was a
+positive property, now we can only talk of its extension at some world and say of some group of people
+that they are honest (\emph{necessarily} honest, in fact, because @{text "\<P>"} has been proven rigid in this variant).*)
 
 consts Positiveness::"\<up>\<langle>\<langle>\<zero>\<rangle>\<rangle>" ("\<P>")
 abbreviation Entailment::"\<up>\<langle>\<langle>\<zero>\<rangle>,\<langle>\<zero>\<rangle>\<rangle>" (infix"\<Rrightarrow>"60)
@@ -46,17 +48,16 @@ lemma A4b: "\<lfloor>\<^bold>\<forall>X. \<^bold>\<not>(\<P> X) \<^bold>\<righta
 lemma "\<lfloor>rigidPred \<P>\<rfloor>" using A4a A4b by blast (**@{text "\<P>"} designates rigidly*)
  (*>*)
 (**Axioms and theorems remain essentially the same. Particularly (T2) @{text "\<lfloor>\<P> \<down>G\<rfloor>"} and (A5) @{text "\<lfloor>\<P> \<down>NE\<rfloor>"}
-work with \emph{relativized} extensional terms now. Fitting's original treatment in @{cite "Fitting"} left several
-details unspecified and we had to fill in the gaps by choosing appropriate formalization variants (see @{cite "J35"} for details).*)
+work with \emph{relativized} extensional terms now.*)
 
 theorem T1: "\<lfloor>\<^bold>\<forall>X::\<langle>\<zero>\<rangle>. \<P> X \<^bold>\<rightarrow> \<^bold>\<diamond>(\<^bold>\<exists>\<^sup>Ez. \<lparr>X z\<rparr>)\<rfloor>" using A1a A2 by blast 
 theorem T3: "\<lfloor>(\<lambda>X. \<^bold>\<diamond>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G\<rfloor>" using T1 T2 by simp (**\emph{de re} variant chosen*) 
 lemma GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> ((\<E> \<down>\<^sub>1G) x)\<rfloor>" using A1b by metis
     
-(** (Possibilist) existence of God implies necessary (actualist) existence.
-This theorem could be formalized in two variants (drawing on the \emph{de re/de dicto} distinction).
-We prove both of them valid and show how the argument splits in two, culminating in two non-equivalent versions
-of the conclusion (one \emph{de re} and the other \emph{de dicto}), both of which are proven valid.*)
+(**
+Following theorem could be formalized in two variants (drawing on the \emph{de re/de dicto} distinction).
+We prove both of them valid and show how the argument splits, culminating in two non-equivalent versions
+of the conclusion, both of which are proven valid.*)
 lemma GodExImpNecEx1: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> \<^bold>\<box>\<^bold>\<exists>\<^sup>E \<^bold>\<down>G\<rfloor>" proof - (**not shown*)
 (*<*)
 {
@@ -80,7 +81,6 @@ lemma GodExImpNecEx1: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rig
  thus ?thesis by (rule allI) 
 qed
 (*>*)
-  
 lemma GodExImpNecEx2: "\<lfloor>\<^bold>\<exists> \<^bold>\<down>G \<^bold>\<rightarrow> ((\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\<^sup>E X) \<^bold>\<down>G)\<rfloor>"
   using A4a GodExImpNecEx1 by metis
     
@@ -96,7 +96,7 @@ lemma GodNecExists_deRe: "\<lfloor>(\<lambda>X. \<^bold>\<box>\<^bold>\<exists>\
 
 (** Modal collapse is countersatisfiable even in \emph{S5}. Note that countermodels with a cardinality of \emph{one} 
 for the domain of individuals are found by \emph{Nitpick} (the countermodel shown in Fitting's book has cardinality of \emph{two}).*)
-lemma "equivalence aRel \<Longrightarrow> \<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi> \<^bold>\<rightarrow> (\<^bold>\<box> \<Phi>))\<rfloor>" nitpick[card 't=1, card i=2] oops (*countermodel*)
+lemma "equivalence aRel\<Longrightarrow>\<lfloor>\<^bold>\<forall>\<Phi>.(\<Phi>\<^bold>\<rightarrow>(\<^bold>\<box> \<Phi>))\<rfloor>" nitpick[card 't=1, card i=2] oops
 (*<*)
 end
 (*>*)
