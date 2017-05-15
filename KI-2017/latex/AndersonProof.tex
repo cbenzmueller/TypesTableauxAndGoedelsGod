@@ -13,28 +13,28 @@
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-In this final section, we verify Anderson's emendation of G\"odel's argument \cite{anderson90:_some_emend_of_goedel_ontol_proof},
-as presented by Fitting (\cite{Fitting}, pp. 169-171). In the previous variants `indifferent' properties were not possible,
- every property had to be either positive or negative. Anderson makes room for `indifferent' properties by
- dropping axiom \emph{A1b} (\isa{{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}{\isasymrightharpoondown}X{\isacharparenright}{\isasymrfloor}}). Consequently, he also changed some definitions
- in order to ensure argument's validity.%
+\noindent{In this section, we verify Anderson's emendation of G\"odel's argument \cite{anderson90},
+ as presented by Fitting (\cite{Fitting}, pp. 169-171). In the previous variants there were no `indifferent' properties,
+ either a property or its negation had to be positive. Anderson makes room for `indifferent' properties by
+ dropping axiom \emph{A1b} (\isa{{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ \isactrlbold {\isasymnot}{\isacharparenleft}{\isasymP}\ X{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isasymP}\ {\isacharparenleft}{\isasymrightharpoondown}X{\isacharparenright}{\isasymrfloor}}). As a consequence, he changes following definitions
+ to ensure argument's validity.}%
 \end{isamarkuptext}\isamarkuptrue%
-\isacommand{abbreviation}\isamarkupfalse%
+\ \ \isacommand{abbreviation}\isamarkupfalse%
 \ God{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}G\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}G\isactrlsup A\ {\isasymequiv}\ {\isasymlambda}x{\isachardot}\ \isactrlbold {\isasymforall}Y{\isachardot}\ {\isacharparenleft}{\isasymP}\ Y{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ \isactrlbold {\isasymbox}{\isacharparenleft}Y\ x{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\isacommand{abbreviation}\isamarkupfalse%
-\ essenceOf{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ {\isachardoublequoteopen}{\isasymE}\isactrlsup A\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}Z\ x{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}%
+\ \ \isacommand{abbreviation}\isamarkupfalse%
+\ Essence{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
+\ \ \ \ {\isachardoublequoteopen}{\isasymE}\isactrlsup A\ Y\ x\ {\isasymequiv}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}\ \isactrlbold {\isasymbox}{\isacharparenleft}Z\ x{\isacharparenright}\ \isactrlbold {\isasymleftrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}%
 \begin{isamarkuptext}%
-There is now the requirement, a Godlike being must have positive properties \emph{necessarily}.
-For the definition of essence, Scott's addition, that the essence of an object 
-actually applies to the object, is dropped. A necessity operator has been introduced instead.
-\footnote{Without Scott's addition \cite{ScottNotes}, G\"odel's original axiom system can be proven inconsistent as shown by \cite{C55}.}%
+\noindent{There is now the requirement that a Godlike being must have positive properties \emph{necessarily}.
+  For the definition of essence, Scott's addition, that the essence of an object 
+  actually applies to the object, is dropped. A necessity operator has been introduced instead.
+  \footnote{G\"odel's original axioms (without Scott's addition \cite{ScottNotes}) are proven inconsistent in \cite{C55}.}}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-The rest of the ontological argument is essentially similar to G\"odel's variant (which also needs \emph{S5} axioms).%
+\noindent{The rest of the argument is essentially similar to G\"odel's (also in \emph{S5} logic).}%
 \end{isamarkuptext}\isamarkuptrue%
-\isacommand{theorem}\isamarkupfalse%
+\ \ \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -44,7 +44,7 @@ The rest of the ontological argument is essentially similar to G\"odel's variant
 %
 %
 \isanewline
-\isacommand{theorem}\isamarkupfalse%
+\ \ \isacommand{theorem}\isamarkupfalse%
 \ T{\isadigit{3}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
@@ -73,20 +73,17 @@ The rest of the ontological argument is essentially similar to G\"odel's variant
 %
 %
 \begin{isamarkuptext}%
-If g is God-like, the property of being God-like is its essence.
-\footnote{As shown before, this theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
-For Anderson's version however, we had to provide Isabelle with some help based on the corresponding natural-language proof 
-given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theorem 2*, p. 296)}%
+\noindent{If g is God-like, the property of being God-like is its essence.
+  \footnote{This theorem's proof could be completely automatized for G\"odel's and Fitting's variants.
+  For Anderson's version however, we had to reproduce in Isabelle/HOL the original natural-language proof 
+  given by Anderson (see \cite{anderson90}, Theorem 2*, p. 296)}}%
 \end{isamarkuptext}\isamarkuptrue%
-\isacommand{theorem}\isamarkupfalse%
+\ \ \isacommand{theorem}\isamarkupfalse%
 \ GodIsEssential{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}x{\isachardot}\ G\isactrlsup A\ x\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isasymE}\isactrlsup A\ G\isactrlsup A\ x{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}\ %
-\isamarkupcmt{not shown%
-}
-%
+\ {\isacharminus}%
 %
 %
 %
@@ -109,35 +106,32 @@ given by Anderson (see \cite{anderson90:_some_emend_of_goedel_ontol_proof} Theor
 %
 %
 \begin{isamarkuptext}%
-The necessary existence of God follows from its possible existence:%
+\noindent{The necessary existence of God follows from its possible existence.}%
 \end{isamarkuptext}\isamarkuptrue%
-\isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{4}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
+\ \ \isacommand{theorem}\isamarkupfalse%
+\ T{\isadigit{5}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ G\isactrlsup A{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}\ %
-\isamarkupcmt{not shown%
-}
-%
+\ {\isacharminus}%
 %
 %
 %
 \begin{isamarkuptext}%
-The conclusion of the argument can be proven (and with one fewer axiom, though more complex definitions).
-\emph{Nitpick} is able to find a countermodel for the \emph{modal collapse}, thus confirming Anderson's (and Fitting's) claims.%
+\noindent{The conclusion could be proven (with one fewer axiom, though more complex definitions) and
+  \emph{Nitpick} is able to find a countermodel for the \emph{modal collapse}.}%
 \end{isamarkuptext}\isamarkuptrue%
-\isacommand{lemma}\isamarkupfalse%
-\ GodNecExists{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
+\ \ \isacommand{lemma}\isamarkupfalse%
+\ GodExistsNecessarily{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ G\isactrlsup A{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
-\ T{\isadigit{3}}\ T{\isadigit{4}}\ \isacommand{by}\isamarkupfalse%
+\ T{\isadigit{3}}\ T{\isadigit{5}}\ \isacommand{by}\isamarkupfalse%
 \ metis%
 %
 %
 \isanewline
-\isacommand{lemma}\isamarkupfalse%
+\ \ \isacommand{lemma}\isamarkupfalse%
 \ ModalCollapse{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
 %
 \ %
@@ -155,33 +149,31 @@ The conclusion of the argument can be proven (and with one fewer axiom, though m
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-We presented a shallow semantical embedding in Isabelle/HOL for an intensional higher-order modal logic
-(a successor of Montague/Gallin intensional logics) as introduced by M. Fitting in his textbook \emph{Types, Tableaus and 
-G\"odel's God} \cite{Fitting, J35}. 
-We employed this logic to formalize and verify all results relevant to the subsequent discussion of three different
-variants of the ontological argument: the first one by G\"odel himself (respectively, Scott), the second 
-one by Fitting and the last one by Anderson.%
+\noindent{We presented a shallow semantic embedding in Isabelle/HOL for an intensional higher-order modal logic
+(a successor of Montague/Gallin intensional logics) and employed this logic to formalize and verify
+three different variants of the ontological argument:
+the first one by G\"odel himself (resp. Scott), the second one by Fitting and the last one by Anderson.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-By employing an interactive theorem-prover like Isabelle, we were not only able to verify Fitting's results,
-but also to guarantee consistency. We could prove even stronger versions
-of many of the theorems and find better countermodels (i.e. with smaller cardinality) than the ones presented in his book.
+\noindent{By employing an interactive theorem-prover like Isabelle, we could not only verify Fitting's results,
+but also guarantee axiom's consistency. We could also prove even stronger versions of many theorems
+and find better countermodels (i.e. with smaller cardinality) than the ones presented in his book.
 Another interesting aspect was the possibility to explore the implications of alternative formalizations
-for definitions and theorems which shed light on interesting philosophical issues concerning entailment,
-essentialism and free will, which are currently the subject of some follow-up analysis.%
+of axioms and theorems which shed light on interesting philosophical issues concerning entailment,
+essentialism and free will.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-The latest developments in \emph{automated theorem proving} allow us to engage in much more experimentation
+\noindent{Latest developments in automated theorem proving allow us to engage in much more experimentation
 during the formalization and assessment of arguments than ever before. The potential reduction (of several orders of magnitude)
 in the time needed for proving or disproving theorems (compared to pen-and-paper proofs), results in almost real-time
 feedback about the suitability of our speculations. The practical benefits of computer-supported argumentation go beyond
-mere quantitative (easier, faster and more reliable proofs). The advantages are also qualitative, since it fosters a
-different approach to argumentation: We can now work iteratively (by trial-and-error) on an argument
-by making gradual adjustments to its definitions, axioms and theorems (and getting instant feedback).
-This allows us to continuously expose and revise the assumptions we indirectly commit ourselves
-everytime we opt for some particular formalization.%
+mere quantitative aspects (easier, faster and more reliable proofs). The advantages are also qualitative,
+since a significantly different approach to argumentation is fostered: We can now work iteratively (by trial-and-error)
+on an argument by making gradual adjustments to its definitions, axioms and theorems. This allows us to continuously
+expose and revise the assumptions we indirectly commit ourselves to every time we opt for some particular formalization.
+}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 %

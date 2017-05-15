@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: KI2017_IHOML.aux
+The style file: abbrv.bst
+Database file #1: KI2017_IHOML.bib
+Warning--empty volume in GoedelNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for GoedelNotes to crossref sobel2004logic
+Warning--empty volume in ScottNotes's crossref of sobel2004logic
+Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
+You've used 23 entries,
+            2118 wiz_defined-function locations,
+            670 strings with 7512 characters,
+and the built_in function-call counts, 7843 in all, are:
+= -- 765
+> -- 306
+< -- 14
++ -- 119
+- -- 92
+* -- 495
+:= -- 1257
+add.period$ -- 78
+call.type$ -- 23
+change.case$ -- 103
+chr.to.int$ -- 0
+cite$ -- 27
+duplicate$ -- 359
+empty$ -- 675
+format.name$ -- 92
+if$ -- 1734
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 29
+newline$ -- 119
+num.names$ -- 58
+pop$ -- 137
+preamble$ -- 1
+purify$ -- 86
+quote$ -- 0
+skip$ -- 260
+stack$ -- 0
+substring$ -- 420
+swap$ -- 107
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 80
+warning$ -- 4
+while$ -- 77
+width$ -- 25
+write$ -- 264
+(There were 4 warnings)

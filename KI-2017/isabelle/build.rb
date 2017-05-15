@@ -7,7 +7,7 @@ require 'fileutils'
 
 @pattern = /\(\*\*([\s\S]*?)\*\)/
 @comment = '--\\<open> \1 \\<close>'
-@text = 'text\\<open> \1 \\<close>'
+@text = 'text\\<open>\\noindent{\1}\\<close>'
 @gen = 'generated/'
 @doc = 'document'
 

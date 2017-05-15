@@ -15,7 +15,7 @@ A.~Anderson and M.~Gettings.
   Science, and Physics: Lecture Notes in Logic 6}}, pages 167--172. {Springer},
   1996.
 
-\bibitem{anderson90:_some_emend_of_goedel_ontol_proof}
+\bibitem{anderson90}
 C.~Anderson.
 \newblock Some emendations of {G{\"o}del's} ontological proof.
 \newblock {\em Faith and Philosophy}, 7(3), 1990.
@@ -53,6 +53,11 @@ C.~Benzm{\"u}ller, A.~Steen, and M.~Wisniewski.
 \newblock In S.~Krajewski and P.~Balcerowicz, editors, {\em Handbook of the 2nd
   World Congress on Logic and Religion, Warsaw, Poland}, page~2, 2017.
 
+\bibitem{J32}
+C.~Benzm{\"u}ller, L.~Weber, and B.~Woltzenlogel-Paleo.
+\newblock Computer-assisted analysis of the {Anderson-H\'{a}jek} controversy.
+\newblock {\em Logica Universalis}, 11(1):139--151, 2017.
+
 \bibitem{C55}
 C.~Benzm{\"u}ller and B.~Woltzenlogel~Paleo.
 \newblock The inconsistency in {G{\"o}del’s} ontological argument: A success
@@ -78,6 +83,11 @@ J.~Blanchette and T.~Nipkow.
   relational model finder.
 \newblock In {\em Proc. of ITP 2010}, number 6172 in LNCS, pages 131--146.
   Springer, 2010.
+
+\bibitem{FitelsonZ07}
+B.~Fitelson and E.~N. Zalta.
+\newblock Steps toward a computational metaphysics.
+\newblock {\em J. Philosophical Logic}, 36(2):227--247, 2007.
 
 \bibitem{Fitting}
 M.~Fitting.
@@ -109,11 +119,6 @@ K.~G\"odel.
 P.~H{\'{a}}jek.
 \newblock A new small emendation of {G\"{o}del's} ontological proof.
 \newblock {\em Studia Logica}, 71(2):149--164, 2002.
-
-\bibitem{kripke1980}
-S.~Kripke.
-\newblock {\em Naming and Necessity}.
-\newblock Harvard University Press, 1980.
 
 \bibitem{ScottNotes}
 D.~Scott.
