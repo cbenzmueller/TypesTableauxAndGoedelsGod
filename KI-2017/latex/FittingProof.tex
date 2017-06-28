@@ -16,23 +16,21 @@
 \noindent{In this section we consider Fitting's solution to the objections raised in his discussion of G\"odel's Argument (\cite{Fitting}, pp. 164-9), 
 especially the problem of modal collapse, which has been metaphysically interpreted as implying a rejection of free will.
 In G\"odel's variant, positiveness and essence were thought of as predicates applying to \emph{intensional} properties and
-correspondingly formalized using intensional types for their arguments (\isa{{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}} and \isa{{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}} respectively).
-In this variant, Fitting chooses to reformulate these definitions using \emph{extensional} types (\isa{{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}} and \isa{{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}}) instead,
+correspondingly formalized using intensional types for their arguments (\isa{{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymrangle}} and \isa{{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isacharcomma}e{\isasymrangle}} respectively).
+In this variant, Fitting chooses to reformulate these definitions using \emph{extensional} types (\isa{{\isasymup}{\isasymlangle}{\isasymlangle}e{\isasymrangle}{\isasymrangle}} and \isa{{\isasymup}{\isasymlangle}{\isasymlangle}e{\isasymrangle}{\isacharcomma}e{\isasymrangle}}) instead,
 and makes the corresponding adjustments to the rest of the argument (to ensure type correctness).
-\footnote{Fitting's original treatment in \cite{Fitting} left several details unspecified and
-we had to fill in the gaps by choosing appropriate formalization variants (see \cite{J35} for details).}
-This has some philosophical repercusions; e.g. while we could say before that honesty (as concept) was a
+This has some philosophical repercussions; e.g. while we could say before that honesty (as concept) was a
 positive property, now we can only talk of its extension at some world and say of some group of people
-that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has also been proven rigid in this variant).}%
+that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has also been proven rigid in this variant).\footnote{
+In what follows, the `\isa{{\isasymlparr}{\isacharunderscore}{\isasymrparr}}' parentheses are used to convert an extensional object into its `rigid'
+intensional counterpart (e.g. \isa{{\isasymlparr}{\isasymphi}{\isasymrparr}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}}).}}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
-\ Positiveness{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
+\ Positiveness{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}e{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymP}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ Entailment{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}{\isadigit{6}}{\isadigit{0}}{\isacharparenright}\isanewline
-\ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}X\ {\isasymRrightarrow}\ Y\ {\isasymequiv}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Ez{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}\ \isactrlbold {\isasymrightarrow}\ {\isasymlparr}Y\ z{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\ \ \isanewline
+\ Entails{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}e{\isasymrangle}{\isacharcomma}{\isasymlangle}e{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}{\isachardoublequoteopen}{\isasymRrightarrow}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}X{\isasymRrightarrow}Y\ {\isasymequiv}\ \isactrlbold {\isasymbox}{\isacharparenleft}\isactrlbold {\isasymforall}\isactrlsup Az{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}\isactrlbold {\isasymrightarrow}{\isasymlparr}Y\ z{\isasymrparr}{\isacharparenright}{\isachardoublequoteclose}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
-\ Essence{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isacharcomma}{\isasymzero}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\isanewline
-\ \ \ \ \ \ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isasymlparr}Y\ x{\isasymrparr}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymlparr}Z\ x{\isasymrparr}\ \isactrlbold {\isasymrightarrow}\ Y\ {\isasymRrightarrow}\ Z{\isacharparenright}{\isachardoublequoteclose}%
+\ Essence{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymlangle}e{\isasymrangle}{\isacharcomma}e{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymE}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymE}\ Y\ x\ {\isasymequiv}\ {\isasymlparr}Y\ x{\isasymrparr}\ \isactrlbold {\isasymand}\ {\isacharparenleft}\isactrlbold {\isasymforall}Z{\isachardot}{\isasymlparr}Z\ x{\isasymrparr}\isactrlbold {\isasymrightarrow}{\isacharparenleft}Y{\isasymRrightarrow}Z{\isacharparenright}{\isacharparenright}{\isachardoublequoteclose}%
 %
 %
 %
@@ -56,7 +54,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
   work with \emph{relativized} extensional terms now.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymlangle}{\isasymzero}{\isasymrangle}{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Ez{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymforall}X{\isacharcolon}{\isacharcolon}{\isasymlangle}e{\isasymrangle}{\isachardot}\ {\isasymP}\ X\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymdiamond}{\isacharparenleft}\isactrlbold {\isasymexists}\isactrlsup Az{\isachardot}\ {\isasymlparr}X\ z{\isasymrparr}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -66,7 +64,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
 %
 \ \isanewline
 \ \ \isacommand{theorem}\isamarkupfalse%
-\ T{\isadigit{3}}deRe{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{3}}deRe{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup A\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -86,22 +84,27 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
 %
 %
 \begin{isamarkuptext}%
-\noindent{
-  Following theorem could be formalized in two variants (drawing on the \emph{de re/de dicto} distinction).
-  We prove both of them valid and show how the argument splits, culminating in two non-equivalent versions
-  of the conclusion, both of which are proven valid.}%
+\noindent{The following theorem could be formalized in two variants\footnote{Fitting's original
+treatment in \cite{Fitting} left several details unspecified and
+we had to fill in the gaps by choosing appropriate formalization variants (see \cite{J35} for details).}
+(drawing on the \emph{de re/de dicto} distinction).
+We prove both of them valid and show how the argument splits, culminating in two non-equivalent versions
+of the conclusion, both of which are proven valid.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{4}}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{4}}v{\isadigit{1}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{proof}\isamarkupfalse%
-\ {\isacharminus}%
+\ {\isacharminus}\ %
+\isamarkupcmt{not shown%
+}
+%
 %
 %
 \ \ \ \ \isanewline
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{4}}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{4}}v{\isadigit{2}}{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -115,7 +118,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
    (the \emph{S5} axioms are no longer needed).}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{5}}v{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isasymlongrightarrow}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{5}}v{\isadigit{1}}{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isasymlongrightarrow}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -125,7 +128,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
 %
 \isanewline
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ T{\isadigit{5}}v{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ T{\isadigit{5}}v{\isadigit{2}}{\isacharcolon}{\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymdiamond}\isactrlbold {\isasymexists}\isactrlsup A\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}\ {\isasymlongrightarrow}\ {\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -138,7 +141,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
 \noindent{Necessary Existence of God (\emph{de dicto} and \emph{de re} readings).}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ GodNecExists{\isacharunderscore}deDicto{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ GodNecExists{\isacharunderscore}deDicto{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}\isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -148,7 +151,7 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
 %
 \isanewline
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ GodNecExists{\isacharunderscore}deRe{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup E\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
+\ GodNecExists{\isacharunderscore}deRe{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}{\isasymlambda}X{\isachardot}\ \isactrlbold {\isasymbox}\isactrlbold {\isasymexists}\isactrlsup A\ X{\isacharparenright}\ \isactrlbold {\isasymdown}G{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{using}\isamarkupfalse%
@@ -162,8 +165,8 @@ that they are honest (necessarily honest, in fact, because \isa{{\isasymP}} has 
   for the domain of individuals are found by \emph{Nitpick} (the countermodel shown in Fitting's book has cardinality of \emph{two}).}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{lemma}\isamarkupfalse%
-\ {\isachardoublequoteopen}equivalence\ aRel{\isasymLongrightarrow}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}{\isacharparenleft}{\isasymPhi}\isactrlbold {\isasymrightarrow}{\isacharparenleft}\isactrlbold {\isasymbox}\ {\isasymPhi}{\isacharparenright}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
-{\isacharbrackleft}card\ {\isacharprime}t{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ i{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
+\ {\isachardoublequoteopen}equivalence\ aRel{\isasymLongrightarrow}{\isasymlfloor}\isactrlbold {\isasymforall}{\isasymPhi}{\isachardot}\ {\isasymPhi}\isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isasymPhi}{\isasymrfloor}{\isachardoublequoteclose}\ \isacommand{nitpick}\isamarkupfalse%
+{\isacharbrackleft}card\ e{\isacharequal}{\isadigit{1}}{\isacharcomma}\ card\ w{\isacharequal}{\isadigit{2}}{\isacharbrackright}%
 \ %
 %
 \isacommand{oops}\isamarkupfalse%

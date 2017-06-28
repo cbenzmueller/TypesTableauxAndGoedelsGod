@@ -2,7 +2,7 @@
 
 \bibitem{Zalta15}
 J.~Alama, P.~E. Oppenheimer, and E.~N. Zalta.
-\newblock Automating leibniz's theory of concepts.
+\newblock Automating {L}eibniz's theory of concepts.
 \newblock In A.~P. Felty and A.~Middeldorp, editors, {\em Automated Deduction -
   {CADE-25} - 25th International Conference on Automated Deduction, Berlin,
   Germany, August 1-7, 2015, Proceedings}, volume 9195 of {\em LNCS}, pages
@@ -32,14 +32,6 @@ C.~Benzm{\"u}ller, M.~Claus, and N.~Sultana.
 \newblock In C.~Kaliszyk and A.~Paskevich, editors, {\em PxTP 2015}, volume
   186, pages 27--41, Berlin, Germany, 2015. EPTCS.
 
-\bibitem{ECAI}
-C.~Benzm{\"u}ller and B.~W. Paleo.
-\newblock Automating {G\"{o}del's} ontological proof of {God}'s existence with
-  higher-order automated theorem provers.
-\newblock In T.~Schaub, G.~Friedrich, and B.~O'Sullivan, editors, {\em ECAI
-  2014}, volume 263 of {\em Frontiers in Artificial Intelligence and
-  Applications}, pages 93 -- 98. IOS Press, 2014.
-
 \bibitem{J23}
 C.~Benzm{\"u}ller and L.~Paulson.
 \newblock Quantified multimodal logics in simple type theory.
@@ -57,6 +49,14 @@ C.~Benzm{\"u}ller, A.~Steen, and M.~Wisniewski.
 C.~Benzm{\"u}ller, L.~Weber, and B.~Woltzenlogel-Paleo.
 \newblock Computer-assisted analysis of the {Anderson-H\'{a}jek} controversy.
 \newblock {\em Logica Universalis}, 11(1):139--151, 2017.
+
+\bibitem{ECAI}
+C.~Benzm{\"u}ller and B.~{Woltzenlogel Paleo}.
+\newblock Automating {G\"{o}del's} ontological proof of {God}'s existence with
+  higher-order automated theorem provers.
+\newblock In T.~Schaub, G.~Friedrich, and B.~O'Sullivan, editors, {\em ECAI
+  2014}, volume 263 of {\em Frontiers in Artificial Intelligence and
+  Applications}, pages 93 -- 98. IOS Press, 2014.
 
 \bibitem{C55}
 C.~Benzm{\"u}ller and B.~Woltzenlogel~Paleo.
