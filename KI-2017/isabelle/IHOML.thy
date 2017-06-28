@@ -23,7 +23,10 @@ nitpick_params[user_axioms=true, show_all, expect=genuine, format = 3, atoms e =
 section \<open>Introduction\<close>
   
 (**The first part of this paper introduces a shallow semantic embedding of
-an intensional higher-order modal logic (which we named IHOML) in classical higher-order logic (Isabelle/HOL).
+an intensional higher-order modal logic (IHOML) in classical higher-order logic (Isabelle/HOL\footnote{In this paper 
+we work with the Isabelle/HOL proof assistant  @{cite "Nipkow-Paulson-Wenzel:2002"}, which explains the chosen abbreviation. 
+Generally, however, the work presented here can be mapped to any other 
+system implementing Church's simple type theory  @{cite "Church40"}.}).
 IHOML, as introduced by Fitting @{cite "Fitting"}, is a modification of the
 intensional logic originally developed by Montague and later expanded by Gallin @{cite "Gallin75"} by building upon Church's
 type theory and Kripke's possible-world semantics. Our approach builds on previous work on the semantic embedding of
@@ -34,41 +37,45 @@ IHOML, which has not been automated before, has several applications, e.g. towar
 of natural language rational arguments as envisioned in the new DFG Schwerpunktprogramm RATIO (SPP 1999).*)
   
 (**In the second part, we present an exemplary, non-trivial application of this reasoning infrastructure:
-A study on \emph{computational metaphysics},\footnote{This term was originally coined by Fitelson and Zalta (see @{cite "FitelsonZ07"}).
+A study on \emph{computational metaphysics}\footnote{This term was originally coined by Fitelson and Zalta (see @{cite "FitelsonZ07"}).
 Computational metaphysics is an emerging, interdisciplinary field aiming at the rigorous formalization and deep logical assessment
-of philosophical arguments in an automated reasoning environment.}
+of philosophical arguments in an automated reasoning environment.},
 the computer-formalization and critical assessment of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"})
 modern variant of the ontological argument and two of its proposed emendations as discussed in @{cite "Fitting"}.
 G\"odel's ontological argument is amongst the most discussed formal proofs in modern literature.
 Several authors (e.g. @{cite "anderson90,AndersonGettings,bjordal99,Hajek2002,Fitting"}) 
 have proposed emendations with the aim of retaining its essential result 
 (the necessary existence of God) while at the same time avoiding the \emph{modal collapse} (whatever is the case is so necessarily)
-@{cite "Sobel,sobel2004logic"}, which is an undesirable side-effect of the axioms postulated by G\"odel (resp. Scott),
-since it essentially states that there are no contingent truths and everything is determined.*)
+@{cite "Sobel,sobel2004logic"}. The modal collapse is an undesirable side-effect of the axioms postulated by G\"odel (resp. Scott). 
+It essentially states that there are no contingent truths and everything is determined.*)
   
-(**Related work has formalized several of these variants on the computer and verified or falsified them. For example,
+(**Related work\footnote{More loosely related work studied  Anselm's older, non-modal version of the ontological argument directly in 
+Prover9 @{cite "oppenheimera11"} and PVS @{cite "rushby13"}.} has formalized several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axiom's system has been shown inconsistent @{cite "C55,C60"},
 while Scott's version has been verified @{cite "ECAI"}. Further experiments, contributing amongst others
 to the clarification of a related debate regarding the redundancy of some axioms in Anderson's emendation,
 are presented and discussed in @{cite "J32"}.
-The enabling technique in all of these experiments has been shallow semantic embeddings of \emph{extensional}
-higher-order modal logics in classical higher-order logic (see @{cite "J23,R59"} and the references therein).*)
+The enabling technique in these case studies has been shallow semantic embeddings of \emph{extensional}
+higher-order modal logics in classical higher-order logic (see @{cite "J23,R59"} and the references therein).\footnote{In contrast to deep semantical embeddings, 
+where the embedded logic is presented as an abstract datatype, our shallow semantical embeddings avoid inductive 
+definitions and maximise the reuse of logical operations from the meta-level. In particular, tedious new binding mechanisms are avoided 
+in our approach.}*)
 
-(**In contrast to those, Fitting's variant is based on \emph{intensional} higher-order modal logic.
+(**In contrast to the related work, Fitting's variant is based on \emph{intensional} higher-order modal logic.
 Our experiments confirm that Fitting's argument, as presented in his textbook @{cite "Fitting"},
 is valid and that it avoids the modal collapse as intended.
 Due to lack of space, we refer the reader to our (computer-verified) paper @{cite "J35"} for further results.
 That paper has been written directly in the Isabelle/HOL proof assistant and requires some familiarity
 with this system and with Fitting's textbook.*)
 (**The work presented here originates from the \emph{Computational Metaphysics} lecture course held at the FU Berlin
-in Summer 2016 @{cite "C65"}.*)
+in Summer 2016 @{cite "C58"}.*)
 
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
 
 subsection \<open>Type Declarations\<close>  
 (**Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
-We follow as closely as possible the syntax given by Fitting (see p. 86), according to which,
+We follow as closely as possible the syntax given by Fitting (see p. 86), according to which, 
 for any extensional type @{text "\<tau>"}, @{text "\<up>\<tau>"} becomes its corresponding intensional type. For instance,
 a set of (red) objects has the extensional type @{text "\<langle>e\<rangle>"}, whereas the concept `red' has intensional type @{text "\<up>\<langle>e\<rangle>"}.*)
 
