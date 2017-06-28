@@ -37,8 +37,8 @@ IHOML, which has not been automated before, has several applications, e.g. towar
 of natural language rational arguments as envisioned in the new DFG Schwerpunktprogramm RATIO (SPP 1999).*)
   
 (**In the second part, we present an exemplary, non-trivial application of this reasoning infrastructure:
-A study on \emph{computational metaphysics}\footnote{This term was originally coined by Fitelson and Zalta (see @{cite "FitelsonZ07"}).
-Computational metaphysics is an emerging, interdisciplinary field aiming at the rigorous formalization and deep logical assessment
+A study on \emph{computational metaphysics}\footnote{This term was originally coined by Fitelson and Zalta in @{cite "FitelsonZ07"} and describes
+an emerging, interdisciplinary field aiming at the rigorous formalization and deep logical assessment
 of philosophical arguments in an automated reasoning environment.},
 the computer-formalization and critical assessment of G\"odel's @{cite "GoedelNotes"} (resp. Dana Scott's @{cite "ScottNotes"})
 modern variant of the ontological argument and two of its proposed emendations as discussed in @{cite "Fitting"}.
@@ -56,9 +56,9 @@ while Scott's version has been verified @{cite "ECAI"}. Further experiments, con
 to the clarification of a related debate regarding the redundancy of some axioms in Anderson's emendation,
 are presented and discussed in @{cite "J32"}.
 The enabling technique in these case studies has been shallow semantic embeddings of \emph{extensional}
-higher-order modal logics in classical higher-order logic (see @{cite "J23,R59"} and the references therein).\footnote{In contrast to deep semantical embeddings, 
-where the embedded logic is presented as an abstract datatype, our shallow semantical embeddings avoid inductive 
-definitions and maximise the reuse of logical operations from the meta-level. In particular, tedious new binding mechanisms are avoided 
+higher-order modal logics in classical higher-order logic (see @{cite "J23,R59"} and the references therein).\footnote{In contrast to deep semantic embeddings, 
+where the embedded logic is presented as an abstract datatype, our shallow semantic embeddings avoid inductive 
+definitions and maximize the reuse of logical operations from the meta-level. In particular, tedious new binding mechanisms are avoided 
 in our approach.}*)
 
 (**In contrast to the related work, Fitting's variant is based on \emph{intensional} higher-order modal logic.
@@ -67,15 +67,15 @@ is valid and that it avoids the modal collapse as intended.
 Due to lack of space, we refer the reader to our (computer-verified) paper @{cite "J35"} for further results.
 That paper has been written directly in the Isabelle/HOL proof assistant and requires some familiarity
 with this system and with Fitting's textbook.*)
+  
 (**The work presented here originates from the \emph{Computational Metaphysics} lecture course held at the FU Berlin
 in Summer 2016 @{cite "C58"}.*)
-
 
 section \<open>Embedding of Intensional Higher-Order Modal Logic\<close>
 
 subsection \<open>Type Declarations\<close>  
 (**Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
-We follow as closely as possible the syntax given by Fitting (see p. 86), according to which, 
+We follow as closely as possible the syntax given by Fitting (@{cite "Fitting"} p. 86), according to which, 
 for any extensional type @{text "\<tau>"}, @{text "\<up>\<tau>"} becomes its corresponding intensional type. For instance,
 a set of (red) objects has the extensional type @{text "\<langle>e\<rangle>"}, whereas the concept `red' has intensional type @{text "\<up>\<langle>e\<rangle>"}.*)
 
@@ -83,25 +83,22 @@ a set of (red) objects has the extensional type @{text "\<langle>e\<rangle>"}, w
   typedecl w                    (**type for possible worlds*)
   type_synonym wo = "(w\<Rightarrow>bool)" (**type for world-dependent formulas*)
     
-(**Aliases for common complex types (predicates and relations):*)
+(**Aliases for some common complex types (predicates and relations).*)
   type_synonym ie="(w\<Rightarrow>e)" ("\<up>e") (**individual concepts (map worlds to objects)*)
   type_synonym se="(e\<Rightarrow>bool)" ("\<langle>e\<rangle>") (**(extensional) sets*)
   type_synonym ise="(e\<Rightarrow>wo)" ("\<up>\<langle>e\<rangle>") (**(intensional predicative) concepts*) 
   type_synonym sise="(\<up>\<langle>e\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>e\<rangle>\<rangle>") (**sets of concepts*) 
   type_synonym isise="(\<up>\<langle>e\<rangle>\<Rightarrow>wo)" ("\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>") (**2-order concepts*)
+  type_synonym see="(e\<Rightarrow>e\<Rightarrow>bool)" ("\<langle>e,e\<rangle>") (**(extensional) relations*)
+  type_synonym isee="(e\<Rightarrow>e\<Rightarrow>wo)" ("\<up>\<langle>e,e\<rangle>") (**(intensional) relational concepts*)
 (*<*)
   type_synonym sie=     "(\<up>e\<Rightarrow>bool)" ("\<langle>\<up>e\<rangle>")
   type_synonym isie=    "(\<up>e\<Rightarrow>wo)" ("\<up>\<langle>\<up>e\<rangle>")
   type_synonym sisise=  "(\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>\<Rightarrow>bool)" ("\<langle>\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>\<rangle>")
   type_synonym isisise= "(\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>\<Rightarrow>wo)"  ("\<up>\<langle>\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>\<rangle>")
   type_synonym sse =    "\<langle>e\<rangle>\<Rightarrow>bool"         ("\<langle>\<langle>e\<rangle>\<rangle>")
-  type_synonym isse =   "\<langle>e\<rangle>\<Rightarrow>wo"          ("\<up>\<langle>\<langle>e\<rangle>\<rangle>") 
-(*>*)
-    
-  type_synonym see="(e\<Rightarrow>e\<Rightarrow>bool)" ("\<langle>e,e\<rangle>") (**(extensional) relations*)
-  type_synonym isee="(e\<Rightarrow>e\<Rightarrow>wo)" ("\<up>\<langle>e,e\<rangle>") (**(intensional) relational concepts*)
-  type_synonym isisee="(\<up>\<langle>e\<rangle>\<Rightarrow>e\<Rightarrow>wo)" ("\<up>\<langle>\<up>\<langle>e\<rangle>,e\<rangle>") (**2-order relational concepts*) 
-(*<*)  
+  type_synonym isse =   "\<langle>e\<rangle>\<Rightarrow>wo"          ("\<up>\<langle>\<langle>e\<rangle>\<rangle>")
+  type_synonym isisee="(\<up>\<langle>e\<rangle>\<Rightarrow>e\<Rightarrow>wo)" ("\<up>\<langle>\<up>\<langle>e\<rangle>,e\<rangle>") (**2-order relational concepts*)
   type_synonym sieie="(\<up>e\<Rightarrow>\<up>e\<Rightarrow>bool)"       ("\<langle>\<up>e,\<up>e\<rangle>")
   type_synonym isieie =     "(\<up>e\<Rightarrow>\<up>e\<Rightarrow>wo)"        ("\<up>\<langle>\<up>e,\<up>e\<rangle>")
   type_synonym ssese =      "(\<langle>e\<rangle>\<Rightarrow>\<langle>e\<rangle>\<Rightarrow>bool)"     ("\<langle>\<langle>e\<rangle>,\<langle>e\<rangle>\<rangle>")
@@ -126,8 +123,7 @@ subsection \<open>Logical Constants as Truth-Sets\<close>
   abbreviation mxor   :: "wo\<Rightarrow>wo\<Rightarrow>wo" (infix"\<^bold>\<oplus>"50)
     where "\<phi>\<^bold>\<oplus>\<psi> \<equiv> \<lambda>w. (\<phi> w)\<oplus>(\<psi> w)"
   abbreviation negpred :: "\<langle>e\<rangle>\<Rightarrow>\<langle>e\<rangle>" ("\<rightharpoondown>_"[52]53) 
-    where "\<rightharpoondown>\<Phi> \<equiv> \<lambda>x. \<not>(\<Phi> x)" 
-  
+    where "\<rightharpoondown>\<Phi> \<equiv> \<lambda>x. \<not>(\<Phi> x)"  
 (*>*)      
 (**\emph{Possibilist} quantifiers are embedded as follows.\footnote{Possibilist and actualist quantification
  can be seen as the semantic counterparts of the concepts of possibilism and actualism in the metaphysics of modality.
@@ -144,8 +140,7 @@ They relate to natural-language expressions such as `there is', `exists', `is ac
 at every possible world. This standard technique has been referred to as \emph{existence relativization} (@{cite "fitting98"}, p. 106),
 highlighting the fact that this predicate can be seen as a kind of meta-logical `existence predicate' telling us
 which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language.*)
-  consts Actualized::"\<up>\<langle>e\<rangle>" (infix "actualizedAt"(*<*)70(*>*))  
-
+  consts Actualized::"\<up>\<langle>e\<rangle>" (infix "actualizedAt"(*<*)70(*>*))
   abbreviation mforallAct::"\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>" ("\<^bold>\<forall>\<^sup>A") (**actualist variants use superscript*)
     where "\<^bold>\<forall>\<^sup>A\<Phi> \<equiv> \<lambda>w.\<forall>x. (x actualizedAt w)\<longrightarrow>(\<Phi> x w)"
   abbreviation mexistsAct::"\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>" ("\<^bold>\<exists>\<^sup>A")
@@ -156,7 +151,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
   abbreviation mexistsActB::"\<up>\<langle>\<up>\<langle>e\<rangle>\<rangle>" (binder"\<^bold>\<exists>\<^sup>A"[8]9)
     where "\<^bold>\<exists>\<^sup>Ax. (\<phi> x) \<equiv> \<^bold>\<exists>\<^sup>A\<phi>"
 (*>*)      
-(**Frame's accessibility relation and modal operators.*)  
+(**Frame's accessibility relation and modal operators.*)
   consts aRel::"w\<Rightarrow>w\<Rightarrow>bool" (infix "r"(*<*)70(*>*))
   abbreviation mbox :: "wo\<Rightarrow>wo" ("\<^bold>\<box>_"(*<*)[52]53(*>*)) where "\<^bold>\<box>\<phi> \<equiv> \<lambda>w.\<forall>v. (w r v)\<longrightarrow>(\<phi> v)"
   abbreviation mdia :: "wo\<Rightarrow>wo" ("\<^bold>\<diamond>_"(*<*)[52]53(*>*)) where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
@@ -167,7 +162,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
     where "x \<^bold>\<approx>\<^sup>C y \<equiv> \<lambda>w. \<forall>v. (x v) = (y v)"
   abbreviation meqL:: "\<up>\<langle>e,e\<rangle>" (infix "\<^bold>\<approx>\<^sup>L"(*<*)52(*>*)) (**Leibniz equality for individuals*)
     where "x \<^bold>\<approx>\<^sup>L y \<equiv> \<lambda>w. \<forall>\<phi>. (\<phi> x w)\<longrightarrow>(\<phi> y w)"
-      
+
 subsection \<open>\emph{Extension-of} Operator\<close> 
 (**According to Fitting's semantics (@{cite "Fitting"}, pp. 92-4), @{text "\<down>"} is an unary operator applying only to 
  intensional terms. A term of the form @{text "\<down>\<alpha>"} designates the extension of the intensional object designated by 
@@ -176,8 +171,8 @@ subsection \<open>\emph{Extension-of} Operator\<close>
  classifies as red (its extension). We can further state that the intensional term \emph{r} of type @{text "\<up>\<langle>e\<rangle>"} designates the concept `red'.
  As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
  We will sometimes refer to an intensional object explicitly as `rigid', implying that its (rigidly) designated function has
- the same extension in all possible worlds.\footnote{The notion of \emph{rigid designation} was introduced by Kripke in his seminal 
- book \emph{Naming and Necessity}, where he discusses its many interesting ramifications in logic and the philosophy of language.}*)
+ the same extension in all possible worlds.\footnote{The notion of \emph{rigid designation} was introduced by Kripke in @{cite "kripke1980"},
+ where he discusses its many interesting ramifications in logic and the philosophy of language.}*)
 
 (**Terms of the form @{text "\<down>\<alpha>"} are called \emph{relativized} (extensional) terms; they are always derived
 from intensional terms and their type is extensional (in the color example @{text "\<down>r"} would be of type @{text "\<langle>e\<rangle>"}).
@@ -212,17 +207,15 @@ to the extension of the original intensional term @{text "\<alpha>"} at that wor
 subsection \<open>Verifying the Embedding\<close>
 (**The above definitions introduce modal logic \emph{K} with possibilist and actualist quantifiers,
 as evidenced by the following tests.\footnote{We prove theorems in
-Isabelle by using the keyword `by' followed by the name of some proof method.
+Isabelle by using the keyword `by' followed by the name of a proof method.
 Some methods used here are: \emph{simp} (term rewriting), \emph{blast} (tableaus), \emph{meson} (model elimination),
 \emph{metis} (ordered resolution and paramodulation), \emph{auto} (classical reasoning and term rewriting)
 and \emph{force} (exhaustive search trying different tools). In our computer-formalization and assessment of Fitting's textbook @{cite "J35"},
 we provide further evidence that our embedded logic works as intended by verifying the book's theorems and examples.}*)
   
   abbreviation valid::"wo\<Rightarrow>bool" ("\<lfloor>_\<rfloor>") where "\<lfloor>\<psi>\<rfloor> \<equiv>  \<forall>w.(\<psi> w)" (**modal validity*)
-  
-(**Verifying \emph{K} principle and the \emph{necessitation} rule.*)
-  lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp    (**\emph{K} schema *)
-  lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp    (**necessitation*)
+  lemma K: "\<lfloor>(\<^bold>\<box>(\<phi> \<^bold>\<rightarrow> \<psi>)) \<^bold>\<rightarrow> (\<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<^bold>\<box>\<psi>)\<rfloor>" by simp   (**verifying \emph{K} principle*)
+  lemma NEC: "\<lfloor>\<phi>\<rfloor> \<Longrightarrow> \<lfloor>\<^bold>\<box>\<phi>\<rfloor>" by simp          (**verifying \emph{necessitation} rule*)
     
 (**Local consequence implies global consequence (not the other way round).\footnote{We utilize here
   (counter-)model finder \emph{Nitpick} @{cite "Nitpick"} for the first time.  
@@ -251,7 +244,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
     
 subsection\<open>Stability, Rigid Designation, \emph{De Dicto} and \emph{De Re}\<close>
     
-(**As mentioned before, intensional terms are trivially rigid. The following predicate tests whether an intensional
+(**Intensional terms are trivially rigid. This predicate tests whether an intensional
   predicate is `rigid' in the sense of denoting a world-independent function.*)   
   abbreviation rigid::"('t\<Rightarrow>wo)\<Rightarrow>wo" where "rigid \<tau> \<equiv> (\<lambda>\<beta>. \<^bold>\<box>((\<lambda>z. \<beta>\<^bold>\<approx>z) \<^bold>\<down>\<tau>)) \<^bold>\<down>\<tau>"
     
@@ -278,7 +271,7 @@ subsection\<open>Stability, Rigid Designation, \emph{De Dicto} and \emph{De Re}\
       
 subsection \<open>Useful Definitions for the Axiomatization of Further Logics\<close>
 
-(**The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
+(**The best-known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
  combinations of the following axioms: *)
   abbreviation T  where "T \<equiv> \<^bold>\<forall>\<phi>. \<^bold>\<box>\<phi> \<^bold>\<rightarrow> \<phi>"
   abbreviation B  where "B \<equiv> \<^bold>\<forall>\<phi>. \<phi> \<^bold>\<rightarrow>  \<^bold>\<box>\<^bold>\<diamond>\<phi>"

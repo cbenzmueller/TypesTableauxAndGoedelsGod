@@ -1,14 +1,17 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/MacPorts 2016_4) (preloaded format=pdflatex 2017.1.5)  28 JUN 2017 14:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.12)  28 JUN 2017 19:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\input KI2017_IHOML.tex
-(./KI2017_IHOML.tex (./llncs.cls
+**KI2017_IHOML.tex
+(./KI2017_IHOML.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(./llncs.cls
 Document Class: llncs 2015/06/24 v2.20 
  LaTeX document class for Lecture Notes in Computer Science
-(/opt/local/share/texmf-texlive/tex/latex/base/article.cls
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/opt/local/share/texmf-texlive/tex/latex/base/size10.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -23,8 +26,8 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/opt/local/share/texmf-texlive/tex/latex/tools/multicol.sty
-Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \c@tracingmulticols=\count87
 \mult@box=\box26
 \multicol@leftmargin=\dimen103
@@ -125,13 +128,13 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \c@solution=\count114
 \c@remark=\count115
 \headlineindent=\dimen124
-) (/opt/local/share/texmf-texlive/tex/latex/base/makeidx.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks18
 \symAMSa=\mathgroup4
@@ -142,7 +145,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (./isabelle.sty
 \isa@parindent=\dimen125
 \isa@parskip=\dimen126
- (/opt/local/share/texmf-texlive/tex/latex/comment/comment.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write3
 
 Excluding comment 'comment') Include comment 'isadelimtheory'
@@ -167,28 +170,28 @@ LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Try loading font information for U+msa on input line 44.
- (/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 44.
- (/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (0.10622pt too wide) in paragraph at lines 55--56
-\OT1/cmr/bx/n/9 Keywords:\OT1/cmr/m/n/9 Automated The-o-rem Prov-ing. Com-pu-ta
--tional Meta-physics.
+Overfull \hbox (0.10622pt too wide) in paragraph at lines 56--57
+\OT1/cmr/bx/n/9 Keywords:\OT1/cmr/m/n/9 Automated The-o-rem Prov-ing, Com-pu-ta
+-tional Meta-physics,
  []
 
 (./IHOML.tex [1
 
 
 
-{/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] [5]) (./GoedelProof.tex [6] [7]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+[3] [4] [5]) (./GoedelProof.tex [6] [7]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 162.
 
 
-(/opt/local/share/texmf-texlive/tex/latex/base/omscmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <9> not available
@@ -199,40 +202,39 @@ LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <9> not available
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no ™ in font cmr9!
-) [13] (./KI2017_IHOML.aux) ) 
+ [13]) [14] (./KI2017_IHOML.aux) ) 
 Here is how much of TeX's memory you used:
- 1650 strings out of 493014
- 19354 string characters out of 6135157
- 84633 words of memory out of 5000000
- 5184 multiletter control sequences out of 15000+600000
+ 1655 strings out of 493029
+ 19398 string characters out of 6136233
+ 82520 words of memory out of 5000000
+ 5182 multiletter control sequences out of 15000+600000
  15663 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,26p,872b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
-</opt/local/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmbsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/ams
-fonts/cmextra/cmbsy9.pfb></opt/local/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mbx9.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbxti1
-0.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt
-/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/local
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></opt/local/share
-/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></opt/local/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/share/texmf
--texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></opt/local/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/local/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmr9.pfb></opt/local/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmsy6.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmsy9.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmt
-i9.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam
-10.pfb>
-Output written on KI2017_IHOML.pdf (13 pages, 293070 bytes).
+ 29i,9n,26p,865b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cmextra/cmbsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on KI2017_IHOML.pdf (14 pages, 295192 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

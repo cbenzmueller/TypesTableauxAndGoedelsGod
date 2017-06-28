@@ -14,7 +14,10 @@
 %
 \begin{isamarkuptext}%
 \noindent{The first part of this paper introduces a shallow semantic embedding of
-an intensional higher-order modal logic (which we named IHOML) in classical higher-order logic (Isabelle/HOL).
+an intensional higher-order modal logic (IHOML) in classical higher-order logic (Isabelle/HOL\footnote{In this paper 
+we work with the Isabelle/HOL proof assistant  \cite{Nipkow-Paulson-Wenzel:2002}, which explains the chosen abbreviation. 
+Generally, however, the work presented here can be mapped to any other 
+system implementing Church's simple type theory  \cite{Church40}.}).
 IHOML, as introduced by Fitting \cite{Fitting}, is a modification of the
 intensional logic originally developed by Montague and later expanded by Gallin \cite{Gallin75} by building upon Church's
 type theory and Kripke's possible-world semantics. Our approach builds on previous work on the semantic embedding of
@@ -27,31 +30,35 @@ of natural language rational arguments as envisioned in the new DFG Schwerpunktp
 %
 \begin{isamarkuptext}%
 \noindent{In the second part, we present an exemplary, non-trivial application of this reasoning infrastructure:
-A study on \emph{computational metaphysics},\footnote{This term was originally coined by Fitelson and Zalta (see \cite{FitelsonZ07}).
-Computational metaphysics is an emerging, interdisciplinary field aiming at the rigorous formalization and deep logical assessment
-of philosophical arguments in an automated reasoning environment.}
+A study on \emph{computational metaphysics}\footnote{This term was originally coined by Fitelson and Zalta in \cite{FitelsonZ07} and describes
+an emerging, interdisciplinary field aiming at the rigorous formalization and deep logical assessment
+of philosophical arguments in an automated reasoning environment.},
 the computer-formalization and critical assessment of G\"odel's \cite{GoedelNotes} (resp. Dana Scott's \cite{ScottNotes})
 modern variant of the ontological argument and two of its proposed emendations as discussed in \cite{Fitting}.
 G\"odel's ontological argument is amongst the most discussed formal proofs in modern literature.
 Several authors (e.g. \cite{anderson90,AndersonGettings,bjordal99,Hajek2002,Fitting}) 
 have proposed emendations with the aim of retaining its essential result 
 (the necessary existence of God) while at the same time avoiding the \emph{modal collapse} (whatever is the case is so necessarily)
-\cite{Sobel,sobel2004logic}, which is an undesirable side-effect of the axioms postulated by G\"odel (resp. Scott),
-since it essentially states that there are no contingent truths and everything is determined.}%
+\cite{Sobel,sobel2004logic}. The modal collapse is an undesirable side-effect of the axioms postulated by G\"odel (resp. Scott). 
+It essentially states that there are no contingent truths and everything is determined.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\noindent{Related work has formalized several of these variants on the computer and verified or falsified them. For example,
+\noindent{Related work\footnote{More loosely related work studied  Anselm's older, non-modal version of the ontological argument directly in 
+Prover9 \cite{oppenheimera11} and PVS \cite{rushby13}.} has formalized several of these variants on the computer and verified or falsified them. For example,
 G\"odel's axiom's system has been shown inconsistent \cite{C55,C60},
 while Scott's version has been verified \cite{ECAI}. Further experiments, contributing amongst others
 to the clarification of a related debate regarding the redundancy of some axioms in Anderson's emendation,
 are presented and discussed in \cite{J32}.
-The enabling technique in all of these experiments has been shallow semantic embeddings of \emph{extensional}
-higher-order modal logics in classical higher-order logic (see \cite{J23,R59} and the references therein).}%
+The enabling technique in these case studies has been shallow semantic embeddings of \emph{extensional}
+higher-order modal logics in classical higher-order logic (see \cite{J23,R59} and the references therein).\footnote{In contrast to deep semantic embeddings, 
+where the embedded logic is presented as an abstract datatype, our shallow semantic embeddings avoid inductive 
+definitions and maximize the reuse of logical operations from the meta-level. In particular, tedious new binding mechanisms are avoided 
+in our approach.}}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\noindent{In contrast to those, Fitting's variant is based on \emph{intensional} higher-order modal logic.
+\noindent{In contrast to the related work, Fitting's variant is based on \emph{intensional} higher-order modal logic.
 Our experiments confirm that Fitting's argument, as presented in his textbook \cite{Fitting},
 is valid and that it avoids the modal collapse as intended.
 Due to lack of space, we refer the reader to our (computer-verified) paper \cite{J35} for further results.
@@ -61,7 +68,7 @@ with this system and with Fitting's textbook.}%
 %
 \begin{isamarkuptext}%
 \noindent{The work presented here originates from the \emph{Computational Metaphysics} lecture course held at the FU Berlin
-in Summer 2016 \cite{C65}.}%
+in Summer 2016 \cite{C58}.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \isamarkupsection{Embedding of Intensional Higher-Order Modal Logic%
@@ -74,7 +81,7 @@ in Summer 2016 \cite{C65}.}%
 %
 \begin{isamarkuptext}%
 \noindent{Since IHOML and Isabelle/HOL are both typed languages, we introduce a type-mapping between them.
-We follow as closely as possible the syntax given by Fitting (see p. 86), according to which,
+We follow as closely as possible the syntax given by Fitting (\cite{Fitting} p. 86), according to which, 
 for any extensional type \isa{{\isasymtau}}, \isa{{\isasymup}{\isasymtau}} becomes its corresponding intensional type. For instance,
 a set of (red) objects has the extensional type \isa{{\isasymlangle}e{\isasymrangle}}, whereas the concept `red' has intensional type \isa{{\isasymup}{\isasymlangle}e{\isasymrangle}}.}%
 \end{isamarkuptext}\isamarkuptrue%
@@ -94,7 +101,7 @@ a set of (red) objects has the extensional type \isa{{\isasymlangle}e{\isasymran
 }
 %
 \begin{isamarkuptext}%
-\noindent{Aliases for common complex types (predicates and relations):}%
+\noindent{Aliases for some common complex types (predicates and relations).}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ ie{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}w{\isasymRightarrow}e{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}e{\isachardoublequoteclose}{\isacharparenright}\ %
@@ -120,7 +127,7 @@ a set of (red) objects has the extensional type \isa{{\isasymlangle}e{\isasymran
 \ isise{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymRightarrow}wo{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{2-order concepts%
 }
-\ \ \ \ \isanewline
+\isanewline
 \ \ \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ see{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}e{\isasymRightarrow}e{\isasymRightarrow}bool{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlangle}e{\isacharcomma}e{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{(extensional) relations%
@@ -129,11 +136,6 @@ a set of (red) objects has the extensional type \isa{{\isasymlangle}e{\isasymran
 \ \ \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
 \ isee{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}e{\isasymRightarrow}e{\isasymRightarrow}wo{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}e{\isacharcomma}e{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{(intensional) relational concepts%
-}
-\isanewline
-\ \ \isacommand{type{\isacharunderscore}synonym}\isamarkupfalse%
-\ isisee{\isacharequal}{\isachardoublequoteopen}{\isacharparenleft}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymRightarrow}e{\isasymRightarrow}wo{\isacharparenright}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isacharcomma}e{\isasymrangle}{\isachardoublequoteclose}{\isacharparenright}\ %
-\isamarkupcmt{2-order relational concepts%
 }
 %
 \isamarkupsubsection{Logical Constants as Truth-Sets%
@@ -171,8 +173,7 @@ highlighting the fact that this predicate can be seen as a kind of meta-logical 
 which individuals \emph{actually} exist at a given world. This meta-logical concept does not appear in our object language.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{consts}\isamarkupfalse%
-\ Actualized{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}actualizedAt{\isachardoublequoteclose}{\isacharparenright}\ \ \isanewline
-\isanewline
+\ Actualized{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}actualizedAt{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mforallAct{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymrangle}{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymforall}\isactrlsup A{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{actualist variants use superscript%
@@ -222,8 +223,8 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
  classifies as red (its extension). We can further state that the intensional term \emph{r} of type \isa{{\isasymup}{\isasymlangle}e{\isasymrangle}} designates the concept `red'.
  As can be seen, intensional terms in IHOML designate functions on possible worlds and they always do it \emph{rigidly}. 
  We will sometimes refer to an intensional object explicitly as `rigid', implying that its (rigidly) designated function has
- the same extension in all possible worlds.\footnote{The notion of \emph{rigid designation} was introduced by Kripke in his seminal 
- book \emph{Naming and Necessity}, where he discusses its many interesting ramifications in logic and the philosophy of language.}}%
+ the same extension in all possible worlds.\footnote{The notion of \emph{rigid designation} was introduced by Kripke in \cite{kripke1980},
+ where he discusses its many interesting ramifications in logic and the philosophy of language.}}%
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -258,7 +259,7 @@ or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{
 \begin{isamarkuptext}%
 \noindent{The above definitions introduce modal logic \emph{K} with possibilist and actualist quantifiers,
 as evidenced by the following tests.\footnote{We prove theorems in
-Isabelle by using the keyword `by' followed by the name of some proof method.
+Isabelle by using the keyword `by' followed by the name of a proof method.
 Some methods used here are: \emph{simp} (term rewriting), \emph{blast} (tableaus), \emph{meson} (model elimination),
 \emph{metis} (ordered resolution and paramodulation), \emph{auto} (classical reasoning and term rewriting)
 and \emph{force} (exhaustive search trying different tools). In our computer-formalization and assessment of Fitting's textbook \cite{J35},
@@ -268,17 +269,14 @@ we provide further evidence that our embedded logic works as intended by verifyi
 \ valid{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}wo{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}{\isasymlfloor}{\isacharunderscore}{\isasymrfloor}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymlfloor}{\isasympsi}{\isasymrfloor}\ {\isasymequiv}\ \ {\isasymforall}w{\isachardot}{\isacharparenleft}{\isasympsi}\ w{\isacharparenright}{\isachardoublequoteclose}\ %
 \isamarkupcmt{modal validity%
 }
-%
-\begin{isamarkuptext}%
-\noindent{Verifying \emph{K} principle and the \emph{necessitation} rule.}%
-\end{isamarkuptext}\isamarkuptrue%
+\isanewline
 \ \ \isacommand{lemma}\isamarkupfalse%
 \ K{\isacharcolon}\ {\isachardoublequoteopen}{\isasymlfloor}{\isacharparenleft}\isactrlbold {\isasymbox}{\isacharparenleft}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ {\isasympsi}{\isacharparenright}{\isacharparenright}\ \isactrlbold {\isasymrightarrow}\ {\isacharparenleft}\isactrlbold {\isasymbox}{\isasymphi}\ \isactrlbold {\isasymrightarrow}\ \isactrlbold {\isasymbox}{\isasympsi}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
 \ %
 %
 \isacommand{by}\isamarkupfalse%
-\ simp\ \ \ \ %
-\isamarkupcmt{\emph{K} schema%
+\ simp\ \ \ %
+\isamarkupcmt{verifying \emph{K} principle%
 }
 %
 %
@@ -289,8 +287,8 @@ we provide further evidence that our embedded logic works as intended by verifyi
 \ %
 %
 \isacommand{by}\isamarkupfalse%
-\ simp\ \ \ \ %
-\isamarkupcmt{necessitation%
+\ simp\ \ \ \ \ \ \ \ \ \ %
+\isamarkupcmt{verifying \emph{necessitation} rule%
 }
 %
 %
@@ -456,7 +454,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\noindent{As mentioned before, intensional terms are trivially rigid. The following predicate tests whether an intensional
+\noindent{Intensional terms are trivially rigid. This predicate tests whether an intensional
   predicate is `rigid' in the sense of denoting a world-independent function.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
@@ -555,7 +553,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\noindent{The best known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
+\noindent{The best-known normal logics (\emph{K4, K5, KB, K45, KB5, D, D4, D5, D45, ...}) can be obtained by
  combinations of the following axioms: }%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
