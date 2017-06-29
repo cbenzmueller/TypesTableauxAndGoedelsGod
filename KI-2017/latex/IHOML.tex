@@ -8,8 +8,7 @@
 %
 %
 %
-\isamarkupsection{Introduction%
-}
+\section{Introduction}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -71,12 +70,10 @@ with this system and with Fitting's textbook.}%
 in Summer 2016 \cite{C58}.}%
 \end{isamarkuptext}\isamarkuptrue%
 %
-\isamarkupsection{Embedding of Intensional Higher-Order Modal Logic%
-}
+\section{Embedding of Intensional Higher-Order Modal Logic}
 \isamarkuptrue%
 %
-\isamarkupsubsection{Type Declarations%
-}
+\subsection{Type Declarations}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -138,8 +135,7 @@ a set of (red) objects has the extensional type \isa{{\isasymlangle}e{\isasymran
 \isamarkupcmt{(intensional) relational concepts%
 }
 %
-\isamarkupsubsection{Logical Constants as Truth-Sets%
-}
+\subsection{Logical Constants as Truth-Sets}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -190,9 +186,11 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 \ aRel{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}w{\isasymRightarrow}w{\isasymRightarrow}bool{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}r{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ mbox\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}wo{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymbox}{\isacharunderscore}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymbox}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymforall}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isacommand{abbreviation}\isamarkupfalse%
-\ mdia\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}wo{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isacharunderscore}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}\isanewline
-\ \ \isanewline
+\isacommand{abbreviation}\isamarkupfalse%
+\ mdia\ {\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}wo{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}{\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isacharunderscore}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}\isactrlbold {\isasymdiamond}{\isasymphi}\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}{\isasymexists}v{\isachardot}\ {\isacharparenleft}w\ r\ v{\isacharparenright}{\isasymand}{\isacharparenleft}{\isasymphi}\ v{\isacharparenright}{\isachardoublequoteclose}%
+
+\subsection{Equality}
+\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ meq{\isacharcolon}{\isacharcolon}\ {\isachardoublequoteopen}{\isacharprime}t{\isasymRightarrow}{\isacharprime}t{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}\isactrlbold {\isasymapprox}{\isachardoublequoteclose}{\isacharparenright}\ %
 \isamarkupcmt{standard equality (for all types)%
@@ -211,8 +209,7 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 }
 \isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}x\ \isactrlbold {\isasymapprox}\isactrlsup L\ y\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymforall}{\isasymphi}{\isachardot}\ {\isacharparenleft}{\isasymphi}\ x\ w{\isacharparenright}{\isasymlongrightarrow}{\isacharparenleft}{\isasymphi}\ y\ w{\isacharparenright}{\isachardoublequoteclose}%
-\isamarkupsubsection{\emph{Extension-of} Operator%
-}
+\subsection{\emph{Extension-of} Operator}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -242,7 +239,7 @@ or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{
 \end{isamarkuptext}\isamarkuptrue%
 %
 \begin{isamarkuptext}%
-\noindent{(\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual of type \isa{{\isasymup}e}.}%
+\noindent{(\emph{a}) Predicate \isa{{\isasymphi}} takes as argument a relativized term derived from an (intensional) individual concept of type \isa{{\isasymup}e}.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ extIndArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isasymRightarrow}{\isasymup}e{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdownharpoonleft}{\isachardoublequoteclose}{\isacharparenright}\ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdownharpoonleft}c\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}c\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
@@ -252,8 +249,7 @@ or \isa{{\isacharparenleft}Q\ {\isasymdownharpoonleft}\ a\isactrlsub {\isadigit{
 \ \ \isacommand{abbreviation}\isamarkupfalse%
 \ extPredArg{\isacharcolon}{\isacharcolon}{\isachardoublequoteopen}{\isacharparenleft}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}bool{\isacharparenright}{\isasymRightarrow}wo{\isacharparenright}{\isasymRightarrow}{\isacharparenleft}{\isacharprime}t{\isasymRightarrow}wo{\isacharparenright}{\isasymRightarrow}wo{\isachardoublequoteclose}\ {\isacharparenleft}\isakeyword{infix}\ {\isachardoublequoteopen}{\isasymdown}{\isachardoublequoteclose}{\isacharparenright}\isanewline
 \ \ \ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isasymphi}\ {\isasymdown}P\ {\isasymequiv}\ {\isasymlambda}w{\isachardot}\ {\isasymphi}\ {\isacharparenleft}{\isasymlambda}x{\isachardot}\ P\ x\ w{\isacharparenright}\ w{\isachardoublequoteclose}%
-\isamarkupsubsection{Verifying the Embedding%
-}
+\subsection{Verifying the Embedding}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -449,8 +445,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 %
 %
 %
-\isamarkupsubsection{Stability, Rigid Designation, \emph{De Dicto} and \emph{De Re}%
-}
+\subsection{Stability, Rigid Designation, \emph{De Dicto} and \emph{De Re}}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%
@@ -488,7 +483,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 %
 %
 \begin{isamarkuptext}%
-\noindent{A term is rigid if and only if it satisfies the stability conditions.}%
+\noindent{A term is `rigid' if and only if it satisfies the stability conditions.}%
 \end{isamarkuptext}\isamarkuptrue%
 \ \ \isacommand{lemma}\isamarkupfalse%
 \ {\isachardoublequoteopen}{\isasymlfloor}rigid\ {\isacharparenleft}{\isasymtau}{\isacharcolon}{\isacharcolon}{\isasymup}{\isasymlangle}e{\isasymrangle}{\isacharparenright}{\isasymrfloor}\ {\isasymlongleftrightarrow}\ {\isasymlfloor}{\isacharparenleft}stabilityA\ {\isasymtau}\ \isactrlbold {\isasymand}\ stabilityB\ {\isasymtau}{\isacharparenright}{\isasymrfloor}{\isachardoublequoteclose}%
@@ -509,7 +504,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 %
 %
 \begin{isamarkuptext}%
-\noindent{\emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms.\footnote{The
+\noindent{\emph{De re} is equivalent to \emph{de dicto} for non-relativized terms.\footnote{The
   \emph{de dicto/de re} distinction is used regularly in the philosophy of language for disambiguation
   of sentences involving intensional contexts.}}%
 \end{isamarkuptext}\isamarkuptrue%
@@ -548,8 +543,7 @@ we provide further evidence that our embedded logic works as intended by verifyi
 %
 %
 %
-\isamarkupsubsection{Useful Definitions for the Axiomatization of Further Logics%
-}
+\subsection{Useful Definitions for the Axiomatization of Further Logics}
 \isamarkuptrue%
 %
 \begin{isamarkuptext}%

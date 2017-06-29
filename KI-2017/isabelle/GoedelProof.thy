@@ -97,8 +97,7 @@ Further derived results like monotheism and absence of free will are also discus
   \emph{entails} every other property \emph{x} possesses.\footnote{Essence is defined here (and in Fitting's variant)
   in the version of Scott; G\"odel's original version leads to the inconsistency reported in @{cite "C55,C60"}.}*)
   abbreviation Essence::"\<up>\<langle>\<up>\<langle>e\<rangle>,e\<rangle>" ("\<E>") where "\<E> Y x \<equiv> Y x \<^bold>\<and> (\<^bold>\<forall>Z. Z x \<^bold>\<rightarrow> Y\<Rrightarrow>Z)"   
-  abbreviation beingIdenticalTo::"e\<Rightarrow>\<up>\<langle>e\<rangle>" ("id") where
-    "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)" (**\emph{id} is here a rigid predicate*)  
+  abbreviation beingIdenticalTo::"e\<Rightarrow>\<up>\<langle>e\<rangle>" ("id") where "id x  \<equiv> (\<lambda>y. y\<^bold>\<approx>x)"
   
 (**Being Godlike is an essential property.*)  
   lemma GodIsEssential: "\<lfloor>\<^bold>\<forall>x. G x \<^bold>\<rightarrow> (\<E> G x)\<rfloor>" using A1b A4a by metis
@@ -247,7 +246,7 @@ Further derived results like monotheism and absence of free will are also discus
 (*>*)
 (**Fitting @{cite "Fitting"} also discusses the objection raised by Sobel @{cite "sobel2004logic"}, 
   who argues that G\"odel's axiom system is too strong since it implies that whatever is the case is so necessarily: the modal system collapses.
-  In the context of our S5 axioms, we can formalize Sobel's argument and prove \emph{modal collapse} valid (@{cite "Fitting"}, pp. 163-4).*)     
+  In the context of our S5 axioms, we can formalize Sobel's argument and prove modal collapse valid (@{cite "Fitting"}, pp. 163-4).*)     
   lemma useful: "(\<forall>x. \<phi> x \<longrightarrow> \<psi>) \<Longrightarrow> ((\<exists>x. \<phi> x) \<longrightarrow> \<psi>)" by simp
   lemma ModalCollapse: "\<lfloor>\<^bold>\<forall>\<Phi>. \<Phi> \<^bold>\<rightarrow> \<^bold>\<box>\<Phi>\<rfloor>" proof -
    { fix w

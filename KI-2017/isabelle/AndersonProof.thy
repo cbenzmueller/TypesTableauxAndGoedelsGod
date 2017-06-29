@@ -49,7 +49,7 @@ section \<open>Anderson's Variant\<close>
 (**If g is Godlike, the property of being Godlike is its essence.\footnote{This theorem's proof
   could be completely automatized for G\"odel's and Fitting's variants.
   For Anderson's version however, we had to reproduce in Isabelle/HOL the original natural-language proof 
-  given by Anderson (see @{cite "anderson90"}, Theorem 2*, p. 296)}*)
+  given by Anderson (see @{cite "anderson90"}, Theorem 2*, p. 296).}*)
       
 (*Anderson's Proof: Suppose that g is God-like* and necessarily has a property Q. Then
   by definition (of "God-like*"), that property is positive. But necessarily, if
@@ -184,7 +184,7 @@ and find better countermodels (i.e. with smaller cardinality) than the ones pres
 Another interesting aspect was the possibility to explore the implications of alternative formalizations
 of axioms and theorems which shed light on interesting philosophical issues concerning entailment, essentialism and free will.*)
   
-(**Latest developments in automated theorem proving, in combination with the embedding approach,
+(**The latest developments in automated theorem proving, in combination with the embedding approach,
 allow us to engage in much better experimentation during the formalization and assessment of arguments than ever before.
 The potential reduction (of several orders of magnitude)
 in the time needed for proving or disproving theorems (compared to pen-and-paper proofs), results in almost real-time

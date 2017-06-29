@@ -9,16 +9,16 @@ Warning--empty volume in ScottNotes's crossref of sobel2004logic
 Warning--need editor, key, or series for ScottNotes to crossref sobel2004logic
 You've used 28 entries,
             2118 wiz_defined-function locations,
-            704 strings with 8286 characters,
-and the built_in function-call counts, 9305 in all, are:
-= -- 906
+            703 strings with 8256 characters,
+and the built_in function-call counts, 9295 in all, are:
+= -- 903
 > -- 358
 < -- 16
 + -- 142
 - -- 108
-* -- 593
-:= -- 1497
-add.period$ -- 92
+* -- 592
+:= -- 1495
+add.period$ -- 91
 call.type$ -- 28
 change.case$ -- 124
 chr.to.int$ -- 0
@@ -26,13 +26,13 @@ cite$ -- 32
 duplicate$ -- 426
 empty$ -- 805
 format.name$ -- 108
-if$ -- 2044
+if$ -- 2041
 int.to.chr$ -- 0
 int.to.str$ -- 28
 missing$ -- 36
 newline$ -- 144
 num.names$ -- 68
-pop$ -- 167
+pop$ -- 168
 preamble$ -- 1
 purify$ -- 104
 quote$ -- 0
@@ -47,5 +47,5 @@ type$ -- 96
 warning$ -- 4
 while$ -- 91
 width$ -- 30
-write$ -- 319
+write$ -- 318
 (There were 4 warnings)

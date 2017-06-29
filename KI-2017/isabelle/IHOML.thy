@@ -154,7 +154,9 @@ which individuals \emph{actually} exist at a given world. This meta-logical conc
 (**Frame's accessibility relation and modal operators.*)
   consts aRel::"w\<Rightarrow>w\<Rightarrow>bool" (infix "r"(*<*)70(*>*))
   abbreviation mbox :: "wo\<Rightarrow>wo" ("\<^bold>\<box>_"(*<*)[52]53(*>*)) where "\<^bold>\<box>\<phi> \<equiv> \<lambda>w.\<forall>v. (w r v)\<longrightarrow>(\<phi> v)"
-  abbreviation mdia :: "wo\<Rightarrow>wo" ("\<^bold>\<diamond>_"(*<*)[52]53(*>*)) where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
+abbreviation mdia :: "wo\<Rightarrow>wo" ("\<^bold>\<diamond>_"(*<*)[52]53(*>*)) where "\<^bold>\<diamond>\<phi> \<equiv> \<lambda>w.\<exists>v. (w r v)\<and>(\<phi> v)"
+  
+subsection \<open>Equality\<close> 
   
   abbreviation meq:: "'t\<Rightarrow>'t\<Rightarrow>wo" (infix "\<^bold>\<approx>"(*<*)60(*>*)) (**standard equality (for all types)*)
     where "x \<^bold>\<approx> y \<equiv> \<lambda>w. x = y"
@@ -189,7 +191,7 @@ or @{text "(Q \<downharpoonleft> a\<^sub>1)\<^sup>w"} using infix notation, whic
 a term @{text "\<alpha>"} preceded by @{text "\<down>"} behaves as a non-rigid term, whose denotation at a given possible world corresponds
 to the extension of the original intensional term @{text "\<alpha>"} at that world.*)
   
-(**(\emph{a}) Predicate @{text \<phi>} takes as argument a relativized term derived from an (intensional) individual of type @{text "\<up>e"}.*)
+(**(\emph{a}) Predicate @{text \<phi>} takes as argument a relativized term derived from an (intensional) individual concept of type @{text "\<up>e"}.*)
   abbreviation extIndArg::"\<up>\<langle>e\<rangle>\<Rightarrow>\<up>e\<Rightarrow>wo" (infix "\<downharpoonleft>"(*<*)60(*>*)) where "\<phi> \<downharpoonleft>c \<equiv> \<lambda>w. \<phi> (c w) w"
 (**(\emph{b}) A variant of (\emph{a}) for terms derived from predicates (types of form @{text "\<up>\<langle>t\<rangle>"}).*)
   abbreviation extPredArg::"(('t\<Rightarrow>bool)\<Rightarrow>wo)\<Rightarrow>('t\<Rightarrow>wo)\<Rightarrow>wo" (infix "\<down>"(*<*)60(*>*))
@@ -256,11 +258,11 @@ subsection\<open>Stability, Rigid Designation, \emph{De Dicto} and \emph{De Re}\
   lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityA (\<tau>::\<up>\<langle>e\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityB \<tau>\<rfloor>" by blast    
   lemma "equivalence aRel \<Longrightarrow> \<lfloor>stabilityB (\<tau>::\<up>\<langle>e\<rangle>)\<rfloor> \<longrightarrow> \<lfloor>stabilityA \<tau>\<rfloor>" by blast    
       
-(**A term is rigid if and only if it satisfies the stability conditions.*)
+(**A term is `rigid' if and only if it satisfies the stability conditions.*)
   lemma "\<lfloor>rigid (\<tau>::\<up>\<langle>e\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
   lemma "\<lfloor>rigid (\<tau>::\<up>\<langle>\<up>e\<rangle>)\<rfloor> \<longleftrightarrow> \<lfloor>(stabilityA \<tau> \<^bold>\<and> stabilityB \<tau>)\<rfloor>" by meson   
       
-(**\emph{De re} is equivalent to \emph{de dicto} for non-relativized (i.e. rigid) terms.\footnote{The
+(**\emph{De re} is equivalent to \emph{de dicto} for non-relativized terms.\footnote{The
   \emph{de dicto/de re} distinction is used regularly in the philosophy of language for disambiguation
   of sentences involving intensional contexts.}*)
   lemma "\<lfloor>\<^bold>\<forall>\<alpha>. ((\<lambda>\<beta>. \<^bold>\<box>(\<alpha> \<beta>)) (\<tau>::\<langle>e\<rangle>))  \<^bold>\<leftrightarrow> \<^bold>\<box>((\<lambda>\<beta>. (\<alpha> \<beta>)) \<tau>)\<rfloor>" by simp

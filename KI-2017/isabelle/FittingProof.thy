@@ -16,7 +16,7 @@ In this variant, Fitting chooses to reformulate these definitions using \emph{ex
 and makes the corresponding adjustments to the rest of the argument (to ensure type correctness).
 This has some philosophical repercussions; e.g. while we could say before that honesty (as concept) was a
 positive property, now we can only talk of its extension at some world and say of some group of people
-that they are honest (necessarily honest, in fact, because @{text "\<P>"} has also been proven rigid in this variant).\footnote{
+that they are honest (necessarily honest, in fact, because @{text "\<P>"} has also been proven `rigid' in this variant).\footnote{
 In what follows, the `@{text "\<lparr>_\<rparr>"}' parentheses are used to convert an extensional object into its `rigid'
 intensional counterpart (e.g. @{text "\<lparr>\<phi>\<rparr> \<equiv> \<lambda>w. \<phi>"}).}*)
   
